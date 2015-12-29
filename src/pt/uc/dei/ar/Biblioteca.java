@@ -8,10 +8,7 @@ import java.util.*;
  */
 public class Biblioteca {
 
-	/**
-     * 
-     */
-    private ArrayList<Emprestimo> listaDeEmprestimo;
+	
 
     /**
      * 
@@ -23,7 +20,10 @@ public class Biblioteca {
      */
     private ArrayList<Utilizador> listaDeUtilizadores;
 
-    
+    /**
+     * 
+     */
+    private ArrayList<Emprestimo> listaDeEmprestimo;
     
     
     /**
