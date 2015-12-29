@@ -8,11 +8,7 @@ import java.util.*;
  */
 public class Biblioteca {
 
-    /**
-     * Default constructor
-     */
-    public Biblioteca() {
-    }
+    
 
     /**
      * 
@@ -29,6 +25,12 @@ public class Biblioteca {
      */
     private ArrayList<Emprestimo> listaDeEmprestimo;
     
+    
+    /**
+     * Default constructor
+     */
+    public Biblioteca() {
+    }
 
     /**
      * @param Publicacao
