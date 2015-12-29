@@ -5,13 +5,8 @@ package pt.uc.dei.ar;
  */
 public class Livro extends NaoPeriodico implements Requisitavel {
 
-    /**
-     * Default constructor
-     */
-    public Livro() {
-    }
-
-    /**
+	
+	/**
      * 
      */
     private String numEdicao;
@@ -26,6 +21,13 @@ public class Livro extends NaoPeriodico implements Requisitavel {
      */
     private String editor;
 
+    /**
+     * Default constructor
+     */
+    public Livro() {
+    }
+
+    
     /**
      * @return
      */

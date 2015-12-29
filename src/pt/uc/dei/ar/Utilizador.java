@@ -7,13 +7,7 @@ import java.util.*;
  */
 public class Utilizador {
 
-    /**
-     * Default constructor
-     */
-    public Utilizador() {
-    }
-
-    /**
+	/**
      * 
      */
     private String username;
@@ -52,6 +46,15 @@ public class Utilizador {
      * 
      */
     private String telefone;
+	
+	
+    /**
+     * Default constructor
+     */
+    public Utilizador() {
+    }
+
+    
 
 
     /**

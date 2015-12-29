@@ -8,13 +8,7 @@ import java.util.*;
  */
 public class Publicacao {
 
-    /**
-     * Default constructor
-     */
-    public Publicacao() {
-    }
-
-    /**
+	 /**
      * 
      */
     private String titulo;
@@ -38,6 +32,15 @@ public class Publicacao {
      * 
      */
     private Date dataReceçao;
+	
+	
+    /**
+     * Default constructor
+     */
+    public Publicacao() {
+    }
+
+   
 
 
     /**

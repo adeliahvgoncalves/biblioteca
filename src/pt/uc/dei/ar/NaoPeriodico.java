@@ -7,16 +7,18 @@ import java.util.*;
  */
 public class NaoPeriodico extends Publicacao {
 
+	 /**
+     * 
+     */
+    private ArrayList<String> listaDeAutores;
+	
     /**
      * Default constructor
      */
     public NaoPeriodico() {
     }
 
-    /**
-     * 
-     */
-    private ArrayList<String> listaDeAutores;
+   
 
     /**
      * @return

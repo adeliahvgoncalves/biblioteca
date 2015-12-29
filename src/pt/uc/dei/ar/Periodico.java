@@ -7,17 +7,19 @@ import java.util.*;
  */
 public class Periodico extends Publicacao {
 
+	/**
+     * 
+     */
+    private Periodicidade periodicidade;
+
+	
     /**
      * Default constructor
      */
     public Periodico() {
     }
 
-    /**
-     * 
-     */
-    private Periodicidade periodicidade;
-
+    
 
     /**
      * @return

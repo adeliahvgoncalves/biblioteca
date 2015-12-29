@@ -7,16 +7,19 @@ import java.util.*;
  */
 public class Jornal extends Periodico {
 
+	
+	/**
+     * 
+     */
+    private int numEdicao;
+
+   
+	
     /**
      * Default constructor
      */
     public Jornal() {
     }
-
-    /**
-     * 
-     */
-    private int numEdicao;
 
     /**
      * @return
@@ -25,5 +28,6 @@ public class Jornal extends Periodico {
         // TODO implement here
         return 0;
     }
+    
 
 }

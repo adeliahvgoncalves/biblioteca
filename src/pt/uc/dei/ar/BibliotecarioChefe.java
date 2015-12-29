@@ -7,16 +7,18 @@ import java.util.*;
  */
 public class BibliotecarioChefe extends Utilizador {
 
+	/**
+     * 
+     */
+    private int numColaborador;
+	
     /**
      * Default constructor
      */
     public BibliotecarioChefe() {
     }
 
-    /**
-     * 
-     */
-    private int numColaborador;
+    
 
     /**
      * @return

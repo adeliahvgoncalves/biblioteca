@@ -7,13 +7,8 @@ import java.util.*;
  */
 public class Revista extends Periodico implements Requisitavel {
 
-    /**
-     * Default constructor
-     */
-    public Revista() {
-    }
-
-    /**
+	
+	/**
      * 
      */
     private int volume;
@@ -22,6 +17,14 @@ public class Revista extends Periodico implements Requisitavel {
      * 
      */
     private int numeroSequencial;
+    
+    /**
+     * Default constructor
+     */
+    public Revista() {
+    }
+
+    
 
     /**
      * @return
