@@ -8,6 +8,11 @@ import java.util.*;
  */
 public class Biblioteca {
 
+	/**
+     * 
+     */
+    private ArrayList<Utilizador> listaDeUtilizadores;
+
 	
 
     /**
@@ -15,10 +20,7 @@ public class Biblioteca {
      */
     private ArrayList<Publicacao> listaDePublicacoes;
 
-    /**
-     * 
-     */
-    private ArrayList<Utilizador> listaDeUtilizadores;
+   
 
     /**
      * 
