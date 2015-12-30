@@ -3,12 +3,12 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * A subclass não periódica herda da classe Publicação.
+ * O não periódico herda de Publicação.
  */
 public class NaoPeriodico extends Publicacao {
 
 	 /**
-     * A lista de autores é um atributo da classe não periódico.
+     * Lista de autores do não periódico
      */
     private ArrayList<String> listaDeAutores;
 	
@@ -17,7 +17,7 @@ public class NaoPeriodico extends Publicacao {
    
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Não Periódico
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -32,8 +32,8 @@ public class NaoPeriodico extends Publicacao {
 
 
 	/**
-	 * Método que permite aceder à lista de autores respeitando o encapsulamento.
-	 * @return the listaDeAutores
+	 * 
+	 * @return a lista de autores em formato String
 	 */
 	public ArrayList<String> getListaDeAutores() {
 		return listaDeAutores;
@@ -41,7 +41,7 @@ public class NaoPeriodico extends Publicacao {
 
 
 	/**
-	 * Método que permite adicionar um novo autor à lista de autores.
+	 * Método que permite adicionar autores 
      * @param String
      */
     public void adicionaAutor(String autor) {

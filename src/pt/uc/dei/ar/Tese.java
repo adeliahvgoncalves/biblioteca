@@ -3,24 +3,24 @@ package pt.uc.dei.ar;
 import java.util.Date;
 
 /**
- * A classe tese herda da classe não periódico e implementa o requisitável.
+ * Tese herda de não periódico e implementa o requisitável
  */
 
 public class Tese extends NaoPeriodico implements Requisitavel {
 
 
 	/**
-     * O nome do orientador é um atributo da classe tese.
+     * Nome do orientador da tese
      */
 	private String nomeDoOrientador;
 
 	/**
-     * O tipo de tese é um atributo da classe tese.
+     * Tipo de tese
      */
 	private TipoDeTese tipoDeTese;
 
 	/**
-	 * A inicialização dos atributos da classe:
+	 * Construtor da classe Tese
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -36,8 +36,8 @@ public class Tese extends NaoPeriodico implements Requisitavel {
 	}
 
 	/**
-	 * Método que permite aceder ao nome do orientador respeitando o encapsulamento.
-	 * @return the nomeDoOrientador
+	 *
+	 * @return o nome do orientador em formato String
 	 */
 	public String getNomeDoOrientador() {
 		return nomeDoOrientador;
@@ -45,7 +45,8 @@ public class Tese extends NaoPeriodico implements Requisitavel {
 
 	
 	/**
-	 * Método que permite à enumeração do tipo de tese respeitando o encapsulamento.
+	 *
+	 * @return o tipo de tese em tipo de tese
 	 */
 	public TipoDeTese getTipoDeTese() {
 		return tipoDeTese;
@@ -54,9 +55,8 @@ public class Tese extends NaoPeriodico implements Requisitavel {
 	
 
 	/**
-	 * Método que implementa a interface. Definido prazo de 10 dias de
-	 * empréstimo da tese.
-     * @return
+	 * Implementa interface requisitável
+     * @return o máximo de dias de requisição em formato inteiro
      */
 	@Override
 	public int maximoDiasRequisicao() {

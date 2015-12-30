@@ -4,25 +4,25 @@ import java.util.*;
 
 /**
  * 
- * A classe revista herda da classe periódico que por sua vez herda de publicação.
- * Implementa a interface requisitavel, portanto, pode ser emprestada.
+ * Revista herda do periódico que por sua vez herda de publicação
+ * Implementa a interface requisitavel, portanto, pode ser emprestada
  */
 public class Revista extends Periodico implements Requisitavel {
 
 	
 	/**
-     * A volume é um atributo da classe revista.
+     *  Volume da revista
      * 
      */
     private int volume;
 
     /**
-     * O número sequencial é um atributo da classe revista.
+     * Número sequencial da revista
      */
     private int numeroSequencial;
     
     /**
-     * è criada esta variável para permitir a criação do número sequencial.
+     * é criada esta variável para facilitar a criação do número sequencial
      */
     private int ultimonumeroSequencial=0;
     
@@ -31,7 +31,7 @@ public class Revista extends Periodico implements Requisitavel {
     
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Revista
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -51,8 +51,8 @@ public class Revista extends Periodico implements Requisitavel {
 	
 
     /**
-     * Método que permite aceder ao volume da revista respeitando o encapsulamento.
-	 * @return the volume
+     * 
+	 * @return o volume em formato inteiro
 	 */
 	public int getVolume() {
 		return volume;
@@ -61,18 +61,15 @@ public class Revista extends Periodico implements Requisitavel {
 
 
 	/**
-	 * Método que permite aceder ao número sequencial da revista respeitando o encapsulamento.
-
-	 * @return the numeroSequencial
+	 * @return o número sequencial em formato inteiro
 	 */
 	public int getNumeroSequencial() {
 		return numeroSequencial;
 	}
 
 	/**
-	 * Método que implementa a interface. Definido prazo de 5 dias de
-	 * empréstimo da revista.
-     * @return
+	 * Implementa interface requisitável
+     * @return o máximo de dias de requisição em formato inteiro
      */
     public int maximoDiasRequisicao() {
         return 5;

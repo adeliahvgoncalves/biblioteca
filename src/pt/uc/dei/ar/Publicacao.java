@@ -4,41 +4,39 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * 
+ * Publicação representa uma publicação periódica ou não periódica.
  */
 public class Publicacao {
 
 	 /**
-     * Uma publicação tem um título.
+     * @title Título de uma publicação
      */
     private String titulo;
 
     /**
-     * Uma publicação tem uma data em que foi publicada.
+     * Data em que a publicação foi publicada
      */
     private Date dataPublicacao;
 
     /**
-     * A publicação tem um conjunto de áreas em que se pode enquadrar. 
+     * Áreas da publicação
      */
     private ArrayList<String> listaDeAreas;
 
     /**
-     * A publicação tem um código de barras para facilitar e agilizar o processo
-     * de requisição e devolução da obra e para facilitar a sua identificação
-     * no arquivo.
+     * Código de barras da publicação
      */
     private int codBarras;
 
     /**
-     * A publicação tem uma data de registo no sistema da biblioteca.
+     * Data de receção da publicação
      */
     private Date dataReceçao;
 	
     
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Publicação
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param areas
@@ -56,8 +54,8 @@ public class Publicacao {
 
 
 	/**
-	 * @return the titulo
-	 * Método que permite aceder ao título, respeitando o encapsulamento.
+	 * @return o título, em formato String
+	 * 
 	 */
 	public String getTitulo() {
 		return titulo;
@@ -65,8 +63,8 @@ public class Publicacao {
 
 
 	/**
-	 * @return the dataPublicacao
-	 * Método que permite aceder à data de publicação, respeitando o encapsulamento.
+	 * @return a data da publicacao, em formato de Data
+	 *
 	 */
 	public Date getDataPublicacao() {
 		return dataPublicacao;
@@ -75,19 +73,17 @@ public class Publicacao {
 
 
 	/**
-	 * @return the listaDeAreas
-	 * Método que permite aceder à lista de áreas, respeitando o encapsulamento.
+	 * @return a lista de áreas em formato String
+	 * 
 	 */
 	public ArrayList<String> getListaDeAreas() {
 		return listaDeAreas;
 	}
 
 
-
-
 	/**
-	 * @param listaDeAreas the listaDeAreas to set
-	 * Método que permite alterar ou substituir na lista de áreas, tornando-a mais explícita.
+	 * @param define a nova lista de areas 
+	 * 
 	 */
 	public void setListaDeAreas(ArrayList<String> listaDeAreas) {
 		this.listaDeAreas = listaDeAreas;
@@ -97,8 +93,8 @@ public class Publicacao {
 
 
 	/**
-	 * @return the codBarras
-	 * Permite aceder ao código de barras, respeitando o encapsulamento.
+	 * @return o código de barras em formato inteiro
+	 * 
 	 */
 	public int getCodBarras() {
 		return codBarras;
@@ -106,8 +102,8 @@ public class Publicacao {
 
 
 	/**
-	 * @return the dataReceçao
-	 * Método que permite aceder à data de receção da publicação, respeitando o encapsulamento.
+	 * @return a data de receçao, em formato data
+	 *
 	 */
 	public Date getDataReceçao() {
 		return dataReceçao;
@@ -116,7 +112,7 @@ public class Publicacao {
 	
 	/**
      * @param String
-     * Método que permite adicionar novas áreas ao arrayList.
+     * Método que permite adicionar novas áreas ao arrayList
      */
     public void adicionaArea(String area) {
     	this.listaDeAreas.add(area);

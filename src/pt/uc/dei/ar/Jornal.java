@@ -3,21 +3,19 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * A classe jornal herda da classe periódico que por sua vez herda de publicação.
+ * Jornal herda de periódico que herda de publicação.
  */
 public class Jornal extends Periodico {
 
 	
 	/**
-     * O número de Edição é um atributo da classe jornal.
+     * Número de Edição é um atributo da classe jornal.
      */
     private int numEdicao;
-
-   
 	
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Jornal
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -32,11 +30,9 @@ public class Jornal extends Periodico {
 	}
 
 
-
-
 	/**
-	 * Método que permite aceder ao número da edição respeitando o encapsulamento.
-	 * @return the numEdicao
+	 *
+	 * @return o número de edição em formato inteiro
 	 */
 	public int getNumEdicao() {
 		return numEdicao;

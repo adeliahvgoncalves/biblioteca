@@ -3,31 +3,31 @@ package pt.uc.dei.ar;
 import java.util.Date;
 
 /**
- * A classe livro herda da classe não periódico e implementa o requisitável.
+ * Livro herda de não periódico e implementa o requisitável.
  */
 public class Livro extends NaoPeriodico implements Requisitavel {
 
 	
 	/**
-     * O número de edição é um atributo da classe livro.
+     * Número de edição do livro.
      * 
      */
     private String numEdicao;
 
     /**
-     * O ISBN é um atributo da classe livro.
+     * ISBN do livro.
      */
     private String ISBN;
 
     /**
-     * O editor é um atributo da classe livro.
+     * Editor do livro.
      */
     private String editor;
 
     
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Livro
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -48,8 +48,8 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 	
 
 	/**
-	 *  Método que permite aceder ao número de edição respeitando o encapsulamento.
-	 * @return the numEdicao
+	 *  
+	 * @return o número da edição em formato string
 	 */
 	public String getNumEdicao() {
 		return numEdicao;
@@ -59,8 +59,8 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 
 
 	/**
-	 * Método que permite aceder ao ISBN respeitando o encapsulamento.
-	 * @return the iSBN
+	 *
+	 * @return o ISBN em formato String
 	 */
 	public String getISBN() {
 		return ISBN;
@@ -70,8 +70,8 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 
 
 	/**
-	 * Método que permite aceder ao editor respeitando o encapsulamento.
-	 * @return the editor
+	 * 
+	 * @return o editor em formato String
 	 */
 	public String getEditor() {
 		return editor;
@@ -79,9 +79,8 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 
 	
 	/**
-	 * Método que implementa a interface. Definido prazo de 15 dias de
-	 * empréstimo do livro.
-     * @return
+	 Implementa interface requisitável
+     * @return o máximo de dias de requisição em formato inteiro
      */
     public int maximoDiasRequisicao() {
         return 15;

@@ -3,12 +3,12 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * A subclass periódica herda da classe Publicação.
+ * Periódico herda de Publicação.
  */
 public class Periodico extends Publicacao {
 
 	/**
-     * A periodicidade é um atributo da classe periódico.
+     * Periodicidade do periódico
      */
     private Periodicidade periodicidade;
 
@@ -16,7 +16,7 @@ public class Periodico extends Publicacao {
     
 
     /**
-     * A inicialização dos atributos da classe:
+     * Construtor da classe Periódico
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param codBarras
@@ -32,8 +32,8 @@ public class Periodico extends Publicacao {
 
 
 	/**
-	 * Método que permite aceder à periodicidade respeitando o encapsulamento.
-	 * @return the periodicidade
+	 * 
+	 * @return periodicidade devolve um tipo de periodicidade
 	 */
 	public Periodicidade getPeriodicidade() {
 		return periodicidade;

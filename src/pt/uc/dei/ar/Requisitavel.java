@@ -1,16 +1,17 @@
 package pt.uc.dei.ar;
 
 /**
- * A interface requisitável é a maneira que utilizamos para definir qual o objeto é requisitável.
- * Só as publicações que são requisitáveis implementam a interface.
+ * Requisitável é uma interface que obriga à implementação nas publicações de um 
+ * método que devolve o máximo de dias de requisição.
  * 
  */
 public interface Requisitavel {
 	
     /**
-     * Só as subclasse da publicação que implementam o métodomaximoDiasRequisicao()
-     * são passiveis de ser emprestadas aos leitores.
-     * @return
+     * As classes que implementam a interface são
+     * passiveis de ser emprestadas aos leitores.
+     * 
+     * @return um inteiro com o número máximo de dias da requisição.
      */
     public int maximoDiasRequisicao();
 
