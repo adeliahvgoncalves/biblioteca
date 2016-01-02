@@ -4,26 +4,26 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * 
+ * Biblioteca representa a biblioteca e todos os seus recursos
  */
 public class Biblioteca {
 
 	/**
-     * 
+     * Lista de utilizadores é atributo da classe biblioteca
      */
     private ArrayList<Utilizador> listaDeUtilizadores;
 
 	
 
     /**
-     * 
+     * Lista de publicações é atributo da classe biblioteca
      */
     private ArrayList<Publicacao> listaDePublicacoes;
 
    
 
     /**
-     * 
+     * Lista de empréstimos é atributo da classe biblioteca
      */
     private ArrayList<Emprestimo> listaDeEmprestimo;
     
@@ -35,38 +35,43 @@ public class Biblioteca {
     }
 
     /**
+     * Adiciona uma publicação nova
      * @param Publicacao
      */
     public void adicionaPublicacao(Publicacao publicacao) {
-        // TODO implement here
+    	listaDePublicacoes.add(publicacao);
     }
 
     /**
+     * Adiciona um utilizador novo
      * @param Utilizador
      */
-    public void adicionaUtilizador(Utilizador utlizador) {
-        // TODO implement here
+    public void adicionaUtilizador(Utilizador utilizador) {
+        listaDeUtilizadores.add(utilizador);
     }
 
     /**
+     * Adiciona um empréstimo novo
      * @param Emprestimo
      */
     public void adicionaEmprestimo(Emprestimo emprestimo) {
-        // TODO implement here
+    	listaDeEmprestimo.add(emprestimo);
     }
 
     /**
+     * Remove uma publicação
      * @param Publicacao
      */
     public void removePublicacao(Publicacao publicacao) {
-        // TODO implement here
+        listaDePublicacoes.remove(publicacao);
     }
 
     /**
+     * Remove utilizador
      * @param Utilizador
      */
     public void removeUtilizador(Utilizador utilizador) {
-        // TODO implement here
+    	listaDeUtilizadores.remove(utilizador);
     }
 
     /**
@@ -78,14 +83,41 @@ public class Biblioteca {
         return null;
     }
 
+    
+    // faz sentido?! pesquisa por nome com todos os resultados duma palavra
+  
+//    public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
+//    	ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
+//
+//		for (Publicacao publicacao: listaDePublicacoes){
+//			if(publicacao.getTitulo().contains(nome))	{	
+//				publicacaoComParteNome.add(publicacao);
+//			}
+//
+//		}
+//		return publicacaoComParteNome;
+//      
+//    }
+      
+    
+
     /**
      * @param String nome 
      * @return
      */
     public Publicacao pesquisaPublicacao(String nome) {
-        // TODO implement here
-        return null;
+    	Publicacao pesquisaNome=null;
+		for (Publicacao publicacao: listaDePublicacoes){
+			if(publicacao.getTitulo().equalsIgnoreCase(nome))	{	
+				
+				 pesquisaNome=publicacao;
+			}
+
+		}
+		return pesquisaNome;
+      
     }
+    
 
     /**
      * @param int codigoBarras 

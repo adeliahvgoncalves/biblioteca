@@ -3,91 +3,106 @@ package pt.uc.dei.ar;
 import java.util.*;
 
 /**
- * 
+ * Empréstimo representa o empréstimo de uma publicação requisitável
  */
-public class Emprestimo implements Requisitavel {
+public class Emprestimo {
 
+  
     /**
-     * Default constructor
+     * Número de empréstimo é atributo do empréstimo, sendo sequencial
      */
-    public Emprestimo() {
-    }
-
+    private int numEmp=0;
+    
     /**
-     * 
+     * Número de empréstimo último facilita a criação do número de empréstimo sequencial
      */
-    private int numEmp;
+    private int numEmpUltimo=0;
 
     /**
-     * 
+     * Leitor é atributo de empréstimo
      */
     private Leitor leitor;
 
     /**
-     * 
+     * Data de empréstimo é atributo de empréstimo
      */
     private Date dataEmp;
 
     /**
-     * 
+     * Data de devolução é atributo de empréstimo, após devolução
      */
     private Date dataDev;
 
     /**
-     * 
+     * Publicação é atributo de empréstimo
      */
     private Requisitavel publicacao;
 
-
-
-
+	
 
     /**
-     * @return
-     */
-    public Date getDataEmp() {
-        // TODO implement here
-        return null;
-    }
+     * Construtor da classe Empréstimo
+	 * @param numEmp
+	 * @param numEmpUltimo
+	 * @param leitor
+	 * @param dataEmp
+	 * @param dataDev
+	 * @param publicacao
+	 */
+	public Emprestimo( Leitor leitor, Date dataEmp, Date dataDev,
+			Requisitavel publicacao) {
+		super();
+		this.numEmp = numEmpUltimo;
+		this.numEmpUltimo = numEmp+1;
+		this.leitor = leitor;
+		this.dataEmp = dataEmp;
+		this.dataDev = dataDev;
+		this.publicacao = publicacao;
+	}
 
-    /**
-     * @return
-     */
-    public Date getDataDev() {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @param Date data
-     */
-    public void setDataDev(Date data) {
-        // TODO implement here
-    }
 
-    /**
-     * @return
-     */
-    public Leitor getLeitor() {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @return o número de empréstimo, em formato inteiro
+	 */
+	public int getNumEmp() {
+		return numEmp;
+	}
 
-    /**
-     * @param Date dataEmp 
-     * @return
-     */
-    public Date dataLimiteEntrega(Date dataEmp) {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @return
-     */
-    public int maximoDiasRequisicao() {
-        // TODO implement here
-        return 0;
-    }
+	/**
+	 * @return o leitor em formato leitor
+	 */
+	public Leitor getLeitor() {
+		return leitor;
+	}
+
+
+
+	/**
+	 * @return a data de empréstimo em formato data
+	 */
+	public Date getDataEmp() {
+		return dataEmp;
+	}
+
+
+	/**
+	 * @return a data de devolução em formato data
+	 */
+	public Date getDataDev() {
+		return dataDev;
+	}
+
+
+
+	/**
+	 * @return a publicação que seja requisitável
+	 */
+	public Requisitavel getPublicacao() {
+		return publicacao;
+	}
+
+
 
 }
