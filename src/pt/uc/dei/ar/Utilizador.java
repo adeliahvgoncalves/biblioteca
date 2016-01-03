@@ -78,6 +78,7 @@ public class Utilizador {
     /**
      * @return utilizador, em formato String.
      */
+    @Override
 	public String toString() {
 		return "Utilizador [username=" + username + ", hashedPassword=" + hashedPassword + ", nome=" + nome
 				+ ", dataNascimento=" + dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada
