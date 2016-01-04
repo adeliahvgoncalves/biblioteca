@@ -82,7 +82,7 @@ public class Publicacao {
 
 
 	/**
-	 * @param define a nova lista de areas 
+	 * @param listaDeAreas define a nova lista de areas 
 	 * 
 	 */
 	public void setListaDeAreas(ArrayList<String> listaDeAreas) {
@@ -111,7 +111,7 @@ public class Publicacao {
 
 	
 	/**
-     * @param String
+     * @param area
      * Método que permite adicionar novas áreas ao arrayList
      */
     public void adicionaArea(String area) {

@@ -89,7 +89,6 @@ public class Utilizador {
      * @return nome do utilizador, em formato String.
      */
     public String getNome() {
-        // TODO implement here
         return nome;
     }
 
@@ -97,7 +96,6 @@ public class Utilizador {
      * @return username do utilizador, em formato String.
      */
     public String getUsername() {
-        // TODO implement here
         return username;
     }
 
@@ -105,7 +103,6 @@ public class Utilizador {
      * @return número do Cartão de Cidadão do utilizador, em formato String.
      */
     public String getCartaoCidadao() {
-        // TODO implement here
         return cartaoCidadao;
     }
 
@@ -114,7 +111,6 @@ public class Utilizador {
      * Método que permite alterar a morada do utilizador.
      */
     public void setMorada(String morada) {
-        // TODO implement here
     	this.morada=morada;
     }
 
@@ -122,17 +118,15 @@ public class Utilizador {
      * @param String email
      * Método que permite alterar o e-mail do utilizador.
      */
-    public void setEmail(String email) {
-        // TODO implement here
+    public void setEmail(String email)  {
     	this.email=email;
     }
 
     /**
-     * @param String telemovel
+     * @param String telefone
      * Método que permite alterar o número de telefone do utilizador.
      */
     public void setTelefone(String telefone) {
-        // TODO implement here
     	this.telefone=telefone;
     }
 
@@ -140,15 +134,7 @@ public class Utilizador {
      * @return password do utilizador.
      */
     public String getHashedPassword() {
-        // TODO implement here
         return hashedPassword;
-    }
-
-    /**
-     * 
-     */
-    public interface Interface1 {
-
     }
 
 }

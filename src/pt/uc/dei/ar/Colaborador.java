@@ -34,10 +34,9 @@ public class Colaborador extends Utilizador {
     
 
     /**
-     * @return o número de colaborador do utilizador.
+     * @return o número de colaborador do utilizador em formato inteiro
      */
     public int getNumColaborador() {
-        // TODO implement here
         return numColaborador;
     }
 

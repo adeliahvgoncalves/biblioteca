@@ -28,13 +28,22 @@ public class Biblioteca {
     private ArrayList<Emprestimo> listaDeEmprestimo;
     
     
-    /**
-     * Default constructor
-     */
-    public Biblioteca() {
-    }
+    
 
     /**
+     * Construtor da classe biblioteca
+	 * @param listaDeUtilizadores
+	 * @param listaDePublicacoes
+	 * @param listaDeEmprestimo
+	 */
+	public Biblioteca() {
+		super();
+		this.listaDeUtilizadores = new ArrayList<Utilizador>();
+		this.listaDePublicacoes =new ArrayList<Publicacao>();
+		this.listaDeEmprestimo = new ArrayList<Emprestimo>();
+	}
+
+	/**
      * Adiciona uma publicação nova
      * @param Publicacao
      */
@@ -60,7 +69,7 @@ public class Biblioteca {
 
     /**
      * Remove uma publicação
-     * @param Publicacao
+     * @param publicacao
      */
     public void removePublicacao(Publicacao publicacao) {
         listaDePublicacoes.remove(publicacao);
@@ -68,14 +77,14 @@ public class Biblioteca {
 
     /**
      * Remove utilizador
-     * @param Utilizador
+     * @param utilizador
      */
     public void removeUtilizador(Utilizador utilizador) {
     	listaDeUtilizadores.remove(utilizador);
     }
 
     /**
-     * @param Emprestimo 
+     * @param emprestimo 
      * @return
      */
     public Emprestimo devolveEmprestimo(Emprestimo emprestimo) {
@@ -223,28 +232,48 @@ public class Biblioteca {
         return 0;
     }
 
-	public ArrayList<Publicacao> getListaDePublicacoes() {
-		return listaDePublicacoes;
-	}
-
-	public void setListaDePublicacoes(ArrayList<Publicacao> listaDePublicacoes) {
-		this.listaDePublicacoes = listaDePublicacoes;
-	}
-
+	/**
+	 * @return the listaDeUtilizadores
+	 */
 	public ArrayList<Utilizador> getListaDeUtilizadores() {
 		return listaDeUtilizadores;
 	}
 
+	/**
+	 * @param listaDeUtilizadores the listaDeUtilizadores to set
+	 */
 	public void setListaDeUtilizadores(ArrayList<Utilizador> listaDeUtilizadores) {
 		this.listaDeUtilizadores = listaDeUtilizadores;
 	}
 
+	/**
+	 * @return the listaDePublicacoes
+	 */
+	public ArrayList<Publicacao> getListaDePublicacoes() {
+		return listaDePublicacoes;
+	}
+
+	/**
+	 * @param listaDePublicacoes the listaDePublicacoes to set
+	 */
+	public void setListaDePublicacoes(ArrayList<Publicacao> listaDePublicacoes) {
+		this.listaDePublicacoes = listaDePublicacoes;
+	}
+
+	/**
+	 * @return the listaDeEmprestimo
+	 */
 	public ArrayList<Emprestimo> getListaDeEmprestimo() {
 		return listaDeEmprestimo;
 	}
 
+	/**
+	 * @param listaDeEmprestimo the listaDeEmprestimo to set
+	 */
 	public void setListaDeEmprestimo(ArrayList<Emprestimo> listaDeEmprestimo) {
 		this.listaDeEmprestimo = listaDeEmprestimo;
 	}
+
+	
 
 }

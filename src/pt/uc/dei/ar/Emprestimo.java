@@ -49,14 +49,13 @@ public class Emprestimo {
 	 * @param dataDev
 	 * @param publicacao
 	 */
-	public Emprestimo( Leitor leitor, Date dataEmp, Date dataDev,
+	public Emprestimo( Leitor leitor, Date dataEmp, 
 			Requisitavel publicacao) {
 		super();
 		this.numEmp = numEmpUltimo;
 		this.numEmpUltimo = numEmp+1;
 		this.leitor = leitor;
 		this.dataEmp = dataEmp;
-		this.dataDev = dataDev;
 		this.publicacao = publicacao;
 	}
 
@@ -92,6 +91,15 @@ public class Emprestimo {
 	 */
 	public Date getDataDev() {
 		return dataDev;
+	}
+
+
+
+	/**
+	 * @param dataDev the dataDev to set
+	 */
+	public void setDataDev(Date dataDev) {
+		this.dataDev = dataDev;
 	}
 
 

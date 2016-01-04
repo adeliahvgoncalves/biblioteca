@@ -1,7 +1,7 @@
 package pt.uc.dei.ar;
 
 /**
- * 
+ * Periodicidade de uma publicação periódica
  */
 public enum Periodicidade {
     Diaria,
