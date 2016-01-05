@@ -97,6 +97,7 @@ public class Emprestimo {
 
 	/**
 	 * @param dataDev the dataDev to set
+	 * a utilizar na devolução da publicação requisitável
 	 */
 	public void setDataDev(Date dataDev) {
 		this.dataDev = dataDev;
