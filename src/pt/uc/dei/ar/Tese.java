@@ -1,5 +1,6 @@
 package pt.uc.dei.ar;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,21 +20,25 @@ public class Tese extends NaoPeriodico implements Requisitavel {
      */
 	private TipoDeTese tipoDeTese;
 
+	
 	/**
 	 * Construtor da classe Tese
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
+	 * @param autores
+	 * @param areas
 	 * @param nomeDoOrientador
 	 * @param tipoDeTese
 	 */
-	public Tese(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao, String nomeDoOrientador,
-			TipoDeTese tipoDeTese) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao);
+	public Tese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese) {
+		super(titulo, dataPublicacao, dataReceçao, autores, areas);
 		this.nomeDoOrientador = nomeDoOrientador;
 		this.tipoDeTese = tipoDeTese;
 	}
+
+
 
 	/**
 	 *
@@ -43,6 +48,7 @@ public class Tese extends NaoPeriodico implements Requisitavel {
 		return nomeDoOrientador;
 	}
 
+	
 	
 	/**
 	 *

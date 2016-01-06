@@ -12,22 +12,17 @@ public class NaoPeriodico extends Publicacao {
      */
     private ArrayList<String> listaDeAutores;
 	
-    
-
-   
-
-    /**
-     * Construtor da classe Não Periódico
+  
+	/**
+	 * Construtor da classe Não Periódico
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
 	 * @param listaDeAutores
 	 */
-	public NaoPeriodico(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao);
-		this.listaDeAutores = new ArrayList<String>();
-		
+	public NaoPeriodico(String titulo, String dataPublicacao,  String dataReceçao, ArrayList<String> autores,  ArrayList<String> areas) {
+		super(titulo, dataPublicacao, dataReceçao, areas);
+		this.listaDeAutores = autores;
 	}
 
 

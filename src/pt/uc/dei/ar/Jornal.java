@@ -14,20 +14,28 @@ public class Jornal extends Periodico {
     private int numEdicao;
 	
 
-    /**
-     * Construtor da classe Jornal
+
+
+	/**
+	 * Construtor da classe Jornal
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
+	 * @param areas
 	 * @param periodicidade
 	 * @param numEdicao
 	 */
-	public Jornal(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao, Periodicidade periodicidade,
-			int numEdicao) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao, periodicidade);
+	public Jornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+			Periodicidade periodicidade, int numEdicao) {
+		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
 		this.numEdicao = numEdicao;
 	}
+
+
+
+
+
+
 
 
 	/**
@@ -37,6 +45,10 @@ public class Jornal extends Periodico {
 	public int getNumEdicao() {
 		return numEdicao;
 	}
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package pt.uc.dei.ar;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -26,26 +27,29 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 
     
 
-    /**
-     * Construtor da classe Livro
+	
+
+	/**
+	 * Construtor da classe Livro
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
+	 * @param autores
+	 * @param areas
 	 * @param numEdicao
 	 * @param iSBN
 	 * @param editor
 	 */
-	public Livro(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao, String numEdicao, String iSBN,
-			String editor) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao);
+	public Livro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+			ArrayList<String> areas, String numEdicao, String iSBN, String editor) {
+		super(titulo, dataPublicacao, dataReceçao, autores, areas);
 		this.numEdicao = numEdicao;
 		ISBN = iSBN;
 		this.editor = editor;
 	}
 
 
-	
+
 
 	/**
 	 *  

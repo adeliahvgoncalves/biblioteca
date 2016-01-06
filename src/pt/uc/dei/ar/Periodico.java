@@ -12,19 +12,19 @@ public class Periodico extends Publicacao {
      */
     private Periodicidade periodicidade;
 
+	
 
-    
-
-    /**
-     * Construtor da classe Periódico
+	/**
+	 * Construtor da classe Periódico
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
+	 * @param areas
 	 * @param periodicidade
 	 */
-	public Periodico(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao, Periodicidade periodicidade) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao);
+	public Periodico(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+			Periodicidade periodicidade) {
+		super(titulo, dataPublicacao, dataReceçao, areas);
 		this.periodicidade = periodicidade;
 	}
 

@@ -1,6 +1,9 @@
 package pt.uc.dei.ar;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -9,29 +12,29 @@ import java.util.*;
 public class Biblioteca {
 
 	/**
-     * Lista de utilizadores é atributo da classe biblioteca
-     */
-    private ArrayList<Utilizador> listaDeUtilizadores;
+	 * Lista de utilizadores é atributo da classe biblioteca
+	 */
+	private ArrayList<Utilizador> listaDeUtilizadores;
 
-	
 
-    /**
-     * Lista de publicações é atributo da classe biblioteca
-     */
-    private ArrayList<Publicacao> listaDePublicacoes;
 
-   
+	/**
+	 * Lista de publicações é atributo da classe biblioteca
+	 */
+	private ArrayList<Publicacao> listaDePublicacoes;
 
-    /**
-     * Lista de empréstimos é atributo da classe biblioteca
-     */
-    private ArrayList<Emprestimo> listaDeEmprestimo;
-    
-    
-    
 
-    /**
-     * Construtor da classe biblioteca
+
+	/**
+	 * Lista de empréstimos é atributo da classe biblioteca
+	 */
+	private ArrayList<Emprestimo> listaDeEmprestimo;
+
+
+
+
+	/**
+	 * Construtor da classe biblioteca
 	 * @param listaDeUtilizadores
 	 * @param listaDePublicacoes
 	 * @param listaDeEmprestimo
@@ -44,193 +47,464 @@ public class Biblioteca {
 	}
 
 	/**
-     * Adiciona uma publicação nova
-     * @param Publicacao
-     */
-    public void adicionaPublicacao(Publicacao publicacao) {
-    	listaDePublicacoes.add(publicacao);
-    }
+	 * Adiciona uma publicação nova
+	 * @param Publicacao
+	 */
+	public void adicionaPublicacao(Publicacao publicacao) {
+		listaDePublicacoes.add(publicacao);
+	}
 
-    /**
-     * Adiciona um utilizador novo
-     * @param Utilizador
-     */
-    public void adicionaUtilizador(Utilizador utilizador) {
-        listaDeUtilizadores.add(utilizador);
-    }
+	/**
+	 * Adiciona um utilizador novo
+	 * @param Utilizador
+	 */
+	public void adicionaUtilizador(Utilizador utilizador) {
+		listaDeUtilizadores.add(utilizador);
+	}
 
-    /**
-     * Adiciona um empréstimo novo
-     * @param Emprestimo
-     */
-    public void adicionaEmprestimo(Emprestimo emprestimo) {
-    	listaDeEmprestimo.add(emprestimo);
-    }
+	/**
+	 * Adiciona um empréstimo novo
+	 * @param Emprestimo
+	 */
+	public void adicionaEmprestimo(Emprestimo emprestimo) {
+		listaDeEmprestimo.add(emprestimo);
+	}
 
-    /**
-     * Remove uma publicação
-     * @param publicacao
-     */
-    public void removePublicacao(Publicacao publicacao) {
-        listaDePublicacoes.remove(publicacao);
-    }
+	/**
+	 * Remove uma publicação
+	 * @param publicacao
+	 */
+	public void removePublicacao(Publicacao publicacao) {
+		listaDePublicacoes.remove(publicacao);
+	}
 
-    /**
-     * Remove utilizador
-     * @param utilizador
-     */
-    public void removeUtilizador(Utilizador utilizador) {
-    	listaDeUtilizadores.remove(utilizador);
-    }
+	/**
+	 * Remove utilizador
+	 * @param utilizador
+	 */
+	public void removeUtilizador(Utilizador utilizador) {
+		listaDeUtilizadores.remove(utilizador);
+	}
 
-    /**
-     * @param emprestimo 
-     * @return
-     */
-    public Emprestimo devolveEmprestimo(Emprestimo emprestimo) {
-        // TODO implement here
-        return null;
-    }
 
-    
-    // faz sentido?! pesquisa por nome com todos os resultados duma palavra
-  
-//    public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
-//    	ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
+	
+	/**
+	 * Pesquisa utilizador com cartão do cidadão
+	 * @param string  cartão do cidadão
+	 * @return um Leitor  com esse cartão do cidadão
+	 */
+	public Utilizador pesquisaUtilizadorPorCartaoCidadao(String cartaoCidadao) {
+		Leitor leitorNumLeitor = null;
+		for (Utilizador utilizador : listaDeUtilizadores) {
+			if(utilizador instanceof Leitor)
+
+				if(((Leitor) utilizador).getCartaoCidadao().equalsIgnoreCase(cartaoCidadao)){
+					leitorNumLeitor=(Leitor) utilizador;
+				}
+		}
+
+		return leitorNumLeitor;
+	}
+
+
+	/**
+	 * Cria leitor e adiciona ao arrayList utilizador
+	 * @param username
+	 * @param hashedPassword
+	 * @param nome
+	 * @param numLeitor
+	 * @param dataNascimento
+	 * @param cartaoCidadao
+	 * @param morada
+	 * @param email
+	 * @param telefone
+	 * @return true se criado corretamente
+	 */
+	public boolean criaLeitor(String username, String hashedPassword, String nome,
+			 String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
+		Leitor leitor1=(Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
+		if(leitor1==null){
+		Leitor leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+		this.adicionaUtilizador(leitor);
+		System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
+		}else {System.out.print("já existe!");
+			}
+		return false;
+
+	}
+
+	/**
+	 * Cria colaborador e adiciona ao arrayList utilizador
+	 * @param username
+	 * @param hashedPassword
+	 * @param nome
+	 * @param numColaborador
+	 * @return true se criado corretamente
+	 */
+	public boolean criaColaborador(String username, String hashedPassword, String nome, int numColaborador){
+		Colaborador colaborador=new Colaborador(username, hashedPassword, nome, numColaborador);
+		this.adicionaUtilizador(colaborador);
+		return false;
+	}
+
+	/**
+	 * Cria bibliotecario chefe e adiciona ao arrayList utilizador
+	 * @param username
+	 * @param hashedPassword
+	 * @param nome
+	 * @param numColaborador
+	 * @return true se criado corretamente
+	 */
+	public boolean criaBibliotecarioChefe(String username, String hashedPassword, String nome, int numColaborador){
+		BibliotecarioChefe bibliotecarioChefe=new BibliotecarioChefe(username, hashedPassword, nome, numColaborador);
+		this.adicionaUtilizador(bibliotecarioChefe);
+		return false;
+
+	}
+
+	
+	/**
+	 * Cria revista e adiciona ao arrayList Publicação
+	 * @param titulo
+	 * @param dataPublicacao
+	 * @param dataReceçao
+	 * @param areas
+	 * @param periodicidade
+	 * @param volume
+	 * @param numeroSequencial
+	 * @return
+	 */
+
+	public boolean criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+			Periodicidade periodicidade, int volume){
+
+		Revista revista= new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
+		this.adicionaPublicacao(revista);
+		System.out.println(revista.getTitulo()+"codigo de barras"+revista.getCodBarras());
+		return false;
+	}
+
+	
+	/**
+	 * Cria Jornal e adiciona ao arrayList Publicação
+	 * @param titulo
+	 * @param dataPublicacao
+	 * @param dataReceçao
+	 * @param areas
+	 * @param periodicidade
+	 * @param numEdicao
+	 * @return
+	 */
+
+	public boolean criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+			Periodicidade periodicidade, int numEdicao){
+		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
+		this.adicionaPublicacao(jornal);
+		System.out.println(jornal.getTitulo()+"  "+"codigo de barras"+jornal.getCodBarras());
+		return false;
+	}
+
+	/**
+	 * Cria tese e adiciona ao arrayList Publicação
+	 * @param titulo
+	 * @param dataPublicacao
+	 * @param dataReceçao
+	 * @param autores
+	 * @param areas
+	 * @param nomeDoOrientador
+	 * @param tipoDeTese
+	 * @return
+	 */
+	public boolean criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
+		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
+		this.adicionaPublicacao(tese);
+		System.out.println(tese.getTitulo()+"  "+"codigo de barras"+tese.getCodBarras());
+		return false;
+	}
+
+	/**
+	 * Cria livro e adiciona ao arrayList Publicação
+	 * @param titulo
+	 * @param dataPublicacao
+	 * @param dataReceçao
+	 * @param autores
+	 * @param areas
+	 * @param numEdicao
+	 * @param iSBN
+	 * @param editor
+	 * @return
+	 */
+	public boolean criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
+		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
+		this.adicionaPublicacao(livro);
+		System.out.println(livro.getTitulo()+"  "+"codigo de barras"+livro.getCodBarras());
+		return false;
+
+	}
+
+	/**
+	 * Pesquisa utilizador com número de leitor
+	 * @param int número de leitor
+	 * @return um Utilizador utilizador com esse número de leitor
+	 */
+	public Utilizador pesquisaUtilizadorPorNumLeitor(int numLeitor) {
+		Leitor leitorNumLeitor = null;
+		for (Utilizador utilizador : listaDeUtilizadores) {
+			if(utilizador instanceof Leitor)
+
+				if(((Leitor) utilizador).getNumLeitor()==numLeitor){
+					leitorNumLeitor=(Leitor) utilizador;
+				}
+		}
+
+		return leitorNumLeitor;
+	}
+
+
+	/**
+	 * Pesquisa pubicação por código de barras
+	 * @param int codigoBarras 
+	 * @return uma Publicação publicaçãoComCodigoBarras
+	 */
+	public Publicacao pesquisaPublicacaoPorCodBarras(int codigoBarras) {
+
+		Publicacao publicaçãoComCodigoBarras = null;
+
+		for (Publicacao publicacao : listaDePublicacoes) {
+			if(publicacao.getCodBarras() == codigoBarras){
+				publicaçãoComCodigoBarras=publicacao;
+			}
+		}
+		return publicaçãoComCodigoBarras;	
+
+	}
+
+	/**
+	 * Cria emprestimo
+	 * @param codigoBarras
+	 * @param cc
+	 * @return true se criado corretamente
+	 */
+	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
+		Leitor utilizador= (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
+		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);
+		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
+		this.listaDeEmprestimo.add(emprestimo);
+		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
+		
+		return false;
+	}
+
+
+	/**
+	 * Devolve empréstimo
+	 * @param codigoBarras
+	 * @return false se nao existir o empréstimo
+	 */
+	public boolean devolveEmprestimo(int codigoBarras) {
+
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+
+			if(((Publicacao) emprestimo.getPublicacao()).getCodBarras() == codigoBarras){
+				Emprestimo emprestimoComCodBarras=emprestimo;
+				emprestimoComCodBarras.setDataDev(new Date());
+			}
+		}
+		return false;
+	}
+
+
+//	public void imprimeListaTotalPublicacoes(){
 //
-//		for (Publicacao publicacao: listaDePublicacoes){
-//			if(publicacao.getTitulo().contains(nome))	{	
-//				publicacaoComParteNome.add(publicacao);
-//			}
+//		for (Publicacao publicacao : listaDePublicacoes) {
+//			
+//		System.out.print("Publicacao ["+publicacao.getClass()+ "titulo=" + publicacao.getTitulo() + ", dataPublicacao=" + publicacao.getDataPublicacao() + ", listaDeAreas=" + publicacao.getListaDeAreas()
+//			+ ", codBarras=" + publicacao.getCodBarras() + ", dataReceçao=" +publicacao.getDataReceçao() + 
+//			",periodicidade="  ]");
 //
 //		}
-//		return publicacaoComParteNome;
-//      
-//    }
-      
-    
+//	}
 
-    /**
-     * @param String nome 
-     * @return
-     */
-    public Publicacao pesquisaPublicacao(String nome) {
-    	Publicacao pesquisaNome=null;
+	 
+
+	/**
+	 * Pesquisa por área
+	 * @param String area 
+	 * @return arrayList de publicações daquela área 
+	 */
+	public ArrayList<Publicacao> pesquisaPorArea(String area) {
+		ArrayList<Publicacao> publicacaoPorArea= new ArrayList<Publicacao>();
+
+		for(Publicacao publicacao: listaDePublicacoes){
+
+			if(publicacao.getListaDeAreas().contains(area)){
+				publicacaoPorArea.add(publicacao);
+			}
+		}
+		return publicacaoPorArea;
+	}
+
+
+
+	//	este deve ser private?!
+	// public ArrayList<Emprestimo> pesquisaLeitor(String nome){
+	//		ArrayList<Emprestimo> leitorComParteNome=new ArrayList<Emprestimo>();
+	//
+	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+	//			if(emprestimo.getLeitor().getNome().contains(nome)){
+	//				leitorComParteNome.add(emprestimo);
+	//			}
+	//
+	//
+	//		}
+	//		return leitorComParteNome;
+	//
+	//	}
+	
+
+	/**
+	 * @param emprestimo 
+	 * @return
+	 */
+	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
+		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
+
+		for (Publicacao publicacao: listaDePublicacoes){
+			if(publicacao.getTitulo().contains(nome))	{	
+				publicacaoComParteNome.add(publicacao);
+			}
+
+		}
+		return publicacaoComParteNome;
+
+	}
+
+
+
+	/**
+	 * @param String nome 
+	 * @return
+	 */
+	public Publicacao pesquisaPublicacao(String nome) {
+		Publicacao pesquisaNome=null;
 		for (Publicacao publicacao: listaDePublicacoes){
 			if(publicacao.getTitulo().equalsIgnoreCase(nome))	{	
-				
-				 pesquisaNome=publicacao;
+
+				pesquisaNome=publicacao;
 			}
 
 		}
 		return pesquisaNome;
-      
-    }
-    
 
-    /**
-     * @param int codigoBarras 
-     * @return
-     */
-    public Publicacao pesquisaPublicacao(int codigoBarras) {
-        // TODO implement here
-        return null;
-    }
+	}
 
-    /**
-     * @param String Nome 
-     * @return
-     */
-    public ArrayList<Emprestimo> consultaEmprestimosLeitor(String Nome) {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @param String area 
-     * @return
-     */
-    public ArrayList<Publicacao> pesquisaPorArea(String area) {
-        // TODO implement here
-        return null;
-    }
+	/**
+	 * @param String Nome 
+	 * @return
+	 */
+	public ArrayList<Emprestimo> consultaEmprestimosLeitor(String Nome) {
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			
+		}
+		return null;
+	}
 
-    /**
-     * @return
-     */
-    public ArrayList<Emprestimo> consultaEmprestimoExpirado() {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @return
-     */
-    public ArrayList<Emprestimo> consultaEmprestimoGlobal() {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @return
-     */
-    public int mediaEmprestimo() {
-        // TODO implement here
-        return 0;
-    }
+	/**
+	 * Lista os empréstimos que já deveriam ter sido devolvidos
+	 * @return empréstimo expirados
+	 */
+	public ArrayList<Emprestimo> consultaEmprestimoExpirado() {
 
-    /**
-     * @return
-     */
-    public int duracaoMinimaEmprestimo() {
-        // TODO implement here
-        return 0;
-    }
+		ArrayList<Emprestimo> emprestimosDataExpirada=new ArrayList<Emprestimo>();
+		Date now=new Date();
+		long dataAtual=now.getTime();
 
-    /**
-     * @return
-     */
-    public int duracacaoMaximaEmprestimo() {
-        // TODO implement here
-        return 0;
-    }
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
 
-    /**
-     * @param ArrayList Emprestimo 
-     * @return
-     */
-    public int totalEmprestimoglobal(ArrayList<Emprestimo> emprestimos) {
-        // TODO implement here
-        return 0;
-    }
+			Date dataMaximaEntrega = emprestimo.getDataEmp();			
+			Calendar c = Calendar.getInstance();
+			c.setTime(dataMaximaEntrega);
+			c.add(Calendar.DATE, emprestimo.getPublicacao().maximoDiasRequisicao());
+			long dataMaximaEntrega1 = c.getTimeInMillis();
 
-    /**
-     * @param String nome 
-     * @return
-     */
-    public Utilizador pesquisaUtilizadorPorNome(String nome) {
-        // TODO implement here
-        return null;
-    }
+			if(emprestimo.getDataDev() == null){
 
-    /**
-     * @param String cartaoCidadao 
-     * @return
-     */
-    public Utilizador pesquisaUtilizadorPorCC(String cartaoCidadao) {
-        // TODO implement here
-        return null;
-    }
+				if(dataMaximaEntrega1 < dataAtual){
+					emprestimosDataExpirada.add(emprestimo);
 
-    /**
-     * @param dataLimiteEntrega 
-     * @param Date now 
-     * @return
-     */
-    public int diasEmAtraso(Date dataLimiteEntrega) {
-        // TODO implement here
-        return 0;
-    }
+				}
+			}
+
+		}
+		return emprestimosDataExpirada;
+	}
+
+	/**
+	 * @return
+	 */
+	public ArrayList<Emprestimo> consultaEmprestimoGlobal() {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	public int mediaEmprestimo() {
+		// TODO implement here
+		return 0;
+	}
+
+	/**
+	 * @return
+	 */
+	public int duracaoMinimaEmprestimo() {
+		// TODO implement here
+		return 0;
+	}
+
+	/**
+	 * @return
+	 */
+	public int duracacaoMaximaEmprestimo() {
+		// TODO implement here
+		return 0;
+	}
+
+	/**
+	 * @param ArrayList Emprestimo 
+	 * @return
+	 */
+	public int totalEmprestimoglobal(ArrayList<Emprestimo> emprestimos) {
+		// TODO implement here
+		return 0;
+	}
+
+	/**
+	 * @param String nome 
+	 * @return
+	 */
+	public Utilizador pesquisaUtilizadorPorNome(String nome) {
+		// TODO implement here
+		return null;
+	}
+
+
+
+	/**
+	 * @param dataLimiteEntrega 
+	 * @param Date now 
+	 * @return
+	 */
+	public int diasEmAtraso(Date dataLimiteEntrega) {
+		// TODO implement here
+		return 0;
+	}
 
 	/**
 	 * @return the listaDeUtilizadores
@@ -274,6 +548,15 @@ public class Biblioteca {
 		this.listaDeEmprestimo = listaDeEmprestimo;
 	}
 
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Biblioteca [listaDeUtilizadores=" + listaDeUtilizadores + ", listaDePublicacoes=" + listaDePublicacoes
+				+ ", listaDeEmprestimo=" + listaDeEmprestimo + "]";
+	}
+
+
 
 }

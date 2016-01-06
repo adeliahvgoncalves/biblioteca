@@ -24,33 +24,34 @@ public class Revista extends Periodico implements Requisitavel {
     /**
      * é criada esta variável para facilitar a criação do número sequencial
      */
-    private int ultimonumeroSequencial=0;
+    private static int ultimonumeroSequencial=0;
     
-    
-   
     
 
-    /**
-     * Construtor da classe Revista
+ 
+		
+		
+	/**
+	 * Construtor da classe Revista
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param codBarras
 	 * @param dataReceçao
+	 * @param areas
 	 * @param periodicidade
 	 * @param volume
 	 * @param numeroSequencial
 	 */
-	public Revista(String titulo, Date dataPublicacao, int codBarras, Date dataReceçao, Periodicidade periodicidade,
-			int volume, int numeroSequencial) {
-		super(titulo, dataPublicacao, codBarras, dataReceçao, periodicidade);
-		this.volume = volume;
-		this.ultimonumeroSequencial=ultimonumeroSequencial+1;
+	public Revista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+			Periodicidade periodicidade, int volume) {
+		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
+		ultimonumeroSequencial++;
 		this.numeroSequencial = ultimonumeroSequencial;
 	}
 
-	
 
-    /**
+
+
+	/**
      * 
 	 * @return o volume em formato inteiro
 	 */
@@ -83,8 +84,7 @@ public class Revista extends Periodico implements Requisitavel {
 	 */
 	@Override
 	public String toString() {
-		return "Revista [volume=" + volume + ", numeroSequencial=" + numeroSequencial + ", ultimonumeroSequencial="
-				+ ultimonumeroSequencial + "]";
+		return "Revista [volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}
     
     

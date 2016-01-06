@@ -1,5 +1,8 @@
 package pt.uc.dei.ar;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -11,12 +14,12 @@ public class Emprestimo {
     /**
      * Número de empréstimo é atributo do empréstimo, sendo sequencial
      */
-    private int numEmp=0;
+    private int numEmp;
     
     /**
      * Número de empréstimo último facilita a criação do número de empréstimo sequencial
      */
-    private int numEmpUltimo=0;
+    private  static int numEmpUltimo=0;
 
     /**
      * Leitor é atributo de empréstimo
@@ -32,10 +35,11 @@ public class Emprestimo {
      * Data de devolução é atributo de empréstimo, após devolução
      */
     private Date dataDev;
-
-    /**
-     * Publicação é atributo de empréstimo
-     */
+    
+    
+   /**
+    * Publicação é atributo de empréstimo
+    */
     private Requisitavel publicacao;
 
 	
@@ -49,14 +53,16 @@ public class Emprestimo {
 	 * @param dataDev
 	 * @param publicacao
 	 */
-	public Emprestimo( Leitor leitor, Date dataEmp, 
-			Requisitavel publicacao) {
+	public Emprestimo( Leitor leitor, Date dataEmp, Requisitavel publicacao) {
 		super();
+		numEmpUltimo++;
 		this.numEmp = numEmpUltimo;
-		this.numEmpUltimo = numEmp+1;
+		this.dataEmp=dataEmp;
 		this.leitor = leitor;
-		this.dataEmp = dataEmp;
+		if(this.publicacao instanceof Revista || this.publicacao instanceof Tese || this.publicacao instanceof Livro){ 
 		this.publicacao = publicacao;
+		} else {System.out.println("nao imprime");}
+		
 	}
 
 
@@ -112,6 +118,25 @@ public class Emprestimo {
 		return publicacao;
 	}
 
+	public void atualizaDataDevolucao(String data){
+		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
+		try{
+		this.dataDev=df.parse(data);
+		} catch (ParseException e){
+			e.printStackTrace();
+		}	
+	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Emprestimo [numEmp=" + numEmp + ", leitor=" + leitor + ", dataEmp=" + dataEmp + ", dataDev=" + dataDev
+				+ ", publicacao=" + publicacao + "]";
+	}
 
 
 }
