@@ -173,12 +173,22 @@ public class Leitor extends Utilizador {
 		this.telefone = telefone;
 	}
 
+//	/* (non-Javadoc)
+//	 * @see java.lang.Object#toString()
+//	 */
+//	@Override
+//	public String toString() {
+//		return "Leitor [listaDeEmprestimo=" + listaDeEmprestimos + ", numLeitor=" + numLeitor + ", dataNascimento="
+//				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
+//				+ ", telefone=" + telefone + "]";
+//	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Leitor [listaDeEmprestimo=" + listaDeEmprestimos + ", numLeitor=" + numLeitor + ", dataNascimento="
+		return "Leitor [numLeitor=" + numLeitor + ", dataNascimento="
 				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
 				+ ", telefone=" + telefone + "]";
 	}

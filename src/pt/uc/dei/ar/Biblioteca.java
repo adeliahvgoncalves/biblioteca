@@ -307,6 +307,10 @@ public class Biblioteca {
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 
+//			if (emprestimo.getPublicacao() == null) {
+//				
+//				break;
+//			}
 			if(((Publicacao) emprestimo.getPublicacao()).getCodBarras() == codigoBarras){
 				Emprestimo emprestimoComCodBarras=emprestimo;
 				emprestimoComCodBarras.setDataDev(new Date());

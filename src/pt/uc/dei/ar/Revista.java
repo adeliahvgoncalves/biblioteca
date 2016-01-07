@@ -82,7 +82,7 @@ public class Revista extends Periodico implements Requisitavel {
 	 * Metódo toString é a representação textual do objeto.
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
+	@Override //acrescentar o supertostring
 	public String toString() {
 		return "Revista [volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}

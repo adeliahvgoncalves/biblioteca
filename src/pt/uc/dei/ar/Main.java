@@ -13,7 +13,8 @@ public class Main {
 		faculdadeNova.criaColaborador("AAZA", "124", "Manuela Maria Costa Tavares", 1123);
 		faculdadeNova.criaLeitor("AAA", "123", "Maria Gabriela Tomaz Mourao", "25/08/1981", "123456", "Coimbra", "maria@gmail.com", "918989765");
 		faculdadeNova.criaLeitor("AAB", "123", "Jesus Cristo", "25/12/0000", "123456", "Coimbra", "maria@gmail.com", "918989765");
-		
+		faculdadeNova.criaLeitor("AAC", "123", "Joao Jose Da Costa Miranda", "25/12/0000", "1236656", "Coimbra", "maria@gmail.com", "918989765");
+	
 		ArrayList<String>areasDiarioEconomico = new ArrayList<String>();
 		areasDiarioEconomico.add("Economia");
 		areasDiarioEconomico.add("Financas");
@@ -44,14 +45,17 @@ public class Main {
 		System.out.println(faculdadeNova);
 		
 		//Criar emprestimo
-	//	faculdadeNova.criaEmprestimo(1, 5);
-	//	faculdadeNova.criaEmprestimo(1, 9);
-	//	faculdadeNova.criaEmprestimo(1, 1);
-	//	System.out.println(faculdadeNova);
+		faculdadeNova.criaEmprestimo(1, 5);
+		faculdadeNova.criaEmprestimo(1, 9);
+		
+		//testei que nao empresta jornal:
+		//faculdadeNova.criaEmprestimo(1, 1);
+		System.out.println("com emprestimo"+faculdadeNova);
+		
 		
 		//Devolve emprestimo
-	//	faculdadeNova.devolveEmprestimo(5);
-		
+		faculdadeNova.devolveEmprestimo(5);
+		System.out.println("devolvidos"+faculdadeNova);
 		
 		//LEITOR
 		//TODO: Consultar lista total de publicações
@@ -61,19 +65,23 @@ public class Main {
 		System.out.println(faculdadeNova.pesquisaPorArea("Economia"));
 		
 		//Pesquisa os seus emprestimos
+		Leitor leitor= (Leitor) faculdadeNova.pesquisaUtilizadorPorNumLeitor(1);
+		leitor.getListaDeEmprestimo();
+		System.out.println(leitor.getListaDeEmprestimo());
 		
 		
 		
 		//Bibliotecario-chefe
 		
 		//Consultar informação de uma publicação por nome ou codigo de barras
-		faculdadeNova.pesquisaPublicacaoComParteNome("A moeda");
-		System.out.println(faculdadeNova.pesquisaPublicacaoComParteNome("A moeda"));
-		faculdadeNova.pesquisaPublicacaoPorCodBarras(4);
-		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
+//		faculdadeNova.pesquisaPublicacaoComParteNome("A moeda");
+//		System.out.println(faculdadeNova.pesquisaPublicacaoComParteNome("A moeda"));
+//		faculdadeNova.pesquisaPublicacaoPorCodBarras(4);
+//		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
 		
 		//Consultar os empréstimos que já deviam ter sido devolvidos
 		faculdadeNova.consultaEmprestimoExpirado();
+		
 		
 		
 		

@@ -10,42 +10,42 @@ import java.util.*;
  */
 public class Emprestimo {
 
-  
-    /**
-     * Número de empréstimo é atributo do empréstimo, sendo sequencial
-     */
-    private int numEmp;
-    
-    /**
-     * Número de empréstimo último facilita a criação do número de empréstimo sequencial
-     */
-    private  static int numEmpUltimo=0;
 
-    /**
-     * Leitor é atributo de empréstimo
-     */
-    private Leitor leitor;
+	/**
+	 * Número de empréstimo é atributo do empréstimo, sendo sequencial
+	 */
+	private int numEmp;
 
-    /**
-     * Data de empréstimo é atributo de empréstimo
-     */
-    private Date dataEmp;
+	/**
+	 * Número de empréstimo último facilita a criação do número de empréstimo sequencial
+	 */
+	private  static int numEmpUltimo=0;
 
-    /**
-     * Data de devolução é atributo de empréstimo, após devolução
-     */
-    private Date dataDev;
-    
-    
-   /**
-    * Publicação é atributo de empréstimo
-    */
-    private Requisitavel publicacao;
+	/**
+	 * Leitor é atributo de empréstimo
+	 */
+	private Leitor leitor;
 
-	
+	/**
+	 * Data de empréstimo é atributo de empréstimo
+	 */
+	private Date dataEmp;
 
-    /**
-     * Construtor da classe Empréstimo
+	/**
+	 * Data de devolução é atributo de empréstimo, após devolução
+	 */
+	private Date dataDev;
+
+
+	/**
+	 * Publicação é atributo de empréstimo
+	 */
+	private Requisitavel publicacao;
+
+
+
+	/**
+	 * Construtor da classe Empréstimo
 	 * @param numEmp
 	 * @param numEmpUltimo
 	 * @param leitor
@@ -59,11 +59,10 @@ public class Emprestimo {
 		this.numEmp = numEmpUltimo;
 		this.dataEmp=dataEmp;
 		this.leitor = leitor;
-		if(this.publicacao instanceof Revista || this.publicacao instanceof Tese || this.publicacao instanceof Livro){ 
-		this.publicacao = publicacao;
-		} else {System.out.println("nao imprime");}
-		
+		this.publicacao=publicacao;
 	}
+
+
 
 
 
@@ -121,7 +120,7 @@ public class Emprestimo {
 	public void atualizaDataDevolucao(String data){
 		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
 		try{
-		this.dataDev=df.parse(data);
+			this.dataDev=df.parse(data);
 		} catch (ParseException e){
 			e.printStackTrace();
 		}	
