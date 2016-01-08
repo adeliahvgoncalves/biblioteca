@@ -87,7 +87,7 @@ public class Biblioteca {
 	}
 
 
-	
+
 	/**
 	 * Pesquisa utilizador com cartão do cidadão
 	 * @param string  cartão do cidadão
@@ -121,14 +121,14 @@ public class Biblioteca {
 	 * @return true se criado corretamente
 	 */
 	public boolean criaLeitor(String username, String hashedPassword, String nome,
-			 String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
+			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
 		Leitor leitor1=(Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
 		if(leitor1==null){
-		Leitor leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
-		this.adicionaUtilizador(leitor);
-		System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
+			Leitor leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+			this.adicionaUtilizador(leitor);
+			System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
 		}else {System.out.print("já existe!");
-			}
+		}
 		return false;
 
 	}
@@ -162,7 +162,7 @@ public class Biblioteca {
 
 	}
 
-	
+
 	/**
 	 * Cria revista e adiciona ao arrayList Publicação
 	 * @param titulo
@@ -184,7 +184,7 @@ public class Biblioteca {
 		return false;
 	}
 
-	
+
 	/**
 	 * Cria Jornal e adiciona ao arrayList Publicação
 	 * @param titulo
@@ -293,7 +293,7 @@ public class Biblioteca {
 		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
 		this.listaDeEmprestimo.add(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
-		
+
 		return false;
 	}
 
@@ -307,10 +307,10 @@ public class Biblioteca {
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 
-//			if (emprestimo.getPublicacao() == null) {
-//				
-//				break;
-//			}
+			if (emprestimo.getPublicacao() == null) {
+
+				break;
+			}
 			if(((Publicacao) emprestimo.getPublicacao()).getCodBarras() == codigoBarras){
 				Emprestimo emprestimoComCodBarras=emprestimo;
 				emprestimoComCodBarras.setDataDev(new Date());
@@ -319,19 +319,17 @@ public class Biblioteca {
 		return false;
 	}
 
+	/**
+	 * Imprime a listagem de publicações
+	 */
+	public void imprimeListaTotalPublicacoes(){
+		System.out.println("Listagem total de publicacções:");
+		for (Publicacao publicacao : listaDePublicacoes) {
+			System.out.println(publicacao);
+		}
+	}
 
-//	public void imprimeListaTotalPublicacoes(){
-//
-//		for (Publicacao publicacao : listaDePublicacoes) {
-//			
-//		System.out.print("Publicacao ["+publicacao.getClass()+ "titulo=" + publicacao.getTitulo() + ", dataPublicacao=" + publicacao.getDataPublicacao() + ", listaDeAreas=" + publicacao.getListaDeAreas()
-//			+ ", codBarras=" + publicacao.getCodBarras() + ", dataReceçao=" +publicacao.getDataReceçao() + 
-//			",periodicidade="  ]");
-//
-//		}
-//	}
 
-	 
 
 	/**
 	 * Pesquisa por área
@@ -366,7 +364,7 @@ public class Biblioteca {
 	//		return leitorComParteNome;
 	//
 	//	}
-	
+
 
 	/**
 	 * @param emprestimo 
@@ -405,16 +403,16 @@ public class Biblioteca {
 	}
 
 
-	/**
-	 * @param String Nome 
-	 * @return
-	 */
-	public ArrayList<Emprestimo> consultaEmprestimosLeitor(String Nome) {
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			
-		}
-		return null;
-	}
+	//	/**
+	//	 * @param String Nome 
+	//	 * @return
+	//	 */
+	//	public ArrayList<Emprestimo> consultaEmprestimosLeitor(String Nome) {
+	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+	//
+	//		}
+	//		return null;
+	//	}
 
 
 

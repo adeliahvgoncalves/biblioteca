@@ -59,7 +59,8 @@ public class Jornal extends Periodico {
 	 */
 	@Override
 	public String toString() {
-		return "Jornal [numEdicao=" + numEdicao + "]";
+		return "Jornal [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
+				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + ", numEdicao=" + numEdicao + "]";
 	}
 
 

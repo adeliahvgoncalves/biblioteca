@@ -84,7 +84,8 @@ public class Revista extends Periodico implements Requisitavel {
 	 */
 	@Override //acrescentar o supertostring
 	public String toString() {
-		return "Revista [volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
+		return "Revista [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
+				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + "volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}
     
     

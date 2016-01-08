@@ -99,7 +99,8 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 	 */
 	@Override
 	public String toString() {
-		return "Livro [numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + editor + "]";
+		return "Livro [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
+				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + editor + "]";
 	}
     
     
