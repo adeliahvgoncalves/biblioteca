@@ -86,24 +86,6 @@ public class Biblioteca {
 		listaDeUtilizadores.remove(utilizador);
 	}
 
-
-	/**
-	 * Login encontrado
-	 * @param username
-	 * @param password
-	 * @return se encontrou o leitor registado
-	 */
-	public boolean login(String username, String password){
-		
-		Utilizador utilizador=pesquisaUtilizadorPorUsername(username);
-		
-		if(utilizador != null && utilizador.getHashedPassword().equals(password)){
-			return true;
-		}
-		return false;
-		
-	}
-	
 	/**
 	 * Pesquisa utilizador por username
 	 * @param string  username
@@ -120,7 +102,21 @@ public class Biblioteca {
 		return utilizadorPorUsername;
 	}
 	
-	
+	/**
+	 * Login encontrado
+	 * @param username
+	 * @param password
+	 * @return se encontrou o leitor registado é devolvido, se não devolve null
+	 */
+	public Utilizador login(String username, String password){
+		
+		Utilizador utilizador=pesquisaUtilizadorPorUsername(username);
+		
+		if(utilizador != null && utilizador.getHashedPassword().equals(password)){
+			return utilizador;
+		}
+		return null;
+	}
 	
 
 	/**
