@@ -23,6 +23,7 @@ public class EmprestimoPanel extends JPanel {
 	private Janela janela;
 	private JButton btnEmprestarVoltar;
 	private JButton btnDevolverVoltar;
+	private JLabel lblMensagemDevolver;
 	
 	/**
 	 * Create the panel.
@@ -99,7 +100,7 @@ public class EmprestimoPanel extends JPanel {
 		btnEmprestarVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpaPainel();
-				j.bibliotecarioChefeOK();
+				janela.bibliotecarioChefeOK();
 			}
 		});
 		btnEmprestarVoltar.setBounds(267, 262, 75, 44);
@@ -122,7 +123,7 @@ public class EmprestimoPanel extends JPanel {
 		lblDataDevolucao.setBounds(104, 68, 117, 16);
 		DevolvePanel.add(lblDataDevolucao);
 		
-		JLabel lblMensagemDevolver = new JLabel("");
+		lblMensagemDevolver = new JLabel("");
 		lblMensagemDevolver.setBounds(50, 143, 336, 16);
 		DevolvePanel.add(lblMensagemDevolver);
 		
@@ -165,7 +166,7 @@ public class EmprestimoPanel extends JPanel {
 		btnDevolverVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpaPainel();
-				j.bibliotecarioChefeOK();
+				janela.bibliotecarioChefeOK();
 			}
 		});
 		btnDevolverVoltar.setBounds(267, 262, 75, 44);

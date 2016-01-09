@@ -33,6 +33,7 @@ public class BibliotecarioChefePanel extends JPanel {
 		JButton btnSair = new JButton("SAIR");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				janela.sairOK();
 			}
 		});
@@ -50,7 +51,7 @@ public class BibliotecarioChefePanel extends JPanel {
 		JButton btnEmprestaDevolve = new JButton("Emprestar/Devolver");
 		btnEmprestaDevolve.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				j.emprestimoPanelBibliotecarioChefeOK();
+				janela.emprestimoPanelBibliotecarioChefeOK();
 			}
 		});
 		btnEmprestaDevolve.setBounds(250, 84, 144, 47);

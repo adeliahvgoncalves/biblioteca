@@ -62,7 +62,7 @@ public class LeitorPanel extends JPanel {
 		JButton btnLogout = new JButton("SAIR");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				j.sairOK();
+				janela.sairOK();
 			}
 		});
 		btnLogout.setBounds(341, 255, 90, 29);
