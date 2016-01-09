@@ -94,8 +94,8 @@ public class Biblioteca {
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
 		Utilizador utilizadorPorUsername = null;
 		for (Utilizador utilizador : listaDeUtilizadores) {
-				if(((Leitor) utilizador).getCartaoCidadao().equalsIgnoreCase(username)){
-					utilizadorPorUsername=(Leitor) utilizador;
+				if(utilizador.getUsername().equalsIgnoreCase(username)){
+					utilizadorPorUsername= utilizador;
 				}
 		}
 
@@ -106,7 +106,7 @@ public class Biblioteca {
 	 * Login encontrado
 	 * @param username
 	 * @param password
-	 * @return se encontrou o leitor registado é devolvido, se não devolve null
+	 * @return se encontrou o utilizador registado é devolvido, se não devolve null
 	 */
 	public Utilizador login(String username, String password){
 		
@@ -380,23 +380,6 @@ public class Biblioteca {
 	}
 
 
-
-	//	este deve ser private?!
-	// public ArrayList<Emprestimo> pesquisaLeitor(String nome){
-	//		ArrayList<Emprestimo> leitorComParteNome=new ArrayList<Emprestimo>();
-	//
-	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-	//			if(emprestimo.getLeitor().getNome().contains(nome)){
-	//				leitorComParteNome.add(emprestimo);
-	//			}
-	//
-	//
-	//		}
-	//		return leitorComParteNome;
-	//
-	//	}
-
-
 	/**
 	 * @param emprestimo 
 	 * @return
@@ -415,7 +398,6 @@ public class Biblioteca {
 	}
 
 
-
 	/**
 	 * @param String nome 
 	 * @return
@@ -432,20 +414,6 @@ public class Biblioteca {
 		return pesquisaNome;
 
 	}
-
-
-	//	/**
-	//	 * @param String Nome 
-	//	 * @return
-	//	 */
-	//	public ArrayList<Emprestimo> consultaEmprestimosLeitor(String Nome) {
-	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-	//
-	//		}
-	//		return null;
-	//	}
-
-
 
 	/**
 	 * Lista os empréstimos que já deveriam ter sido devolvidos
