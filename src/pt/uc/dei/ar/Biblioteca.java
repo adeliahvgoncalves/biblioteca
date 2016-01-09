@@ -357,6 +357,7 @@ public class Biblioteca {
 		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
 		this.listaDeEmprestimo.add(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
+		publicacao.setOcupado(true);
 
 		return true;
 	}

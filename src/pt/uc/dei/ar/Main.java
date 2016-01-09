@@ -53,6 +53,7 @@ public class Main {
 		//Criar emprestimo
 		maravilha.criaEmprestimo(1, 5);
 		maravilha.criaEmprestimo(1, 9);
+		//maravilha.criaEmprestimo(1, 5);
 		
 		
 		//Criar emprestimos random
@@ -83,6 +84,7 @@ public class Main {
 		//Devolve emprestimo
 		maravilha.devolveEmprestimo(5);
 		System.out.println("devolvidos"+maravilha);
+		
 		
 		//LEITOR
 		maravilha.imprimeListaTotalPublicacoes();	
