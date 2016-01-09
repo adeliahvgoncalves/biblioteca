@@ -14,7 +14,7 @@ public class Main {
 		//uso do mysingleton, construcao so para ter uma biblioteca
 		Biblioteca maravilha= Biblioteca.getInstance();
 		
-		maravilha.criaBibliotecarioChefe("io", "123", "João Francisco Sousa Andrade", 1237);
+		maravilha.criaBibliotecarioChefe("dio", "123", "João Francisco Sousa Andrade", 1237);
 		maravilha.criaColaborador("AAZZ", "123", "Maria Teresa Boto Santos", 1456);
 		maravilha.criaColaborador("AAZA", "124", "Manuela Maria Costa Tavares", 1123);
 		maravilha.criaLeitor("AAA", "123", "Maria Gabriela Tomaz Mourao", "25/08/1981", "123456", "Coimbra", "maria@gmail.com", "918989765");
