@@ -19,9 +19,7 @@ public class EmprestimoPanel extends JPanel {
 	
 	private JTextField txtCodigoBarras;
 	private JTextField txtNumeroLeitor;
-	private JTextField txtData;
 	private JTextField txtCodigoBarrasDevolucao;
-	private JTextField txtDataDevolucao;
 	private JLabel lblMensagem;
 	private Janela janela;
 	private JButton btnEmprestarVoltar;
@@ -54,10 +52,6 @@ public class EmprestimoPanel extends JPanel {
 		lblNumeroLeitor.setBounds(104, 68, 117, 16);
 		EmprestimoPanel.add(lblNumeroLeitor);
 		
-		JLabel lblData = new JLabel("Data Emprestimo");
-		lblData.setBounds(104, 102, 117, 16);
-		EmprestimoPanel.add(lblData);
-		
 		//Caixas de Texto
 		
 		txtCodigoBarras = new JTextField();
@@ -67,10 +61,6 @@ public class EmprestimoPanel extends JPanel {
 		txtNumeroLeitor = new JTextField();
 		txtNumeroLeitor.setBounds(256, 63, 130, 26);
 		EmprestimoPanel.add(txtNumeroLeitor);
-		
-		txtData = new JTextField();
-		txtData.setBounds(256, 97, 130, 26);
-		EmprestimoPanel.add(txtData);
 		
 		lblMensagem = new JLabel("");
 		lblMensagem.setBounds(50, 140, 336, 16);
@@ -131,10 +121,6 @@ public class EmprestimoPanel extends JPanel {
 		lblCodigoDeBarras.setBounds(104, 35, 117, 16);
 		DevolvePanel.add(lblCodigoDeBarras);
 		
-		JLabel lblDataDevolucao = new JLabel("Data Emprestimo");
-		lblDataDevolucao.setBounds(104, 68, 117, 16);
-		DevolvePanel.add(lblDataDevolucao);
-		
 		lblMensagemDevolver = new JLabel("");
 		lblMensagemDevolver.setBounds(50, 143, 336, 16);
 		DevolvePanel.add(lblMensagemDevolver);
@@ -145,11 +131,6 @@ public class EmprestimoPanel extends JPanel {
 		txtCodigoBarrasDevolucao.setBounds(256, 30, 130, 26);
 		DevolvePanel.add(txtCodigoBarrasDevolucao);
 		txtCodigoBarrasDevolucao.setColumns(10);
-		
-		txtDataDevolucao = new JTextField();
-		txtDataDevolucao.setBounds(256, 63, 130, 26);
-		DevolvePanel.add(txtDataDevolucao);
-		txtDataDevolucao.setColumns(10);
 		
 		//Butoes
 		
@@ -196,10 +177,8 @@ public class EmprestimoPanel extends JPanel {
 	public void limpaPainel(){
 		
 		lblMensagem.setText("");
-		txtData.setText("");
 		txtCodigoBarras.setText("");
 		txtNumeroLeitor.setText("");
-		txtDataDevolucao.setText("");
 		txtCodigoBarrasDevolucao.setText("");
 		
 	}
