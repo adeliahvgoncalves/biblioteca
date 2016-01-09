@@ -30,7 +30,11 @@ public class Biblioteca {
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
 
-
+	
+	/**
+	 * 
+	 */
+	private static Biblioteca instance;
 
 
 	/**
@@ -45,6 +49,24 @@ public class Biblioteca {
 		this.listaDePublicacoes =new ArrayList<Publicacao>();
 		this.listaDeEmprestimo = new ArrayList<Emprestimo>();
 	}
+	
+	// Método público estático de acesso único ao objeto
+	/**
+	 * 
+	 * @param 
+	 */
+		public static Biblioteca getInstance(){
+
+			if(instance == null) 
+			{
+				instance= new Biblioteca();
+				// O valor é retornado para quem está pedindo
+
+			}
+			return instance;
+			// Retorna o a instância do objeto
+
+		}
 
 	/**
 	 * Adiciona uma publicação nova

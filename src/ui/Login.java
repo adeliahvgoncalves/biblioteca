@@ -9,6 +9,10 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.BibliotecarioChefe;
+import pt.uc.dei.ar.Colaborador;
+import pt.uc.dei.ar.Leitor;
+import pt.uc.dei.ar.Utilizador;
 
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
@@ -27,12 +31,12 @@ public class Login extends JPanel {
 	private JLabel lblMensagem;
 
 	private Janela janela;
-	private Biblioteca biblioteca;
+	private Utilizador utilizador;
 
-	public Login(Janela j, Biblioteca b) {
+	public Login(Janela j, Utilizador u) {
 
 		this.janela = j;
-		this.biblioteca=b;
+		this.utilizador=u;
 		
 		setLayout(null);
 
@@ -70,7 +74,7 @@ public class Login extends JPanel {
 			//	String colaborador = "colab";
 			//	String biblio="biblio";
 				
-				/*if (biblioteca.l && lePass().equals("pass")) {
+				/*if (leUser().equals(user) && lePass().equals("pass")) {
 					verificaLogin();
 				}
 				if (leUser().equals(colaborador) && lePass().equals("colab")) {
@@ -80,7 +84,21 @@ public class Login extends JPanel {
 					verificaBibliotecarioChefe();
 				} else
 					enviaMensagem();
+			
 					*/
+				
+				Biblioteca biblioteca= Biblioteca.getInstance();
+				
+				if(biblioteca.login(leUser(), lePass())!=null){
+				
+					verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
+				
+				}
+				else{
+					
+					enviaMensagem();
+					
+				}
 			}
 				
 		});
@@ -104,7 +122,8 @@ public class Login extends JPanel {
 
 	public void enviaMensagem() {
 
-	//	this.lblMensagem.setText("O user não está correcto");
+		this.lblMensagem.setText("O user não está correcto");
+		
 	}
 
 	// Pode-se retirar este método
@@ -115,31 +134,34 @@ public class Login extends JPanel {
 		lblMensagem.setText("");
 		
 	}
-
-	public void verificaLogin() {
+	
+	public void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador){
 		
-		lblMensagem.setText("");
-		txtUser.setText("");
-		pwdText.setText("");
-		janela.loginOK();
+		if(utilizador instanceof Leitor){
+			
+			lblMensagem.setText("");
+			txtUser.setText("");
+			pwdText.setText("");
+			janela.loginOK();
+			
+		}
 		
-	}
-
-	public void verificaColaborador() {
-
-		lblMensagem.setText("");
-		txtUser.setText("");
-		pwdText.setText("");
-		janela.colaboradorOK();
+		if(utilizador instanceof Colaborador){
+			
+			lblMensagem.setText("");
+			txtUser.setText("");
+			pwdText.setText("");
+			janela.colaboradorOK();
+	
+		}
 		
-	}
-
-	public void verificaBibliotecarioChefe() {
-
-		lblMensagem.setText("");
-		txtUser.setText("");
-		pwdText.setText("");
-		janela.bibliotecarioChefeOK();
-
+		if(utilizador instanceof BibliotecarioChefe){
+			
+			lblMensagem.setText("");
+			txtUser.setText("");
+			pwdText.setText("");
+			janela.bibliotecarioChefeOK();
+		}
+		
 	}
 }

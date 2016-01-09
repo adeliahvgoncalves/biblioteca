@@ -1,19 +1,20 @@
 package pt.uc.dei.ar;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import ui.Janela;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Biblioteca maravilha= new Biblioteca();
+		//uso do mysingleton, construcao so para ter uma biblioteca
+		Biblioteca maravilha= Biblioteca.getInstance();
 		
-		maravilha.criaBibliotecarioChefe("abc", "123", "João Francisco Sousa Andrade", 1237);
+		maravilha.criaBibliotecarioChefe("dio", "123", "João Francisco Sousa Andrade", 1237);
 		maravilha.criaColaborador("AAZZ", "123", "Maria Teresa Boto Santos", 1456);
 		maravilha.criaColaborador("AAZA", "124", "Manuela Maria Costa Tavares", 1123);
 		maravilha.criaLeitor("AAA", "123", "Maria Gabriela Tomaz Mourao", "25/08/1981", "123456", "Coimbra", "maria@gmail.com", "918989765");
@@ -111,9 +112,16 @@ public class Main {
 		System.out.println("Emprestimos expirados:" +leitor.getListaDeEmprestimo());
 		
 		
-		
-		
-		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Janela frame = new Janela();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }
