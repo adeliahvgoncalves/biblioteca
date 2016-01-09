@@ -347,7 +347,7 @@ public class Biblioteca {
 		this.listaDeEmprestimo.add(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 
-		return false;
+		return true;
 	}
 
 
@@ -369,7 +369,7 @@ public class Biblioteca {
 				emprestimoComCodBarras.setDataDev(new Date());
 			}
 		}
-		return false;
+		return true;
 	}
 
 	/**

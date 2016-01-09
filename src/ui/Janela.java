@@ -97,6 +97,7 @@ public class Janela extends JFrame {
 	public void sairOK() {
 		
 		layout.show(getContentPane(), "login");
+		
 	}
 
 }

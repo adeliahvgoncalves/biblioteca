@@ -3,6 +3,9 @@ package ui;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
+
+import pt.uc.dei.ar.Biblioteca;
+
 import java.awt.Panel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -24,7 +27,7 @@ public class EmprestimoPanel extends JPanel {
 	private JButton btnEmprestarVoltar;
 	private JButton btnDevolverVoltar;
 	private JLabel lblMensagemDevolver;
-	
+	private Biblioteca biblioteca= Biblioteca.getInstance();
 	/**
 	 * Create the panel.
 	 */
@@ -78,10 +81,19 @@ public class EmprestimoPanel extends JPanel {
 		JButton btnEmpresta = new JButton("EMPRESTAR");
 		btnEmpresta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblMensagem.setText("Emprestimo efectuado com sucesso.");
-				txtData.setText("");
-				txtCodigoBarras.setText("");
-				txtNumeroLeitor.setText("");
+				
+				if(biblioteca.criaEmprestimo(Integer.parseInt(txtNumeroLeitor.getText()),
+						Integer.parseInt(txtCodigoBarras.getText()))==true){
+					//txtData.setText("");
+					txtCodigoBarras.setText("");
+					txtNumeroLeitor.setText("");
+					lblMensagem.setText("Emprestimo efectuado com sucesso.");
+					
+				}
+				else{
+					
+					lblMensagem.setText("Nada");
+				}
 			}
 		});
 		btnEmpresta.setBounds(50, 262, 117, 44);
@@ -144,9 +156,11 @@ public class EmprestimoPanel extends JPanel {
 		JButton btnDevolver = new JButton("DEVOLVER");
 		btnDevolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblMensagemDevolver.setText("O livro com o codigo "+txtCodigoBarras.getText()+" foi devolvido.");
-				txtDataDevolucao.setText("");
-				txtCodigoBarrasDevolucao.setText("");
+				
+				if(biblioteca.devolveEmprestimo(Integer.parseInt(txtCodigoBarrasDevolucao.getText()))==true){
+					lblMensagemDevolver.setText(" O livro foi devolvido com sucesso");
+					
+				}
 				
 			}
 		});
@@ -156,6 +170,8 @@ public class EmprestimoPanel extends JPanel {
 		JButton btnSairDevolucao = new JButton("SAIR");
 		btnSairDevolucao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				sairEmprestimoPanel();
 				janela.sairOK();
 			}
 		});
@@ -165,8 +181,10 @@ public class EmprestimoPanel extends JPanel {
 		btnDevolverVoltar = new JButton("VOLTAR");
 		btnDevolverVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				limpaPainel();
 				janela.bibliotecarioChefeOK();
+				
 			}
 		});
 		btnDevolverVoltar.setBounds(267, 262, 75, 44);
@@ -183,6 +201,12 @@ public class EmprestimoPanel extends JPanel {
 		txtNumeroLeitor.setText("");
 		txtDataDevolucao.setText("");
 		txtCodigoBarrasDevolucao.setText("");
+		
+	}
+	
+	public void sairEmprestimoPanel(){
+		
+		limpaPainel();
 		janela.sairOK();
 		
 	}

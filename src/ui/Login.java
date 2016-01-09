@@ -135,31 +135,34 @@ public class Login extends JPanel {
 		
 	}
 	
+	public void limpaCampos(){
+		
+		lblMensagem.setText("");
+		txtUser.setText("");
+		pwdText.setText("");
+		
+	}
+	
+	
 	public void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador){
 		
 		if(utilizador instanceof Leitor){
 			
-			lblMensagem.setText("");
-			txtUser.setText("");
-			pwdText.setText("");
+			limpaCampos();
 			janela.loginOK();
 			
 		}
 		
 		if(utilizador instanceof Colaborador){
 			
-			lblMensagem.setText("");
-			txtUser.setText("");
-			pwdText.setText("");
+			limpaCampos();
 			janela.colaboradorOK();
 	
 		}
 		
 		if(utilizador instanceof BibliotecarioChefe){
 			
-			lblMensagem.setText("");
-			txtUser.setText("");
-			pwdText.setText("");
+			limpaCampos();
 			janela.bibliotecarioChefeOK();
 		}
 		
