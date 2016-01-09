@@ -87,6 +87,36 @@ public class Biblioteca {
 	}
 
 
+	
+	public boolean login(String username, String password){
+		
+		Utilizador utilizador=pesquisaUtilizadorPorUsername(username);
+		
+		if(utilizador != null && utilizador.getHashedPassword().equals(password)){
+			return true;
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * Pesquisa utilizador com login
+	 * @param string  cartão do cidadão
+	 * @return um Leitor  com esse cartão do cidadão
+	 */
+	public Utilizador pesquisaUtilizadorPorUsername(String username) {
+		Utilizador utilizadorPorUsername = null;
+		for (Utilizador utilizador : listaDeUtilizadores) {
+				if(((Leitor) utilizador).getCartaoCidadao().equalsIgnoreCase(username)){
+					utilizadorPorUsername=(Leitor) utilizador;
+				}
+		}
+
+		return utilizadorPorUsername;
+	}
+	
+	
+	
 
 	/**
 	 * Pesquisa utilizador com cartão do cidadão
