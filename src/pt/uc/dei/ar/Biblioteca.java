@@ -1,6 +1,4 @@
 package pt.uc.dei.ar;
-
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -326,13 +324,26 @@ public class Biblioteca {
 		Publicacao publicaçãoComCodigoBarras = null;
 
 		for (Publicacao publicacao : listaDePublicacoes) {
-			if(publicacao.getCodBarras() == codigoBarras){
+			if(publicacao.getCodBarras() == codigoBarras && publicacao.isOcupado()==false ){
 				publicaçãoComCodigoBarras=publicacao;
 			}
 		}
 		return publicaçãoComCodigoBarras;	
 
 	}
+	
+//	public boolean publicacaoPodeSerEmprestada(Publicacao pub){
+//		
+//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+//			
+//			Publicacao aPesquisar = (Publicacao) emprestimo.getPublicacao();
+//			if (pub.equals(aPesquisar) && emprestimo.getDataDev() != null) {
+//				
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
 
 	/**
 	 * Cria emprestimo
@@ -341,8 +352,8 @@ public class Biblioteca {
 	 * @return true se criado corretamente
 	 */
 	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
-		Leitor utilizador= (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
-		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);
+		Leitor utilizador = (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
+		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);	
 		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
 		this.listaDeEmprestimo.add(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
@@ -367,6 +378,9 @@ public class Biblioteca {
 			if(((Publicacao) emprestimo.getPublicacao()).getCodBarras() == codigoBarras){
 				Emprestimo emprestimoComCodBarras=emprestimo;
 				emprestimoComCodBarras.setDataDev(new Date());
+				Publicacao publicacao=(Publicacao) emprestimo.getPublicacao();
+				publicacao.setOcupado(false);
+				
 			}
 		}
 		return true;

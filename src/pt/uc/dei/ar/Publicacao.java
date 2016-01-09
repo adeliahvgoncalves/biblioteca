@@ -42,7 +42,11 @@ public class Publicacao {
 	 * Data de receção da publicação
 	 */
 	private Date dataReceçao;
-
+	
+	/**
+	 * Publicação requisitada ou não
+	 */
+	private boolean ocupado;
 
 
 	/**
@@ -64,6 +68,7 @@ public class Publicacao {
 		}	
 
 		this.listaDeAreas = areas;
+		this.ocupado=false;
 		
 		ultimocodBarras++;
 		this.codBarras = ultimocodBarras;
@@ -140,6 +145,23 @@ public class Publicacao {
 	 */
 	public void adicionaArea(String area) {
 		this.listaDeAreas.add(area);
+	}
+
+	
+
+	/**
+	 * @return the ocupado
+	 */
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+
+	/**
+	 * @param ocupado the ocupado to set
+	 */
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
 	}
 
 

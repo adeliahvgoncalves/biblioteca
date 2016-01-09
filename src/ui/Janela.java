@@ -76,7 +76,7 @@ public class Janela extends JFrame {
 
 	public void colaboradorOK() {
 
-		emprestimo.desativaVisibilidadeBotaoVoltar();
+	emprestimo.desativaVisibilidadeBotaoVoltar();
 		layout.show(getContentPane(), "emprestimo");
 		
 	}
