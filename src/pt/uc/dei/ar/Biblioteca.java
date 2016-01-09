@@ -87,7 +87,12 @@ public class Biblioteca {
 	}
 
 
-	
+	/**
+	 * Login encontrado
+	 * @param username
+	 * @param password
+	 * @return se encontrou o leitor registado
+	 */
 	public boolean login(String username, String password){
 		
 		Utilizador utilizador=pesquisaUtilizadorPorUsername(username);
@@ -100,9 +105,9 @@ public class Biblioteca {
 	}
 	
 	/**
-	 * Pesquisa utilizador com login
-	 * @param string  cartão do cidadão
-	 * @return um Leitor  com esse cartão do cidadão
+	 * Pesquisa utilizador por username
+	 * @param string  username
+	 * @return um utilizador  com esse username
 	 */
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
 		Utilizador utilizadorPorUsername = null;
