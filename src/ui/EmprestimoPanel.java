@@ -71,10 +71,10 @@ public class EmprestimoPanel extends JPanel {
 		JButton btnEmpresta = new JButton("EMPRESTAR");
 		btnEmpresta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				
 				if(biblioteca.criaEmprestimo(Integer.parseInt(txtNumeroLeitor.getText()),
 						Integer.parseInt(txtCodigoBarras.getText()))==true){
-					//txtData.setText("");
 					txtCodigoBarras.setText("");
 					txtNumeroLeitor.setText("");
 					lblMensagem.setText("Emprestimo efectuado com sucesso.");
@@ -153,7 +153,7 @@ public class EmprestimoPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				sairEmprestimoPanel();
-				janela.sairOK();
+				
 			}
 		});
 		btnSairDevolucao.setBounds(354, 262, 75, 44);
@@ -177,6 +177,7 @@ public class EmprestimoPanel extends JPanel {
 	public void limpaPainel(){
 		
 		lblMensagem.setText("");
+		lblMensagemDevolver.setText("");
 		txtCodigoBarras.setText("");
 		txtNumeroLeitor.setText("");
 		txtCodigoBarrasDevolucao.setText("");

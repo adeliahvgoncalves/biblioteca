@@ -9,12 +9,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 
 public class LeitorPanel extends JPanel {
-	private JTable table;
-	private JTextField textField;
 
 	private Janela janela;
+	private JTable table;
+	private JTextField txtPesquisa;
+	private JTable table_1;
 
 	/**
 	 * Create the panel.
@@ -23,59 +27,86 @@ public class LeitorPanel extends JPanel {
 		setLayout(null);
 
 		this.janela = j;
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(6, 38, 487, 356);
+		add(tabbedPane);
+		
+		Panel pnlListaPublicacoes = new Panel();
+		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
+		pnlListaPublicacoes.setLayout(null);
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 48, 454, 202);
+		pnlListaPublicacoes.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		txtPesquisa = new JTextField();
+		txtPesquisa.setToolTipText("pesquisar");
+		txtPesquisa.setBounds(330, 10, 130, 26);
+		pnlListaPublicacoes.add(txtPesquisa);
+		txtPesquisa.setColumns(10);
+		
+		JButton btnSairPublicacoes = new JButton("SAIR");
+		btnSairPublicacoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	
+				sairLeitorPanel();
+				
+			}
+		});
+		btnSairPublicacoes.setBounds(354, 262, 75, 44);
+		pnlListaPublicacoes.add(btnSairPublicacoes);
+		
+		JButton btnListaTotal = new JButton("Lista Total");
+		btnListaTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		btnListaTotal.setBounds(6, 262,  88, 44);
+		pnlListaPublicacoes.add(btnListaTotal);
+		
+		Panel pnlListaEmprestimos = new Panel();
+		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
+		
+		JButton btnSairEmprestimo = new JButton("SAIR");
+		btnSairEmprestimo.setBounds(354, 262, 75, 44);
+		btnSairEmprestimo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	
+				sairLeitorPanel();
+				
+			}
+		});
+		pnlListaEmprestimos.setLayout(null);
+		pnlListaEmprestimos.add(btnSairEmprestimo);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(6, 55, 454, 195);
+		pnlListaEmprestimos.add(scrollPane_1);
+		
+		table_1 = new JTable();
+		scrollPane_1.setViewportView(table_1);
+		
 		JLabel lblLeitor = new JLabel("");
-		lblLeitor.setBounds(194, 21, 61, 16);
+		lblLeitor.setBounds(172, 19, 155, 16);
 		add(lblLeitor);
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(49, 87, 351, 156);
-		add(scrollPane);
-
-		table = new JTable();
-		scrollPane.setRowHeaderView(table);
-
-		textField = new JTextField();
-		textField.setBounds(270, 54, 130, 26);
-		add(textField);
-		textField.setColumns(10);
-
-		JLabel lblPesquisa = new JLabel("Pesquisa");
-		lblPesquisa.setBounds(200, 59, 61, 16);
-		add(lblPesquisa);
-
-		JButton btnPesquisaArea = new JButton("Area");
-		btnPesquisaArea.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnPesquisaArea.setBounds(49, 255, 82, 29);
-		add(btnPesquisaArea);
-
-		JButton btnPesquisaAutor = new JButton("Autor");
-		btnPesquisaAutor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnPesquisaAutor.setBounds(130, 255, 79, 29);
-		add(btnPesquisaAutor);
-
-		JButton btnLogout = new JButton("SAIR");
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				janela.sairOK();
-			}
-		});
-		btnLogout.setBounds(341, 255, 90, 29);
-		add(btnLogout);
-
-		JButton btnListaEmprestimo = new JButton("Emprestimos");
-		btnListaEmprestimo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnListaEmprestimo.setBounds(212, 255, 117, 29);
-		add(btnListaEmprestimo);
-
 	}
-
+	
+	public void limpaPainel(){
+		
+		
+	}
+	
+	public void sairLeitorPanel(){
+		
+		janela.sairOK();
+	}
 }
