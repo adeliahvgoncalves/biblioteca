@@ -180,7 +180,7 @@ public class Biblioteca {
 			System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
 		}else {System.out.print("já existe!");
 		}
-		return false;
+		return true;
 
 	}
 
@@ -195,7 +195,7 @@ public class Biblioteca {
 	public boolean criaColaborador(String username, String hashedPassword, String nome, int numColaborador){
 		Colaborador colaborador=new Colaborador(username, hashedPassword, nome, numColaborador);
 		this.adicionaUtilizador(colaborador);
-		return false;
+		return true;
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class Biblioteca {
 	public boolean criaBibliotecarioChefe(String username, String hashedPassword, String nome, int numColaborador){
 		BibliotecarioChefe bibliotecarioChefe=new BibliotecarioChefe(username, hashedPassword, nome, numColaborador);
 		this.adicionaUtilizador(bibliotecarioChefe);
-		return false;
+		return true;
 
 	}
 
@@ -232,7 +232,7 @@ public class Biblioteca {
 		Revista revista= new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
 		System.out.println(revista.getTitulo()+"codigo de barras"+revista.getCodBarras());
-		return false;
+		return true;
 	}
 
 
@@ -252,7 +252,7 @@ public class Biblioteca {
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
 		System.out.println(jornal.getTitulo()+"  "+"codigo de barras"+jornal.getCodBarras());
-		return false;
+		return true;
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class Biblioteca {
 		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
 		System.out.println(tese.getTitulo()+"  "+"codigo de barras"+tese.getCodBarras());
-		return false;
+		return true;
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class Biblioteca {
 		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
 		System.out.println(livro.getTitulo()+"  "+"codigo de barras"+livro.getCodBarras());
-		return false;
+		return true;
 
 	}
 
@@ -416,10 +416,30 @@ public class Biblioteca {
 		return publicacaoPorArea;
 	}
 
+	
 
 	/**
 	 * @param emprestimo 
-	 * @return
+	 * @return Publicações que contém parte nome de autor
+	 */
+	public ArrayList<Publicacao> pesquisaPublicacaoComParteNomeAutor(String nome) {
+		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
+
+		for (Publicacao publicacao: listaDePublicacoes){
+			
+			if(publicacao instanceof NaoPeriodico && ((NaoPeriodico) publicacao).getListaDeAutores().contains(nome)){	
+				publicacaoComParteNome.add(publicacao);
+			}
+
+		}
+		return publicacaoComParteNome;
+
+	}
+
+	
+	/**
+	 * @param emprestimo 
+	 * @return Publicações que contém esse nome
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
@@ -437,7 +457,7 @@ public class Biblioteca {
 
 	/**
 	 * @param String nome 
-	 * @return
+	 * @return Publicacao
 	 */
 	public Publicacao pesquisaPublicacao(String nome) {
 		Publicacao pesquisaNome=null;
@@ -486,7 +506,9 @@ public class Biblioteca {
 	 * @return
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimoGlobal() {
-		// TODO implement here
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			
+		}
 		return null;
 	}
 
