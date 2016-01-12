@@ -13,18 +13,21 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class EmprestimoPanel extends JPanel {
 	
+	private Janela janela;
 	
 	private JTextField txtCodigoBarras;
 	private JTextField txtNumeroLeitor;
 	private JTextField txtCodigoBarrasDevolucao;
 	private JLabel lblMensagem;
-	private Janela janela;
+	private JLabel lblMensagemDevolver;
+	
 	private JButton btnEmprestarVoltar;
 	private JButton btnDevolverVoltar;
-	private JLabel lblMensagemDevolver;
 	private Biblioteca biblioteca= Biblioteca.getInstance();
 	/**
 	 * Create the panel.
@@ -55,10 +58,22 @@ public class EmprestimoPanel extends JPanel {
 		//Caixas de Texto
 		
 		txtCodigoBarras = new JTextField();
+		txtCodigoBarras.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				lblMensagem.setText("");
+			}
+		});
 		txtCodigoBarras.setBounds(256, 30, 130, 26);
 		EmprestimoPanel.add(txtCodigoBarras);
 		
 		txtNumeroLeitor = new JTextField();
+		txtNumeroLeitor.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				lblMensagem.setText("");
+			}
+		});
 		txtNumeroLeitor.setBounds(256, 63, 130, 26);
 		EmprestimoPanel.add(txtNumeroLeitor);
 		
@@ -100,6 +115,7 @@ public class EmprestimoPanel extends JPanel {
 		
 		btnEmprestarVoltar = new JButton("VOLTAR");
 		btnEmprestarVoltar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				limpaPainel();
 				janela.bibliotecarioChefeOK();
@@ -128,6 +144,14 @@ public class EmprestimoPanel extends JPanel {
 		//Caixas de texto
 		
 		txtCodigoBarrasDevolucao = new JTextField();
+		txtCodigoBarrasDevolucao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				lblMensagemDevolver.setText("");
+				
+			}
+		});
 		txtCodigoBarrasDevolucao.setBounds(256, 30, 130, 26);
 		DevolvePanel.add(txtCodigoBarrasDevolucao);
 		txtCodigoBarrasDevolucao.setColumns(10);
@@ -139,6 +163,8 @@ public class EmprestimoPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(biblioteca.devolveEmprestimo(Integer.parseInt(txtCodigoBarrasDevolucao.getText()))==true){
+					
+					txtCodigoBarrasDevolucao.setText("");
 					lblMensagemDevolver.setText(" O livro foi devolvido com sucesso");
 					
 				}
@@ -203,5 +229,6 @@ public class EmprestimoPanel extends JPanel {
 		btnEmprestarVoltar.setVisible(false);
 		btnDevolverVoltar.setVisible(false);
 		
-	}	
+	}
+	
 }

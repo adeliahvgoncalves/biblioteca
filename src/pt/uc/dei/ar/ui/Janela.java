@@ -42,6 +42,7 @@ public class Janela extends JFrame {
 	private CardLayout layout;
 	private Login login;
 	private EmprestimoPanel emprestimo;
+	private LeitorPanel	leitor;
 
 	private Utilizador utilizador;
 	

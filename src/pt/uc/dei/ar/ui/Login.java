@@ -3,8 +3,6 @@ package pt.uc.dei.ar.ui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-
-
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
@@ -24,7 +22,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class Login extends JPanel {
+public class Login extends JPanel implements ActionListener {
 
 	private JTextField txtUser;
 	private JPasswordField pwdText;
@@ -32,12 +30,14 @@ public class Login extends JPanel {
 
 	private Janela janela;
 	private Utilizador utilizador;
+	
+	private JButton btnLogin;
 
 	public Login(Janela j, Utilizador u) {
 
 		this.janela = j;
-		this.utilizador=u;
-		
+		this.utilizador = u;
+
 		setLayout(null);
 
 		JLabel lblLogin = new JLabel("BIBLIOTECA SUPER");
@@ -47,7 +47,7 @@ public class Login extends JPanel {
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(135, 84, 78, 16);
 		add(lblUsername);
-	
+
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(135, 135, 78, 16);
 		add(lblPassword);
@@ -65,47 +65,37 @@ public class Login extends JPanel {
 		lblMensagem.setBounds(92, 195, 332, 16);
 		add(lblMensagem);
 
-		JButton btnLogin = new JButton("LOGIN");
+		btnLogin = new JButton("LOGIN");
 		btnLogin.setBounds(191, 277, 117, 38);
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			//	String user = "user";
-			//	String colaborador = "colab";
-			//	String biblio="biblio";
-				
-				/*if (leUser().equals(user) && lePass().equals("pass")) {
-					verificaLogin();
-				}
-				if (leUser().equals(colaborador) && lePass().equals("colab")) {
-					verificaColaborador();
-				}
-				if (leUser().equals(biblio) && lePass().equals("biblio")) {
-					verificaBibliotecarioChefe();
-				} else
-					enviaMensagem();
-			
-					*/
-				
-				Biblioteca biblioteca= Biblioteca.getInstance();
-				
-				if(biblioteca.login(leUser(), lePass())!=null){
-				
-					verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
-				
-				}
-				else{
-					
-					enviaMensagem();
-					
-				}
-			}
-				
-		});
-	
+		btnLogin.addActionListener(this);
 		add(btnLogin);
-		
+
 	}
+	
+	public void actionPerformed(ActionEvent e) {
+
+		Biblioteca biblioteca = Biblioteca.getInstance();
+		
+
+		if (leUser().equals("") || lePass().equals("")) {
+
+			lblMensagem.setText("Não inseriu dados nos campos.");
+
+		}
+
+		else if (biblioteca.login(leUser(), lePass()) != null) {
+
+			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
+
+		}
+
+		else {
+
+			lblMensagem.setText("O username ou a password não estão correctos");
+
+		}
+	}
+
 
 	public String leUser() {
 
@@ -120,51 +110,35 @@ public class Login extends JPanel {
 
 	}
 
-	public void enviaMensagem() {
+	public void limpaCampos() {
 
-		this.lblMensagem.setText("O user não está correcto");
-		
-	}
-
-	// Pode-se retirar este método
-	// BUG de mensagem de que o utilisador não está correcto, este método não
-	// está implementado
-	public void limpaLblMensagem() {
-		
-		lblMensagem.setText("");
-		
-	}
-	
-	public void limpaCampos(){
-		
 		lblMensagem.setText("");
 		txtUser.setText("");
 		pwdText.setText("");
-		
+
 	}
-	
-	
-	public void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador){
-		
-		if(utilizador instanceof Leitor){
-			
+
+	public void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
+
+		if (utilizador instanceof Leitor) {
+
 			limpaCampos();
 			janela.loginOK();
-			
+
 		}
-		
-		if(utilizador instanceof Colaborador){
-			
+
+		if (utilizador instanceof Colaborador) {
+
 			limpaCampos();
 			janela.colaboradorOK();
-	
+
 		}
-		
-		if(utilizador instanceof BibliotecarioChefe){
-			
+
+		if (utilizador instanceof BibliotecarioChefe) {
+
 			limpaCampos();
 			janela.bibliotecarioChefeOK();
 		}
-		
+
 	}
 }
