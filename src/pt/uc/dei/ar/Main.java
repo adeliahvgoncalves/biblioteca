@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import ui.Janela;
+import pt.uc.dei.ar.ui.Janela;
 
 public class Main {
 
@@ -62,16 +62,14 @@ public class Main {
 		Calendar calendar1=Calendar.getInstance();
 		calendar1.set(2015, 11, 1);
 		Date data1=calendar1.getTime();
-		Calendar calendar2=Calendar.getInstance();
-		calendar2.set(2016, 0, 1);
-		Date data2=calendar1.getTime();
+	
 		
 		Leitor leitor2=new Leitor("ABC", "123", "Manuel dos Santos", "12/09/2000", "1234567", "Coimbra", "manuel@gmail.com", "23453672");
 		maravilha.adicionaUtilizador(leitor2);
 		Revista revista1=new Revista("Normal", "12/09/2015", "12/11/2015", areasRevista, Periodicidade.Diaria, 345);		
 		maravilha.adicionaPublicacao(revista1);	
 		//como fazer?
-		//Emprestimo em1=new Emprestimo(faculdadeNova.getListaDeUtilizadores().get(3), data1, 7);
+	
 		Emprestimo em3=new Emprestimo(leitor2, data1, revista1);
 		maravilha.adicionaEmprestimo(em3);
 		
@@ -110,8 +108,11 @@ public class Main {
 //		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
 		
 		//Consultar os empréstimos que já deviam ter sido devolvidos
-		maravilha.consultaEmprestimoExpirado();
-		System.out.println("Emprestimos expirados:" +leitor.getListaDeEmprestimo());
+		ArrayList<Emprestimo> emprestimosExpirados = maravilha.consultaEmprestimoExpirado();
+		System.out.println("Emprestimos expirados:" +emprestimosExpirados);
+		
+		//Emprestimos do leitor
+		System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
 		
 		
 		EventQueue.invokeLater(new Runnable() {

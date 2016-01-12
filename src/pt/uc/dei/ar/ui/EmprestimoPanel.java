@@ -1,4 +1,4 @@
-package ui;
+package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;

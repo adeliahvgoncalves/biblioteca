@@ -1,4 +1,4 @@
-package ui;
+package pt.uc.dei.ar.ui;
 
 import java.awt.Container;
 import java.awt.Dimension;
