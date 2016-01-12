@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.Leitor;
+import pt.uc.dei.ar.Utilizador;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -26,6 +27,7 @@ import javax.swing.ScrollPaneConstants;
 public class LeitorPanel extends JPanel implements ActionListener {
 
 	private Janela janela;
+	private Utilizador utilizador;
 	private JTable table;
 	private JTextField txtPesquisa;
 	private JTable tabela;
@@ -35,10 +37,11 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public LeitorPanel(Janela j) {
+	public LeitorPanel(Janela j, Utilizador utilizador) {
 		setLayout(null);
 
 		this.janela = j;
+		this.utilizador=utilizador;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(6, 38, 488, 343);
@@ -129,7 +132,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 		scrollPane_1.setViewportView(tabela);
 		
-		JLabel lblLeitor = new JLabel("");
+		JLabel lblLeitor = new JLabel("Bem vindo"+this.utilizador);
 		lblLeitor.setBounds(172, 19, 155, 16);
 		add(lblLeitor);
 
@@ -138,9 +141,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	public void preencheTabela(){
 		
 		leitor.consultaEmprestimosLeitor();
-		
-		
-		
+			
 	}
 	
 	public void limpaPainel(){

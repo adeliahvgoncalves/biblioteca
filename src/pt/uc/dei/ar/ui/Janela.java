@@ -55,11 +55,11 @@ public class Janela extends JFrame {
 		this.layout = new CardLayout();
 		getContentPane().setLayout(layout);
 
-		login = new Login(this, utilizador );
+		login = new Login(this);
 		getContentPane().add(login, "login");
 
-		LeitorPanel leitor = new LeitorPanel(this);
-		getContentPane().add(leitor, "leitor");
+	//	LeitorPanel leitor = new LeitorPanel(this);
+	//	getContentPane().add(leitor, "leitor");
 
 		this.emprestimo = new EmprestimoPanel(this);
 		getContentPane().add(emprestimo, "emprestimo");
@@ -69,15 +69,17 @@ public class Janela extends JFrame {
 
 	}
 
-	public void loginOK() {
+	public void loginOK(Utilizador user) {
 
 		layout.show(getContentPane(), "leitor");
+		LeitorPanel leitor = new LeitorPanel(this, user);
+		getContentPane().add(leitor, "leitor");
 		
 	}
 
 	public void colaboradorOK() {
 
-	emprestimo.desativaVisibilidaBotaoVoltar();
+		emprestimo.desativaVisibilidaBotaoVoltar();
 		layout.show(getContentPane(), "emprestimo");
 		
 	}

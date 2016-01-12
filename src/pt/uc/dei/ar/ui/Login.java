@@ -29,14 +29,12 @@ public class Login extends JPanel implements ActionListener {
 	private JLabel lblMensagem;
 
 	private Janela janela;
-	private Utilizador utilizador;
-	
+
 	private JButton btnLogin;
 
-	public Login(Janela j, Utilizador u) {
+	public Login(Janela j) {
 
 		this.janela = j;
-		this.utilizador = u;
 
 		setLayout(null);
 
@@ -86,7 +84,7 @@ public class Login extends JPanel implements ActionListener {
 		else if (biblioteca.login(leUser(), lePass()) != null) {
 
 			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
-
+			
 		}
 
 		else {
@@ -123,7 +121,7 @@ public class Login extends JPanel implements ActionListener {
 		if (utilizador instanceof Leitor) {
 
 			limpaCampos();
-			janela.loginOK();
+			janela.loginOK(utilizador);
 
 		}
 
@@ -141,4 +139,6 @@ public class Login extends JPanel implements ActionListener {
 		}
 
 	}
+	
+
 }
