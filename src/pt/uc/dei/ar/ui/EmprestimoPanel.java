@@ -206,7 +206,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 		else if (e.getSource() == this.btnEmprestar) {
 
-			validarButaoEmprestimo();
+			validarBotaoEmprestimo();
 
 		} else if (e.getSource() == this.btnDevolver) {
 
@@ -216,7 +216,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void validarButaoEmprestimo() {
+	public void validarBotaoEmprestimo() {
 
 		if (txtCodigoBarras.getText().equals("") || txtNumeroLeitor.getText().equals("")) {
 
