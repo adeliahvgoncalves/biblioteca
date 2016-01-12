@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.Leitor;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,6 +31,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	private JTable tabela;
 	
 	private Biblioteca biblioteca = Biblioteca.getInstance();
+	private Leitor leitor;
 	/**
 	 * Create the panel.
 	 */
@@ -135,6 +137,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	
 	public void preencheTabela(){
 		
+		leitor.consultaEmprestimosLeitor();
 		
 		
 		
