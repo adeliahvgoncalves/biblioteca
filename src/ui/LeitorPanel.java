@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class LeitorPanel extends JPanel {
 
@@ -45,7 +47,9 @@ public class LeitorPanel extends JPanel {
 		scrollPane.setViewportView(table);
 		
 		txtPesquisa = new JTextField();
-		txtPesquisa.setToolTipText("pesquisar");
+		txtPesquisa.setText("pesquisar");
+		txtPesquisa.setEditable(false);
+		txtPesquisa.setToolTipText("");
 		txtPesquisa.setBounds(330, 10, 130, 26);
 		pnlListaPublicacoes.add(txtPesquisa);
 		txtPesquisa.setColumns(10);
@@ -71,6 +75,12 @@ public class LeitorPanel extends JPanel {
 		});
 		btnListaTotal.setBounds(6, 262,  88, 44);
 		pnlListaPublicacoes.add(btnListaTotal);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Área ", "Autor", "Titulo"}));
+		comboBox.setMaximumRowCount(3);
+		comboBox.setBounds(6, 11, 88, 27);
+		pnlListaPublicacoes.add(comboBox);
 		
 		Panel pnlListaEmprestimos = new Panel();
 		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
