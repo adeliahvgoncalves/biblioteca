@@ -326,7 +326,7 @@ public class Biblioteca {
 		Publicacao publicaçãoComCodigoBarras = null;
 
 		for (Publicacao publicacao : listaDePublicacoes) {
-			if(publicacao.getCodBarras() == codigoBarras && publicacao.isOcupado()==false ){
+			if(publicacao.getCodBarras() == codigoBarras ){
 				publicaçãoComCodigoBarras=publicacao;
 			}
 		}
@@ -355,12 +355,19 @@ public class Biblioteca {
 	 */
 	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
 		Leitor utilizador = (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
-		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);	
+		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);
+		
+		if (publicacao.isOcupado()) {
+			
+			return false;
+		}
+		
 		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
-		this.listaDeEmprestimo.add(emprestimo);
+		this.adicionaEmprestimo(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 		publicacao.setOcupado(true);
-
+		System.out.println("Criei emprestimo "+emprestimo);
+		
 		return true;
 	}
 
@@ -383,20 +390,24 @@ public class Biblioteca {
 	 * @return false se nao existir o empréstimo
 	 */
 	public boolean devolveEmprestimo(int codigoBarras) {
-
+		
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
 
 			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
-				if (publicacaoParaDevolver.isOcupado() == false) {
-					break;
+				
+				if (!publicacaoParaDevolver.isOcupado()) {
+					
+					return false;
+					
 				} else {
 					emprestimo.setDataDev(new Date());
 					publicacaoParaDevolver.setOcupado(false);
+					return true;
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 
 	/**
