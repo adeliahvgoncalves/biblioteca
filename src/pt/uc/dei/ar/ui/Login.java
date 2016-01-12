@@ -79,21 +79,15 @@ public class Login extends JPanel implements ActionListener {
 
 			lblMensagem.setText("Não inseriu dados nos campos.");
 
-		}
-
-		else if (biblioteca.login(leUser(), lePass()) != null) {
+		} else if (biblioteca.login(leUser(), lePass()) != null) {
 
 			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
 			
-		}
-
-		else {
+		} else {
 
 			lblMensagem.setText("O username ou a password não estão correctos");
-
 		}
 	}
-
 
 	public String leUser() {
 

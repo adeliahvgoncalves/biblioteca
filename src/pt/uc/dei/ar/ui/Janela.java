@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import pt.uc.dei.ar.Leitor;
 import pt.uc.dei.ar.Utilizador;
 
 import java.awt.CardLayout;
@@ -64,6 +65,9 @@ public class Janela extends JFrame {
 		this.emprestimo = new EmprestimoPanel(this);
 		getContentPane().add(emprestimo, "emprestimo");
 		
+		this.leitor = new LeitorPanel(this, null);
+		getContentPane().add(leitor, "leitor");
+		
 		BibliotecarioChefePanel bibliotecarioChefe=new BibliotecarioChefePanel(this);
 		getContentPane().add(bibliotecarioChefe, "bibliotecarioChefe");
 
@@ -71,10 +75,8 @@ public class Janela extends JFrame {
 
 	public void loginOK(Utilizador user) {
 
+		leitor.setUtilizador(user);
 		layout.show(getContentPane(), "leitor");
-		LeitorPanel leitor = new LeitorPanel(this, user);
-		getContentPane().add(leitor, "leitor");
-		
 	}
 
 	public void colaboradorOK() {
