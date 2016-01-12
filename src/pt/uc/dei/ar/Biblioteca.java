@@ -28,7 +28,7 @@ public class Biblioteca {
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
 
-	
+
 	/**
 	 * 
 	 */
@@ -47,24 +47,24 @@ public class Biblioteca {
 		this.listaDePublicacoes =new ArrayList<Publicacao>();
 		this.listaDeEmprestimo = new ArrayList<Emprestimo>();
 	}
-	
-	// Método público estático de acesso único ao objeto
+
+
 	/**
-	 * 
+	 * Método público estático de acesso único ao objeto
 	 * @param 
 	 */
-		public static Biblioteca getInstance(){
+	public static Biblioteca getInstance(){
 
-			if(instance == null) 
-			{
-				instance= new Biblioteca();
-				// O valor é retornado para quem está pedindo
-
-			}
-			return instance;
-			// Retorna o a instância do objeto
+		if(instance == null) 
+		{
+			instance= new Biblioteca();
+			// O valor é retornado para quem está pedindo
 
 		}
+		return instance;
+		// Retorna o a instância do objeto
+
+	}
 
 	/**
 	 * Adiciona uma publicação nova
@@ -113,15 +113,16 @@ public class Biblioteca {
 	 */
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
 		Utilizador utilizadorPorUsername = null;
-		for (Utilizador utilizador : listaDeUtilizadores) {
-				if(utilizador.getUsername().equalsIgnoreCase(username)){
-					utilizadorPorUsername= utilizador;
-				}
-		}
 
+		for (Utilizador utilizador : listaDeUtilizadores) {
+			if(utilizador.getUsername().equalsIgnoreCase(username)){
+				utilizadorPorUsername= utilizador;
+			}
+		}
+		System.out.println(utilizadorPorUsername);
 		return utilizadorPorUsername;
 	}
-	
+
 	/**
 	 * Login encontrado
 	 * @param username
@@ -129,15 +130,16 @@ public class Biblioteca {
 	 * @return se encontrou o utilizador registado é devolvido, se não devolve null
 	 */
 	public Utilizador login(String username, String password){
-		
+
 		Utilizador utilizador=pesquisaUtilizadorPorUsername(username);
-		
+
 		if(utilizador != null && utilizador.getHashedPassword().equals(password)){
 			return utilizador;
 		}
+		System.out.println(utilizador);
 		return null;
 	}
-	
+
 
 	/**
 	 * Pesquisa utilizador com cartão do cidadão
@@ -331,19 +333,19 @@ public class Biblioteca {
 		return publicaçãoComCodigoBarras;	
 
 	}
-	
-//	public boolean publicacaoPodeSerEmprestada(Publicacao pub){
-//		
-//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-//			
-//			Publicacao aPesquisar = (Publicacao) emprestimo.getPublicacao();
-//			if (pub.equals(aPesquisar) && emprestimo.getDataDev() != null) {
-//				
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
+
+	//	public boolean publicacaoPodeSerEmprestada(Publicacao pub){
+	//		
+	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+	//			
+	//			Publicacao aPesquisar = (Publicacao) emprestimo.getPublicacao();
+	//			if (pub.equals(aPesquisar) && emprestimo.getDataDev() != null) {
+	//				
+	//				return false;
+	//			}
+	//		}
+	//		return true;
+	//	}
 
 	/**
 	 * Cria emprestimo
@@ -381,7 +383,7 @@ public class Biblioteca {
 				emprestimoComCodBarras.setDataDev(new Date());
 				Publicacao publicacao=(Publicacao) emprestimo.getPublicacao();
 				publicacao.setOcupado(false);
-				
+
 			}
 		}
 		return true;
@@ -416,7 +418,7 @@ public class Biblioteca {
 		return publicacaoPorArea;
 	}
 
-	
+
 
 	/**
 	 * @param emprestimo 
@@ -426,7 +428,7 @@ public class Biblioteca {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
 
 		for (Publicacao publicacao: listaDePublicacoes){
-			
+
 			if(publicacao instanceof NaoPeriodico && ((NaoPeriodico) publicacao).getListaDeAutores().contains(nome)){	
 				publicacaoComParteNome.add(publicacao);
 			}
@@ -436,7 +438,7 @@ public class Biblioteca {
 
 	}
 
-	
+
 	/**
 	 * @param emprestimo 
 	 * @return Publicações que contém esse nome
@@ -507,7 +509,7 @@ public class Biblioteca {
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimoGlobal() {
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			
+
 		}
 		return null;
 	}
