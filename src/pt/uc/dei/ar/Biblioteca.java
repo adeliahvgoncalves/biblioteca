@@ -365,6 +365,18 @@ public class Biblioteca {
 	}
 
 
+	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
+			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
+				emprestimo.setDataDev(new Date());
+				publicacaoParaDevolver.setOcupado(false);
+			}
+
+		}
+
+	}
+
 	/**
 	 * Devolve empréstimo
 	 * @param codigoBarras
@@ -373,17 +385,15 @@ public class Biblioteca {
 	public boolean devolveEmprestimo(int codigoBarras) {
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
 
-			if (emprestimo.getPublicacao() == null) {
-
-				break;
-			}
-			if(((Publicacao) emprestimo.getPublicacao()).getCodBarras() == codigoBarras){
-				Emprestimo emprestimoComCodBarras=emprestimo;
-				emprestimoComCodBarras.setDataDev(new Date());
-				Publicacao publicacao=(Publicacao) emprestimo.getPublicacao();
-				publicacao.setOcupado(false);
-
+			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
+				if (publicacaoParaDevolver.isOcupado() == false) {
+					break;
+				} else {
+					emprestimo.setDataDev(new Date());
+					publicacaoParaDevolver.setOcupado(false);
+				}
 			}
 		}
 		return true;
@@ -522,11 +532,23 @@ public class Biblioteca {
 		return 0;
 	}
 
+
+	public long diasDeEmprestimo(Emprestimo emprestimo){
+		long diasEmprestimo = 0;
+		return diasEmprestimo=emprestimo.getDataDev().getTime()-emprestimo.getDataEmp().getTime();
+
+	//	}
+	//	return diasEmprestimo;
+	}
+
 	/**
 	 * @return
 	 */
 	public int duracaoMinimaEmprestimo() {
-		// TODO implement here
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+		//	emprestimo.getPublicacao()
+
+		}
 		return 0;
 	}
 
