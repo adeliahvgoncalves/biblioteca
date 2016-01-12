@@ -191,14 +191,14 @@ public class EmprestimoPanel extends JPanel {
 		
 	}
 	
-	public void activaVisibilidadeBotaoVoltar(){
+	public void activaVisibilidaBotaoVoltar(){
 		
 		btnEmprestarVoltar.setVisible(true);
 		btnDevolverVoltar.setVisible(true);
 		
 	}	
 	
-	public void desativaVisibilidadeBotaoVoltar(){
+	public void desativaVisibilidaBotaoVoltar(){
 		
 		btnEmprestarVoltar.setVisible(false);
 		btnDevolverVoltar.setVisible(false);

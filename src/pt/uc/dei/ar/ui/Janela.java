@@ -76,7 +76,7 @@ public class Janela extends JFrame {
 
 	public void colaboradorOK() {
 
-	emprestimo.desativaVisibilidadeBotaoVoltar();
+	emprestimo.desativaVisibilidaBotaoVoltar();
 		layout.show(getContentPane(), "emprestimo");
 		
 	}
@@ -84,7 +84,7 @@ public class Janela extends JFrame {
 	public void emprestimoPanelBibliotecarioChefeOK(){
 		
 		layout.show(getContentPane(), "emprestimo");
-		emprestimo.activaVisibilidadeBotaoVoltar();
+		emprestimo.activaVisibilidaBotaoVoltar();
 			
 	}
 	
