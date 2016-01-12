@@ -1,11 +1,17 @@
 package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
+
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Panel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import pt.uc.dei.ar.Biblioteca;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,14 +20,16 @@ import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ScrollPaneConstants;
 
-public class LeitorPanel extends JPanel {
+public class LeitorPanel extends JPanel implements ActionListener {
 
 	private Janela janela;
 	private JTable table;
 	private JTextField txtPesquisa;
-	private JTable table_1;
-
+	private JTable tabela;
+	
+	private Biblioteca biblioteca = Biblioteca.getInstance();
 	/**
 	 * Create the panel.
 	 */
@@ -31,7 +39,7 @@ public class LeitorPanel extends JPanel {
 		this.janela = j;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(6, 38, 487, 356);
+		tabbedPane.setBounds(6, 38, 488, 343);
 		add(tabbedPane);
 		
 		Panel pnlListaPublicacoes = new Panel();
@@ -40,7 +48,7 @@ public class LeitorPanel extends JPanel {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 48, 454, 202);
+		scrollPane.setBounds(6, 48, 454, 191);
 		pnlListaPublicacoes.add(scrollPane);
 		
 		table = new JTable();
@@ -62,7 +70,7 @@ public class LeitorPanel extends JPanel {
 				
 			}
 		});
-		btnSairPublicacoes.setBounds(354, 262, 75, 44);
+		btnSairPublicacoes.setBounds(385, 251, 75, 44);
 		pnlListaPublicacoes.add(btnSairPublicacoes);
 		
 		JButton btnListaTotal = new JButton("Lista Total");
@@ -73,7 +81,7 @@ public class LeitorPanel extends JPanel {
 				
 			}
 		});
-		btnListaTotal.setBounds(6, 262,  88, 44);
+		btnListaTotal.setBounds(6, 251,  88, 44);
 		pnlListaPublicacoes.add(btnListaTotal);
 		
 		JComboBox comboBox = new JComboBox();
@@ -86,7 +94,7 @@ public class LeitorPanel extends JPanel {
 		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
 		
 		JButton btnSairEmprestimo = new JButton("SAIR");
-		btnSairEmprestimo.setBounds(354, 262, 75, 44);
+		btnSairEmprestimo.setBounds(385, 251, 75, 44);
 		btnSairEmprestimo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
@@ -98,16 +106,38 @@ public class LeitorPanel extends JPanel {
 		pnlListaEmprestimos.add(btnSairEmprestimo);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(6, 55, 454, 195);
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane_1.setBounds(6, 48, 454, 191);
 		pnlListaEmprestimos.add(scrollPane_1);
 		
-		table_1 = new JTable();
-		scrollPane_1.setViewportView(table_1);
+
+		//setLayout(new FlowLayout());
+		
+		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
+				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN"
+				};
+		
+		Object [][] data= new Object[Biblioteca.getInstance().getListaDePublicacoes().size()][15];
+		
+		
+		tabela=new JTable(data, colunas);
+		tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		tabela.setFillsViewportHeight(true);
+		
+		scrollPane_1.setViewportView(tabela);
 		
 		JLabel lblLeitor = new JLabel("");
 		lblLeitor.setBounds(172, 19, 155, 16);
 		add(lblLeitor);
 
+	}
+	
+	public void preencheTabela(){
+		
+		
+		
+		
 	}
 	
 	public void limpaPainel(){
@@ -118,5 +148,11 @@ public class LeitorPanel extends JPanel {
 	public void sairLeitorPanel(){
 		
 		janela.sairOK();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
