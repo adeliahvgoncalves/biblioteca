@@ -43,6 +43,9 @@ public class BibliotecarioChefePanel extends JPanel {
 		JButton btnRegistarUtilizador = new JButton("Registar Utilizador");
 		btnRegistarUtilizador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				janela.registaUtilizadorOK();
+				
 			}
 		});
 		btnRegistarUtilizador.setBounds(250, 153, 144, 47);

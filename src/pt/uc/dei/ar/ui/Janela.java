@@ -64,9 +64,6 @@ public class Janela extends JFrame {
 		login = new Login(this);
 		getContentPane().add(login, "login");
 
-	//	LeitorPanel leitor = new LeitorPanel(this);
-	//	getContentPane().add(leitor, "leitor");
-
 		this.emprestimo = new EmprestimoPanel(this);
 		getContentPane().add(emprestimo, "emprestimo");
 		
@@ -75,6 +72,9 @@ public class Janela extends JFrame {
 		
 		BibliotecarioChefePanel bibliotecarioChefe=new BibliotecarioChefePanel(this);
 		getContentPane().add(bibliotecarioChefe, "bibliotecarioChefe");
+		
+		RegistaUtilizador registaUtilizador= new RegistaUtilizador(this);
+		getContentPane().add(registaUtilizador, "registaUtilizador");
 
 	}
 
@@ -116,6 +116,11 @@ public class Janela extends JFrame {
 	public void sairOK() {
 		
 		layout.show(getContentPane(), "login");
+		
+	}
+	public void registaUtilizadorOK(){
+		
+		layout.show(getContentPane(), "registaUtilizador");
 		
 	}
 
