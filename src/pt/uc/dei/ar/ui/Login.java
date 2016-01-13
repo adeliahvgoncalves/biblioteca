@@ -115,7 +115,7 @@ public class Login extends JPanel implements ActionListener {
 		if (utilizador instanceof Leitor) {
 			
 			limpaCampos();
-			janela.loginOK(((Leitor) utilizador).getNumLeitor());
+			janela.loginOK((Leitor)utilizador);
 
 		}
 

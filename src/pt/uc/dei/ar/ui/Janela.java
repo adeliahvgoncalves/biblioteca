@@ -13,11 +13,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-<<<<<<< Updated upstream
+
 import pt.uc.dei.ar.Leitor;
-=======
+
 import pt.uc.dei.ar.Biblioteca;
->>>>>>> Stashed changes
+
 import pt.uc.dei.ar.Utilizador;
 
 import java.awt.CardLayout;
@@ -50,6 +50,7 @@ public class Janela extends JFrame {
 	private LeitorPanel	leitor;
 
 	private Utilizador utilizador;
+	private Biblioteca biblioteca = Biblioteca.getInstance();
 	
 	public Janela() {
 
@@ -77,17 +78,19 @@ public class Janela extends JFrame {
 
 	}
 
-	public void loginOK(int numLeitor) {
+	public void loginOK(Utilizador utilizador) {
 
-<<<<<<< Updated upstream
-		leitor.setUtilizador(user);
-		layout.show(getContentPane(), "leitor");
-=======
-		LeitorPanel leitor = new LeitorPanel(this,numLeitor);
-		getContentPane().add(leitor, "leitor");
+		
+
+		leitor.setUtilizador(utilizador);
 		layout.show(getContentPane(), "leitor");
 		
->>>>>>> Stashed changes
+		//LeitorPanel leitor = new LeitorPanel(this,utilizador);
+		//getContentPane().add(leitor, "leitor");
+		
+		//layout.show(getContentPane(), "leitor");
+		
+
 	}
 
 	public void colaboradorOK() {

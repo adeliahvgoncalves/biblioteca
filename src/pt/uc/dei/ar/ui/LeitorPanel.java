@@ -31,12 +31,9 @@ import javax.swing.table.DefaultTableModel;
 public class LeitorPanel extends JPanel implements ActionListener {
 
 	private Janela janela;
-<<<<<<< Updated upstream
 	private Utilizador utilizador;
-=======
-	private int numLeitor;
+
 	private JTable table;
->>>>>>> Stashed changes
 	private JTextField txtPesquisa;
 	private JTable tabela;
 	private JLabel lblLeitor;
@@ -46,11 +43,11 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public LeitorPanel(Janela j, int numLeitor) {
+	public LeitorPanel(Janela j, Utilizador utilizador) {
 		setLayout(null);
 
 		this.janela = j;
-		this.numLeitor=numLeitor;
+		this.utilizador=utilizador;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(6, 38, 488, 343);
@@ -59,6 +56,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		Panel pnlListaPublicacoes = new Panel();
 		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
 		pnlListaPublicacoes.setLayout(null);
+		
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -147,11 +145,8 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 		scrollPane_1.setViewportView(tabela);
 		
-<<<<<<< Updated upstream
+
 		lblLeitor = new JLabel("");
-=======
-		JLabel lblLeitor = new JLabel("Bem vindo "+this.numLeitor);
->>>>>>> Stashed changes
 		lblLeitor.setBounds(172, 19, 155, 16);
 		add(lblLeitor);
 
