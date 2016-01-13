@@ -298,6 +298,31 @@ public class Biblioteca {
 	}
 
 	/**
+	 * Pesquisa utilizador com número de colaborador
+	 * @param int número de colaborador
+	 * @return um Utilizador utilizador com esse número de colaborador
+	 */
+	public Utilizador pesquisaUtilizadorPorNumColaborador(int numCol) {
+		Utilizador utilizadorColaborador = null;
+		for (Utilizador utilizador : listaDeUtilizadores) {
+
+			if(utilizador instanceof Colaborador ||utilizador instanceof BibliotecarioChefe){
+
+				if(((Colaborador) utilizador).getNumColaborador()==numCol ||
+						((BibliotecarioChefe) utilizador).getNumColaborador()==numCol){
+					utilizadorColaborador=utilizador;
+				}
+
+			}
+		}
+
+		return utilizadorColaborador;
+	}
+
+
+
+
+	/**
 	 * Pesquisa utilizador com número de leitor
 	 * @param int número de leitor
 	 * @return um Utilizador utilizador com esse número de leitor
@@ -356,18 +381,18 @@ public class Biblioteca {
 	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
 		Leitor utilizador = (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
 		Publicacao publicacao = pesquisaPublicacaoPorCodBarras(codigoBarras);
-		
+
 		if (publicacao.isOcupado()) {
-			
+
 			return false;
 		}
-		
+
 		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
 		this.adicionaEmprestimo(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 		publicacao.setOcupado(true);
 		System.out.println("Criei emprestimo "+emprestimo);
-		
+
 		return true;
 	}
 
@@ -390,16 +415,16 @@ public class Biblioteca {
 	 * @return false se nao existir o empréstimo
 	 */
 	public boolean devolveEmprestimo(int codigoBarras) {
-		
+
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
 
 			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
-				
+
 				if (!publicacaoParaDevolver.isOcupado()) {
-					
+
 					return false;
-					
+
 				} else {
 					emprestimo.setDataDev(new Date());
 					publicacaoParaDevolver.setOcupado(false);
@@ -548,8 +573,8 @@ public class Biblioteca {
 		long diasEmprestimo = 0;
 		return diasEmprestimo=emprestimo.getDataDev().getTime()-emprestimo.getDataEmp().getTime();
 
-	//	}
-	//	return diasEmprestimo;
+		//	}
+		//	return diasEmprestimo;
 	}
 
 	/**
@@ -557,7 +582,7 @@ public class Biblioteca {
 	 */
 	public int duracaoMinimaEmprestimo() {
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
-		//	emprestimo.getPublicacao()
+			//	emprestimo.getPublicacao()
 
 		}
 		return 0;

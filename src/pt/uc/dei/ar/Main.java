@@ -18,7 +18,7 @@ public class Main {
 		maravilha.criaColaborador("AAZZ", "123", "Maria Teresa Boto Santos", 1456);
 		maravilha.criaColaborador("AAZA", "124", "Manuela Maria Costa Tavares", 1123);
 		maravilha.criaLeitor("AAA", "123", "Maria Gabriela Tomaz Mourao", "25/08/1981", "123456", "Coimbra", "maria@gmail.com", "918989765");
-		maravilha.criaLeitor("AAB", "123", "Jesus Cristo", "25/12/0000", "123456", "Coimbra", "maria@gmail.com", "918989765");
+		maravilha.criaLeitor("AAB", "123", "Jesus Cristo", "25/12/0000", "123486", "Coimbra", "maria@gmail.com", "918989765");
 		maravilha.criaLeitor("AAC", "123", "Joao Jose Da Costa Miranda", "25/12/0000", "1236656", "Coimbra", "maria@gmail.com", "918989765");
 
 		ArrayList<String>areasDiarioEconomico = new ArrayList<String>();

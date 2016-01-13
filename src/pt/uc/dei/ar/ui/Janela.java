@@ -3,23 +3,16 @@ package pt.uc.dei.ar.ui;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-
 import pt.uc.dei.ar.Leitor;
-
 import pt.uc.dei.ar.Biblioteca;
-
 import pt.uc.dei.ar.Utilizador;
-
 import java.awt.CardLayout;
 import java.awt.Component;
 
@@ -48,7 +41,6 @@ public class Janela extends JFrame {
 	private Login login;
 	private EmprestimoPanel emprestimo;
 	private LeitorPanel	leitor;
-
 	private Utilizador utilizador;
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 	
@@ -80,16 +72,8 @@ public class Janela extends JFrame {
 
 	public void loginOK(Utilizador utilizador) {
 
-		
-
 		leitor.setUtilizador(utilizador);
 		layout.show(getContentPane(), "leitor");
-		
-		//LeitorPanel leitor = new LeitorPanel(this,utilizador);
-		//getContentPane().add(leitor, "leitor");
-		
-		//layout.show(getContentPane(), "leitor");
-		
 
 	}
 

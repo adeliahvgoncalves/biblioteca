@@ -117,13 +117,17 @@ public class Emprestimo {
 		return publicacao;
 	}
 
-	public void atualizaDataDevolucao(String data){
-		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			this.dataDev=df.parse(data);
-		} catch (ParseException e){
-			e.printStackTrace();
-		}	
+	public Date dataMaximaEntrega(){
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(this.dataEmp);
+		c.add(Calendar.DATE, publicacao.maximoDiasRequisicao());
+
+		
+		Date dataMaximaEntrega = c.getTime();
+		return dataMaximaEntrega;
+		
+	
 	}
 
 
