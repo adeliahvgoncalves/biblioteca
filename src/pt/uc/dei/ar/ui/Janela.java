@@ -42,6 +42,8 @@ public class Janela extends JFrame {
 	private EmprestimoPanel emprestimo;
 	private LeitorPanel	leitor;
 	private Utilizador utilizador;
+	private RegistaUtilizadorPanel registaUtilizador;
+	
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 	
 	public Janela() {
@@ -65,7 +67,7 @@ public class Janela extends JFrame {
 		BibliotecarioChefePanel bibliotecarioChefe=new BibliotecarioChefePanel(this);
 		getContentPane().add(bibliotecarioChefe, "bibliotecarioChefe");
 		
-		RegistaUtilizador registaUtilizador= new RegistaUtilizador(this);
+		this.registaUtilizador= new RegistaUtilizadorPanel(this);
 		getContentPane().add(registaUtilizador, "registaUtilizador");
 
 	}

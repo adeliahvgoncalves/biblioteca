@@ -6,6 +6,9 @@ import java.awt.Panel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+
+import pt.uc.dei.ar.Biblioteca;
+
 import javax.swing.JPasswordField;
 import java.awt.CardLayout;
 import javax.swing.JFormattedTextField;
@@ -15,8 +18,12 @@ import java.awt.Container;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-public class RegistaUtilizador extends JPanel implements ActionListener {
+public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener {
+	
 	private JTextField txtNome;
 	private JTextField txtUsername;
 	private JTextField txtNumFuncionario;
@@ -24,25 +31,29 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 	private JTextField txtMorada;
 	private JTextField txtEmail;
 	private JTextField txtContactoTelefonico;
+	private JLabel lblMensagem;
+	private JLabel lblMensagemLeitor;
+	
+	private JFormattedTextField formattedTextFieldData;
 
 	private JPanel pnlBiblioColaborador;
 	private JPanel pnlMensagem;
 	private JPanel pnlLeitor;
 
 	private JPanel pnlUtilizadores;
-	
-	private JButton btnRegista;
+
+	private JButton btnRegistaUtilizador;
 	private JButton btnSair;
 	private JButton btnVoltar;
-	private JButton btnNovoRegisto;
 
 	private JComboBox comboBox;
 
 	private CardLayout layout;
 
 	private Janela janela;
+	Biblioteca biblioteca= Biblioteca.getInstance();
 
-	public RegistaUtilizador(Janela j) {
+	public RegistaUtilizadorPanel(Janela j) {
 		setLayout(null);
 
 		this.janela = j;
@@ -53,10 +64,10 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(207, 6, 66, 16);
+		JLabel lblNewLabel = new JLabel("Bibliotecario x");
+		lblNewLabel.setBounds(85, 5, 309, 16);
 		panel.add(lblNewLabel);
-		
+
 		comboBox = new JComboBox();
 		comboBox.addActionListener(this);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Leitor", "Colaborador", "Biblio Chefe" }));
@@ -84,11 +95,10 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		// Painel dos Utilizadores
 
 		this.pnlUtilizadores = new JPanel();
-		
+
 		pnlUtilizadores.setBounds(20, 116, 433, 169);
 		panel.add(pnlUtilizadores);
 		pnlUtilizadores.setLayout(layout);
-	
 
 		// Mensagem de users
 
@@ -98,11 +108,13 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		pnlUtilizadores.add(pnlMensagem, "mensagem");
 		pnlMensagem.setLayout(null);
 
-		JLabel lblMensagem = new JLabel("");
+		this.lblMensagem = new JLabel("");
 		lblMensagem.setBounds(6, 44, 421, 16);
 		pnlMensagem.add(lblMensagem);
-
-		// pnlUtilizadores.setLayout(new CardLayout(0, 0));
+		
+		this.lblMensagemLeitor = new JLabel("");
+		lblMensagemLeitor.setBounds(6, 72, 421, 16);
+		pnlMensagem.add(lblMensagemLeitor);
 
 		// Leitor
 
@@ -112,17 +124,19 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		pnlLeitor.setLayout(null);
 
 		JLabel lblDataNascimento = new JLabel("Data Nascimento");
-		lblDataNascimento.setBounds(71, 10, 108, 16);
+		lblDataNascimento.setBounds(78, 10, 108, 16);
 		pnlLeitor.add(lblDataNascimento);
 
-		JFormattedTextField formattedTextFieldData = new JFormattedTextField();
+		formattedTextFieldData = new JFormattedTextField();
+		formattedTextFieldData.addFocusListener(this);
+		formattedTextFieldData.setFocusLostBehavior(JFormattedTextField.REVERT);
 		formattedTextFieldData.setForeground(Color.LIGHT_GRAY);
 		formattedTextFieldData.setText("DD/MM/AAAA");
 		formattedTextFieldData.setBounds(235, 5, 130, 26);
 		pnlLeitor.add(formattedTextFieldData);
 
 		JLabel lblCartoCidadao = new JLabel("Cartão Cidadao");
-		lblCartoCidadao.setBounds(71, 38, 96, 16);
+		lblCartoCidadao.setBounds(78, 38, 96, 16);
 		pnlLeitor.add(lblCartoCidadao);
 
 		txtCC = new JTextField();
@@ -131,7 +145,7 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		txtCC.setColumns(10);
 
 		JLabel lblMorada = new JLabel("Morada");
-		lblMorada.setBounds(71, 66, 46, 16);
+		lblMorada.setBounds(78, 66, 46, 16);
 		pnlLeitor.add(lblMorada);
 
 		txtMorada = new JTextField();
@@ -140,7 +154,7 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		txtMorada.setColumns(10);
 
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setBounds(71, 94, 42, 16);
+		lblEmail.setBounds(78, 94, 42, 16);
 		pnlLeitor.add(lblEmail);
 
 		txtEmail = new JTextField();
@@ -149,14 +163,13 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		txtEmail.setColumns(10);
 
 		JLabel lblContactoTelefnico = new JLabel("Contacto Telefónico");
-		lblContactoTelefnico.setBounds(71, 122, 127, 16);
+		lblContactoTelefnico.setBounds(78, 122, 127, 16);
 		pnlLeitor.add(lblContactoTelefnico);
 
 		txtContactoTelefonico = new JTextField();
 		txtContactoTelefonico.setBounds(235, 117, 130, 26);
 		pnlLeitor.add(txtContactoTelefonico);
 		txtContactoTelefonico.setColumns(10);
-		
 
 		// Bibliotecario Chefe e Colaborador
 
@@ -165,22 +178,22 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		pnlBiblioColaborador.setLocation(6, 6);
 		pnlUtilizadores.add(pnlBiblioColaborador, "biblioColaborador");
 		pnlBiblioColaborador.setLayout(null);
-		
-				JLabel lblNumeroDeFuncionario = new JLabel("Número de Funcionario");
-				lblNumeroDeFuncionario.setBounds(72, 22, 147, 16);
-				pnlBiblioColaborador.add(lblNumeroDeFuncionario);
-				
-						txtNumFuncionario = new JTextField();
-						txtNumFuncionario.setBounds(234, 17, 130, 26);
-						pnlBiblioColaborador.add(txtNumFuncionario);
-						txtNumFuncionario.setColumns(10);
+
+		JLabel lblNumeroDeFuncionario = new JLabel("Número de Funcionario");
+		lblNumeroDeFuncionario.setBounds(79, 22, 147, 16);
+		pnlBiblioColaborador.add(lblNumeroDeFuncionario);
+
+		txtNumFuncionario = new JTextField();
+		txtNumFuncionario.setBounds(234, 17, 130, 26);
+		pnlBiblioColaborador.add(txtNumFuncionario);
+		txtNumFuncionario.setColumns(10);
 
 		// Botões
 
-		btnRegista = new JButton("Regista");
-		btnRegista.addActionListener(this);
-		btnRegista.setBounds(20, 297, 81, 40);
-		panel.add(btnRegista);
+		btnRegistaUtilizador = new JButton("Regista");
+		btnRegistaUtilizador.addActionListener(this);
+		btnRegistaUtilizador.setBounds(20, 297, 81, 40);
+		panel.add(btnRegistaUtilizador);
 
 		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
@@ -191,43 +204,49 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		btnVoltar.addActionListener(this);
 		btnVoltar.setBounds(283, 297, 81, 40);
 		panel.add(btnVoltar);
-
-		btnNovoRegisto = new JButton("Novo Registo");
-		btnNovoRegisto.addActionListener(this);
-		btnNovoRegisto.setBounds(113, 297, 99, 40);
-		panel.add(btnNovoRegisto);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnRegista) {
+		
+		String str = (String) this.comboBox.getSelectedItem();
+		
+		if (e.getSource() == this.btnRegistaUtilizador) {
+			
+			if(str.equals("Leitor")){
+				registaUtilizadorLeitor();
+			}
+			else
+			 registaUtilizadorColaboradorBiblioChefe();
 
 		} else if (e.getSource() == this.btnSair) {
-
+			
+			limpaPainelRegistaUtilizador();
 			janela.sairOK();
 
 		} else if (e.getSource() == this.btnVoltar) {
 
+			limpaPainelRegistaUtilizador();
 			janela.bibliotecarioChefeOK();
 
-		} else if (e.getSource() == this.btnNovoRegisto) {
-
 		} else if (e.getSource() == this.comboBox) {
-
-			String str = (String) this.comboBox.getSelectedItem();
 
 			if (str.equals("Leitor")) {
 
 				abrePainelLeitorOK();
-				
-			}
-			else 
-				abrePainelBibliotecarioColaboradorOK();
-				
-			}
-		
 
+			} else
+				abrePainelBibliotecarioColaboradorOK();
+
+		}
+
+	}
+	public void focusGained(FocusEvent e) {
+		
+		formattedTextFieldData.setText("");
+		formattedTextFieldData.setForeground(Color.BLACK);
+		
 	}
 
 	public void abrePainelLeitorOK() {
@@ -235,22 +254,89 @@ public class RegistaUtilizador extends JPanel implements ActionListener {
 		layout.show(pnlUtilizadores, "leitor");
 
 	}
-	public void abrePainelBibliotecarioColaboradorOK(){
-		
-		
+
+	public void abrePainelBibliotecarioColaboradorOK() {
+
 		layout.show(pnlUtilizadores, "biblioColaborador");
+
+	}
+
+	public void registaUtilizadorColaboradorBiblioChefe() {
+
+		//TODO Não está a funcionar o pesquisar o numero, erro na linha 311 da biblio e 268 e 209 na classe RegistaUtilizador
+		//TODO fazer o metodo random para a password e user name
+		//TODO fazer a troca desse metodo quando se cria o utilizador, estão por default
+		
+		String str=(String) this.comboBox.getSelectedItem();
+		
+		if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText()))==null){
+			
+			if( str.equals("Colaborador")){
+			
+				biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(), 
+						Integer.parseInt(txtNumFuncionario.getText()));
+				//TODO refazer a mensagem
+				enviaMensagemParaValidar(" Qualquer coisa", "");
+				
+			}
+			else if(str.equals("Biblio Chefe") ){
+				
+				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), "123", txtNome.getText(), 
+						Integer.parseInt(txtNumFuncionario.getText()));
+				
+			}
+		}	
+			
+	}
+	
+	public void registaUtilizadorLeitor(){
+	
+		//TODO devolver o numero de leitor do utilizador, username e password
+		
+		if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText())==null){
+		
+			biblioteca.criaLeitor(txtUsername.getText(), "123",txtNome.getText(), 
+				formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), 
+				txtEmail.getText(), txtContactoTelefonico.getText());
+			
+				enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!", "Leitor nº ");
+		
+		}
+		else
+			
+			enviaMensagemParaValidar("Erro: o Leitor que inseriu já existe.", "");
+	
+	}
+	
+	public void limpaPainelRegistaUtilizador(){
+		
+		//TODO melhorar a limpeza dos campos
+		
+		this.txtUsername.setText("");
+		this.txtNome.setText("");
+		this.txtCC.setText("");
+		this.txtNumFuncionario.setText("");;
+		this.txtMorada.setText("");
+		this.txtEmail.setText("");
+		this.txtContactoTelefonico.setText("");
+		this.formattedTextFieldData.setText("");;
+		this.lblMensagem.setText("");
+		this.lblMensagemLeitor.setText("");
+		
+	}
+	
+	public void enviaMensagemParaValidar(String s, String st){
+		
+		lblMensagem.setText(s);
+		lblMensagemLeitor.setText(st);
+		layout.show(pnlUtilizadores, "mensagem");
+		
 		
 	}
 
-	public void registaUtilizador() {
-
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
-
-	public void mostraPainelLeitor() {
-
-		// Object pnlBiblioColaborador;
-		// layout.show(getContentPane(pnlMensagem, "mensagem"));
-
-	}
-
 }
