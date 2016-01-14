@@ -31,7 +31,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 	public EmprestimosForaPrazo(Janela j) {
 		setLayout(null);
-
+		
+		//TODO: ver do cardlayout
 		this.janela = j;
 		this.layout = new CardLayout(0, 0);
 
@@ -42,8 +43,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		panel.setLayout(null);
 
 
-		JLabel lblNewLabel = new JLabel("Devolução empréstimo em atraso");
-		lblNewLabel.setBounds(157, 6, 125, 16);
+		JLabel lblNewLabel = new JLabel("Empréstimo em atraso");
+		lblNewLabel.setBounds(150, 6, 200, 16);
 		panel.add(lblNewLabel);
 
 		btnSair = new JButton("Sair");
@@ -62,7 +63,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		scrollPane_1.setBounds(6, 71, 454, 191);
 		panel.add(scrollPane_1);
 
-		String[] colunas={"Código", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
+		String[] colunas={"Código de barras", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
 				"Data Empréstimo", "Prazo máximo entrega"};
 
 		
@@ -90,7 +91,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table
-		String[] colunas={"Código", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
+		String[] colunas={"Código de barras", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
 				"Data Empréstimo", "Prazo máximo entrega"};
 
 		// add header in table model     
@@ -104,14 +105,14 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			Emprestimo emp = emprestimos.get(i);
 			Publicacao pub = (Publicacao) emp.getPublicacao();
 	        dtm.addRow(new Object[] {  pub.getCodBarras(),
-	        		pub.getClass(),
-	        		 pub.getTitulo(),
-	        		 emp.getLeitor().getNumLeitor(),
-	        		emp.getLeitor().getNome(),
-	     			emp.getLeitor().getTelefone(),
-	     			emp.getLeitor().getEmail(),
-	     			 emp.getDataEmp(),
-	     			 emp.dataMaximaEntrega(), });
+	        			pub.getClass(),
+	        			pub.getTitulo(),
+	        			emp.getLeitor().getNumLeitor(),
+	        			emp.getLeitor().getNome(),
+	        			emp.getLeitor().getTelefone(),
+	        			emp.getLeitor().getEmail(),
+	        			emp.getDataEmp(),
+	        			emp.dataMaximaEntrega(), });
 	 }
 
 		
