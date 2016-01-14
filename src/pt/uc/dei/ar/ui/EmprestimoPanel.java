@@ -219,6 +219,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 	public void validarBotaoEmprestimo() {
 
 		// TODO: NAO PERMITIR LETRAS NO TEXFIELD
+		//TODO: bloquear os jornais
 		
 		int codigoLeitor = Integer.parseInt(txtNumeroLeitor.getText());
 		int codigoBarras  = Integer.parseInt(txtCodigoBarras.getText());

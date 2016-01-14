@@ -121,8 +121,8 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 		
 		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
-				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN"
-				};
+				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
+				"Data Empréstimo", "Prazo máximo entrega"};
 		
 		Object [][] data = null;
 		if (utilizador != null) {
@@ -138,7 +138,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		tabela.setFillsViewportHeight(true);
 		scrollPane_1.setViewportView(tabela);
 		lblLeitor = new JLabel("");
-		lblLeitor.setBounds(172, 19, 155, 16);
+		lblLeitor.setBounds(110, 19, 310, 16);
 		add(lblLeitor);
 
 	}

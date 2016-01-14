@@ -58,7 +58,7 @@ public class Biblioteca {
 		if(instance == null) 
 		{
 			instance= new Biblioteca();
-			// O valor é retornado para quem está pedindo
+			// O valor é retornado para quem está a pedir
 
 		}
 		return instance;
@@ -122,6 +122,49 @@ public class Biblioteca {
 		System.out.println(utilizadorPorUsername);
 		return utilizadorPorUsername;
 	}
+
+	/**
+	 * Gerar username para o utilizador
+	 * @param nome
+	 * @return username em formto String
+	 */
+	public String gerarUsername(String nome){
+
+		//TODO: acrescentar ao username o codigo de leitor?
+		String string = nome;
+		String [] result = string.split(" ");
+		String palavra1 = null, palavra2 = null;
+		int indiceDoUltimo = result.length -1;
+
+		for (int x = 0; x < result.length; x++){
+			
+			if (x == 0 ) {
+				
+				palavra1 = result[x].substring(0,3); 
+			}
+			if( x== indiceDoUltimo){
+				palavra2 = result[x].substring(0,2);
+			}
+
+		}
+		return palavra1+palavra2;
+	}
+
+
+	/**
+	 * Gerar password random para o utilizador
+	 * @return password com 4 digitos 
+	 */
+	public int gerarPassword(){
+		Random gerador = new Random();
+		int password=0;
+		
+		for (int i = 0; i < 10; i++) {
+			password = gerador.nextInt(10000); 
+		}
+		return password;
+	}
+
 
 	/**
 	 * Login encontrado
@@ -359,18 +402,6 @@ public class Biblioteca {
 
 	}
 
-	//	public boolean publicacaoPodeSerEmprestada(Publicacao pub){
-	//		
-	//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-	//			
-	//			Publicacao aPesquisar = (Publicacao) emprestimo.getPublicacao();
-	//			if (pub.equals(aPesquisar) && emprestimo.getDataDev() != null) {
-	//				
-	//				return false;
-	//			}
-	//		}
-	//		return true;
-	//	}
 
 	/**
 	 * Cria emprestimo

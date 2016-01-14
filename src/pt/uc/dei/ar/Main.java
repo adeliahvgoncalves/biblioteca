@@ -55,6 +55,7 @@ public class Main {
 		maravilha.criaEmprestimo(1, 9);
 		//maravilha.criaEmprestimo(1, 5);
 
+	
 
 		//Criar emprestimos random
 
@@ -149,7 +150,12 @@ public class Main {
 		//Emprestimos do leitor
 		System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
 
-
+		
+		//testar o gera utilizador e gerar password
+		System.out.println("Username"+maravilha.gerarUsername("Maria Margarida"));
+		System.out.println("Password"+maravilha.gerarPassword());
+		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
