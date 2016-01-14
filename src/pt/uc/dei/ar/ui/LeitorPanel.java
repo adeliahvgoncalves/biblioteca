@@ -149,7 +149,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nº Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
-				"Data Empréstimo", "Prazo máximo entrega"};
+				"Data Empréstimo", "Data máxima entrega"};
 
 		// add header in table model     
 		 dtm.setColumnIdentifiers(colunas);

@@ -44,9 +44,9 @@ public class Janela extends JFrame {
 	private Utilizador utilizador;
 	private RegistaUtilizadorPanel registaUtilizador;
 	private PesquisarPublicacao pesquisaPublicacao;
-	
+	private EmprestimosForaPrazo emprestimosForaPrazo;
 	private Biblioteca biblioteca = Biblioteca.getInstance();
-	
+
 	public Janela() {
 
 		setTitle("Biblioteca");
@@ -61,18 +61,21 @@ public class Janela extends JFrame {
 
 		this.emprestimo = new EmprestimoPanel(this);
 		getContentPane().add(emprestimo, "emprestimo");
-		
+
 		this.leitor = new LeitorPanel(this, null);
 		getContentPane().add(leitor, "leitor");
-		
+
 		BibliotecarioChefePanel bibliotecarioChefe=new BibliotecarioChefePanel(this);
 		getContentPane().add(bibliotecarioChefe, "bibliotecarioChefe");
-		
+
 		this.registaUtilizador= new RegistaUtilizadorPanel(this);
 		getContentPane().add(registaUtilizador, "registaUtilizador");
-		
-	//	this.pesquisaPublicacao= new PesquisarPublicacao(this);
-	//	getContentPane().add(pesquisaPublicacao, "pesquisaPublicacao");
+
+		this.pesquisaPublicacao= new PesquisarPublicacao(this);
+		getContentPane().add(pesquisaPublicacao, "pesquisaPublicacao");
+
+		this.emprestimosForaPrazo= new EmprestimosForaPrazo(this);
+		getContentPane().add(emprestimosForaPrazo, "EmprestimosForaPrazo");
 
 	}
 
@@ -87,38 +90,44 @@ public class Janela extends JFrame {
 
 		emprestimo.desativaVisibilidaBotaoVoltar();
 		layout.show(getContentPane(), "emprestimo");
-		
+
 	}
-	
+
 	public void emprestimoPanelBibliotecarioChefeOK(){
-		
+
 		layout.show(getContentPane(), "emprestimo");
 		emprestimo.activaVisibilidaBotaoVoltar();
-			
+
 	}
-	
+
 	public void bibliotecarioChefeOK(){
-		
+
 		layout.show(getContentPane(), "bibliotecarioChefe");
-		
+
 	}
 
 	public void sairOK() {
-		
+
 		layout.show(getContentPane(), "login");
-		
+
 	}
-	
+
 	public void registaUtilizadorOK(){
-		
+
 		layout.show(getContentPane(), "registaUtilizador");
-		
+
 	}
-	
+
 	public void pesquisaPublicacaoOK(){
-		
+
 		layout.show(getContentPane(), "pesquisaPublicacao");
-		
+
+	}
+
+	public void emprestimosForaPrazoOK(){
+
+		layout.show(getContentPane(), "emprestimosForaPrazo");
+
 	}
 
 }

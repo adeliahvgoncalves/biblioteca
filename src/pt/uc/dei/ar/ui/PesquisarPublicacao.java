@@ -34,6 +34,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 	private JButton btnPesquisar;
 	private JButton btnSair;
 	private JButton btnVoltar;
+	private Biblioteca biblioteca = Biblioteca.getInstance();
 
 	public PesquisarPublicacao(Janela j) {
 		setLayout(null);
@@ -52,7 +53,11 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		lblNewLabel.setBounds(157, 6, 125, 16);
 		panel.add(lblNewLabel);
 
+
 		textFielPesquisa = new JTextField();
+		textFielPesquisa.setText("pesquisar");
+		textFielPesquisa.setEditable(true);
+		textFielPesquisa.setToolTipText("");
 		textFielPesquisa.setBounds(210, 33, 183, 26);
 		panel.add(textFielPesquisa);
 		textFielPesquisa.setColumns(10);
@@ -71,33 +76,24 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		btnVoltar.setBounds(283, 297, 81, 40);
 		panel.add(btnVoltar);
 
-
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(6, 71, 454, 191);
 		panel.add(scrollPane_1);
 
-		//cria tabela
+		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
+				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
+				"Data Empréstimo", "Prazo máximo entrega"};
 
-		tabela.setBounds(157, 155, 1, 1);
-	//	tabela = new JTable(data, colunas);
+		Object [][] data = null;
+		data = new Object[1][17];
+
+		//cria tabela
+		tabela = new JTable(data, colunas);
 		tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
 		scrollPane_1.setViewportView(tabela);
-
-		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
-				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN"
-		};
-
-		Object [][] data = null;
-
-
-		data = new Object[1][17];
-
-
-		tabela = new JTable(data, colunas);
-
 
 	}
 
@@ -107,17 +103,15 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nº Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
-		};
-		//"Data Empréstimo", "Prazo máximo entrega"
+				"Data Empréstimo", "Data máxima entrega"};
+		
 		// add header in table model     
 		dtm.setColumnIdentifiers(colunas);
 
+		Object[][] publicacao = obterUmaPublicacao();
+		for (int i = 0; i < publicacao.length; i++) {
 
-
-		Object[][] emprestimos = obterUmaPublicacao(textFielPesquisa.getText());
-		for (int i = 0; i < emprestimos.length; i++) {
-
-			dtm.addRow(emprestimos[i]);
+			dtm.addRow(publicacao[i]);
 		}
 
 		tabela.setModel(dtm);
@@ -143,12 +137,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 	}
 
-	public Object [][] obterUmaPublicacao(String nome){
+	public Object [][] obterUmaPublicacao(){
 
-		Publicacao pub = Biblioteca.getInstance().pesquisaPublicacao(nome);
+		Publicacao pub = Biblioteca.getInstance().pesquisaPublicacao(textFielPesquisa.getText());
 		Object [][] data= new Object[1][17];
 
-		for (int i = 0; i <= 15; i++) {
+		for (int i = 0; i <= 17; i++) {
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass();
 			data[i][2] = pub.getTitulo();
@@ -218,7 +212,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 			}
 			if(pub.isOcupado()){
 				for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
-					if(emp.getPublicacao().equals(nome)){
+					if(emp.getPublicacao().equals(textFielPesquisa.getText())){
 						data[i][15] = emp.getDataEmp();
 					}
 				}
@@ -229,7 +223,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 			if(pub.isOcupado()){
 				for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
-					if(emp.getPublicacao().equals(nome)){
+					if(emp.getPublicacao().equals(textFielPesquisa.getText())){
 						data[i][16] = emp.dataMaximaEntrega();;
 					}
 				}
