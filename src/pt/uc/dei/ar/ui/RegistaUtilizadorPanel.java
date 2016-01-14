@@ -23,7 +23,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener {
-	
+
 	private JTextField txtNome;
 	private JTextField txtUsername;
 	private JTextField txtNumFuncionario;
@@ -33,7 +33,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	private JTextField txtContactoTelefonico;
 	private JLabel lblMensagem;
 	private JLabel lblMensagemLeitor;
-	
+
 	private JFormattedTextField formattedTextFieldData;
 
 	private JPanel pnlBiblioColaborador;
@@ -51,7 +51,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	private CardLayout layout;
 
 	private Janela janela;
-	Biblioteca biblioteca= Biblioteca.getInstance();
+	Biblioteca biblioteca = Biblioteca.getInstance();
 
 	public RegistaUtilizadorPanel(Janela j) {
 		setLayout(null);
@@ -109,11 +109,11 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		pnlMensagem.setLayout(null);
 
 		this.lblMensagem = new JLabel("");
-		lblMensagem.setBounds(6, 44, 421, 16);
+		lblMensagem.setBounds(20, 44, 407, 16);
 		pnlMensagem.add(lblMensagem);
-		
+
 		this.lblMensagemLeitor = new JLabel("");
-		lblMensagemLeitor.setBounds(6, 72, 421, 16);
+		lblMensagemLeitor.setBounds(20, 72, 407, 16);
 		pnlMensagem.add(lblMensagemLeitor);
 
 		// Leitor
@@ -209,19 +209,23 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		//TODO Verificar as entradas do Leitor e o colaborador biblio para adicionar à biblioteca, bloquear e enviar erro
+		//TODO Simplificar este método
+
 		String str = (String) this.comboBox.getSelectedItem();
-		
+
 		if (e.getSource() == this.btnRegistaUtilizador) {
+
+			if (str.equals("Leitor")) {
 			
-			if(str.equals("Leitor")){
-				registaUtilizadorLeitor();
-			}
-			else
-			 registaUtilizadorColaboradorBiblioChefe();
+					registaUtilizadorLeitor();
+					
+			} else
+				
+				registaUtilizadorColaboradorBiblioChefe();
 
 		} else if (e.getSource() == this.btnSair) {
-			
+
 			limpaPainelRegistaUtilizador();
 			janela.sairOK();
 
@@ -233,20 +237,24 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		} else if (e.getSource() == this.comboBox) {
 
 			if (str.equals("Leitor")) {
-
+				
 				abrePainelLeitorOK();
+				limpaPainelRegistaUtilizador();
 
 			} else
+		
 				abrePainelBibliotecarioColaboradorOK();
+				limpaPainelRegistaUtilizador();
 
 		}
 
 	}
+
 	public void focusGained(FocusEvent e) {
-		
+
 		formattedTextFieldData.setText("");
 		formattedTextFieldData.setForeground(Color.BLACK);
-		
+
 	}
 
 	public void abrePainelLeitorOK() {
@@ -263,80 +271,86 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	public void registaUtilizadorColaboradorBiblioChefe() {
 
-		//TODO Não está a funcionar o pesquisar o numero, erro na linha 311 da biblio e 268 e 209 na classe RegistaUtilizador
-		//TODO fazer o metodo random para a password e user name
-		//TODO fazer a troca desse metodo quando se cria o utilizador, estão por default
+		// TODO Não está a funcionar o pesquisar o numero, erro na linha 311 da
+		// biblio e 268 e 209 na classe RegistaUtilizador
+		// TODO fazer o metodo random para a password e user name
+		// TODO fazer a troca desse metodo quando se cria o utilizador, estão por default
 		
-		String str=(String) this.comboBox.getSelectedItem();
-		
-		if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText()))==null){
-			
-			if( str.equals("Colaborador")){
-			
-				biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(), 
+
+		String str = (String) this.comboBox.getSelectedItem();
+
+		if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) == null) {
+
+			if (str.equals("Colaborador")) {
+
+				biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
-				//TODO refazer a mensagem
+				// TODO refazer a mensagem
 				enviaMensagemParaValidar(" Qualquer coisa", "");
-				
-			}
-			else if(str.equals("Biblio Chefe") ){
-				
-				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), "123", txtNome.getText(), 
+
+			} else if (str.equals("Biblio Chefe")) {
+
+				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), "123", txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
-				
+
 			}
-		}	
-			
-	}
-	
-	public void registaUtilizadorLeitor(){
-	
-		//TODO devolver o numero de leitor do utilizador, username e password
-		
-		if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText())==null){
-		
-			biblioteca.criaLeitor(txtUsername.getText(), "123",txtNome.getText(), 
-				formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), 
-				txtEmail.getText(), txtContactoTelefonico.getText());
-			
-				enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!", "Leitor nº ");
-		
 		}
-		else
+
+	}
+
+	public void registaUtilizadorLeitor() {
+
+		// TODO devolver o numero de leitor do utilizador, username e password, colocar na segunda parte da string.
+
+		if(txtUsername.getText().equals("") || txtNome.getText().equals("") || txtCC.getText().equals("") ){
+			
+			enviaMensagemParaValidar("Erro: não inseriu os campos necessários para validar o registo.",
+					"Por favor introduza o CC, nome e username correctamente.");
+			
+		}
+		
+		else if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText()) == null) {
+
+			biblioteca.criaLeitor(txtUsername.getText(), "123", txtNome.getText(), formattedTextFieldData.getText(),
+					txtCC.getText(), txtMorada.getText(), txtEmail.getText(), txtContactoTelefonico.getText());
+
+			enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!", "Leitor nº ");
+			
+			
+		} else
 			
 			enviaMensagemParaValidar("Erro: o Leitor que inseriu já existe.", "");
-	
+
 	}
-	
-	public void limpaPainelRegistaUtilizador(){
-		
-		//TODO melhorar a limpeza dos campos
-		
+
+	public void limpaPainelRegistaUtilizador() {
+
+		// TODO melhorar a limpeza dos campos
+
 		this.txtUsername.setText("");
 		this.txtNome.setText("");
 		this.txtCC.setText("");
-		this.txtNumFuncionario.setText("");;
+		this.txtNumFuncionario.setText("");
 		this.txtMorada.setText("");
 		this.txtEmail.setText("");
 		this.txtContactoTelefonico.setText("");
-		this.formattedTextFieldData.setText("");;
+		this.formattedTextFieldData.setText("");
 		this.lblMensagem.setText("");
 		this.lblMensagemLeitor.setText("");
-		
+
 	}
-	
-	public void enviaMensagemParaValidar(String s, String st){
-		
+
+	public void enviaMensagemParaValidar(String s, String st) {
+
 		lblMensagem.setText(s);
 		lblMensagemLeitor.setText(st);
 		layout.show(pnlUtilizadores, "mensagem");
-		
-		
+
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
