@@ -629,23 +629,21 @@ public class Biblioteca {
 //	}
 //
 //
-//	public int diasDeEmprestimo(Emprestimo emprestimo){
-//		long m1 = 0;
-//		long m2=0;
+	public int diasDeEmprestimo(Emprestimo emprestimo){
+		long m1 = 0;
+		long m2 = 0;
 //		Calendar dataDeEmp= Calendar.getInstance();
 //		dataDeEmp.setTime(emprestimo.getDataEmp());
 //		Calendar dataDEvol= Calendar.getInstance();
 //		dataDEvol.setTime(emprestimo.getDataDev());
-//
-//		if(emprestimo.getDataDev() != null)
-//
-//
-//		m1 = dataDeEmp.getTimeInMillis();
-//		m2 = dataDEvol.getTimeInMillis();
-//
-//		return  (int) ((m2 - m1) / ((12*30*24*60*60*1000)/2));
-//
-//	}
+
+		if(emprestimo.getDataDev() != null){
+			
+			m1 = emprestimo.getDataEmp().getTime();
+			m2 = emprestimo.getDataDev().getTime();
+		}
+		return  (int) ((m2 - m1) / 1000 / 60 / 60 / 24);
+	}
 //
 //	/**
 //	 * @return

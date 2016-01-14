@@ -166,7 +166,7 @@ public class Main {
 		System.out.println("Password"+maravilha.gerarPassword());
 
 
-		//System.out.print(maravilha.diasDeEmprestimo(em4));
+		System.out.print("["+maravilha.diasDeEmprestimo(em4)+"]");
 		//System.out.print(maravilha.duracaoMinimaEmprestimo());
 
 
