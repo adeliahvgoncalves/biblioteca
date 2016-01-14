@@ -257,19 +257,19 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	public void abrePainelLeitorOK() {
+	private void abrePainelLeitorOK() {
 
 		layout.show(pnlUtilizadores, "leitor");
 
 	}
 
-	public void abrePainelBibliotecarioColaboradorOK() {
+	private void abrePainelBibliotecarioColaboradorOK() {
 
 		layout.show(pnlUtilizadores, "biblioColaborador");
 
 	}
 
-	public void registaUtilizadorColaboradorBiblioChefe() {
+	private void registaUtilizadorColaboradorBiblioChefe() {
 
 		// TODO Não está a funcionar o pesquisar o numero, erro na linha 311 da
 		// biblio e 268 e 209 na classe RegistaUtilizador
@@ -298,7 +298,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	public void registaUtilizadorLeitor() {
+	private void registaUtilizadorLeitor() {
 
 		// TODO devolver o numero de leitor do utilizador, username e password, colocar na segunda parte da string.
 
@@ -323,7 +323,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	public void limpaPainelRegistaUtilizador() {
+	private void limpaPainelRegistaUtilizador() {
 
 		// TODO melhorar a limpeza dos campos
 
@@ -340,7 +340,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	public void enviaMensagemParaValidar(String s, String st) {
+	private void enviaMensagemParaValidar(String s, String st) {
 
 		lblMensagem.setText(s);
 		lblMensagemLeitor.setText(st);
