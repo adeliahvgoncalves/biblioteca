@@ -113,7 +113,7 @@ public class Janela extends JFrame {
 	}
 
 	public void registaUtilizadorOK(){
-
+		
 		layout.show(getContentPane(), "registaUtilizador");
 
 	}

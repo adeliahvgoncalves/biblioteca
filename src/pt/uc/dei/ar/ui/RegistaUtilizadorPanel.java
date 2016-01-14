@@ -271,33 +271,43 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	}
 
 	private void registaUtilizadorColaboradorBiblioChefe() {
-
-		// TODO Não está a funcionar o pesquisar o numero, erro na linha 311 da
-		// biblio e 268 e 209 na classe RegistaUtilizador
 		// TODO fazer o metodo random para a password e user name
 		// TODO fazer a troca desse metodo quando se cria o utilizador, estão por default
 		
 
 		String str = (String) this.comboBox.getSelectedItem();
 
-		if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) == null) {
+		
+		if(txtUsername.getText().equals("") || txtNome.getText().equals("") || txtNumFuncionario.getText().equals("") ){
+			
+			enviaMensagemParaValidar("Erro: não inseriu os campos necessários para validar o registo.",
+					"Por favor introduza o nome, username e numero de funcionario correctamente.");
+			
+		}
+		else
+			
+			if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) == null) {
 
-			if (str.equals("Colaborador")) {
+				if (str.equals("Colaborador")) {
 
-				biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(),
+					biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
 				// TODO refazer a mensagem
-				enviaMensagemParaValidar(" Qualquer coisa", "");
+				enviaMensagemParaValidar(" O Colaborador foi registado correctamente", " O username é ... e a password....");
 
-			} else if (str.equals("Biblio Chefe")) {
+				} else if (str.equals("Biblio Chefe")) {
 
 				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), "123", txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
-
+				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente", " O username é ... e a password....");
+				}
 			}
+				else
+					enviaMensagemParaValidar(" Erro: Já existe um funcionário com o mesmo número. Insira novamente",
+							"os dados e se persistir o erro dirija-se aos Recurso Humanos. ");
 		}
 
-	}
+	
 
 	private void registaUtilizadorLeitor() {
 
