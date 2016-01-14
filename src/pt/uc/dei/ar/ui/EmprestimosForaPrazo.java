@@ -105,7 +105,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			Emprestimo emp = emprestimos.get(i);
 			Publicacao pub = (Publicacao) emp.getPublicacao();
 	        dtm.addRow(new Object[] {  pub.getCodBarras(),
-	        			pub.getClass(),
+	        			pub.getClass().getSimpleName(),
 	        			pub.getTitulo(),
 	        			emp.getLeitor().getNumLeitor(),
 	        			emp.getLeitor().getNome(),

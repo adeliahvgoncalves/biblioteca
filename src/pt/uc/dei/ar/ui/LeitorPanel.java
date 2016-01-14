@@ -178,7 +178,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 			Publicacao pub = (Publicacao) emp.getPublicacao();
 			
 			data[i][0] = pub.getCodBarras();
-			data[i][1] = pub.getClass();
+			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
 			if (pub instanceof Revista){
 			data[i][3] = "--";

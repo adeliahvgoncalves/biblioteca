@@ -149,7 +149,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		}
 
 		data[0][0] = pub.getCodBarras();
-		data[0][1] = pub.getClass();
+		data[0][1] = pub.getClass().getSimpleName();
 		data[0][2] = pub.getTitulo();
 		if (pub instanceof Revista || pub instanceof Jornal){
 			data[0][3] = "--";
