@@ -5,8 +5,12 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
 
-public class RegistaPublicacaoPanel extends JPanel {
+public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 	private JTextField txtTitulo;
 	private JTextField txtAreas;
 	private JTextField txtAnoPublicacao;
@@ -17,12 +21,27 @@ public class RegistaPublicacaoPanel extends JPanel {
 	private JTextField txtIsbn;
 	private JTextField txtAutor;
 	private JTextField txtOrientador;
+	
+	private JButton btnSair;
+	private JButton btnVoltar;
+	private JButton btnRegistar;
+	
+	private Janela janela;
+	private CardLayout layout;
+	
+	private JPanel pnlTipoPublicacao;
+	private JPanel pnlTese;
+	private JPanel pnlLivro;
+	
 
 	/**
 	 * Create the panel.
 	 */
-	public RegistaPublicacaoPanel() {
+	public RegistaPublicacaoPanel(Janela j) {
 		setLayout(null);
+		
+		this.janela=j;
+		this.layout=new CardLayout(0,0);
 		
 		JPanel pnlRegistaPublicacao = new JPanel();
 		pnlRegistaPublicacao.setBounds(6, 6, 462, 369);
@@ -80,16 +99,16 @@ public class RegistaPublicacaoPanel extends JPanel {
 		
 		//Painel conjunto
 		
-		JPanel pnlTipoPublicacao = new JPanel();
+		this.pnlTipoPublicacao = new JPanel();
 		pnlTipoPublicacao.setBounds(6, 189, 450, 127);
 		pnlRegistaPublicacao.add(pnlTipoPublicacao);
-		pnlTipoPublicacao.setLayout(null);
+		pnlTipoPublicacao.setLayout(layout);
 		
 		//Tese
 		
-		JPanel pnlTese = new JPanel();
+		this.pnlTese = new JPanel();
 		pnlTese.setBounds(6, 6, 438, 115);
-		pnlTipoPublicacao.add(pnlTese);
+		pnlTipoPublicacao.add(pnlTese, "tese");
 		pnlTese.setLayout(null);
 		
 		JComboBox comboBoxTipoTese = new JComboBox();
@@ -122,9 +141,9 @@ public class RegistaPublicacaoPanel extends JPanel {
 		
 		//Livro
 		
-		JPanel pnlLivro = new JPanel();
+		this.pnlLivro = new JPanel();
 		pnlLivro.setBounds(6, 6, 438, 115);
-		pnlTipoPublicacao.add(pnlLivro);
+		pnlTipoPublicacao.add(pnlLivro, "livro");
 		pnlLivro.setLayout(null);
 		
 		JLabel lblAutores = new JLabel("Autor(es)");
@@ -162,6 +181,41 @@ public class RegistaPublicacaoPanel extends JPanel {
 		txtIsbn.setBounds(141, 85, 130, 26);
 		pnlLivro.add(txtIsbn);
 		txtIsbn.setColumns(10);
+		
+		//Butões
+		
+		btnSair = new JButton("Sair");
+		btnSair.addActionListener(this);
+		btnSair.setBounds(375, 323, 81, 40);
+		pnlRegistaPublicacao.add(btnSair);
+		
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(this); 
+		btnVoltar.setBounds(282, 323, 81, 40);
+		pnlRegistaPublicacao.add(btnVoltar);
+		
+		btnRegistar = new JButton("Registar");
+		btnRegistar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRegistar.setBounds(6, 323, 95, 40);
+		pnlRegistaPublicacao.add(btnRegistar);
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getSource() == this.btnSair) {
+			
+			janela.sairOK();
+		}
+		
+		else if (e.getSource() == this.btnVoltar) {
+
+			janela.bibliotecarioChefeOK();
+		}
 	}
 }

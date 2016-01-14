@@ -17,6 +17,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 	private JButton btnEmprestaDevolve;
 	private JButton btnPesquisaPublicacao;
 	private JButton btnEmprestimosAtraso;
+	private JButton btnRegistaPublicacao;
 
 	/**
 	 * Create the panel.
@@ -61,9 +62,10 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		btnPesquisaPublicacao.setBounds(69, 84, 144, 47);
 		panel.add(btnPesquisaPublicacao);
 
-		JButton btnRegistarPublicao = new JButton("Registar Publicação");
-		btnRegistarPublicao.setBounds(69, 153, 144, 47);
-		panel.add(btnRegistarPublicao);
+		btnRegistaPublicacao = new JButton("Registar Publicação");
+		btnRegistaPublicacao.addActionListener(this);
+		btnRegistaPublicacao.setBounds(69, 153, 144, 47);
+		panel.add(btnRegistaPublicacao);
 
 		JButton btnGerarRelatrio = new JButton("Gerar Relatório");
 		btnGerarRelatrio.setBounds(69, 224, 144, 47);
@@ -95,10 +97,17 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 		}
 
-		else if(e.getSource() == this.btnEmprestimosAtraso)
+		else if(e.getSource() == this.btnEmprestimosAtraso){
 
 			janela.emprestimosForaPrazoOK();
+			
+		}
+		else if(e.getSource() == this.btnRegistaPublicacao){
 
+			janela.registaPublicacaoOK();
+			
+		}
+		
 	}
 
 }
