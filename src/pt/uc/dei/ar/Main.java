@@ -170,36 +170,7 @@ public class Main {
 		//System.out.print(maravilha.duracaoMinimaEmprestimo());
 
 
-		//		Calendar dataAtual = new GregorianCalendar(); 
-		//		int ano = dataAtual.get(Calendar.YEAR);
-		//		int x=0;
-		//		//int x = -365;
-		//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
-		//			x=-366;
-		//		} else {
-		//			x = -365;
-		//		}
-		//		Calendar dataAnoAnterior = Calendar.getInstance();
-		//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
-		//
-		//
-		//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
-		//		long numDias=0;
-		//		for (Emprestimo emprestimo : maravilha.getListaDeEmprestimo()) {
-		//			if(emprestimo.getDataDev() != null){
-		//				Calendar dataDeEmp= Calendar.getInstance();
-		//				dataDeEmp.setTime(emprestimo.getDataEmp());
-		//				Calendar dataDeDev= Calendar.getInstance();
-		//				dataDeDev.setTime(emprestimo.getDataDev());
-		//				dataDeEmp.getTimeInMillis();
-		//
-		//				if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-		//					numDias=(int)(dataDeDev.getTimeInMillis()-dataDeEmp.getTimeInMillis())/ (24*60*60*1000);
-		//				}
-		//			}
-		//		}
-		//		Collections.sort(listaDiasEmprestimo);
-		//		System.out.println(listaDiasEmprestimo.get(0));
+	
 		
 		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoUltimoAno();
 

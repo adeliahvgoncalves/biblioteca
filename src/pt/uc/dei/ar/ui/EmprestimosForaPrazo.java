@@ -134,10 +134,10 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass();
 			data[i][2] = pub.getTitulo();
-			data[i][3]=emp.getLeitor().getNumLeitor();
-			data[i][5]=emp.getLeitor().getNome();
-			data[i][6]=emp.getLeitor().getTelefone();
-			data[i][7]=emp.getLeitor().getEmail();
+			data[i][3] = emp.getLeitor().getNumLeitor();
+			data[i][5] = emp.getLeitor().getNome();
+			data[i][6] = emp.getLeitor().getTelefone();
+			data[i][7] = emp.getLeitor().getEmail();
 			data[i][8] = emp.getDataEmp();
 			data[i][9] = emp.dataMaximaEntrega();
 		}

@@ -141,8 +141,9 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 	public Object [][] obterUmaPublicacao(){
 
 		Publicacao pub = Biblioteca.getInstance().pesquisaPublicacao(textFielPesquisa.getText());
-		Object [][] data= new Object[1][17];
+		Object [][] data= new Object[1][17]; //aloco a minha tabela vazia
 		
+		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
 		if (pub == null) {
 			
 			return data;
@@ -171,15 +172,10 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 		if (pub instanceof Revista){
 			data[0][8] = ((Revista) pub).getVolume();
-		}
-		else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
-			data[0][8] = "--";	
-		}
-
-		if (pub instanceof Revista){
 			data[0][9] = ((Revista) pub).getNumeroSequencial();
 		}
 		else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][8] = "--";	
 			data[0][9] = "--";	
 		}
 		if (pub instanceof Livro){
@@ -193,30 +189,24 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		}
 		if (pub instanceof Tese){
 			data[0][11] = ((Tese) pub).getNomeDoOrientador();
-		}
-		else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
-			data[0][11] = "--";	
-		}
-		if (pub instanceof Tese){
 			data[0][12] = ((Tese) pub).getTipoDeTese();
 		}
 		else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
+			data[0][11] = "--";	
 			data[0][12] = "--";	
 		}
+		
 		if (pub instanceof Livro ){
 			data[0][13] = ((Livro) pub).getEditor();
-		}
-		else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
-			data[0][13] = "--";	
-		}
-		if (pub instanceof Livro){
 			data[0][14] = ((Livro) pub).getISBN();
 		}
 		else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][13] = "--";	
 			data[0][14] = "--";	
 		}
+//TODO: nao esta a colocar a data de emprestimo experimentar com o the economist!
 		if(pub.isOcupado()){
-			for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
+			for(Emprestimo emp: biblioteca.getListaDeEmprestimo()){
 				if(emp.getPublicacao().equals(textFielPesquisa.getText())){
 					data[0][15] = emp.getDataEmp();
 					data[0][16] = emp.dataMaximaEntrega();
