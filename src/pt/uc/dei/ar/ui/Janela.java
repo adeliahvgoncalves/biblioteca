@@ -75,7 +75,7 @@ public class Janela extends JFrame {
 		getContentPane().add(pesquisaPublicacao, "pesquisaPublicacao");
 
 		this.emprestimosForaPrazo= new EmprestimosForaPrazo(this);
-		getContentPane().add(emprestimosForaPrazo, "EmprestimosForaPrazo");
+		getContentPane().add(emprestimosForaPrazo, "emprestimosForaPrazo");
 
 	}
 

@@ -25,7 +25,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	private JTextField textFielPesquisa;
 	private CardLayout layout;
 	private JTable tabela;
-	private JButton btnPesquisar;
 	private JButton btnSair;
 	private JButton btnVoltar;
 	private Biblioteca biblioteca = Biblioteca.getInstance();
