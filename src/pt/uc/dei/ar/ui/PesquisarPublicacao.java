@@ -49,8 +49,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		panel.setLayout(null);
 
 
-		JLabel lblNewLabel = new JLabel("Sobre a publicação");
-		lblNewLabel.setBounds(157, 6, 125, 16);
+		JLabel lblNewLabel = new JLabel("Acerca da publicação");
+		lblNewLabel.setBounds(123, 6, 135, 16);
 		panel.add(lblNewLabel);
 
 
@@ -64,6 +64,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 		btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setBounds(55, 34, 117, 29);
+		btnPesquisar.addActionListener(this);
 		panel.add(btnPesquisar);
 
 		btnSair = new JButton("Sair");
@@ -82,7 +83,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		scrollPane_1.setBounds(6, 71, 454, 191);
 		panel.add(scrollPane_1);
 
-		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
+		String[] colunas={"Código de barras", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
 				"Data Empréstimo", "Prazo máximo entrega"};
 
@@ -104,7 +105,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nº Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
 				"Data Empréstimo", "Data máxima entrega"};
-		
+
 		// add header in table model     
 		dtm.setColumnIdentifiers(colunas);
 
@@ -121,11 +122,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == this.btnPesquisar) {
 
-			preencheTabelaEmprestimo();
-
-		} else if (e.getSource() == this.btnSair) {
+		if (e.getSource() == this.btnSair) {
 
 			janela.sairOK();
 
@@ -134,105 +132,100 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 			janela.bibliotecarioChefeOK();
 
 		}
+		else if (e.getSource() == this.btnPesquisar) {
 
+			this.preencheTabelaEmprestimo();
+		}
 	}
-
+	
 	public Object [][] obterUmaPublicacao(){
 
 		Publicacao pub = Biblioteca.getInstance().pesquisaPublicacao(textFielPesquisa.getText());
 		Object [][] data= new Object[1][17];
+		
+		if (pub == null) {
+			
+			return data;
+		}
 
-		for (int i = 0; i <= 17; i++) {
-			data[i][0] = pub.getCodBarras();
-			data[i][1] = pub.getClass();
-			data[i][2] = pub.getTitulo();
-			if (pub instanceof Revista || pub instanceof Jornal){
-				data[i][3] = "--";
-			}
-			else if (pub instanceof Livro || pub instanceof Tese){	
-				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
-			}
-			data[i][4] = pub.getDataPublicacao();
-			data[i][5] = pub.getDataReceçao();
-			data[i][6] = pub.getListaDeAreas();
-			if (pub instanceof Revista ){
-				data[i][7] = ((Revista) pub).getPeriodicidade();
-			} else if (pub instanceof Jornal ){
-				data[i][7] = ((Jornal) pub).getPeriodicidade();
-			}
-			else if (pub instanceof Livro || pub instanceof Tese){	
-				data[i][7] = "--";	
-			}
+		data[0][0] = pub.getCodBarras();
+		data[0][1] = pub.getClass();
+		data[0][2] = pub.getTitulo();
+		if (pub instanceof Revista || pub instanceof Jornal){
+			data[0][3] = "--";
+		}
+		else if (pub instanceof Livro || pub instanceof Tese){	
+			data[0][3] = ((NaoPeriodico) pub).getListaDeAutores();	
+		}
+		data[0][4] = pub.getDataPublicacao();
+		data[0][5] = pub.getDataReceçao();
+		data[0][6] = pub.getListaDeAreas();
+		if (pub instanceof Revista ){
+			data[0][7] = ((Revista) pub).getPeriodicidade();
+		} else if (pub instanceof Jornal ){
+			data[0][7] = ((Jornal) pub).getPeriodicidade();
+		}
+		else if (pub instanceof Livro || pub instanceof Tese){	
+			data[0][7] = "--";	
+		}
 
-			if (pub instanceof Revista){
-				data[i][8] = ((Revista) pub).getVolume();
-			}
-			else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
-				data[i][8] = "--";	
-			}
+		if (pub instanceof Revista){
+			data[0][8] = ((Revista) pub).getVolume();
+		}
+		else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][8] = "--";	
+		}
 
-			if (pub instanceof Revista){
-				data[i][9] = ((Revista) pub).getNumeroSequencial();
-			}
-			else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
-				data[i][9] = "--";	
-			}
-			if (pub instanceof Livro){
-				data[i][10] = ((Livro) pub).getNumEdicao();
-			}
-			else if(pub instanceof Jornal){
-				data[i][10] = ((Jornal) pub).getNumEdicao();
-			}
-			else if (pub instanceof Revista || pub instanceof Tese){	
-				data[i][10] = "--";	
-			}
-			if (pub instanceof Tese){
-				data[i][11] = ((Tese) pub).getNomeDoOrientador();
-			}
-			else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
-				data[i][11] = "--";	
-			}
-			if (pub instanceof Tese){
-				data[i][12] = ((Tese) pub).getTipoDeTese();
-			}
-			else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
-				data[i][12] = "--";	
-			}
-			if (pub instanceof Livro ){
-				data[i][13] = ((Livro) pub).getEditor();
-			}
-			else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
-				data[i][13] = "--";	
-			}
-			if (pub instanceof Livro){
-				data[i][14] = ((Livro) pub).getISBN();
-			}
-			else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
-				data[i][14] = "--";	
-			}
-			if(pub.isOcupado()){
-				for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
-					if(emp.getPublicacao().equals(textFielPesquisa.getText())){
-						data[i][15] = emp.getDataEmp();
-					}
+		if (pub instanceof Revista){
+			data[0][9] = ((Revista) pub).getNumeroSequencial();
+		}
+		else if (pub instanceof Livro || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][9] = "--";	
+		}
+		if (pub instanceof Livro){
+			data[0][10] = ((Livro) pub).getNumEdicao();
+		}
+		else if(pub instanceof Jornal){
+			data[0][10] = ((Jornal) pub).getNumEdicao();
+		}
+		else if (pub instanceof Revista || pub instanceof Tese){	
+			data[0][10] = "--";	
+		}
+		if (pub instanceof Tese){
+			data[0][11] = ((Tese) pub).getNomeDoOrientador();
+		}
+		else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
+			data[0][11] = "--";	
+		}
+		if (pub instanceof Tese){
+			data[0][12] = ((Tese) pub).getTipoDeTese();
+		}
+		else if (pub instanceof Revista || pub instanceof Livro || pub instanceof Jornal){	
+			data[0][12] = "--";	
+		}
+		if (pub instanceof Livro ){
+			data[0][13] = ((Livro) pub).getEditor();
+		}
+		else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][13] = "--";	
+		}
+		if (pub instanceof Livro){
+			data[0][14] = ((Livro) pub).getISBN();
+		}
+		else if (pub instanceof Revista || pub instanceof Tese || pub instanceof Jornal){	
+			data[0][14] = "--";	
+		}
+		if(pub.isOcupado()){
+			for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
+				if(emp.getPublicacao().equals(textFielPesquisa.getText())){
+					data[0][15] = emp.getDataEmp();
+					data[0][16] = emp.dataMaximaEntrega();
 				}
 			}
-			else if (!pub.isOcupado()){
-				data[i][15] = "--";
-			}
-
-			if(pub.isOcupado()){
-				for(Emprestimo emp: Biblioteca.getInstance().getListaDeEmprestimo()){
-					if(emp.getPublicacao().equals(textFielPesquisa.getText())){
-						data[i][16] = emp.dataMaximaEntrega();;
-					}
-				}
-			}
-			else if (!pub.isOcupado()){
-				data[i][16] = "--";
-			}
-
-
+		}
+		else if (!pub.isOcupado()){
+			data[0][15] = "--";
+			data[0][16] = "--";
 		}
 
 		return data;
