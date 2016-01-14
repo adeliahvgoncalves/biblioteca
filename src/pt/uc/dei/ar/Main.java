@@ -53,6 +53,13 @@ public class Main {
 		//Criar emprestimo
 		maravilha.criaEmprestimo(1, 5);
 		maravilha.criaEmprestimo(1, 9);
+
+
+
+		//Devolve emprestimo
+		maravilha.devolveEmprestimo(5);
+		maravilha.devolveEmprestimo(5);
+		System.out.println("devolvidos"+maravilha);
 		//maravilha.criaEmprestimo(1, 5);
 
 	
@@ -81,17 +88,17 @@ public class Main {
 		System.out.println("revista1"+revista1.getCodBarras());	
 		Revista revista2=new Revista("NormalMEnte", "12/09/2015", "12/11/2015", areasRevista, Periodicidade.Diaria, 345);
 		maravilha.adicionaPublicacao(revista2);	
-		
-		//crio emprestimo
+
+
 		Emprestimo em3=new Emprestimo(leitor2, data1, revista1);
 		maravilha.adicionaEmprestimo(em3);
 		Emprestimo em4=new Emprestimo(leitor2, data2, revista1);
-		maravilha.adicionaEmprestimo(em3);
+		maravilha.adicionaEmprestimo(em4);
 		Emprestimo em5=new Emprestimo(leitor2, data3, revista1);
-		maravilha.adicionaEmprestimo(em3);
+		maravilha.adicionaEmprestimo(em5);
 		Emprestimo em7=new Emprestimo(leitor2, data7, revista2);
 		maravilha.adicionaEmprestimo(em7);
-		
+
 		//crio devolucao
 
 		Calendar calendar4=Calendar.getInstance();
@@ -106,8 +113,8 @@ public class Main {
 		maravilha.devolveEmprestimoAMao(10, data4);
 		maravilha.devolveEmprestimoAMao(10, data5);
 		maravilha.devolveEmprestimoAMao(10, data6);
+		
 
-	//	maravilha.diasDeEmprestimo(em4);
 
 		//testei que nao empresta jornal:
 		//faculdadeNova.criaEmprestimo(1, 1);
@@ -115,10 +122,10 @@ public class Main {
 
 
 		//Devolve emprestimo
-		maravilha.devolveEmprestimo(5);
-		System.out.println("devolvidos"+maravilha);
-		maravilha.devolveEmprestimo(5);
-		System.out.println("devolvidos2"+maravilha);
+		//	maravilha.devolveEmprestimo(5);
+		//System.out.println("devolvidos"+maravilha);
+		//	maravilha.devolveEmprestimo(5);
+		//	System.out.println("devolvidos2"+maravilha);
 
 		//LEITOR
 		maravilha.imprimeListaTotalPublicacoes();	
@@ -150,12 +157,46 @@ public class Main {
 		//Emprestimos do leitor
 		System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
 
-		
+
 		//testar o gera utilizador e gerar password
 		System.out.println("Username"+maravilha.gerarUsername("Maria Margarida"));
 		System.out.println("Password"+maravilha.gerarPassword());
-		
-		
+
+
+		//System.out.print(maravilha.diasDeEmprestimo(em4));
+		//System.out.print(maravilha.duracaoMinimaEmprestimo());
+
+
+		//		Calendar dataAtual = new GregorianCalendar(); 
+		//		int ano = dataAtual.get(Calendar.YEAR);
+		//		int x=0;
+		//		//int x = -365;
+		//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
+		//			x=-366;
+		//		} else {
+		//			x = -365;
+		//		}
+		//		Calendar dataAnoAnterior = Calendar.getInstance();
+		//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
+		//
+		//
+		//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
+		//		long numDias=0;
+		//		for (Emprestimo emprestimo : maravilha.getListaDeEmprestimo()) {
+		//			if(emprestimo.getDataDev() != null){
+		//				Calendar dataDeEmp= Calendar.getInstance();
+		//				dataDeEmp.setTime(emprestimo.getDataEmp());
+		//				Calendar dataDeDev= Calendar.getInstance();
+		//				dataDeDev.setTime(emprestimo.getDataDev());
+		//				dataDeEmp.getTimeInMillis();
+		//
+		//				if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+		//					numDias=(int)(dataDeDev.getTimeInMillis()-dataDeEmp.getTimeInMillis())/ (24*60*60*1000);
+		//				}
+		//			}
+		//		}
+		//		Collections.sort(listaDiasEmprestimo);
+		//		System.out.println(listaDiasEmprestimo.get(0));
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
