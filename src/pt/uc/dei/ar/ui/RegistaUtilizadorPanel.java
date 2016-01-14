@@ -51,6 +51,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	private CardLayout layout;
 
 	private Janela janela;
+	
 	Biblioteca biblioteca = Biblioteca.getInstance();
 
 	public RegistaUtilizadorPanel(Janela j) {
