@@ -175,6 +175,28 @@ public class Publicacao {
 				+ ", codBarras=" + codBarras + ", dataReceçao=" + dataReceçao + "]";
 	}
 
-
-
+	@Override
+    public int hashCode() {
+        
+        return this.codBarras + this.titulo.hashCode();
+    }
+	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Publicacao other = (Publicacao) obj;
+        if (codBarras != other.codBarras)
+            return false;
+        if (titulo == null) {
+            if (other.titulo != null)
+                return false;
+        } else if (!titulo.equals(other.titulo))
+            return false;
+        return true;
+    }
 }

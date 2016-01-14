@@ -1,8 +1,12 @@
 package pt.uc.dei.ar;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Biblioteca representa a biblioteca e todos os seus recursos
@@ -587,82 +591,188 @@ public class Biblioteca {
 		return emprestimosDataExpirada;
 	}
 
-	/**
-	 * @return
-	 */
-	public ArrayList<Emprestimo> consultaEmprestimoGlobal() {
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-
+//	/**
+//	 * @return
+//	 */
+//	public int totalEmprestimosUltimoAno() {
+//
+//		Calendar dataAtual = new GregorianCalendar(); 
+//		int ano = dataAtual.get(Calendar.YEAR);
+//		int x=0;
+//		//int x = -365;
+//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
+//			x=-366;
+//		} else {
+//			x = -365;
+//		}
+//		Calendar dataAnoAnterior = Calendar.getInstance();
+//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
+//
+//		ArrayList<Emprestimo> emprestimosUltimoAno= new ArrayList<Emprestimo>();
+//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+//			Calendar dataDeEmp= Calendar.getInstance();
+//			dataDeEmp.setTime(emprestimo.getDataEmp());
+//
+//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+//				emprestimosUltimoAno.add(emprestimo);
+//
+//			}
+//		}
+//		return emprestimosUltimoAno.size();
+//	}
+//	/**
+//	 * @return
+//	 */
+//	public int mediaEmprestimo() {
+//		// TODO implement here
+//		return 0;
+//	}
+//
+//
+//	public int diasDeEmprestimo(Emprestimo emprestimo){
+//		long m1 = 0;
+//		long m2=0;
+//		Calendar dataDeEmp= Calendar.getInstance();
+//		dataDeEmp.setTime(emprestimo.getDataEmp());
+//		Calendar dataDEvol= Calendar.getInstance();
+//		dataDEvol.setTime(emprestimo.getDataDev());
+//
+//		if(emprestimo.getDataDev() != null)
+//
+//
+//		m1 = dataDeEmp.getTimeInMillis();
+//		m2 = dataDEvol.getTimeInMillis();
+//
+//		return  (int) ((m2 - m1) / ((12*30*24*60*60*1000)/2));
+//
+//	}
+//
+//	/**
+//	 * @return
+//	 */
+//	public int duracaoMinimaEmprestimo() {
+//
+//		Calendar dataAtual = new GregorianCalendar(); 
+//		int ano = dataAtual.get(Calendar.YEAR);
+//		int x=0;
+//		//int x = -365;
+//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
+//			x=-366;
+//		} else {
+//			x = -365;
+//		}
+//		Calendar dataAnoAnterior = Calendar.getInstance();
+//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
+//
+//
+//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
+//		int numDias=0;
+//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+//			Calendar dataDeEmp= Calendar.getInstance();
+//			dataDeEmp.setTime(emprestimo.getDataEmp());
+//
+//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+//				numDias=diasDeEmprestimo(emprestimo);
+//				listaDiasEmprestimo.add(numDias);
+//
+//			}
+//		}
+//		Collections.sort(listaDiasEmprestimo);
+//
+//
+//		return listaDiasEmprestimo.get(0);
+//	}
+//
+//	/**
+//	 * @return
+//	 */
+//	public int duracacaoMaximaEmprestimo() {
+//		Calendar dataAtual = new GregorianCalendar(); 
+//		int ano = dataAtual.get(Calendar.YEAR);
+//		int x=0;
+//		//int x = -365;
+//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
+//			x=-366;
+//		} else {
+//			x = -365;
+//		}
+//		Calendar dataAnoAnterior = Calendar.getInstance();
+//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
+//
+//
+//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
+//		int numDias=0;
+//		for (Emprestimo emprestimo : listaDeEmprestimo) {
+//			Calendar dataDeEmp= Calendar.getInstance();
+//			dataDeEmp.setTime(emprestimo.getDataEmp());
+//
+//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+//				numDias=(int) diasDeEmprestimo(emprestimo);
+//				listaDiasEmprestimo.add(numDias);
+//
+//			}
+//		}
+//		Collections.sort(listaDiasEmprestimo);
+//
+//
+//		return listaDiasEmprestimo.get(listaDiasEmprestimo.size());
+//	}
+//
+//
+//
+//
+//
+//
+	
+	private int numeroDiasAno(int ano){
+		
+		int x = 0;
+		if((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0){
+			x = 366;
+		} else {
+			x = 365;
 		}
-		return null;
+		return x;
 	}
-
-	/**
-	 * @return
-	 */
-	public int mediaEmprestimo() {
-		// TODO implement here
-		return 0;
-	}
-
-
-	public long diasDeEmprestimo(Emprestimo emprestimo){
-		long diasEmprestimo = 0;
-		return diasEmprestimo=emprestimo.getDataDev().getTime()-emprestimo.getDataEmp().getTime();
-
-		//	}
-		//	return diasEmprestimo;
-	}
-
-	/**
-	 * @return
-	 */
-	public int duracaoMinimaEmprestimo() {
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			//	emprestimo.getPublicacao()
-
-		}
-		return 0;
-	}
-
-	/**
-	 * @return
-	 */
-	public int duracacaoMaximaEmprestimo() {
-		// TODO implement here
-		return 0;
-	}
-
+	
 	/**
 	 * @param ArrayList Emprestimo 
-	 * @return
+	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
-	public int totalEmprestimoglobal(ArrayList<Emprestimo> emprestimos) {
-		// TODO implement here
-		return 0;
+	public Map<Publicacao, Integer> totalEmprestimosPorPublicacaoNoUltimoAno() {
+
+
+		//Utimos doze meses do ano
+		Calendar dataAtual = new GregorianCalendar(); 
+		int ano = dataAtual.get(Calendar.YEAR);
+		int x = -numeroDiasAno(ano);
+		
+		Calendar dataAnoAnterior = Calendar.getInstance();
+		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
+
+		Map<Publicacao, Integer> countMap = new HashMap<Publicacao, Integer>();
+        
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Calendar dataDeEmp= Calendar.getInstance();
+			dataDeEmp.setTime(emprestimo.getDataEmp());
+
+			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+
+				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
+				
+	            if (!countMap.containsKey(pub)) {
+	                countMap.put(pub, 1);
+	            } else {
+	                Integer count = countMap.get(pub);
+	                count = count + 1;
+	                countMap.put(pub, count);
+	            }	
+			}
+		}	
+	
+		return countMap;
 	}
-
-	/**
-	 * @param String nome 
-	 * @return
-	 */
-	public Utilizador pesquisaUtilizadorPorNome(String nome) {
-		// TODO implement here
-		return null;
-	}
-
-
-
-	/**
-	 * @param dataLimiteEntrega 
-	 * @param Date now 
-	 * @return
-	 */
-	public int diasEmAtraso(Date dataLimiteEntrega) {
-		// TODO implement here
-		return 0;
-	}
-
+	
 	/**
 	 * @return the listaDeUtilizadores
 	 */

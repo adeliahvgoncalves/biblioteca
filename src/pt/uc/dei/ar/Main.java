@@ -3,7 +3,11 @@ package pt.uc.dei.ar;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import pt.uc.dei.ar.ui.Janela;
 
@@ -62,7 +66,6 @@ public class Main {
 		System.out.println("devolvidos"+maravilha);
 		//maravilha.criaEmprestimo(1, 5);
 
-	
 
 		//Criar emprestimos random
 
@@ -197,6 +200,14 @@ public class Main {
 		//		}
 		//		Collections.sort(listaDiasEmprestimo);
 		//		System.out.println(listaDiasEmprestimo.get(0));
+
+		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoUltimoAno();
+
+		for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
+			
+			System.out.println(((Publicacao)entry.getKey()).getTitulo() + ", emprestado " + entry.getValue()+"x"); 
+		}
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -207,6 +218,5 @@ public class Main {
 				}
 			}
 		});
-
 	}
 }
