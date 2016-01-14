@@ -61,8 +61,8 @@ public class Main {
 
 
 		//Devolve emprestimo
-		maravilha.devolveEmprestimo(5);
-		maravilha.devolveEmprestimo(5);
+		//maravilha.devolveEmprestimo(5);
+		//maravilha.devolveEmprestimo(5);
 		System.out.println("devolvidos"+maravilha);
 		//maravilha.criaEmprestimo(1, 5);
 
@@ -200,7 +200,7 @@ public class Main {
 		//		}
 		//		Collections.sort(listaDiasEmprestimo);
 		//		System.out.println(listaDiasEmprestimo.get(0));
-
+		
 		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoUltimoAno();
 
 		for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
