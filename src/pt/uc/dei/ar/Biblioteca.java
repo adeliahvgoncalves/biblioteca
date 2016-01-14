@@ -137,9 +137,9 @@ public class Biblioteca {
 		int indiceDoUltimo = result.length -1;
 
 		for (int x = 0; x < result.length; x++){
-			
+
 			if (x == 0 ) {
-				
+
 				palavra1 = result[x].substring(0,3); 
 			}
 			if( x== indiceDoUltimo){
@@ -158,7 +158,7 @@ public class Biblioteca {
 	public int gerarPassword(){
 		Random gerador = new Random();
 		int password=0;
-		
+
 		for (int i = 0; i < 10; i++) {
 			password = gerador.nextInt(10000); 
 		}
@@ -349,14 +349,20 @@ public class Biblioteca {
 		Utilizador utilizadorColaborador = null;
 		for (Utilizador utilizador : listaDeUtilizadores) {
 
-			if(utilizador instanceof Colaborador ||utilizador instanceof BibliotecarioChefe){
+			if(utilizador instanceof Colaborador){
 
-				if(((Colaborador) utilizador).getNumColaborador()==numCol ||
-						((BibliotecarioChefe) utilizador).getNumColaborador()==numCol){
+				if(((Colaborador) utilizador).getNumColaborador()==numCol){
+					utilizadorColaborador=utilizador;
+				}
+			}
+			else if (utilizador instanceof BibliotecarioChefe)
+
+				if(((BibliotecarioChefe) utilizador).getNumColaborador()==numCol){
+
 					utilizadorColaborador=utilizador;
 				}
 
-			}
+
 		}
 
 		return utilizadorColaborador;
