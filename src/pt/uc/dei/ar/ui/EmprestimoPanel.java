@@ -51,12 +51,12 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		add(tabbedPane);
 
 		Panel EmprestimoPanel = new Panel();
-		tabbedPane.addTab("Emprestimo", null, EmprestimoPanel, null);
+		tabbedPane.addTab("Empréstimo", null, EmprestimoPanel, null);
 		EmprestimoPanel.setLayout(null);
 
 		// Labels
 
-		JLabel lblCodigoBarras = new JLabel("Código de Barras");
+		JLabel lblCodigoBarras = new JLabel("Código de barras");
 		lblCodigoBarras.setBounds(104, 35, 117, 16);
 		EmprestimoPanel.add(lblCodigoBarras);
 
@@ -92,17 +92,17 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 		// Botoes
 
-		btnEmprestar = new JButton("EMPRESTAR");
+		btnEmprestar = new JButton("Emprestar");
 		btnEmprestar.addActionListener(this);
 		btnEmprestar.setBounds(50, 262, 117, 44);
 		EmprestimoPanel.add(btnEmprestar);
 
-		btnSair = new JButton("SAIR");
+		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
 		btnSair.setBounds(354, 262, 75, 44);
 		EmprestimoPanel.add(btnSair);
 
-		btnEmprestarVoltar = new JButton("VOLTAR");
+		btnEmprestarVoltar = new JButton("Voltar");
 		btnEmprestarVoltar.addActionListener(this);
 		btnEmprestarVoltar.setBounds(267, 262, 75, 44);
 		EmprestimoPanel.add(btnEmprestarVoltar);
@@ -111,12 +111,12 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		// Painel devolver
 
 		Panel DevolvePanel = new Panel();
-		tabbedPane.addTab("Devoluções", null, DevolvePanel, null);
+		tabbedPane.addTab("Devolução", null, DevolvePanel, null);
 		DevolvePanel.setLayout(null);
 
 		// labels
 
-		JLabel lblCodigoDeBarras = new JLabel("Código de Barras");
+		JLabel lblCodigoDeBarras = new JLabel("Código de barras");
 		lblCodigoDeBarras.setBounds(104, 35, 117, 16);
 		DevolvePanel.add(lblCodigoDeBarras);
 
@@ -141,17 +141,17 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 		// Butoes
 
-		btnDevolver = new JButton("DEVOLVER");
+		btnDevolver = new JButton("Devolver");
 		btnDevolver.addActionListener(this);
 		btnDevolver.setBounds(50, 262, 117, 44);
 		DevolvePanel.add(btnDevolver);
 
-		btnSairDevolucao = new JButton("SAIR");
+		btnSairDevolucao = new JButton("Sair");
 		btnSairDevolucao.addActionListener(this);
 		btnSairDevolucao.setBounds(354, 262, 75, 44);
 		DevolvePanel.add(btnSairDevolucao);
 
-		btnDevolverVoltar = new JButton("VOLTAR");
+		btnDevolverVoltar = new JButton("Voltar");
 		btnDevolverVoltar.addActionListener(this);
 		btnDevolverVoltar.setBounds(267, 262, 75, 44);
 		DevolvePanel.add(btnDevolverVoltar);
@@ -226,17 +226,17 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		
 		if (txtCodigoBarras.getText().equals("") || txtNumeroLeitor.getText().equals("")) {
 
-			lblMensagem.setText("Não preencheu os campos do emprestimo.");
+			lblMensagem.setText("Não preencheu os campos do empréstimo.");
 
 		} else if (biblioteca.pesquisaUtilizadorPorNumLeitor(codigoLeitor) == null) {
 
-			lblMensagem.setText("O Leitor não existe como leitor da Biblioteca.");
+			lblMensagem.setText("O leitor não existe como leitor da biblioteca.");
 
 		} else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
 
 			
 
-			lblMensagem.setText("A publicação inserida não existe na Biblioteca.");
+			lblMensagem.setText("A publicação inserida não existe na biblioteca.");
 
 		}
 
@@ -246,9 +246,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 			txtNumeroLeitor.setText("");
 			if (biblioteca.criaEmprestimo(codigoLeitor, codigoBarras)) {
 				
-				lblMensagem.setText("Emprestimo efectuado com sucesso.");
+				lblMensagem.setText("Empréstimo efectuado com sucesso.");
 			} else{
-				lblMensagem.setText("Erro: O livro não pode ser emprestado.");
+				lblMensagem.setText("Erro! O livro não pode ser emprestado.");
 			}
 
 		}
@@ -261,18 +261,18 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		
 		if (biblioteca.pesquisaPublicacaoPorCodBarras(codigo) == null) {
 			
-			lblMensagemDevolver.setText("A publicação inserida não existe na Biblioteca.");
+			lblMensagemDevolver.setText("A publicação inserida não existe na biblioteca.");
 
 		}	else {
 			
 			txtCodigoBarrasDevolucao.setText("");
 			if (biblioteca.devolveEmprestimo(codigo)){
 
-				lblMensagemDevolver.setText(" O livro foi devolvido com sucesso");
+				lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
 				
 			} else{
 
-				lblMensagemDevolver.setText(" Erro: O livro não está emprestado");
+				lblMensagemDevolver.setText(" Erro! O livro não está emprestado");
 			}
 		}
 	}

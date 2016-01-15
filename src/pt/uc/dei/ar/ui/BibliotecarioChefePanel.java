@@ -37,7 +37,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		lblBibliotecarioChefe.setBounds(161, 34, 158, 16);
 		panel.add(lblBibliotecarioChefe);
 
-		btnSair = new JButton("SAIR");
+		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
 		btnSair.setBounds(350, 300, 80, 40);
 		panel.add(btnSair);

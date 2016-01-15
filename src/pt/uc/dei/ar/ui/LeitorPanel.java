@@ -69,7 +69,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		//Lista de Publicacoes
 
 		Panel pnlListaPublicacoes = new Panel();
-		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
+		tabbedPane.addTab("Lista publicações", null, pnlListaPublicacoes, null);
 		pnlListaPublicacoes.setLayout(null);
 
 		txtPesquisa = new JTextField();
@@ -89,7 +89,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		pnlListaPublicacoes.add(txtPesquisa);
 		txtPesquisa.setColumns(10);
 
-		btnSairPublicacoes = new JButton("SAIR");
+		btnSairPublicacoes = new JButton("Sair");
 		btnSairPublicacoes.addActionListener(this); 
 		btnSairPublicacoes.setBounds(385, 251, 75, 44);
 		pnlListaPublicacoes.add(btnSairPublicacoes);
@@ -100,7 +100,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		pnlListaPublicacoes.add(btnPesquisa);
 
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Total","Área", "Autor", "Titulo"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Total","Área", "Autor", "Título"}));
 		comboBox.setMaximumRowCount(3);
 		comboBox.addActionListener(this);
 		comboBox.setBounds(6, 11, 88, 27);
@@ -109,10 +109,10 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		//Lista Emprestimos
 
 		Panel pnlListaEmprestimos = new Panel();
-		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
+		tabbedPane.addTab("Lista empréstimos", null, pnlListaEmprestimos, null);
 		pnlListaEmprestimos.setLayout(null);
 
-		btnSairEmprestimo = new JButton("SAIR");
+		btnSairEmprestimo = new JButton("Sair");
 		btnSairEmprestimo.setBounds(385, 251, 75, 44);
 		btnSairEmprestimo.addActionListener(this);
 		pnlListaEmprestimos.add(btnSairEmprestimo);
@@ -273,8 +273,6 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 		tabelaPubTotal.setModel(dtm);
 
-		//apagar  linhas
-		//dtm.setRowCount(0);
 	}
 
 	public Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
@@ -368,7 +366,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 				txtPesquisa.setEditable(false);
 				preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 			}
-			if(str.equals("Área") || str.equals("Titulo") || str.equals("Autor") ){
+			if(str.equals("Área") || str.equals("Título") || str.equals("Autor") ){
 
 				txtPesquisa.setText("");
 				txtPesquisa.setEditable(true);
@@ -398,7 +396,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 				preencheTabelaListaPublicacaoTotal(pubsAutor);
 
 			}
-			else if(str.equals("Titulo")){
+			else if(str.equals("Título")){
 				ArrayList<Publicacao> pubsParteNome=biblioteca.pesquisaPublicacaoComParteNome(txtPesquisa.getText());
 				preencheTabelaListaPublicacaoTotal(pubsParteNome);
 

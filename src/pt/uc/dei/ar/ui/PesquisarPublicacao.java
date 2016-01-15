@@ -53,7 +53,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 
 		JLabel lblNewLabel = new JLabel("Acerca da publicação");
-		lblNewLabel.setBounds(123, 6, 135, 16);
+		lblNewLabel.setBounds(189, 6, 135, 16);
 		panel.add(lblNewLabel);
 
 
@@ -61,21 +61,21 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		textFielPesquisa.setText("pesquisar");
 		textFielPesquisa.setEditable(true);
 		textFielPesquisa.setToolTipText("");
-		textFielPesquisa.setBounds(210, 33, 183, 26);
+		textFielPesquisa.setBounds(67, 34, 183, 26);
 		panel.add(textFielPesquisa);
 		textFielPesquisa.setColumns(10);
 
-		btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.setBounds(55, 34, 117, 29);
+		btnPesquisar = new JButton("PESQUISAR");
+		btnPesquisar.setBounds(312, 34, 126, 29);
 		btnPesquisar.addActionListener(this);
 		panel.add(btnPesquisar);
 
-		btnSair = new JButton("Sair");
+		btnSair = new JButton("SAIR");
 		btnSair.addActionListener(this);
 		btnSair.setBounds(376, 297, 75, 40);
 		panel.add(btnSair);
 
-		btnVoltar = new JButton("Voltar");
+		btnVoltar = new JButton("VOLTAR");
 		btnVoltar.addActionListener(this);
 		btnVoltar.setBounds(283, 297, 81, 40);
 		panel.add(btnVoltar);
@@ -83,7 +83,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setBounds(6, 71, 454, 191);
+		scrollPane_1.setBounds(6, 71, 468, 199);
 		panel.add(scrollPane_1);
 
 		String[] colunas={"Código de barras", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
@@ -100,7 +100,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		scrollPane_1.setViewportView(tabela);
 		
 		lblMensagem = new JLabel("");
-		lblMensagem.setBounds(16, 274, 435, 16);
+		lblMensagem.setBounds(16, 280, 435, 16);
 		panel.add(lblMensagem);
 
 	}
@@ -142,6 +142,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		else if (e.getSource() == this.btnPesquisar) {
 
 			this.preencheTabelaEmprestimo();
+			textFielPesquisa.setText("");
+			
 		}
 	}
 
@@ -159,13 +161,13 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
 		if (pub == null) {
-			this.lblMensagem.setText("Erro: Não existe essa publicação. Tente novamente.");
+			this.lblMensagem.setText("Erro! Não existe essa publicação. Tente novamente.");
 						return data;
 			
 			
 		}
 		//TODO: desaparecer com a mensagem quando volto ao pesquisar!
-		this.lblMensagem.setText("");
+		
 
 		data[0][0] = pub.getCodBarras();
 		data[0][1] = pub.getClass().getSimpleName();
