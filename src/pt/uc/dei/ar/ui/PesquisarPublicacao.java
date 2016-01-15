@@ -204,7 +204,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 			data[0][13] = "--";	
 			data[0][14] = "--";	
 		}
-//TODO: nao esta a colocar a data de emprestimo experimentar com o the economist!
+
 		if(pub.isOcupado()){
 			for(Emprestimo emp: biblioteca.getListaDeEmprestimo()){
 				if(emp.getPublicacao().equals(pub )){
