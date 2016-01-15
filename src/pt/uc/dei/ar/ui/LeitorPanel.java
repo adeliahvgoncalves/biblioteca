@@ -162,7 +162,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 	//	if (utilizador != null) {
 
-			dataPublicacao = geraDadosDaTabelaPublicacaoTotal();
+			dataPublicacao = geraDadosDaTabelaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 		//} else{
 
 		//	dataPublicacao = new Object[biblioteca.getListaDePublicacoes().size()][16];
@@ -256,7 +256,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	}
 
 
-	public void preencheTabelaListaPublicacaoTotal(){
+	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table
@@ -267,7 +267,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		// add header in table model     
 		dtm.setColumnIdentifiers(colunas);
 
-		Object[][] publicacoes = geraDadosDaTabelaPublicacaoTotal();
+		Object[][] publicacoes =geraDadosDaTabelaPublicacaoTotal( pubs);
 		for (int i = 0; i < publicacoes.length; i++) {
 
 			dtm.addRow(publicacoes[i]);
@@ -279,14 +279,14 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		//dtm.setRowCount(0);
 	}
 	
-	public Object [][] geraDadosDaTabelaPublicacaoTotal(){
+	public Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		
-		Object [][] data= new Object[biblioteca.getListaDePublicacoes().size()][16];
+		Object [][] data= new Object[pubs.size()][16];
 		
-		for (int i = 0; i < biblioteca.getListaDePublicacoes().size(); i++) {
+		for (int i = 0; i < pubs.size(); i++) {
 			
-			Publicacao pub = biblioteca.getListaDePublicacoes().get(i);
+			Publicacao pub = pubs.get(i);
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
@@ -375,21 +375,26 @@ public class LeitorPanel extends JPanel implements ActionListener {
 			
 			if(str.equals("Total")){
 				
-				preencheTabelaListaPublicacaoTotal();
+				preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 				
 			}
 			else if(str.equals("Área")){
+				
+				ArrayList<Publicacao> pubsArea=biblioteca.pesquisaPorArea(txtPesquisa.getText());
+				
+				preencheTabelaListaPublicacaoTotal(pubsArea);
 				
 				
 				
 			}
 			else if(str.equals("Autor")){
-				
-				
+				ArrayList<Publicacao> pubsAutor=biblioteca.pesquisaPublicacaoComParteNomeAutor(txtPesquisa.getText());
+				preencheTabelaListaPublicacaoTotal(pubsAutor);
 				
 			}
 			else if(str.equals("Titulo")){
-				
+				ArrayList<Publicacao> pubsParteNome=biblioteca.pesquisaPublicacaoComParteNome(txtPesquisa.getText());
+				preencheTabelaListaPublicacaoTotal(pubsParteNome);
 				
 				
 			}

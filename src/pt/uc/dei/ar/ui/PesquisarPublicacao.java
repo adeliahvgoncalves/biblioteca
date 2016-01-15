@@ -35,6 +35,9 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 	private JButton btnSair;
 	private JButton btnVoltar;
 	private Biblioteca biblioteca = Biblioteca.getInstance();
+	private Publicacao pub;
+	
+	private JLabel lblMensagem;
 
 	public PesquisarPublicacao(Janela j) {
 		setLayout(null);
@@ -95,6 +98,10 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
 		scrollPane_1.setViewportView(tabela);
+		
+		lblMensagem = new JLabel("");
+		lblMensagem.setBounds(16, 274, 435, 16);
+		panel.add(lblMensagem);
 
 	}
 
@@ -137,17 +144,28 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 			this.preencheTabelaEmprestimo();
 		}
 	}
-	
-	public Object [][] obterUmaPublicacao(){
 
-		Publicacao pub = Biblioteca.getInstance().pesquisaPublicacao(textFielPesquisa.getText());
-		Object [][] data= new Object[1][17]; //aloco a minha tabela vazia
-		
+	public Object [][] obterUmaPublicacao(){
+		//aloco a minha tabela vazia
+		Object [][] data= new Object[1][17]; 
+
+		String text = this.textFielPesquisa.getText();
+		try {
+			int d = Integer.parseInt(text); 
+		 pub = biblioteca.pesquisaPublicacaoPorCodBarras(d);
+		} catch (NumberFormatException nfe) {
+			pub = biblioteca.pesquisaPublicacao(textFielPesquisa.getText());
+		}
+
 		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
 		if (pub == null) {
+			this.lblMensagem.setText("Erro: Não existe essa publicação. Tente novamente.");
+						return data;
 			
-			return data;
+			
 		}
+		//TODO: desaparecer com a mensagem quando volto ao pesquisar!
+		this.lblMensagem.setText("");
 
 		data[0][0] = pub.getCodBarras();
 		data[0][1] = pub.getClass().getSimpleName();
@@ -195,7 +213,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 			data[0][11] = "--";	
 			data[0][12] = "--";	
 		}
-		
+
 		if (pub instanceof Livro ){
 			data[0][13] = ((Livro) pub).getEditor();
 			data[0][14] = ((Livro) pub).getISBN();
@@ -220,8 +238,6 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 		return data;
 	}
-
-
 }
 
 

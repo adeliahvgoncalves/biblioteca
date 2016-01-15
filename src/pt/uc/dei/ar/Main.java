@@ -136,7 +136,7 @@ public class Main {
 
 		//Pesquisa por área
 		maravilha.pesquisaPorArea("Economia");
-		System.out.println(maravilha.pesquisaPorArea("Economia"));
+		System.out.println("area"+maravilha.pesquisaPorArea("Economia"));
 
 		//Pesquisa os seus emprestimos por numero de leitor
 		Leitor leitor= (Leitor) maravilha.pesquisaUtilizadorPorNumLeitor(1);
