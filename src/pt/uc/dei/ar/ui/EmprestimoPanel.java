@@ -90,7 +90,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		txtNumeroLeitor.setBounds(256, 63, 130, 26);
 		EmprestimoPanel.add(txtNumeroLeitor);
 
-		// Butoes
+		// Botoes
 
 		btnEmprestar = new JButton("EMPRESTAR");
 		btnEmprestar.addActionListener(this);

@@ -43,15 +43,15 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	private JTextField txtPesquisa;
 	private JTable tabela;
 	private JLabel lblLeitor;
-	
+
 	private JComboBox comboBox;
-	
+
 	private Biblioteca biblioteca = Biblioteca.getInstance();
-	
+
 	private JButton btnPesquisa;
 	private JButton btnSairEmprestimo;
 	private JButton btnSairPublicacoes;
-	
+
 
 	/**
 	 * Create the panel.
@@ -65,18 +65,18 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(6, 38, 488, 343);
 		add(tabbedPane);
-		
+
 		//Lista de Publicacoes
-		
+
 		Panel pnlListaPublicacoes = new Panel();
 		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
 		pnlListaPublicacoes.setLayout(null);
-	
+
 		txtPesquisa = new JTextField();
 		txtPesquisa.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				
+
 				txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 				txtPesquisa.setForeground(Color.BLACK);
 				txtPesquisa.setText("");
@@ -107,11 +107,11 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		pnlListaPublicacoes.add(comboBox);
 
 		//Lista Emprestimos
-		
+
 		Panel pnlListaEmprestimos = new Panel();
 		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
 		pnlListaEmprestimos.setLayout(null);
-		
+
 		btnSairEmprestimo = new JButton("SAIR");
 		btnSairEmprestimo.setBounds(385, 251, 75, 44);
 		btnSairEmprestimo.addActionListener(this);
@@ -144,8 +144,8 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		lblLeitor = new JLabel("");
 		lblLeitor.setBounds(110, 19, 310, 16);
 		add(lblLeitor);
-		
-		//TODO: lista total
+
+
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -156,24 +156,19 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 		String[] colunasPublicacao={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
-				"Emprestado"};
+		"Emprestado"};
 
-		
+
 		Object [][] dataPublicacao = null;
-		
-	//	if (utilizador != null) {
 
-			dataPublicacao = geraDadosDaTabelaPublicacaoTotal(biblioteca.getListaDePublicacoes());
-		//} else{
 
-		//	dataPublicacao = new Object[biblioteca.getListaDePublicacoes().size()][16];
-		//}
+		dataPublicacao = geraDadosDaTabelaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 
 		tabelaPubTotal = new JTable(dataPublicacao, colunasPublicacao);
 		tabelaPubTotal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tabelaPubTotal);
-		
+
 
 	}
 
@@ -199,7 +194,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		tabela.setModel(dtm);
 	}
 
-	
+
 	public Object [][] geraDadosDaTabelaLeitorEmprestimos(){
 
 		ArrayList<Emprestimo> emprestimos = ((Leitor)utilizador).consultaEmprestimosLeitor();
@@ -213,42 +208,44 @@ public class LeitorPanel extends JPanel implements ActionListener {
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
+			data[i][4] = pub.getDataPublicacao();
+			data[i][5] = pub.getDataReceçao();
+			data[i][6] = pub.getListaDeAreas();
+
 			if (pub instanceof Revista){
 				data[i][3] = "--";
 				data[i][7] = ((Revista) pub).getPeriodicidade();
 				data[i][8] = ((Revista) pub).getVolume();
 				data[i][9] = ((Revista) pub).getNumeroSequencial();
-			}
-			else if (pub instanceof Livro || pub instanceof Tese){	
+				data[i][10] = "--";	
+				data[i][11] = "--";	
+				data[i][12] = "--";	
+				data[i][13] = "--";	
+				data[i][14] = "--";				
+			}else  if (pub instanceof Livro){
+				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
+				data[i][7] = "--";	
+				data[i][8] = "--";	
+				data[i][9] = "--";		
+				data[i][10] = ((Livro) pub).getNumEdicao();
+				data[i][11] = "--";	
+				data[i][12] = "--";	
+				data[i][13] = ((Livro) pub).getEditor();
+				data[i][14] = ((Livro) pub).getISBN();
+
+			}	else if ( pub instanceof Tese){	
 				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
 				data[i][7] = "--";	
 				data[i][8] = "--";	
 				data[i][9] = "--";	
-			}
-			data[i][4] = pub.getDataPublicacao();
-			data[i][5] = pub.getDataReceçao();
-			data[i][6] = pub.getListaDeAreas();
-			
-			if (pub instanceof Livro){
-				data[i][10] = ((Livro) pub).getNumEdicao();
-				data[i][13] = ((Livro) pub).getEditor();
-				data[i][14] = ((Livro) pub).getISBN();
-				
-			}
-			else if (pub instanceof Revista || pub instanceof Tese){	
 				data[i][10] = "--";	
-				data[i][13] = "--";	
-				data[i][14] = "--";	
-			}
-			if (pub instanceof Tese){
 				data[i][11] = ((Tese) pub).getNomeDoOrientador();
 				data[i][12] = ((Tese) pub).getTipoDeTese();
+				data[i][13] = "--";	
+				data[i][14] = "--";	
+
 			}
-			else if (pub instanceof Revista || pub instanceof Livro){	
-				data[i][11] = "--";	
-				data[i][12] = "--";	
-			}
-			
+
 			data[i][15] = emp.getDataEmp();
 			data[i][16] = emp.dataMaximaEntrega();
 		}
@@ -268,78 +265,76 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		// add header in table model     
 		dtm.setColumnIdentifiers(colunas);
 
-		Object[][] publicacoes =geraDadosDaTabelaPublicacaoTotal( pubs);
+		Object[][] publicacoes =geraDadosDaTabelaPublicacaoTotal(pubs);
 		for (int i = 0; i < publicacoes.length; i++) {
 
 			dtm.addRow(publicacoes[i]);
 		}
 
 		tabelaPubTotal.setModel(dtm);
-		
+
 		//apagar  linhas
 		//dtm.setRowCount(0);
 	}
-	
+
 	public Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
-		
+
 		Object [][] data= new Object[pubs.size()][16];
-		
+
 		for (int i = 0; i < pubs.size(); i++) {
-			
 			Publicacao pub = pubs.get(i);
+
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
+			data[i][4] = pub.getDataPublicacao();
+			data[i][5] = pub.getDataReceçao();
+			data[i][6] = pub.getListaDeAreas();
 			if (pub instanceof Revista ){
 				data[i][3] = "--";
-				data[i][7] = ((Revista) pub).getPeriodicidade();	
+				data[i][7] = ((Revista) pub).getPeriodicidade();
+				data[i][8] = ((Revista) pub).getVolume();
+				data[i][9] = ((Revista) pub).getNumeroSequencial();
+				data[i][10] = "--";	
+				data[i][11] = "--";	
+				data[i][12] = "--";	
+				data[i][13] = "--";	
+				data[i][14] = "--";	
 			}
 			else if (pub instanceof Jornal){
 				data[i][3] = "--";
 				data[i][7] = ((Jornal) pub).getPeriodicidade();	
-			}
-			else if (pub instanceof Livro || pub instanceof Tese){	
-				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
-				data[i][7] = "--";	
-			}
-			data[i][4] = pub.getDataPublicacao();
-			data[i][5] = pub.getDataReceçao();
-			data[i][6] = pub.getListaDeAreas();
-			
-			if (pub instanceof Revista){
-				data[i][8] = ((Revista) pub).getVolume();
-				data[i][9] = ((Revista) pub).getNumeroSequencial();
-			}
-			else if (pub instanceof Livro || pub instanceof Tese ||  pub instanceof Jornal){	
 				data[i][8] = "--";	
-				data[i][9] = "--";	
-			}
-			
-			if (pub instanceof Livro){
-				data[i][10] = ((Livro) pub).getNumEdicao();
-			}
-			else if (pub instanceof Revista || pub instanceof Tese ||  pub instanceof Jornal){	
+				data[i][9] = "--";
 				data[i][10] = "--";	
-			}
-			if (pub instanceof Tese){
-				data[i][11] = ((Tese) pub).getNomeDoOrientador();
-				data[i][12] = ((Tese) pub).getTipoDeTese();
-			}
-			else if (pub instanceof Revista || pub instanceof Livro ||  pub instanceof Jornal){	
 				data[i][11] = "--";	
 				data[i][12] = "--";	
-			}
-	
-			if (pub instanceof Livro){
+				data[i][13] = "--";	
+				data[i][14] = "--";	
+			} else if (pub instanceof Livro){
+				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
+				data[i][7] = "--";	
+				data[i][8] = "--";	
+				data[i][9] = "--";	
+				data[i][10] = ((Livro) pub).getNumEdicao();	
+				data[i][11] = "--";	
+				data[i][12] = "--";	
 				data[i][13] = ((Livro) pub).getEditor();
 				data[i][14] = ((Livro) pub).getISBN();
-			}
-			else if (pub instanceof Revista || pub instanceof Tese ||  pub instanceof Jornal){	
+
+			}else if (pub instanceof Tese){
+
+				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
+				data[i][7] = "--";	
+				data[i][8] = "--";	
+				data[i][9] = "--";	
+				data[i][10] = "--";	
+				data[i][11] = ((Tese) pub).getNomeDoOrientador();
+				data[i][12] = ((Tese) pub).getTipoDeTese();
 				data[i][13] = "--";	
 				data[i][14] = "--";	
 			}
-			
 			if(pub.isOcupado()){
 				data[i][15] = "Sim";
 			} else {
@@ -363,64 +358,64 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		String str = (String) this.comboBox.getSelectedItem();
-		
+
 		if(e.getSource() == this.comboBox){
-			
+
 			if(str.equals("Total")){
 				txtPesquisa.setText("");
 				txtPesquisa.setEditable(false);
 				preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 			}
 			if(str.equals("Área") || str.equals("Titulo") || str.equals("Autor") ){
-				
+
 				txtPesquisa.setText("");
 				txtPesquisa.setEditable(true);
-				
+
 			}
 		}
-		
+
 		if (e.getSource() == this.btnPesquisa) {
-			
-			
+
+
 			if(str.equals("Total")){
-				
+
 				preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
-				
+
 			}
 			else if(str.equals("Área")){
-				
+
 				ArrayList<Publicacao> pubsArea=biblioteca.pesquisaPorArea(txtPesquisa.getText());
-				
+
 				preencheTabelaListaPublicacaoTotal(pubsArea);
-				
-				
-				
+
+
+
 			}
 			else if(str.equals("Autor")){
 				ArrayList<Publicacao> pubsAutor=biblioteca.pesquisaPublicacaoComParteNomeAutor(txtPesquisa.getText());
 				preencheTabelaListaPublicacaoTotal(pubsAutor);
-				
+
 			}
 			else if(str.equals("Titulo")){
 				ArrayList<Publicacao> pubsParteNome=biblioteca.pesquisaPublicacaoComParteNome(txtPesquisa.getText());
 				preencheTabelaListaPublicacaoTotal(pubsParteNome);
-				
-				
+
+
 			}
 		}	
 		else if(e.getSource()==this.btnSairEmprestimo){
-			
+
 			sairLeitorPanel();
-			
+
 		}
 		else if(e.getSource()==this.btnSairPublicacoes){
-			
+
 			sairLeitorPanel();
-			
+
 		}
- }			
+	}			
 
 	/**
 	 * @param utilizador the utilizador to set
@@ -429,8 +424,8 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		this.utilizador = utilizador;
 
 		lblLeitor.setText("Bem vindo " + utilizador.getNome());
-		
+
 		this.preencheTabelaEmprestimo();
-	
+
 	}
 }
