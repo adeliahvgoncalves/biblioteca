@@ -138,9 +138,6 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		add(lblLeitor);
 		
 		//TODO: lista total
-		
-		pnlListaPublicacoes.setLayout(null);
-		pnlListaPublicacoes.add(btnSairEmprestimo);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -168,9 +165,6 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		tabelaPubTotal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tabelaPubTotal);
-		lblLeitor = new JLabel("");
-		lblLeitor.setBounds(110, 19, 310, 16);
-		add(lblLeitor);
 		
 
 	}
@@ -272,7 +266,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 			dtm.addRow(publicacoes[i]);
 		}
 
-		tabela.setModel(dtm);
+		tabelaPubTotal.setModel(dtm);
 	}
 	
 	public Object [][] geraDadosDaTabelaPublicacaoTotal(){
@@ -363,7 +357,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		this.utilizador = utilizador;
 
 		lblLeitor.setText("Bem vindo " + utilizador.getNome());
-
+		
 		this.preencheTabelaEmprestimo();
 	
 	}

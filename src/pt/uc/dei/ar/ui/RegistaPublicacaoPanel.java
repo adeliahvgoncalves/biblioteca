@@ -65,7 +65,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlRegistaPublicacao.add(lblTipoDePublicao);
 		
 		JLabel lblTitulo = new JLabel("Título");
-		lblTitulo.setBounds(28, 83, 61, 16);
+		lblTitulo.setBounds(39, 83, 61, 16);
 		pnlRegistaPublicacao.add(lblTitulo);
 		
 		txtTitulo = new JTextField();
@@ -74,7 +74,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtTitulo.setColumns(10);
 		
 		JLabel lblreas = new JLabel("Áreas");
-		lblreas.setBounds(28, 111, 61, 16);
+		lblreas.setBounds(39, 111, 61, 16);
 		pnlRegistaPublicacao.add(lblreas);
 		
 		txtAreas = new JTextField();
@@ -83,7 +83,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtAreas.setColumns(10);
 		
 		JLabel lblAnoPublicacao = new JLabel("Ano Publicação");
-		lblAnoPublicacao.setBounds(28, 139, 101, 16);
+		lblAnoPublicacao.setBounds(38, 139, 101, 16);
 		pnlRegistaPublicacao.add(lblAnoPublicacao);
 		
 		txtAnoPublicacao = new JTextField();
@@ -92,7 +92,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtAnoPublicacao.setColumns(10);
 		
 		JLabel lblDataRecepo = new JLabel("Data Recepção");
-		lblDataRecepo.setBounds(28, 167, 101, 16);
+		lblDataRecepo.setBounds(38, 167, 101, 16);
 		pnlRegistaPublicacao.add(lblDataRecepo);
 		
 		txtDataRecepcao = new JTextField();
@@ -116,7 +116,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlLivro.setLayout(null);
 		
 		JLabel lblAutores = new JLabel("Autor(es)");
-		lblAutores.setBounds(18, 6, 61, 16);
+		lblAutores.setBounds(36, 6, 61, 16);
 		pnlLivro.add(lblAutores);
 		
 		txtAutores = new JTextField();
@@ -125,7 +125,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtAutores.setColumns(10);
 		
 		JLabel lblNumEdicao = new JLabel("Nº Edição");
-		lblNumEdicao.setBounds(18, 34, 61, 16);
+		lblNumEdicao.setBounds(36, 34, 61, 16);
 		pnlLivro.add(lblNumEdicao);
 		
 		txtNumEdicao = new JTextField();
@@ -134,7 +134,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtNumEdicao.setColumns(10);
 		
 		JLabel lblEditor = new JLabel("Editor");
-		lblEditor.setBounds(18, 62, 61, 16);
+		lblEditor.setBounds(36, 62, 61, 16);
 		pnlLivro.add(lblEditor);
 		
 		txtEditor = new JTextField();
@@ -143,7 +143,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtEditor.setColumns(10);
 		
 		JLabel lblIsbn = new JLabel("ISBN");
-		lblIsbn.setBounds(18, 90, 61, 16);
+		lblIsbn.setBounds(36, 90, 61, 16);
 		pnlLivro.add(lblIsbn);
 		
 		txtIsbn = new JTextField();
@@ -168,7 +168,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlTese.add(lblTipoTese);
 		
 		JLabel lblAutor = new JLabel("Autor");
-		lblAutor.setBounds(20, 36, 61, 16);
+		lblAutor.setBounds(35, 36, 61, 16);
 		pnlTese.add(lblAutor);
 		
 		txtAutor = new JTextField();
@@ -202,7 +202,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnRegistar.setBounds(6, 323, 95, 40);
+		btnRegistar.setBounds(27, 323, 95, 40);
 		pnlRegistaPublicacao.add(btnRegistar);
 
 	}
