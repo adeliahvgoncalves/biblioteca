@@ -1,8 +1,11 @@
 package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Panel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -20,6 +23,8 @@ import pt.uc.dei.ar.Tese;
 import pt.uc.dei.ar.Utilizador;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
@@ -38,7 +43,15 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	private JTextField txtPesquisa;
 	private JTable tabela;
 	private JLabel lblLeitor;
+	
+	private JComboBox comboBox;
+	
 	private Biblioteca biblioteca = Biblioteca.getInstance();
+	
+	private JButton btnPesquisa;
+	private JButton btnSairEmprestimo;
+	private JButton btnSairPublicacoes;
+	
 
 	/**
 	 * Create the panel.
@@ -52,62 +65,55 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(6, 38, 488, 343);
 		add(tabbedPane);
-
+		
+		//Lista de Publicacoes
 		
 		Panel pnlListaPublicacoes = new Panel();
 		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
 		pnlListaPublicacoes.setLayout(null);
 	
-
 		txtPesquisa = new JTextField();
-		txtPesquisa.setText("pesquisar");
-		txtPesquisa.setEditable(false);
-		txtPesquisa.setToolTipText("");
+		txtPesquisa.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				txtPesquisa.setForeground(Color.BLACK);
+				txtPesquisa.setText("");
+			}
+		});
+		txtPesquisa.setText("Pesquisa");
 		txtPesquisa.setBounds(330, 10, 130, 26);
+		txtPesquisa.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtPesquisa.setForeground(Color.LIGHT_GRAY);
 		pnlListaPublicacoes.add(txtPesquisa);
 		txtPesquisa.setColumns(10);
 
-		JButton btnSairPublicacoes = new JButton("SAIR");
-		btnSairPublicacoes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				sairLeitorPanel();
-
-			}
-		});
+		btnSairPublicacoes = new JButton("SAIR");
+		btnSairPublicacoes.addActionListener(this); 
 		btnSairPublicacoes.setBounds(385, 251, 75, 44);
 		pnlListaPublicacoes.add(btnSairPublicacoes);
 
-		JButton btnListaTotal = new JButton("Lista Total");
-		btnListaTotal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnPesquisa = new JButton("Pesquisar");
+		btnPesquisa.addActionListener(this);
+		btnPesquisa.setBounds(6, 251,  88, 44);
+		pnlListaPublicacoes.add(btnPesquisa);
 
-				preencheTabelaListaPublicacaoTotal();
-
-			}
-		});
-		btnListaTotal.setBounds(6, 251,  88, 44);
-		pnlListaPublicacoes.add(btnListaTotal);
-
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Área ", "Autor", "Titulo"}));
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Total","Área", "Autor", "Titulo"}));
 		comboBox.setMaximumRowCount(3);
 		comboBox.setBounds(6, 11, 88, 27);
 		pnlListaPublicacoes.add(comboBox);
 
+		//Lista Emprestimos
+		
 		Panel pnlListaEmprestimos = new Panel();
 		tabbedPane.addTab("Lista Empréstimos", null, pnlListaEmprestimos, null);
-
-		JButton btnSairEmprestimo = new JButton("SAIR");
-		btnSairEmprestimo.setBounds(385, 251, 75, 44);
-		btnSairEmprestimo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				sairLeitorPanel();
-
-			}
-		});
 		pnlListaEmprestimos.setLayout(null);
+		
+		btnSairEmprestimo = new JButton("SAIR");
+		btnSairEmprestimo.setBounds(385, 251, 75, 44);
+		btnSairEmprestimo.addActionListener(this);
 		pnlListaEmprestimos.add(btnSairEmprestimo);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -270,7 +276,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		tabelaPubTotal.setModel(dtm);
 		
 		//apagar  linhas
-		dtm.setRowCount(0);
+		//dtm.setRowCount(0);
 	}
 	
 	public Object [][] geraDadosDaTabelaPublicacaoTotal(){
@@ -357,8 +363,48 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-
-	}
+		String str = (String) this.comboBox.getSelectedItem();
+		
+		if(str.equals("Total")){
+			
+			txtPesquisa.setEditable(false);
+			
+		}
+		
+		if (e.getSource() == this.btnPesquisa) {
+			
+			if(str.equals("Total")){
+				
+				preencheTabelaListaPublicacaoTotal();
+				
+			}
+			else if(str.equals("Área")){
+				
+				
+				
+			}
+			else if(str.equals("Autor")){
+				
+				
+				
+			}
+			else if(str.equals("Titulo")){
+				
+				
+				
+			}
+		}	
+		else if(e.getSource()==this.btnSairEmprestimo){
+			
+			sairLeitorPanel();
+			
+		}
+		else if(e.getSource()==this.btnSairPublicacoes){
+			
+			sairLeitorPanel();
+			
+		}
+ }			
 
 	/**
 	 * @param utilizador the utilizador to set
