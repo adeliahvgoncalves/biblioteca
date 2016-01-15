@@ -22,7 +22,9 @@ public class NaoPeriodico extends Publicacao {
 	 */
 	public NaoPeriodico(String titulo, String dataPublicacao,  String dataReceçao, ArrayList<String> autores,  ArrayList<String> areas) {
 		super(titulo, dataPublicacao, dataReceçao, areas);
-		this.listaDeAutores = autores;
+		
+		this.listaDeAutores = new ArrayList<String>(autores);
+		
 	}
 
 

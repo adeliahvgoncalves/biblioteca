@@ -67,7 +67,8 @@ public class Publicacao {
 			e.printStackTrace();
 		}	
 
-		this.listaDeAreas = areas;
+		
+		this.listaDeAreas = new ArrayList<String>(areas);
 		this.ocupado=false;
 		
 		ultimocodBarras++;

@@ -345,14 +345,17 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		String str = (String) this.comboBox.getSelectedItem();
 		String strTese = (String) this.comboBoxTipoTese.getSelectedItem();
 		
-		String[] auxAutor = this.txtAutor.getText().split(",");
+		String[] auxAutores = this.txtAutores.getText().split(",");
 		ArrayList<String> autores = new ArrayList<String>();
 		
 		String[] auxArea = this.txtAreas.getText().split(",");
 		ArrayList<String> areas = new ArrayList<String>();
 		
-		for (int i = 0; i < auxAutor.length; i++) {
-			autores.add(auxAutor[i]);
+		ArrayList<String> autor=new ArrayList<>();
+		autor.add(txtAutor.getText());
+		
+		for (int i = 0; i < auxAutores.length; i++) {
+			autores.add(auxAutores[i]);
 		}
 		for (int i = 0; i < auxArea.length; i++) {
 			areas.add(auxArea[i]);
@@ -363,7 +366,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 			if (txtTitulo.getText().equals("") || txtAreas.getText().equals("")
 					|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("")
 					|| txtNumEdicao.getText().equals("") || txtEditor.getText().equals("")
-					|| txtIsbn.getText().equals("")) {
+					|| txtIsbn.getText().equals("") || txtAutores.getText().equals("")) {
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
 				
@@ -384,7 +387,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 				limpaPainel();
 			}
 			else 
-				registaTese(autores, areas);
+				registaTese(autor, areas);
 		}	
 		if(str.equals("Revista")){
 			

@@ -44,7 +44,7 @@ public class Livro extends NaoPeriodico implements Requisitavel {
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor) {
 		super(titulo, dataPublicacao, dataReceçao, autores, areas);
 		this.numEdicao = numEdicao;
-		ISBN = iSBN;
+		this.ISBN = iSBN;
 		this.editor = editor;
 	}
 
