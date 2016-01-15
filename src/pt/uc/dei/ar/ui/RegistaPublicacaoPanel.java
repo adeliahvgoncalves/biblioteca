@@ -33,6 +33,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 	private JPanel pnlTese;
 	private JPanel pnlLivro;
 	
+	private JComboBox comboBox;
+	
 
 	/**
 	 * Create the panel.
@@ -52,8 +54,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		lblRegistarPublicaes.setBounds(166, 16, 129, 16);
 		pnlRegistaPublicacao.add(lblRegistarPublicaes);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Livro", "Tese", "Revista", "Jornal"}));
+		comboBox.addActionListener(this);
 		comboBox.setBounds(336, 45, 101, 27);
 		pnlRegistaPublicacao.add(comboBox);
 		
@@ -104,40 +107,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlRegistaPublicacao.add(pnlTipoPublicacao);
 		pnlTipoPublicacao.setLayout(layout);
 		
-		//Tese
-		
-		this.pnlTese = new JPanel();
-		pnlTese.setBounds(6, 6, 438, 115);
-		pnlTipoPublicacao.add(pnlTese, "tese");
-		pnlTese.setLayout(null);
-		
-		JComboBox comboBoxTipoTese = new JComboBox();
-		comboBoxTipoTese.setModel(new DefaultComboBoxModel(new String[] {"Mestrado", "Doutoramento"}));
-		comboBoxTipoTese.setBounds(279, 6, 153, 27);
-		pnlTese.add(comboBoxTipoTese);
-		
-		JLabel lblTipoTese = new JLabel("Tipo de tese");
-		lblTipoTese.setBounds(160, 10, 96, 16);
-		pnlTese.add(lblTipoTese);
-		
-		JLabel lblAutor = new JLabel("Autor");
-		lblAutor.setBounds(20, 36, 61, 16);
-		pnlTese.add(lblAutor);
-		
-		txtAutor = new JTextField();
-		txtAutor.setBounds(142, 31, 130, 26);
-		pnlTese.add(txtAutor);
-		txtAutor.setColumns(10);
-		
-		JLabel lblOrientador = new JLabel("Orientador");
-		lblOrientador.setBounds(20, 64, 76, 16);
-		pnlTese.add(lblOrientador);
-		
-		txtOrientador = new JTextField();
-		txtOrientador.setBounds(142, 59, 130, 26);
-		pnlTese.add(txtOrientador);
-		txtOrientador.setColumns(10);
-		
 		
 		//Livro
 		
@@ -182,6 +151,40 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlLivro.add(txtIsbn);
 		txtIsbn.setColumns(10);
 		
+		//Tese
+		
+		this.pnlTese = new JPanel();
+		pnlTese.setBounds(6, 6, 438, 115);
+		pnlTipoPublicacao.add(pnlTese, "tese");
+		pnlTese.setLayout(null);
+		
+		JComboBox comboBoxTipoTese = new JComboBox();
+		comboBoxTipoTese.setModel(new DefaultComboBoxModel(new String[] {"Mestrado", "Doutoramento"}));
+		comboBoxTipoTese.setBounds(279, 6, 153, 27);
+		pnlTese.add(comboBoxTipoTese);
+		
+		JLabel lblTipoTese = new JLabel("Tipo de tese");
+		lblTipoTese.setBounds(160, 10, 96, 16);
+		pnlTese.add(lblTipoTese);
+		
+		JLabel lblAutor = new JLabel("Autor");
+		lblAutor.setBounds(20, 36, 61, 16);
+		pnlTese.add(lblAutor);
+		
+		txtAutor = new JTextField();
+		txtAutor.setBounds(142, 31, 130, 26);
+		pnlTese.add(txtAutor);
+		txtAutor.setColumns(10);
+		
+		JLabel lblOrientador = new JLabel("Orientador");
+		lblOrientador.setBounds(20, 64, 76, 16);
+		pnlTese.add(lblOrientador);
+		
+		txtOrientador = new JTextField();
+		txtOrientador.setBounds(142, 59, 130, 26);
+		pnlTese.add(txtOrientador);
+		txtOrientador.setColumns(10);
+		
 		//Butões
 		
 		btnSair = new JButton("Sair");
@@ -206,7 +209,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Falta Colocar o botao do registar e fazer os ultimos dois paineis
+		
 		
 		if (e.getSource() == this.btnSair) {
 			
@@ -216,6 +220,41 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		else if (e.getSource() == this.btnVoltar) {
 
 			janela.bibliotecarioChefeOK();
+
+		} else if (e.getSource() == this.comboBox) {
+			
+			String str = (String) this.comboBox.getSelectedItem();
+			
+			if(str.equals("Livro")){
+				
+				abrePainelLivroOK();
+				
+			}
+			else if(str.equals("Tese")){
+				
+				abrePainelTeseOK();
+			}
+			else if(str.equals("Revista")){
+				
+				
+				
+			}
+			else if(str.equals("Jornal")){
+				
+				
+				
+			}
 		}
+	}
+	
+	public void abrePainelLivroOK(){
+	
+		layout.show(pnlTipoPublicacao,"livro");
+	
+	}
+	public void abrePainelTeseOK(){
+		
+		layout.show(pnlTipoPublicacao,"tese");
+		
 	}
 }
