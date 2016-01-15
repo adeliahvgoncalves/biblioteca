@@ -34,7 +34,6 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 	private Janela janela;
 	private Utilizador utilizador;
-	private Publicacao publicacao;
 	private JTable tabelaPubTotal;
 	private JTextField txtPesquisa;
 	private JTable tabela;
@@ -54,9 +53,11 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		tabbedPane.setBounds(6, 38, 488, 343);
 		add(tabbedPane);
 
+		
 		Panel pnlListaPublicacoes = new Panel();
 		tabbedPane.addTab("Lista Publicações", null, pnlListaPublicacoes, null);
 		pnlListaPublicacoes.setLayout(null);
+	
 
 		txtPesquisa = new JTextField();
 		txtPesquisa.setText("pesquisar");
@@ -81,7 +82,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		btnListaTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-
+				preencheTabelaListaPublicacaoTotal();
 
 			}
 		});
@@ -153,13 +154,13 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 		Object [][] dataPublicacao = null;
 		
-		if (utilizador != null) {
+	//	if (utilizador != null) {
 
 			dataPublicacao = geraDadosDaTabelaPublicacaoTotal();
-		} else{
+		//} else{
 
-			dataPublicacao = new Object[biblioteca.getListaDePublicacoes().size()][16];
-		}
+		//	dataPublicacao = new Object[biblioteca.getListaDePublicacoes().size()][16];
+		//}
 
 		tabelaPubTotal = new JTable(dataPublicacao, colunasPublicacao);
 		tabelaPubTotal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -267,21 +268,29 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		}
 
 		tabelaPubTotal.setModel(dtm);
+		
+		//apagar  linhas
+		dtm.setRowCount(0);
 	}
 	
 	public Object [][] geraDadosDaTabelaPublicacaoTotal(){
 
-		Publicacao pub=null;
+		
 		Object [][] data= new Object[biblioteca.getListaDePublicacoes().size()][16];
-
+		
 		for (int i = 0; i < biblioteca.getListaDePublicacoes().size(); i++) {
+			
+			Publicacao pub = biblioteca.getListaDePublicacoes().get(i);
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
-			if (pub instanceof Revista ||pub instanceof Jornal){
+			if (pub instanceof Revista ){
 				data[i][3] = "--";
-				data[i][7] = ((Revista) pub).getPeriodicidade();
-				
+				data[i][7] = ((Revista) pub).getPeriodicidade();	
+			}
+			else if (pub instanceof Jornal){
+				data[i][3] = "--";
+				data[i][7] = ((Jornal) pub).getPeriodicidade();	
 			}
 			else if (pub instanceof Livro || pub instanceof Tese){	
 				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
@@ -323,6 +332,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 				data[i][13] = "--";	
 				data[i][14] = "--";	
 			}
+			
 			if(pub.isOcupado()){
 				data[i][15] = "Sim";
 			} else {
