@@ -104,7 +104,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		// Leitor
 
 		this.pnlLeitor = new JPanel();
-		pnlUtilizadores.add(pnlLeitor, "name_5078672876282");
+		pnlUtilizadores.add(pnlLeitor, "leitor");
 		pnlLeitor.setLayout(null);
 
 		JLabel lblDataNascimento = new JLabel("Data Nascimento");
@@ -241,11 +241,12 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 				abrePainelLeitorOK();
 				limpaPainelRegistaUtilizador();
+				//abrePainelLeitorOK();
 
 			} else
 
 				abrePainelBibliotecarioColaboradorOK();
-			limpaPainelRegistaUtilizador();
+				limpaPainelRegistaUtilizador();
 
 		}
 
