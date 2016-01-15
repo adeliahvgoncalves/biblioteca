@@ -102,6 +102,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Total","Área", "Autor", "Titulo"}));
 		comboBox.setMaximumRowCount(3);
+		comboBox.addActionListener(this);
 		comboBox.setBounds(6, 11, 88, 27);
 		pnlListaPublicacoes.add(comboBox);
 
@@ -365,13 +366,23 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		
 		String str = (String) this.comboBox.getSelectedItem();
 		
-		if(str.equals("Total")){
+		if(e.getSource() == this.comboBox){
 			
-			txtPesquisa.setEditable(false);
-			
+			if(str.equals("Total")){
+				txtPesquisa.setText("");
+				txtPesquisa.setEditable(false);
+				preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
+			}
+			if(str.equals("Área") || str.equals("Titulo") || str.equals("Autor") ){
+				
+				txtPesquisa.setText("");
+				txtPesquisa.setEditable(true);
+				
+			}
 		}
 		
 		if (e.getSource() == this.btnPesquisa) {
+			
 			
 			if(str.equals("Total")){
 				

@@ -37,7 +37,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	private JFormattedTextField formattedTextFieldData;
 
 	private JPanel pnlBiblioColaborador;
-	private JPanel pnlMensagem;
 	private JPanel pnlLeitor;
 
 	private JPanel pnlUtilizadores;
@@ -97,7 +96,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 		this.pnlUtilizadores = new JPanel();
 
-		pnlUtilizadores.setBounds(20, 116, 433, 169);
+		pnlUtilizadores.setBounds(20, 107, 433, 149);
 		panel.add(pnlUtilizadores);
 		pnlUtilizadores.setLayout(layout);
 
@@ -155,22 +154,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		pnlLeitor.add(txtContactoTelefonico);
 		txtContactoTelefonico.setColumns(10);
 
-		// Mensagem de users
-
-		this.pnlMensagem = new JPanel();
-		pnlMensagem.setSize(420, 157);
-		pnlMensagem.setLocation(6, 6);
-		pnlUtilizadores.add(pnlMensagem, "mensagem");
-		pnlMensagem.setLayout(null);
-
-		this.lblMensagem = new JLabel("");
-		lblMensagem.setBounds(20, 44, 407, 16);
-		pnlMensagem.add(lblMensagem);
-
-		this.lblMensagemLeitor = new JLabel("");
-		lblMensagemLeitor.setBounds(20, 72, 407, 16);
-		pnlMensagem.add(lblMensagemLeitor);
-
 		// Bibliotecario Chefe e Colaborador
 
 		this.pnlBiblioColaborador = new JPanel();
@@ -192,18 +175,26 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 		btnRegistaUtilizador = new JButton("Regista");
 		btnRegistaUtilizador.addActionListener(this);
-		btnRegistaUtilizador.setBounds(20, 297, 81, 40);
+		btnRegistaUtilizador.setBounds(20, 315, 81, 40);
 		panel.add(btnRegistaUtilizador);
 
 		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
-		btnSair.setBounds(376, 297, 75, 40);
+		btnSair.setBounds(378, 315, 75, 40);
 		panel.add(btnSair);
 
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(this);
-		btnVoltar.setBounds(283, 297, 81, 40);
+		btnVoltar.setBounds(282, 315, 81, 40);
 		panel.add(btnVoltar);
+
+		this.lblMensagem = new JLabel("");
+		lblMensagem.setBounds(30, 268, 407, 16);
+		panel.add(lblMensagem);
+
+		this.lblMensagemLeitor = new JLabel("");
+		lblMensagemLeitor.setBounds(30, 287, 407, 16);
+		panel.add(lblMensagemLeitor);
 	}
 
 	@Override
@@ -241,7 +232,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 				abrePainelLeitorOK();
 				limpaPainelRegistaUtilizador();
-				//abrePainelLeitorOK();
+				// abrePainelLeitorOK();
 
 			} else
 
@@ -354,7 +345,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 		lblMensagem.setText(s);
 		lblMensagemLeitor.setText(st);
-		layout.show(pnlUtilizadores, "mensagem");
 
 	}
 
