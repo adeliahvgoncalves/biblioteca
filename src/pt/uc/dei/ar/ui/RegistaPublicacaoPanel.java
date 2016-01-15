@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 	private JTextField txtTitulo;
@@ -34,6 +36,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 	private JPanel pnlLivro;
 	
 	private JComboBox comboBox;
+	private JTextField txtVolume;
+	private JTextField txtNumEdicaoJornal;
 	
 
 	/**
@@ -151,6 +155,43 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlLivro.add(txtIsbn);
 		txtIsbn.setColumns(10);
 		
+		JPanel pnlPeriodico = new JPanel();
+		pnlTipoPublicacao.add(pnlPeriodico, "name_1632122016732");
+		pnlPeriodico.setLayout(null);
+		
+		JComboBox comboBoxPeriodicidade = new JComboBox();
+		comboBoxPeriodicidade.setModel(new DefaultComboBoxModel(new String[] {"Diário", "Semanal", "Quinzenal", "Mensal", "Trimestral", "Semestral", "Anual"}));
+		comboBoxPeriodicidade.setBounds(299, 6, 134, 27);
+		pnlPeriodico.add(comboBoxPeriodicidade);
+		
+		JLabel lblPeriodicidade = new JLabel("Periodicidade");
+		lblPeriodicidade.setBounds(196, 10, 84, 16);
+		pnlPeriodico.add(lblPeriodicidade);
+		
+		JLabel lblVolume = new JLabel("Volume");
+		lblVolume.setBounds(38, 46, 61, 16);
+		pnlPeriodico.add(lblVolume);
+		
+		JLabel lblNumEdicaoJornal = new JLabel("Nº Edição");
+		lblNumEdicaoJornal.setBounds(38, 79, 61, 16);
+		pnlPeriodico.add(lblNumEdicaoJornal);
+		
+		txtVolume = new JTextField();
+		txtVolume.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtVolume.setForeground(Color.LIGHT_GRAY);
+		txtVolume.setText("revista");
+		txtVolume.setBounds(150, 38, 130, 26);
+		pnlPeriodico.add(txtVolume);
+		txtVolume.setColumns(10);
+		
+		txtNumEdicaoJornal = new JTextField();
+		txtNumEdicaoJornal.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtNumEdicaoJornal.setForeground(Color.LIGHT_GRAY);
+		txtNumEdicaoJornal.setText("jornal");
+		txtNumEdicaoJornal.setBounds(150, 74, 130, 26);
+		pnlPeriodico.add(txtNumEdicaoJornal);
+		txtNumEdicaoJornal.setColumns(10);
+		
 		//Tese
 		
 		this.pnlTese = new JPanel();
@@ -177,7 +218,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		txtAutor.setColumns(10);
 		
 		JLabel lblOrientador = new JLabel("Orientador");
-		lblOrientador.setBounds(20, 64, 76, 16);
+		lblOrientador.setBounds(35, 64, 76, 16);
 		pnlTese.add(lblOrientador);
 		
 		txtOrientador = new JTextField();
