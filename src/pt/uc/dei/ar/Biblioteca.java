@@ -296,12 +296,12 @@ public class Biblioteca {
 	 * @return
 	 */
 
-	public boolean criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+	public int criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int numEdicao){
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
 		System.out.println(jornal.getTitulo()+"  "+"codigo de barras"+jornal.getCodBarras());
-		return true;
+		return jornal.getCodBarras();
 	}
 
 	/**
@@ -315,12 +315,12 @@ public class Biblioteca {
 	 * @param tipoDeTese
 	 * @return
 	 */
-	public boolean criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+	public int criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
 		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
 		System.out.println(tese.getTitulo()+"  "+"codigo de barras"+tese.getCodBarras());
-		return true;
+		return tese.getCodBarras();
 	}
 
 	/**
@@ -335,12 +335,12 @@ public class Biblioteca {
 	 * @param editor
 	 * @return
 	 */
-	public boolean criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+	public int criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
 		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
 		System.out.println(livro.getTitulo()+"  "+"codigo de barras"+livro.getCodBarras());
-		return true;
+		return livro.getCodBarras();
 
 	}
 
