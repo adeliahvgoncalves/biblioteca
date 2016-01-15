@@ -275,13 +275,13 @@ public class Biblioteca {
 	 * @return
 	 */
 
-	public boolean criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+	public int criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int volume){
 
 		Revista revista= new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
 		System.out.println(revista.getTitulo()+"codigo de barras"+revista.getCodBarras());
-		return true;
+		return revista.getCodBarras();
 	}
 
 

@@ -18,8 +18,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFormattedTextField;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
+public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 	private JTextField txtTitulo;
 	private JTextField txtAreas;
 	private JTextField txtDataPublicacao;
@@ -93,9 +95,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlRegistaPublicacao.add(txtTitulo);
 		txtTitulo.setColumns(10);
 
-		JLabel lblreas = new JLabel("Áreas");
-		lblreas.setBounds(39, 95, 61, 16);
-		pnlRegistaPublicacao.add(lblreas);
+		JLabel lblAreas = new JLabel("Áreas");
+		lblAreas.setBounds(39, 95, 61, 16);
+		pnlRegistaPublicacao.add(lblAreas);
 
 		txtAreas = new JTextField();
 		txtAreas.setBounds(151, 90, 286, 26);
@@ -107,6 +109,16 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlRegistaPublicacao.add(lblDataPublicacao);
 
 		txtDataPublicacao = new JTextField();
+		txtDataPublicacao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				txtDataPublicacao.setText("");
+				txtDataPublicacao.setForeground(Color.BLACK);
+				txtDataPublicacao.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				
+			}
+		});
 		txtDataPublicacao.setText("DD/MM/AAAA");
 		txtDataPublicacao.setForeground(Color.LIGHT_GRAY);
 		txtDataPublicacao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
@@ -119,6 +131,17 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		pnlRegistaPublicacao.add(lblDataRecepo);
 
 		txtDataRecepcao = new JTextField();
+		txtDataRecepcao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txtDataRecepcao.setForeground(Color.BLACK);
+				txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+				txtDataRecepcao.setText("");
+			}
+		});
+		txtDataRecepcao.setText("DD/MM/AAAA");
+		txtDataRecepcao.setForeground(Color.LIGHT_GRAY);
+		txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtDataRecepcao.setBounds(151, 146, 130, 26);
 		pnlRegistaPublicacao.add(txtDataRecepcao);
 		txtDataRecepcao.setColumns(10);
@@ -262,10 +285,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 		lblMensagem.setBounds(6, 295, 450, 16);
 		pnlRegistaPublicacao.add(lblMensagem);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(151, 118, 130, 26);
-		pnlRegistaPublicacao.add(formattedTextField);
-
 	}
 
 	@Override
@@ -321,7 +340,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 
 	}
 
-	@SuppressWarnings("null")
 	public void registaPublicacao() {
 
 		String str = (String) this.comboBox.getSelectedItem();
@@ -348,15 +366,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 					|| txtIsbn.getText().equals("")) {
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
+				
 
 			} else
-
-				for (int i = 0; i < auxAutor.length; i++) {
-					autores.add(auxAutor[i]);
-				}
-			for (int i = 0; i < auxArea.length; i++) {
-				areas.add(auxArea[i]);
-			}
 
 			registaLivro(autores, areas);
 
@@ -369,6 +381,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 					|| txtOrientador.getText().equals("") || txtAutor.getText().equals("")) {
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
+				limpaPainel();
 			}
 			else 
 				registaTese(autores, areas);
@@ -380,22 +393,24 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 					|| txtVolume.getText().equals("")){
 				
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
+				limpaPainel();
 				
 			}
 			else
-				registaPeriodico(areas);
+				registaPeriodico(areas, str);
 		}
 		if(str.equals("Jornal")){
 			
 			if(txtTitulo.getText().equals("") || txtAreas.getText().equals("")
 					|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("") 
-					|| txtNumEdicao.getText().equals("")){
+					|| txtNumEdicaoJornal.getText().equals("")){
 				
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
+				limpaPainel();
 				
 			}
 			else
-				registaPeriodico(areas);
+				registaPeriodico(areas, str);
 		}
 	}
 	public void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
@@ -407,7 +422,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 				txtEditor.getText());
 
 		limpaPainel();
-		enviaMensagem("Publicacao inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+		enviaMensagem("Livro inserido com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 		
 	}
 	
@@ -422,25 +437,65 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener {
 					txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Mestrado);
 
 			limpaPainel();
-			enviaMensagem("Publicacao inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 		} else
 			codigoBarras = biblioteca.criaTese(txtTitulo.getText(), txtDataPublicacao.getText(),
 					txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
 		
 			limpaPainel();
-			enviaMensagem("Publicacao inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 	}
 	
-	public void registaPeriodico(ArrayList<String> areas){
+	public void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
 		
-		String strTese = (String) this.comboBoxPeriodicidade.getSelectedItem();
+		String strPeriodicidade = (String) this.comboBoxPeriodicidade.getSelectedItem();
 		int codigoBarras;
 		
+		Periodicidade p = null;
+		
+		if(strPeriodicidade.equals("Diária")){	
+			p=Periodicidade.Diaria;	
+		}
+		else if(strPeriodicidade.equals("Semanal")){
+			p=Periodicidade.Semanal;
+		}
+		else if(strPeriodicidade.equals("Quinzenal")){
+			p=Periodicidade.Quinzenal;
+		}	
+		else if(strPeriodicidade.equals("Mensal")){
+			p=Periodicidade.Mensal;
+		}
+		else if(strPeriodicidade.equals("Trimestral")){
+			p=Periodicidade.Trimestral;
+		}
+		else if(strPeriodicidade.equals("Semestral")){
+			p=Periodicidade.Semestral;
+		}
+		else if(strPeriodicidade.equals("Anual")) {
+			p=Periodicidade.Anual;
+		}
 		
 		
+		if(tipoPeriodico.equals("Revista")){
+			
+			codigoBarras = biblioteca.criaRevista(txtTitulo.getText(), txtDataPublicacao.getText(),
+					txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtVolume.getText()));
 		
+			limpaPainel();
+			enviaMensagem("Revista inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			
+		}
+		else if((tipoPeriodico.equals("Jornal"))){
+			
+			biblioteca.criaJornal(txtTitulo.getText(), txtDataPublicacao.getText(),
+			txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtNumEdicaoJornal.getText()));
+		
+			limpaPainel();
+			enviaMensagem("Jornal inserido com sucesso.");
+		}
+
 	}
 
 	public void limpaPainel(){
