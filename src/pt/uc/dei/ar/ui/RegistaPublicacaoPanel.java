@@ -92,6 +92,12 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 		txtTitulo = new JTextField();
 		txtTitulo.setBounds(151, 62, 286, 26);
+		txtTitulo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				lblMensagem.setText("");
+			}
+		});
 		pnlRegistaPublicacao.add(txtTitulo);
 		txtTitulo.setColumns(10);
 
@@ -304,6 +310,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		} else if (e.getSource() == this.comboBox) {
 
 			String str = (String) this.comboBox.getSelectedItem();
+			lblMensagem.setText("");
 
 			if (str.equals("Livro")) {
 
@@ -425,7 +432,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 				txtEditor.getText());
 
 		limpaPainel();
-		enviaMensagem("Livro inserido com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+		enviaMensagem("Livro inserido com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 		
 	}
 	
@@ -487,16 +494,16 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 					txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtVolume.getText()));
 		
 			limpaPainel();
-			enviaMensagem("Revista inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			enviaMensagem("Revista inserida com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 			
 		}
 		else if((tipoPeriodico.equals("Jornal"))){
 			
-			biblioteca.criaJornal(txtTitulo.getText(), txtDataPublicacao.getText(),
+			codigoBarras =biblioteca.criaJornal(txtTitulo.getText(), txtDataPublicacao.getText(),
 			txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtNumEdicaoJornal.getText()));
 		
 			limpaPainel();
-			enviaMensagem("Jornal inserido com sucesso.");
+			enviaMensagem("Jornal inserido com sucesso.CÓDIGO DE BARRAS: " + codigoBarras);
 		}
 
 	}
