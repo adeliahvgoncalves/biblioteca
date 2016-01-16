@@ -124,7 +124,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		pnlListaEmprestimos.add(scrollPane_1);
 
 
-		String[] colunas={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
+		String[] colunas={"Código de barras", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
 				"Data Empréstimo", "Prazo máximo entrega"};
 
@@ -154,7 +154,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		pnlListaPublicacoes.add(scrollPane);
 
 
-		String[] colunasPublicacao={"Código", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
+		String[] colunasPublicacao={"Código de barras", "Tipo", "Título", "Autor(es)", "Data Publicacao", "Data Receçao" , "Áreas", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nª Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
 		"Emprestado"};
 

@@ -65,17 +65,17 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		panel.add(textFielPesquisa);
 		textFielPesquisa.setColumns(10);
 
-		btnPesquisar = new JButton("PESQUISAR");
+		btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setBounds(312, 34, 126, 29);
 		btnPesquisar.addActionListener(this);
 		panel.add(btnPesquisar);
 
-		btnSair = new JButton("SAIR");
+		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
 		btnSair.setBounds(376, 297, 75, 40);
 		panel.add(btnSair);
 
-		btnVoltar = new JButton("VOLTAR");
+		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(this);
 		btnVoltar.setBounds(283, 297, 81, 40);
 		panel.add(btnVoltar);
