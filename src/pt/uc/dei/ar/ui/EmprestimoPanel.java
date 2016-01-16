@@ -47,7 +47,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		this.janela = j;
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(6, 6, 488, 388);
+		tabbedPane.setBounds(6, 6, 488, 372);
 		add(tabbedPane);
 
 		Panel EmprestimoPanel = new Panel();

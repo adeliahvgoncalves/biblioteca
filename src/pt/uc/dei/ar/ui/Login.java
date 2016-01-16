@@ -38,10 +38,6 @@ public class Login extends JPanel implements ActionListener {
 
 		setLayout(null);
 
-		JLabel lblLogin = new JLabel("BIBLIOTECA SUPER");
-		lblLogin.setBounds(189, 23, 122, 16);
-		add(lblLogin);
-
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(135, 84, 78, 16);
 		add(lblUsername);

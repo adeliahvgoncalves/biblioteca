@@ -237,7 +237,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 			} else
 
 				abrePainelBibliotecarioColaboradorOK();
-				limpaPainelRegistaUtilizador();
+			limpaPainelRegistaUtilizador();
 
 		}
 
@@ -263,9 +263,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	}
 
 	private void registaUtilizadorColaboradorBiblioChefe() {
-		// TODO fazer o metodo random para a password e user name
-		// TODO fazer a troca desse metodo quando se cria o utilizador, estão
-		// por default
 
 		String str = (String) this.comboBox.getSelectedItem();
 
@@ -275,52 +272,77 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 			enviaMensagemParaValidar("Erro: não inseriu os campos necessários para validar o registo.",
 					"Por favor introduza o nome, username e numero de funcionario correctamente.");
 
-		} else
+		}
 
-		if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) == null) {
+		else if (biblioteca.pesquisaUtilizadorPorUsername(txtUsername.getText()) != null) {
 
+			enviaMensagemParaValidar("Erro! O username indicado já se encontra atribuido.",
+					"Por favor introduza outro username.");
+		}
+
+		else if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) != null) {
+
+			enviaMensagemParaValidar(" Erro! Já existe um funcionário com o mesmo número. Insira",
+					"novamente e se persistir o erro dirija-se aos Recurso Humanos. ");
+		}
+		else{
 			if (str.equals("Colaborador")) {
 
-				biblioteca.criaColaborador(txtUsername.getText(), "123", txtNome.getText(),
+				String passwordColaborador = biblioteca.gerarPassword();
+
+				biblioteca.criaColaborador(txtUsername.getText(), passwordColaborador, txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
-				// TODO refazer a mensagem
+
+				limpaPainelSimples();
 				enviaMensagemParaValidar(" O Colaborador foi registado correctamente",
-						" O username é ... e a password....");
+						"O username é: " + txtUsername.getText() + ". A password é: " + passwordColaborador);
 
-			} else if (str.equals("Biblio Chefe")) {
-
-				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), "123", txtNome.getText(),
-						Integer.parseInt(txtNumFuncionario.getText()));
-				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente",
-						" O username é ... e a password....");
 			}
-		} else
-			enviaMensagemParaValidar(" Erro: Já existe um funcionário com o mesmo número. Insira novamente",
-					"os dados e se persistir o erro dirija-se aos Recurso Humanos. ");
+			if (str.equals("Biblio Chefe")) {
+
+				String passwordBiblio = biblioteca.gerarPassword();
+
+				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), passwordBiblio, txtNome.getText(),
+						Integer.parseInt(txtNumFuncionario.getText()));
+				
+				limpaPainelSimples();
+				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente",
+						"O username é: " + txtUsername.getText() + ". A password é: " + passwordBiblio);
+
+			} 
+		
+			
+		
+		}
 	}
 
 	private void registaUtilizadorLeitor() {
 
-		// TODO devolver o numero de leitor do utilizador, username e password,
-		// colocar na segunda parte da string.
-
 		if (txtUsername.getText().equals("") || txtNome.getText().equals("") || txtCC.getText().equals("")) {
 
-			enviaMensagemParaValidar("Erro: não inseriu os campos necessários para validar o registo.",
-					"Por favor introduza o CC, nome e username correctamente.");
+			enviaMensagemParaValidar("Erro! não inseriu os campos necessários para validar o registo.",
+					"Por favor introduza os dados correctamente.");
 
-		}
+		} else if (biblioteca.pesquisaUtilizadorPorUsername(txtUsername.getText()) != null) {
 
-		else if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText()) == null) {
+			enviaMensagemParaValidar("Erro! O username indicado já se encontra atribuido.",
+					"Por favor introduza outro username.");
+		} else if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText()) == null) {
 
-			biblioteca.criaLeitor(txtUsername.getText(), "123", txtNome.getText(), formattedTextFieldData.getText(),
-					txtCC.getText(), txtMorada.getText(), txtEmail.getText(), txtContactoTelefonico.getText());
+			int numLeitor = 0;
+			String password = biblioteca.gerarPassword();
 
-			enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!", "Leitor nº ");
+			numLeitor = biblioteca.criaLeitor(txtUsername.getText(), password, txtNome.getText(),
+					formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), txtEmail.getText(),
+					txtContactoTelefonico.getText());
+
+			enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!",
+					"Leitor nº " + numLeitor + ". Username: " + txtUsername.getText() + ". Password :" + password);
+			limpaPainelSimples();
 
 		} else
 
-			enviaMensagemParaValidar("Erro: o Leitor que inseriu já existe.", "");
+			enviaMensagemParaValidar("Erro! o Leitor que inseriu já existe.", "");
 
 	}
 
@@ -345,6 +367,19 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 		lblMensagem.setText(s);
 		lblMensagemLeitor.setText(st);
+
+	}
+
+	private void limpaPainelSimples() {
+
+		this.txtUsername.setText("");
+		this.txtNome.setText("");
+		this.txtCC.setText("");
+		this.txtNumFuncionario.setText("");
+		this.txtMorada.setText("");
+		this.txtEmail.setText("");
+		this.txtContactoTelefonico.setText("");
+		this.formattedTextFieldData.setText("");
 
 	}
 

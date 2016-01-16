@@ -159,14 +159,14 @@ public class Biblioteca {
 	 * Gerar password random para o utilizador
 	 * @return password com 4 digitos 
 	 */
-	public int gerarPassword(){
+	public String gerarPassword(){
 		Random gerador = new Random();
 		int password=0;
 
 		for (int i = 0; i < 10; i++) {
 			password = gerador.nextInt(10000); 
 		}
-		return password;
+		return Integer.toString(password);
 	}
 
 
@@ -220,16 +220,16 @@ public class Biblioteca {
 	 * @param telefone
 	 * @return true se criado corretamente
 	 */
-	public boolean criaLeitor(String username, String hashedPassword, String nome,
+	public int criaLeitor(String username, String hashedPassword, String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
 		Leitor leitor1=(Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
+		Leitor leitor=null;
 		if(leitor1==null){
-			Leitor leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+			leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 			this.adicionaUtilizador(leitor);
 			System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
-		}else {System.out.print("já existe!");
 		}
-		return true;
+		return leitor.getNumLeitor();
 
 	}
 

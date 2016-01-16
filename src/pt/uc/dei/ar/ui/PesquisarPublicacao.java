@@ -1,6 +1,8 @@
 package pt.uc.dei.ar.ui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,10 +27,12 @@ import pt.uc.dei.ar.NaoPeriodico;
 import pt.uc.dei.ar.Publicacao;
 import pt.uc.dei.ar.Revista;
 import pt.uc.dei.ar.Tese;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class PesquisarPublicacao extends JPanel implements ActionListener {
 	private Janela janela;
-	private JTextField textFielPesquisa;
+	private JTextField txtPesquisa;
 	private CardLayout layout;
 	private JTable tabela;
 	private JButton btnPesquisar;
@@ -57,13 +61,25 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		panel.add(lblNewLabel);
 
 
-		textFielPesquisa = new JTextField();
-		textFielPesquisa.setText("pesquisar");
-		textFielPesquisa.setEditable(true);
-		textFielPesquisa.setToolTipText("");
-		textFielPesquisa.setBounds(67, 34, 183, 26);
-		panel.add(textFielPesquisa);
-		textFielPesquisa.setColumns(10);
+		txtPesquisa = new JTextField();
+		txtPesquisa.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				txtPesquisa.setText("");
+				txtPesquisa.setForeground(Color.BLACK);
+				txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				
+			}
+		});
+		txtPesquisa.setText("pesquisar");
+		txtPesquisa.setEditable(true);
+		txtPesquisa.setForeground(Color.LIGHT_GRAY);
+		txtPesquisa.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtPesquisa.setToolTipText("");
+		txtPesquisa.setBounds(67, 34, 183, 26);
+		panel.add(txtPesquisa);
+		txtPesquisa.setColumns(10);
 
 		btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setBounds(312, 34, 126, 29);
@@ -142,7 +158,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		else if (e.getSource() == this.btnPesquisar) {
 
 			this.preencheTabelaEmprestimo();
-			textFielPesquisa.setText("");
+			txtPesquisa.setText("");
 			
 		}
 	}
@@ -151,12 +167,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		//aloco a minha tabela vazia
 		Object [][] data= new Object[1][17]; 
 
-		String text = this.textFielPesquisa.getText();
+		String text = this.txtPesquisa.getText();
 		try {
 			int d = Integer.parseInt(text); 
 		 pub = biblioteca.pesquisaPublicacaoPorCodBarras(d);
 		} catch (NumberFormatException nfe) {
-			pub = biblioteca.pesquisaPublicacao(textFielPesquisa.getText());
+			pub = biblioteca.pesquisaPublicacao(txtPesquisa.getText());
 		}
 
 		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
