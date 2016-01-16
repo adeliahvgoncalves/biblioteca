@@ -162,7 +162,7 @@ public class Main {
 
 
 		//testar o gera utilizador e gerar password
-		System.out.println("Username"+maravilha.gerarUsername("Maria Margarida"));
+		
 		System.out.println("Password"+maravilha.gerarPassword());
 
 

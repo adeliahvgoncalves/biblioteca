@@ -224,6 +224,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		int codigoLeitor = Integer.parseInt(txtNumeroLeitor.getText());
 		int codigoBarras  = Integer.parseInt(txtCodigoBarras.getText());
 		
+		
 		if (txtCodigoBarras.getText().equals("") || txtNumeroLeitor.getText().equals("")) {
 
 			lblMensagem.setText("Não preencheu os campos do empréstimo.");
@@ -234,8 +235,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 		} else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
 
-			
-
 			lblMensagem.setText("A publicação inserida não existe na biblioteca.");
 
 		}
@@ -244,11 +243,16 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 			
 			txtCodigoBarras.setText("");
 			txtNumeroLeitor.setText("");
-			if (biblioteca.criaEmprestimo(codigoLeitor, codigoBarras)) {
+			
+			if (biblioteca.autorizaRequisitavel(biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras)) && 
+					biblioteca.criaEmprestimo(codigoLeitor, codigoBarras)) {
 				
 				lblMensagem.setText("Empréstimo efectuado com sucesso.");
+				
 			} else{
-				lblMensagem.setText("Erro! O livro não pode ser emprestado.");
+				
+				lblMensagem.setText("Erro! É um jornal, só pode ser consultado na biblioteca.");
+				
 			}
 
 		}

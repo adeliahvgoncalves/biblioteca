@@ -127,33 +127,22 @@ public class Biblioteca {
 		return utilizadorPorUsername;
 	}
 
+	
 	/**
-	 * Gerar username para o utilizador
-	 * @param nome
-	 * @return username em formto String
+	 * Verifica se a publicação é requisitavel
+	 * @param publicacao
+	 * @return true se implementa o requisitável
 	 */
-	public String gerarUsername(String nome){
-
-		//TODO: acrescentar ao username o codigo de leitor?
-		String string = nome;
-		String [] result = string.split(" ");
-		String palavra1 = null, palavra2 = null;
-		int indiceDoUltimo = result.length -1;
-
-		for (int x = 0; x < result.length; x++){
-
-			if (x == 0 ) {
-
-				palavra1 = result[x].substring(0,3); 
-			}
-			if( x== indiceDoUltimo){
-				palavra2 = result[x].substring(0,2);
-			}
-
-		}
-		return palavra1+palavra2;
+	public boolean autorizaRequisitavel(Publicacao publicacao){
+		
+		 if(publicacao instanceof Requisitavel ){
+			 
+			 return true;
+		 } 
+		return false;
 	}
-
+	
+	
 
 	/**
 	 * Gerar password random para o utilizador

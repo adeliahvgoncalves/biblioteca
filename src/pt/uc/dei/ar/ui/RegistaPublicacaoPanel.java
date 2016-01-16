@@ -106,6 +106,19 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlRegistaPublicacao.add(lblAreas);
 
 		txtAreas = new JTextField();
+		txtAreas.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				txtAreas.setText("");
+				txtAreas.setForeground(Color.BLACK);
+				txtAreas.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				
+			}
+		});
+		txtAreas.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtAreas.setForeground(Color.LIGHT_GRAY);
+		txtAreas.setText("área , área , área");
 		txtAreas.setBounds(151, 90, 286, 26);
 		pnlRegistaPublicacao.add(txtAreas);
 		txtAreas.setColumns(10);
@@ -171,6 +184,19 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlLivro.add(lblAutores);
 
 		txtAutores = new JTextField();
+		txtAutores.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+				txtAutores.setText("");
+				txtAutores.setForeground(Color.BLACK);
+				txtAutores.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				
+			}
+		});
+		txtAutores.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtAutores.setForeground(Color.LIGHT_GRAY);
+		txtAutores.setText("autor , autor , autor");
 		txtAutores.setBounds(146, 1, 280, 26);
 		pnlLivro.add(txtAutores);
 		txtAutores.setColumns(10);
