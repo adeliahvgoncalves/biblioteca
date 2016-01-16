@@ -83,7 +83,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 			}
 		});
 		txtPesquisa.setText("Pesquisa");
-		txtPesquisa.setBounds(330, 10, 130, 26);
+		txtPesquisa.setBounds(180, 11, 183, 26);
 		txtPesquisa.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtPesquisa.setForeground(Color.LIGHT_GRAY);
 		pnlListaPublicacoes.add(txtPesquisa);
@@ -96,7 +96,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 		btnPesquisa = new JButton("Pesquisar");
 		btnPesquisa.addActionListener(this);
-		btnPesquisa.setBounds(6, 251,  88, 44);
+		btnPesquisa.setBounds(375, 11, 90,26);
 		pnlListaPublicacoes.add(btnPesquisa);
 
 		comboBox = new JComboBox();
