@@ -166,11 +166,8 @@ public class Biblioteca {
 		for (int i = 0; i < 10; i++) {
 			password = gerador.nextInt(10000); 
 		}
-<<<<<<< HEAD
+
 		return Integer.toString(password);
-=======
-		return  password;
->>>>>>> origin/master
 	}
 
 
