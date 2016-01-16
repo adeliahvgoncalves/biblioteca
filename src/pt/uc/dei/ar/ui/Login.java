@@ -63,7 +63,7 @@ public class Login extends JPanel implements ActionListener {
 		lblMensagem.setBounds(92, 195, 332, 16);
 		add(lblMensagem);
 
-		btnLogin = new JButton("Entrar");
+		btnLogin = new JButton("ENTRAR");
 		btnLogin.setBounds(191, 277, 117, 38);
 		btnLogin.addActionListener(this);
 		add(btnLogin);

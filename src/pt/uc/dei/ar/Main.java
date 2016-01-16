@@ -116,7 +116,7 @@ public class Main {
 		maravilha.devolveEmprestimoAMao(10, data4);
 		maravilha.devolveEmprestimoAMao(10, data5);
 		maravilha.devolveEmprestimoAMao(10, data6);
-		
+
 
 
 		//testei que nao empresta jornal:
@@ -166,17 +166,32 @@ public class Main {
 		System.out.println("Password"+maravilha.gerarPassword());
 
 
-		System.out.print("["+maravilha.diasDeEmprestimo(em4)+"]");
+		System.out.print("["+em4.diasDeEmprestimo()+"]");
 		//System.out.print(maravilha.duracaoMinimaEmprestimo());
 
 
-	
-		
-		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoUltimoAno();
+
+
+		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoAno();
 
 		for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
-			
+
 			System.out.println(((Publicacao)entry.getKey()).getTitulo() + ", emprestado " + entry.getValue()+"x"); 
+		}
+
+		Map<String, Integer> repeticaoMensal=maravilha.geraMapaRepeticoesMensais(new GregorianCalendar());
+
+		for (Map.Entry<String, Integer> entry : repeticaoMensal.entrySet()) { 
+
+			System.out.println(((String)entry.getKey()) + ", emprestado " + entry.getValue()+"x"); 
+		}
+
+		
+		Map<Publicacao,ArrayList<Integer>> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
+		
+		for (Map.Entry<Publicacao,ArrayList<Integer>> entry : diasEmpPorPub.entrySet()) { 
+
+			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue()+"x"); 
 		}
 
 		EventQueue.invokeLater(new Runnable() {

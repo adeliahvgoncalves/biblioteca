@@ -118,18 +118,45 @@ public class Emprestimo {
 	}
 
 	public Date dataMaximaEntrega(){
-		
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(this.dataEmp);
 		c.add(Calendar.DATE, publicacao.maximoDiasRequisicao());
 
-		
+
 		Date dataMaximaEntrega = c.getTime();
 		return dataMaximaEntrega;
-		
-	
+
+
 	}
 
+	/**
+	 * 
+	 * @param emprestimo
+	 * @return dias que a publicação esteve emprestada em formato inteiro
+	 */
+	public int diasDeEmprestimo(){
+		long m1 = 0;
+		long m2 = 0;
+		int diasEmprestimo=0;
+		if(this.getDataDev() != null){
+
+			m1 = this.getDataEmp().getTime();
+			m2 = this.getDataDev().getTime();
+		} else if (this.getDataDev()==null){
+			m1 = this.getDataEmp().getTime();
+			Date now=new Date();
+			m2 = now.getTime();
+		}
+		diasEmprestimo=  (int) ((m2 - m1) / 1000 / 60 / 60 / 24);
+		if(diasEmprestimo>0){
+			diasEmprestimo=  diasEmprestimo;
+		}
+		else if (diasEmprestimo==0){
+			diasEmprestimo=1;
+		}
+			return  diasEmprestimo;
+	}
 
 
 	/* (non-Javadoc)

@@ -366,7 +366,6 @@ public class Biblioteca {
 					utilizadorColaborador=utilizador;
 				}
 
-
 		}
 
 		return utilizadorColaborador;
@@ -497,7 +496,6 @@ public class Biblioteca {
 		ArrayList<Publicacao> publicacaoPorArea= new ArrayList<Publicacao>();
 
 		for(Publicacao publicacao: listaDePublicacoes){
-
 			if(publicacao.getListaDeAreas().contains(area)){
 				publicacaoPorArea.add(publicacao);
 			}
@@ -515,20 +513,16 @@ public class Biblioteca {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
 
 		for (Publicacao publicacao: listaDePublicacoes){
-
 			if(publicacao instanceof NaoPeriodico && ((NaoPeriodico) publicacao).getListaDeAutores().contains(nome)){	
 				publicacaoComParteNome.add(publicacao);
 			}
-
 		}
 		return publicacaoComParteNome;
-
 	}
-
 
 	/**
 	 * @param emprestimo 
-	 * @return Publicações que contém esse nome
+	 * @return Publicações que contém esse título
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
@@ -542,7 +536,6 @@ public class Biblioteca {
 		return publicacaoComParteNome;
 
 	}
-
 
 	/**
 	 * @param String nome 
@@ -591,161 +584,141 @@ public class Biblioteca {
 		return emprestimosDataExpirada;
 	}
 
-//	/**
-//	 * @return
-//	 */
-//	public int totalEmprestimosUltimoAno() {
-//
-//		Calendar dataAtual = new GregorianCalendar(); 
-//		int ano = dataAtual.get(Calendar.YEAR);
-//		int x=0;
-//		//int x = -365;
-//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
-//			x=-366;
-//		} else {
-//			x = -365;
-//		}
-//		Calendar dataAnoAnterior = Calendar.getInstance();
-//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
-//
-//		ArrayList<Emprestimo> emprestimosUltimoAno= new ArrayList<Emprestimo>();
-//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-//			Calendar dataDeEmp= Calendar.getInstance();
-//			dataDeEmp.setTime(emprestimo.getDataEmp());
-//
-//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-//				emprestimosUltimoAno.add(emprestimo);
-//
-//			}
-//		}
-//		return emprestimosUltimoAno.size();
-//	}
-//	/**
-//	 * @return
-//	 */
-//	public int mediaEmprestimo() {
-//		// TODO implement here
-//		return 0;
-//	}
-//
-//
-	public int diasDeEmprestimo(Emprestimo emprestimo){
-		long m1 = 0;
-		long m2 = 0;
+	/**
+	 * @return número total de empréstimos do último ano em formato inteiro
+	 */
+	public int totalEmprestimosUltimoAno() {
 
-		if(emprestimo.getDataDev() != null){
-			
-			m1 = emprestimo.getDataEmp().getTime();
-			m2 = emprestimo.getDataDev().getTime();
+		Calendar dataAtual = new GregorianCalendar(); 
+		int ano = dataAtual.get(Calendar.YEAR);
+		Calendar dataAnoAnterior = Calendar.getInstance();
+		dataAnoAnterior.set(Calendar.MONTH, -12);
+
+		ArrayList<Emprestimo> emprestimosUltimoAno= new ArrayList<Emprestimo>();
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Calendar dataDeEmp= Calendar.getInstance();
+			dataDeEmp.setTime(emprestimo.getDataEmp());
+
+			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+				emprestimosUltimoAno.add(emprestimo);
+
+			}
 		}
-		return  (int) ((m2 - m1) / 1000 / 60 / 60 / 24);
+		return emprestimosUltimoAno.size();
 	}
-//
-//	/**
-//	 * @return
-//	 */
-//	public int duracaoMinimaEmprestimo() {
-//
-//		Calendar dataAtual = new GregorianCalendar(); 
-//		int ano = dataAtual.get(Calendar.YEAR);
-//		int x=0;
-//		//int x = -365;
-//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
-//			x=-366;
-//		} else {
-//			x = -365;
-//		}
-//		Calendar dataAnoAnterior = Calendar.getInstance();
-//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
-//
-//
-//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
-//		int numDias=0;
-//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-//			Calendar dataDeEmp= Calendar.getInstance();
-//			dataDeEmp.setTime(emprestimo.getDataEmp());
-//
-//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-//				numDias=diasDeEmprestimo(emprestimo);
-//				listaDiasEmprestimo.add(numDias);
-//
-//			}
-//		}
-//		Collections.sort(listaDiasEmprestimo);
-//
-//
-//		return listaDiasEmprestimo.get(0);
-//	}
-//
-//	/**
-//	 * @return
-//	 */
-//	public int duracacaoMaximaEmprestimo() {
-//		Calendar dataAtual = new GregorianCalendar(); 
-//		int ano = dataAtual.get(Calendar.YEAR);
-//		int x=0;
-//		//int x = -365;
-//		if((ano%4 == 0 && ano%100 != 0)||ano%400 == 0){
-//			x=-366;
-//		} else {
-//			x = -365;
-//		}
-//		Calendar dataAnoAnterior = Calendar.getInstance();
-//		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
-//
-//
-//		ArrayList<Integer> listaDiasEmprestimo = new ArrayList<Integer>();
-//		int numDias=0;
-//		for (Emprestimo emprestimo : listaDeEmprestimo) {
-//			Calendar dataDeEmp= Calendar.getInstance();
-//			dataDeEmp.setTime(emprestimo.getDataEmp());
-//
-//			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-//				numDias=(int) diasDeEmprestimo(emprestimo);
-//				listaDiasEmprestimo.add(numDias);
-//
-//			}
-//		}
-//		Collections.sort(listaDiasEmprestimo);
-//
-//
-//		return listaDiasEmprestimo.get(listaDiasEmprestimo.size());
-//	}
-//
-//
-//
-//
-//
-//
-	
-	private int numeroDiasAno(int ano){
+
+	/**
+	 * @return
+	 */
+	public int mediaEmprestimo() {
+		// TODO implement here
+		return 0;
+	}
+
+
+	/**
+	 * @return
+	 */
+	public int duracaoMinimaEmprestimo() {
+		return 0;
+
+	}
+
+	/**
+	 * @return
+	 */
+	public int duracacaoMaximaEmprestimo() {
+		return 0;
 		
-		int x = 0;
-		if((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0){
-			x = 366;
-		} else {
-			x = 365;
-		}
-		return x;
 	}
 	
+	
+	/**
+	 * Para 1 ano, devolve um Map que relaciona as Publicacoes com os dias que esteve emprestado
+	 * de forma a fazermos o maximo, mínimo e média
+	 * 
+	 * @param dataAtual
+	 * @return um map publicacao, dias de empréstimo
+	 */
+	public Map<Publicacao,ArrayList<Integer>> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
+		
+		Calendar dataAnoAnterior = Calendar.getInstance();
+		dataAnoAnterior.set(Calendar.MONTH, -12);
+
+		Map<Publicacao,ArrayList<Integer>> countMap = new HashMap<Publicacao,ArrayList<Integer>>();
+
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			
+			Calendar dataDeEmp= Calendar.getInstance();
+			dataDeEmp.setTime(emprestimo.getDataEmp());
+
+			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
+
+				int diasEmprestimo = emprestimo.diasDeEmprestimo();
+
+				if (!countMap.containsKey(pub)) {
+					ArrayList<Integer>daysArray = new ArrayList<Integer>(1);
+					daysArray.add( new Integer(diasEmprestimo) );
+					countMap.put(pub,daysArray);
+				} else {
+					ArrayList<Integer>daysArray = countMap.get(pub);
+					daysArray.add( new Integer(diasEmprestimo) );
+					//countMap.put(pub, daysArray);
+				}	
+			}
+		}
+		return countMap;
+	}
+	
+	
+	/**
+	 * 
+	 * @param dataAtual
+	 * @return um dicionario com a contagem de repeticoes mensais por cada Publicacao
+	 */
+	public Map<String, Integer>  geraMapaRepeticoesMensais(Calendar dataAtual){
+
+		//Calendar dataAtual= new GregorianCalendar();
+		Calendar dataAnoAnterior = Calendar.getInstance();
+		dataAnoAnterior.set(Calendar.MONTH, -12);
+		
+		Map<String, Integer> countMap = new HashMap<String, Integer>();
+		
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Calendar dataDeEmp= Calendar.getInstance();
+			dataDeEmp.setTime(emprestimo.getDataEmp());
+	
+			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+				
+				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
+
+				String chave = pub.getCodBarras() + "-" + dataDeEmp.get(Calendar.MONTH);
+				if (!countMap.containsKey(chave)) {
+					countMap.put(chave, 1);
+				} else {
+					Integer count = countMap.get(chave);
+					count = count + 1;
+					countMap.put(chave, count);
+				}	
+			}
+		}
+		return countMap;
+	}
+	
+
+
 	/**
 	 * @param ArrayList Emprestimo 
 	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
-	public Map<Publicacao, Integer> totalEmprestimosPorPublicacaoNoUltimoAno() {
-
-
-		//Utimos doze meses do ano
-		Calendar dataAtual = new GregorianCalendar(); 
-		int ano = dataAtual.get(Calendar.YEAR);
-		int x = -numeroDiasAno(ano);
+	public Map<Publicacao, Integer> totalEmprestimosPorPublicacaoNoAno() {
 		
+		Calendar dataAtual= new GregorianCalendar();
 		Calendar dataAnoAnterior = Calendar.getInstance();
-		dataAnoAnterior.add( Calendar.DAY_OF_YEAR, x);
-
+		dataAnoAnterior.set(Calendar.MONTH, -12);
 		Map<Publicacao, Integer> countMap = new HashMap<Publicacao, Integer>();
-        
+
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Calendar dataDeEmp= Calendar.getInstance();
 			dataDeEmp.setTime(emprestimo.getDataEmp());
@@ -753,20 +726,20 @@ public class Biblioteca {
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
 
 				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
-				
-	            if (!countMap.containsKey(pub)) {
-	                countMap.put(pub, 1);
-	            } else {
-	                Integer count = countMap.get(pub);
-	                count = count + 1;
-	                countMap.put(pub, count);
-	            }	
+
+				if (!countMap.containsKey(pub)) {
+					countMap.put(pub, 1);
+				} else {
+					Integer count = countMap.get(pub);
+					count = count + 1;
+					countMap.put(pub, count);
+				}	
 			}
 		}	
-	
+
 		return countMap;
 	}
-	
+
 	/**
 	 * @return the listaDeUtilizadores
 	 */
