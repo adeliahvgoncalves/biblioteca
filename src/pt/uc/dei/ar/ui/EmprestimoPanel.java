@@ -5,6 +5,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.Publicacao;
 
 import java.awt.Panel;
 import javax.swing.JTextField;
@@ -15,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.ArrayList;
 
 public class EmprestimoPanel extends JPanel implements ActionListener {
 
@@ -63,7 +65,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		JLabel lblNumeroLeitor = new JLabel("Número de leitor");
 		lblNumeroLeitor.setBounds(104, 68, 117, 16);
 		EmprestimoPanel.add(lblNumeroLeitor);
-		
+
 		lblMensagem = new JLabel("");
 		lblMensagem.setBounds(50, 140, 336, 16);
 		EmprestimoPanel.add(lblMensagem);
@@ -218,66 +220,94 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	public void validarBotaoEmprestimo() {
 
-		// TODO: NAO PERMITIR LETRAS NO TEXFIELD
-		//TODO: bloquear os jornais
-		
-		int codigoLeitor = Integer.parseInt(txtNumeroLeitor.getText());
-		int codigoBarras  = Integer.parseInt(txtCodigoBarras.getText());
-		
-		
-		if (txtCodigoBarras.getText().equals("") || txtNumeroLeitor.getText().equals("")) {
 
-			lblMensagem.setText("Não preencheu os campos do empréstimo.");
+		try{
 
-		} else if (biblioteca.pesquisaUtilizadorPorNumLeitor(codigoLeitor) == null) {
+			int numLeitor=Integer.parseInt(txtNumeroLeitor.getText());
+			int codigoBarras=Integer.parseInt(txtCodigoBarras.getText());
 
-			lblMensagem.setText("O leitor não existe como leitor da biblioteca.");
 
-		} else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
+			if (txtCodigoBarras.getText().equals("") || txtNumeroLeitor.getText().equals("")) {
 
-			lblMensagem.setText("A publicação inserida não existe na biblioteca.");
+				lblMensagem.setText("Não preencheu os campos do empréstimo.");
 
-		}
+			} else if (biblioteca.pesquisaUtilizadorPorNumLeitor(numLeitor) == null) {
 
-		else {
-			
-			txtCodigoBarras.setText("");
-			txtNumeroLeitor.setText("");
-			
-			if (biblioteca.autorizaRequisitavel(biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras)) && 
-					biblioteca.criaEmprestimo(codigoLeitor, codigoBarras)) {
-				
-				lblMensagem.setText("Empréstimo efectuado com sucesso.");
-				
-			} else{
-				
-				lblMensagem.setText("Erro! É um jornal, só pode ser consultado na biblioteca.");
-				
+				lblMensagem.setText("O leitor não existe como leitor da biblioteca.");
+
+			} else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
+
+				lblMensagem.setText("A publicação inserida não existe na biblioteca.");
+
 			}
+
+			else {
+
+				txtCodigoBarras.setText("");
+				txtNumeroLeitor.setText("");
+
+
+
+				if (biblioteca.autorizaRequisitavel(biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras))){
+
+					boolean emprestou = biblioteca.criaEmprestimo(numLeitor, codigoBarras);
+					if (emprestou) {
+
+						lblMensagem.setText("Empréstimo efectuado com sucesso.");
+					}
+					else{
+						lblMensagem.setText("A publicação já se encontra ocupada.");
+					}
+				}	
+
+				else{
+
+					lblMensagem.setText("Erro! É um jornal, consultar na biblioteca.");
+
+				}
+
+			}
+		}
+		catch(NumberFormatException e){
+
+			lblMensagem.setText("Coloque apenas números");
 
 		}
 
 	}
 
 	public void validarBotaoDevolve() {
-		
-		int codigo = Integer.parseInt(txtCodigoBarrasDevolucao.getText());
-		
-		if (biblioteca.pesquisaPublicacaoPorCodBarras(codigo) == null) {
-			
-			lblMensagemDevolver.setText("A publicação inserida não existe na biblioteca.");
 
-		}	else {
-			
-			txtCodigoBarrasDevolucao.setText("");
-			if (biblioteca.devolveEmprestimo(codigo)){
 
-				lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
-				
-			} else{
+		try{
 
-				lblMensagemDevolver.setText(" Erro! O livro não está emprestado");
+			int codigoBarras=Integer.parseInt(txtCodigoBarrasDevolucao.getText());
+
+			if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
+
+				lblMensagemDevolver.setText("A publicação inserida não existe na biblioteca.");
+
+			}	else {
+
+				txtCodigoBarrasDevolucao.setText("");
+
+				if (biblioteca.devolveEmprestimo(codigoBarras)){
+
+					lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
+
+				} else{
+
+					lblMensagemDevolver.setText(" Erro! O livro não está emprestado");
+
+				}
 			}
 		}
+		
+		catch(NumberFormatException e){
+
+			lblMensagemDevolver.setText("Coloque apenas números");
+
+		}
+
 	}
 }

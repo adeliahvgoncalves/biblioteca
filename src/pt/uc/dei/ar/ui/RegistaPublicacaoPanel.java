@@ -283,7 +283,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlTese.add(lblAutor);
 
 		txtAutor = new JTextField();
-		txtAutor.setBounds(148, 31, 130, 26);
+		txtAutor.setBounds(148, 31, 284, 26);
 		pnlTese.add(txtAutor);
 		txtAutor.setColumns(10);
 
@@ -292,7 +292,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlTese.add(lblOrientador);
 
 		txtOrientador = new JTextField();
-		txtOrientador.setBounds(148, 59, 130, 26);
+		txtOrientador.setBounds(148, 59, 284, 26);
 		pnlTese.add(txtOrientador);
 		txtOrientador.setColumns(10);
 
@@ -321,8 +321,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Falta Colocar o botao do registar e fazer os ultimos dois
-		// paineis
 
 		if (e.getSource() == this.btnSair) {
 
@@ -376,22 +374,25 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 	public void registaPublicacao() {
 
 		String str = (String) this.comboBox.getSelectedItem();
-		String strTese = (String) this.comboBoxTipoTese.getSelectedItem();
 		
 		String[] auxAutores = this.txtAutores.getText().split(",");
 		ArrayList<String> autores = new ArrayList<String>();
+		String auxTrimAutor;
 		
 		String[] auxArea = this.txtAreas.getText().split(",");
 		ArrayList<String> areas = new ArrayList<String>();
+		String auxTrimArea;
 		
 		ArrayList<String> autor=new ArrayList<>();
 		autor.add(txtAutor.getText());
 		
 		for (int i = 0; i < auxAutores.length; i++) {
-			autores.add(auxAutores[i]);
+			auxTrimAutor=auxAutores[i].trim();
+			autores.add(auxTrimAutor);
 		}
 		for (int i = 0; i < auxArea.length; i++) {
-			areas.add(auxArea[i]);
+			auxTrimArea=auxArea[i].trim();
+			areas.add(auxTrimArea);
 		}
 
 		if (str.equals("Livro")) {
@@ -405,7 +406,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 				
 
 			} else
-
+	
 			registaLivro(autores, areas);
 
 		}
@@ -489,35 +490,35 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		String strPeriodicidade = (String) this.comboBoxPeriodicidade.getSelectedItem();
 		int codigoBarras;
 		
-		Periodicidade p = null;
+		Periodicidade periodicidade = null;
 		
 		if(strPeriodicidade.equals("Diária")){	
-			p=Periodicidade.Diaria;	
+			periodicidade=Periodicidade.Diaria;	
 		}
 		else if(strPeriodicidade.equals("Semanal")){
-			p=Periodicidade.Semanal;
+			periodicidade=Periodicidade.Semanal;
 		}
 		else if(strPeriodicidade.equals("Quinzenal")){
-			p=Periodicidade.Quinzenal;
+			periodicidade=Periodicidade.Quinzenal;
 		}	
 		else if(strPeriodicidade.equals("Mensal")){
-			p=Periodicidade.Mensal;
+			periodicidade=Periodicidade.Mensal;
 		}
 		else if(strPeriodicidade.equals("Trimestral")){
-			p=Periodicidade.Trimestral;
+			periodicidade=Periodicidade.Trimestral;
 		}
 		else if(strPeriodicidade.equals("Semestral")){
-			p=Periodicidade.Semestral;
+			periodicidade=Periodicidade.Semestral;
 		}
 		else if(strPeriodicidade.equals("Anual")) {
-			p=Periodicidade.Anual;
+			periodicidade=Periodicidade.Anual;
 		}
 		
 		
 		if(tipoPeriodico.equals("Revista")){
 			
 			codigoBarras = biblioteca.criaRevista(txtTitulo.getText(), txtDataPublicacao.getText(),
-					txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtVolume.getText()));
+					txtDataRecepcao.getText(), areas, periodicidade, Integer.parseInt(txtVolume.getText()));
 		
 			limpaPainel();
 			enviaMensagem("Revista inserida com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
@@ -526,7 +527,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		else if((tipoPeriodico.equals("Jornal"))){
 			
 			codigoBarras =biblioteca.criaJornal(txtTitulo.getText(), txtDataPublicacao.getText(),
-			txtDataRecepcao.getText(), areas, p, Integer.parseInt(txtNumEdicaoJornal.getText()));
+			txtDataRecepcao.getText(), areas, periodicidade, Integer.parseInt(txtNumEdicaoJornal.getText()));
 		
 			limpaPainel();
 			enviaMensagem("Jornal inserido com sucesso.CÓDIGO DE BARRAS: " + codigoBarras);
@@ -536,11 +537,15 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 	public void limpaPainel(){
 		
+		txtAreas.setText("área , área , área");
+		txtAreas.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtAreas.setForeground(Color.LIGHT_GRAY);
+		txtAutores.setText("autor , autor , autor");
+		txtAutores.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtAutores.setForeground(Color.LIGHT_GRAY);
 		txtTitulo.setText("");
-		txtAreas.setText("");
 		txtDataPublicacao.setText("");
 		txtDataRecepcao.setText("");
-		txtAutores.setText("");
 		txtNumEdicao.setText("");
 		txtEditor.setText("");
 		txtIsbn.setText("");
