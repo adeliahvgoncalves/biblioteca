@@ -2,10 +2,6 @@ package pt.uc.dei.ar;
 
 import java.io.*;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 public class BibliotecaSerializer {
 
 	private ObjectInputStream iS;

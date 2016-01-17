@@ -701,13 +701,10 @@ public class Biblioteca implements Serializable{
 		return counts;
 	}
 	
-	
-<<<<<<< HEAD
-=======
 	public boolean temDados(){
 		return this.listaDeUtilizadores.size()>0;
 	}
->>>>>>> origin/master
+
 	
 	/**
 	 * @return the listaDeUtilizadores
