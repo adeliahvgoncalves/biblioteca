@@ -1,8 +1,8 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -13,7 +13,14 @@ import java.util.Random;
 /**
  * Biblioteca representa a biblioteca e todos os seus recursos
  */
-public class Biblioteca {
+public class Biblioteca implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -459669107686914825L;
+
+
 
 	/**
 	 * Lista de utilizadores é atributo da classe biblioteca
@@ -33,6 +40,8 @@ public class Biblioteca {
 	 * Lista de empréstimos é atributo da classe biblioteca
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
+	
+	private Contadores contadores;
 
 
 	/**
@@ -53,8 +62,7 @@ public class Biblioteca {
 		this.listaDePublicacoes =new ArrayList<Publicacao>();
 		this.listaDeEmprestimo = new ArrayList<Emprestimo>();
 	}
-
-
+	
 	/**
 	 * Método público estático de acesso único ao objeto
 	 * @param 
@@ -63,15 +71,18 @@ public class Biblioteca {
 
 		if(instance == null) 
 		{
-			instance= new Biblioteca();
+			instance = BibliotecaSerializer.getInstance().abreBiblioteca();
+			if (instance == null) {
+				
+				instance = new Biblioteca();
+			}
 			// O valor é retornado para quem está a pedir
-
 		}
 		return instance;
 		// Retorna o a instância do objeto
 
 	}
-
+	
 	/**
 	 * Adiciona uma publicação nova
 	 * @param Publicacao
@@ -690,6 +701,11 @@ public class Biblioteca {
 		return counts;
 	}
 	
+	public boolean temDados(){
+
+		return this.listaDeUtilizadores.size() > 0;
+	}
+	
 	/**
 	 * @return
 	 */
@@ -759,6 +775,14 @@ public class Biblioteca {
 		this.listaDeEmprestimo = listaDeEmprestimo;
 	}
 
+	public Contadores getContadores() {
+		return contadores;
+	}
+
+	public void setContadores(Contadores contadores) {
+		this.contadores = contadores;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -767,7 +791,4 @@ public class Biblioteca {
 		return "Biblioteca [listaDeUtilizadores=" + listaDeUtilizadores + ", listaDePublicacoes=" + listaDePublicacoes
 				+ ", listaDeEmprestimo=" + listaDeEmprestimo + "]";
 	}
-
-
-
 }

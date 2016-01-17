@@ -1,6 +1,7 @@
 package pt.uc.dei.ar;
 
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +10,12 @@ import java.util.*;
 /**
  * Publicação representa uma publicação periódica ou não periódica.
  */
-public class Publicacao {
+public class Publicacao implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9149749963203341928L;
 
 	/**
 	 * @title Título de uma publicação
@@ -162,6 +168,16 @@ public class Publicacao {
 	 */
 	public void setOcupado(boolean ocupado) {
 		this.ocupado = ocupado;
+	}
+
+
+	public static int getUltimocodBarras() {
+		return ultimocodBarras;
+	}
+
+
+	public static void setUltimocodBarras(int ultimocodBarras) {
+		Publicacao.ultimocodBarras = ultimocodBarras;
 	}
 
 

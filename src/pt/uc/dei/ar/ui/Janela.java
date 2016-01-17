@@ -1,38 +1,29 @@
 package pt.uc.dei.ar.ui;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import pt.uc.dei.ar.Leitor;
+
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.Utilizador;
 import java.awt.CardLayout;
-import java.awt.Component;
 
 public class Janela extends JFrame {
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Janela frame = new Janela();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Janela frame = new Janela();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -41,19 +32,27 @@ public class Janela extends JFrame {
 	private Login login;
 	private EmprestimoPanel emprestimo;
 	private LeitorPanel	leitor;
-	private Utilizador utilizador;
 	private RegistaUtilizadorPanel registaUtilizador;
 	private PesquisarPublicacao pesquisaPublicacao;
 	private EmprestimosForaPrazo emprestimosForaPrazo;
 	private RegistaPublicacaoPanel registaPublicacao;
 	private RelatorioPanel relatorioPanel;
-	
-	private Biblioteca biblioteca = Biblioteca.getInstance();
 
 	public Janela() {
 
 		setTitle("Biblioteca");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+
+				Biblioteca biblioteca = Biblioteca.getInstance();
+				BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
+				System.exit(0);
+			}
+		});
+
 		setBounds(50, 50, 500, 400);
 		this.setResizable(false);
 		this.layout = new CardLayout();
@@ -79,10 +78,10 @@ public class Janela extends JFrame {
 
 		this.emprestimosForaPrazo= new EmprestimosForaPrazo(this);
 		getContentPane().add(emprestimosForaPrazo, "emprestimosForaPrazo");
-		
+
 		this.registaPublicacao= new RegistaPublicacaoPanel(this);
 		getContentPane().add(registaPublicacao, "registaPublicacao");
-		
+
 		this.relatorioPanel= new RelatorioPanel(this);
 		getContentPane().add(relatorioPanel, "relatorioPanel");
 
@@ -122,7 +121,7 @@ public class Janela extends JFrame {
 	}
 
 	public void registaUtilizadorOK(){
-		
+
 		layout.show(getContentPane(), "registaUtilizador");
 
 	}
@@ -138,17 +137,17 @@ public class Janela extends JFrame {
 		layout.show(getContentPane(), "emprestimosForaPrazo");
 
 	}
-	
+
 	public void registaPublicacaoOK(){
-		
+
 		layout.show(getContentPane(),"registaPublicacao");
-		
+
 	}
-	
+
 	public void relatorioPanelOK(){
-		
+
 		layout.show(getContentPane(),"relatorioPanel");
-		
+
 	}
 
 }

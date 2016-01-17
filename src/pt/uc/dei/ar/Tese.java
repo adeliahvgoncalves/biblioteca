@@ -1,14 +1,19 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Tese herda de não periódico e implementa o requisitável
  */
 
-public class Tese extends NaoPeriodico implements Requisitavel {
+public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5044302263170947142L;
 
 	/**
      * Nome do orientador da tese

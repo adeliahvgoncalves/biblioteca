@@ -1,13 +1,18 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * O não periódico herda de Publicação.
  */
-public class NaoPeriodico extends Publicacao {
+public class NaoPeriodico extends Publicacao implements Serializable {
 
 	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9197568589647852671L;
+	/**
      * Lista de autores do não periódico
      */
     private ArrayList<String> listaDeAutores;

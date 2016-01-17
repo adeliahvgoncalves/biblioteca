@@ -1,14 +1,16 @@
 package pt.uc.dei.ar;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.io.Serializable;
 
 /**
  * A classe Utilizador representa os utilizadores de uma Biblioteca.
  */
-public class Utilizador {
+public class Utilizador implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5032289784271982472L;
 
 	/**
      * Username do utilizador.

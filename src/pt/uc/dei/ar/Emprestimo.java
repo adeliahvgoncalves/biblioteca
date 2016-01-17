@@ -1,15 +1,18 @@
 package pt.uc.dei.ar;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Empréstimo representa o empréstimo de uma publicação requisitável
  */
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5436843370567100689L;
 
 	/**
 	 * Número de empréstimo é atributo do empréstimo, sendo sequencial
@@ -117,6 +120,14 @@ public class Emprestimo {
 		return publicacao;
 	}
 
+	public static int getNumEmpUltimo() {
+		return numEmpUltimo;
+	}
+
+	public static void setNumEmpUltimo(int numEmpUltimo) {
+		Emprestimo.numEmpUltimo = numEmpUltimo;
+	}
+	
 	public Date dataMaximaEntrega(){
 
 		Calendar c = Calendar.getInstance();

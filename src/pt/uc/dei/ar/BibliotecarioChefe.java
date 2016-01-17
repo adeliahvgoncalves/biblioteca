@@ -1,12 +1,16 @@
 package pt.uc.dei.ar;
 
-import java.util.*;
+import java.io.Serializable;
 
 /**
  * BibliotecarioChefe herda da classe Utilizador.
  */
-public class BibliotecarioChefe extends Utilizador {
+public class BibliotecarioChefe extends Utilizador implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6026760943183249613L;
 	/**
      * Número de colaborador.
      */

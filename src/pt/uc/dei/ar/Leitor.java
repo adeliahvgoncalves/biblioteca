@@ -1,5 +1,6 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,10 +9,16 @@ import java.util.*;
 /**
  * Leitor herda da classe Utilizador.
  */
-public class Leitor extends Utilizador {
+public class Leitor extends Utilizador implements Serializable {
 
 	
 	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5729849162098592996L;
+
+
+	/**
      * Lista de empréstimos é atributo da classe Leitor
      */
     private ArrayList<Emprestimo> listaDeEmprestimos;
@@ -83,10 +90,6 @@ public class Leitor extends Utilizador {
 		this.telefone = telefone;
 	}
 
-	
-	
-	
-	
 	
 	/**
 	 * @return o arrayList de empréstimos do leitor
@@ -183,6 +186,14 @@ public class Leitor extends Utilizador {
 //				+ ", telefone=" + telefone + "]";
 //	}
 	
+	public static int getUltimoNumLeitorSequencial() {
+		return ultimoNumLeitorSequencial;
+	}
+
+	public static void setUltimoNumLeitorSequencial(int ultimoNumLeitorSequencial) {
+		Leitor.ultimoNumLeitorSequencial = ultimoNumLeitorSequencial;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

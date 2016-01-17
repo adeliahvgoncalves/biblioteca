@@ -1,12 +1,17 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Periódico herda de Publicação.
  */
-public class Periodico extends Publicacao {
+public class Periodico extends Publicacao implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8255569193119008522L;
 	/**
      * Periodicidade do periódico
      */

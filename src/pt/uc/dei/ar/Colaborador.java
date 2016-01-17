@@ -1,13 +1,17 @@
 package pt.uc.dei.ar;
 
 
-import java.util.*;
+import java.io.Serializable;
 
 /**
  * Colaborador herda da classe Utilizador.
  */
-public class Colaborador extends Utilizador {
+public class Colaborador extends Utilizador implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3819311207656290305L;
 	/**
      * Número de colaborador.
      */

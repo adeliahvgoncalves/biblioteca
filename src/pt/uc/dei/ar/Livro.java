@@ -1,14 +1,19 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Livro herda de não periódico e implementa o requisitável.
  */
-public class Livro extends NaoPeriodico implements Requisitavel {
+public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6207854092828194070L;
+
 	/**
      * Número de edição do livro.
      * 

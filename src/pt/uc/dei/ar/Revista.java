@@ -1,5 +1,6 @@
 package pt.uc.dei.ar;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -7,9 +8,13 @@ import java.util.*;
  * Revista herda do periódico que por sua vez herda de publicação
  * Implementa a interface requisitavel, portanto, pode ser emprestada
  */
-public class Revista extends Periodico implements Requisitavel {
+public class Revista extends Periodico implements Requisitavel, Serializable {
 
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4452420023882536318L;
+
 	/**
      *  Volume da revista
      * 
@@ -67,6 +72,20 @@ public class Revista extends Periodico implements Requisitavel {
 	public int getNumeroSequencial() {
 		return numeroSequencial;
 	}
+
+	public static int getUltimonumeroSequencial() {
+		return ultimonumeroSequencial;
+	}
+
+
+
+
+	public static void setUltimonumeroSequencial(int ultimonumeroSequencial) {
+		Revista.ultimonumeroSequencial = ultimonumeroSequencial;
+	}
+
+
+
 
 	/**
 	 * Implementa interface requisitável
