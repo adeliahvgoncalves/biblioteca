@@ -21,8 +21,9 @@ import java.awt.Font;
 import javax.swing.JFormattedTextField;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
+public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	private JTextField txtTitulo;
 	private JTextField txtAreas;
 	private JTextField txtDataPublicacao;
@@ -93,12 +94,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 		txtTitulo = new JTextField();
 		txtTitulo.setBounds(151, 62, 286, 26);
-		txtTitulo.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				lblMensagem.setText("");
-			}
-		});
+		txtTitulo.addFocusListener(this);
 		pnlRegistaPublicacao.add(txtTitulo);
 		txtTitulo.setColumns(10);
 
@@ -107,16 +103,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlRegistaPublicacao.add(lblAreas);
 
 		txtAreas = new JTextField();
-		txtAreas.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-				txtAreas.setText("");
-				txtAreas.setForeground(Color.BLACK);
-				txtAreas.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-				
-			}
-		});
+		txtAreas.addFocusListener(this);
 		txtAreas.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAreas.setForeground(Color.LIGHT_GRAY);
 		txtAreas.setText("área , área , área");
@@ -129,16 +116,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlRegistaPublicacao.add(lblDataPublicacao);
 
 		txtDataPublicacao = new JTextField();
-		txtDataPublicacao.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-				txtDataPublicacao.setText("");
-				txtDataPublicacao.setForeground(Color.BLACK);
-				txtDataPublicacao.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-				
-			}
-		});
+		txtDataPublicacao.addFocusListener(this);
 		txtDataPublicacao.setText("DD/MM/AAAA");
 		txtDataPublicacao.setForeground(Color.LIGHT_GRAY);
 		txtDataPublicacao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
@@ -151,14 +129,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlRegistaPublicacao.add(lblDataRecepo);
 
 		txtDataRecepcao = new JTextField();
-		txtDataRecepcao.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				txtDataRecepcao.setForeground(Color.BLACK);
-				txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
-				txtDataRecepcao.setText("");
-			}
-		});
+		txtDataRecepcao.addFocusListener(this);
 		txtDataRecepcao.setText("DD/MM/AAAA");
 		txtDataRecepcao.setForeground(Color.LIGHT_GRAY);
 		txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
@@ -185,16 +156,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		pnlLivro.add(lblAutores);
 
 		txtAutores = new JTextField();
-		txtAutores.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-				txtAutores.setText("");
-				txtAutores.setForeground(Color.BLACK);
-				txtAutores.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-				
-			}
-		});
+		txtAutores.addFocusListener(this); 
 		txtAutores.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAutores.setForeground(Color.LIGHT_GRAY);
 		txtAutores.setText("autor , autor , autor");
@@ -601,4 +563,41 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		lblMensagem.setText(s);
 
 	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+		if(e.getSource() == this.txtAutores){
+		txtAutores.setText("");
+		txtAutores.setForeground(Color.BLACK);
+		txtAutores.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		}
+		else if( e.getSource() == this.txtTitulo){
+			lblMensagem.setText("");
+		}
+		else if(e.getSource() == this.txtAreas){
+			txtAreas.setText("");
+			txtAreas.setForeground(Color.BLACK);
+			txtAreas.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		}
+		else if(e.getSource() == this.txtDataPublicacao){
+			txtDataPublicacao.setText("");
+			txtDataPublicacao.setForeground(Color.BLACK);
+			txtDataPublicacao.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		}
+		else if(e.getSource() == this.txtDataRecepcao){
+			txtDataRecepcao.setForeground(Color.BLACK);
+			txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+			txtDataRecepcao.setText("");
+		}
+		
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

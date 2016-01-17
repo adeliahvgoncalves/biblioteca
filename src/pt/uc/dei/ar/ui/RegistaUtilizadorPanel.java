@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener {
+public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener{
 
 	private JTextField txtNome;
 	private JTextField txtUsername;
@@ -196,10 +196,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		// TODO Verificar as entradas do Leitor e o colaborador biblio para
-		// adicionar à biblioteca, bloquear e enviar erro
-		// TODO Simplificar este método
 
 		String str = (String) this.comboBox.getSelectedItem();
 
@@ -387,6 +383,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 }

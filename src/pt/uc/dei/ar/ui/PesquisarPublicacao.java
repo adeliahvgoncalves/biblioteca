@@ -29,8 +29,9 @@ import pt.uc.dei.ar.Revista;
 import pt.uc.dei.ar.Tese;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
-public class PesquisarPublicacao extends JPanel implements ActionListener {
+public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 	private Janela janela;
 	private JTextField txtPesquisa;
 	private CardLayout layout;
@@ -62,16 +63,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 
 		txtPesquisa = new JTextField();
-		txtPesquisa.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-				txtPesquisa.setText("");
-				txtPesquisa.setForeground(Color.BLACK);
-				txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-				
-			}
-		});
+		txtPesquisa.addFocusListener(this);
 		txtPesquisa.setText("pesquisar");
 		txtPesquisa.setEditable(true);
 		txtPesquisa.setForeground(Color.LIGHT_GRAY);
@@ -255,6 +247,23 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		}
 
 		return data;
+	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==this.txtPesquisa){
+			txtPesquisa.setText("");
+			txtPesquisa.setForeground(Color.BLACK);
+			txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		}
+		
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
