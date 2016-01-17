@@ -50,17 +50,14 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		this.janela = j;
 		this.layout = new CardLayout(0, 0);
 
-
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 480, 380);
 		add(panel);
 		panel.setLayout(null);
 
-
 		JLabel lblNewLabel = new JLabel("Acerca da publicação");
 		lblNewLabel.setBounds(189, 6, 135, 16);
 		panel.add(lblNewLabel);
-
 
 		txtPesquisa = new JTextField();
 		txtPesquisa.addFocusListener(this);
@@ -116,6 +113,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
+		
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nº Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN",
@@ -128,11 +126,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		for (int i = 0; i < publicacao.length; i++) {
 
 			dtm.addRow(publicacao[i]);
+			
 		}
 
 		tabela.setModel(dtm);
+		
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -161,10 +160,14 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 		String text = this.txtPesquisa.getText();
 		try {
+			
 			int d = Integer.parseInt(text); 
-		 pub = biblioteca.pesquisaPublicacaoPorCodBarras(d);
+			pub = biblioteca.pesquisaPublicacaoPorCodBarras(d);
+			
 		} catch (NumberFormatException nfe) {
+			
 			pub = biblioteca.pesquisaPublicacao(txtPesquisa.getText());
+			
 		}
 
 		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
@@ -172,11 +175,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			this.lblMensagem.setText("Erro! Não existe essa publicação. Tente novamente.");
 						return data;
 			
-			
 		}
 		
-		
-
 		data[0][0] = pub.getCodBarras();
 		data[0][1] = pub.getClass().getSimpleName();
 		data[0][2] = pub.getTitulo();
@@ -247,17 +247,19 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		}
 
 		return data;
+		
 	}
 
 	@Override
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==this.txtPesquisa){
+			
 			txtPesquisa.setText("");
 			txtPesquisa.setForeground(Color.BLACK);
 			txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+			
 		}
-		
 	}
 
 	@Override

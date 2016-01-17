@@ -112,8 +112,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		else if(e.getSource() == this.btnGerarRelatrio){
 			
 			janela.relatorioPanelOK();
+			
 		}
-		
 	}
-
 }

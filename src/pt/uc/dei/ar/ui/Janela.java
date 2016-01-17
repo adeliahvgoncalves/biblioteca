@@ -149,5 +149,4 @@ public class Janela extends JFrame {
 		layout.show(getContentPane(),"relatorioPanel");
 
 	}
-
 }

@@ -56,7 +56,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	private JComboBox comboBoxTipoTese;
 	private JComboBox comboBoxPeriodicidade;
 	
-
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 	private JLabel lblMensagem;
 
@@ -292,6 +291,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			lblMensagem.setText("");
 			limpaPainel();
 			janela.sairOK();
+			
 		}
 
 		else if (e.getSource() == this.btnVoltar) {
@@ -337,7 +337,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			registaPublicacao();
 
 		}
-
 	}
 
 	private void registaPublicacao() {
@@ -373,7 +372,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
 				
-
 			} else
 	
 			registaLivro(autores, areas);
@@ -388,9 +386,13 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
 				limpaPainel();
+				
 			}
-			else 
+			else {
+				
 				registaTese(autor, areas);
+				
+			}
 		}	
 		if(str.equals("Revista")){
 			
@@ -402,8 +404,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 				limpaPainel();
 				
 			}
-			else
+			else{
 				registaPeriodico(areas, str);
+			}
 		}
 		if(str.equals("Jornal")){
 			
@@ -415,10 +418,13 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 				limpaPainel();
 				
 			}
-			else
+			else{
+				
 				registaPeriodico(areas, str);
+			}
 		}
 	}
+	
 	private void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
 		
 		int codigoBarras;
@@ -449,7 +455,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
-		} else
+		} else{
+			
 			codigoBarras = biblioteca.criaTese(txtTitulo.getText(), txtDataPublicacao.getText(),
 					txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
 		
@@ -458,6 +465,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
+		}
 	}
 	
 	private void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
@@ -489,7 +497,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			periodicidade=Periodicidade.Anual;
 		}
 		
-		
 		if(tipoPeriodico.equals("Revista")){
 			
 			codigoBarras = biblioteca.criaRevista(txtTitulo.getText(), txtDataPublicacao.getText(),
@@ -510,8 +517,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Jornal inserido com sucesso.CÓDIGO DE BARRAS: " + codigoBarras);
+			
 		}
-
 	}
 
 	private void limpaPainel(){
@@ -536,8 +543,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		txtOrientador.setText("");
 		txtVolume.setText("");
 		txtNumEdicaoJornal.setText("");
-		
-		
+			
 	}	
 
 	private void abrePainelLivroOK() {
@@ -591,7 +597,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 			txtDataRecepcao.setText("");
 		}
-		
 	}
 
 	@Override
@@ -599,5 +604,4 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		// TODO Auto-generated method stub
 		
 	}
-
 }

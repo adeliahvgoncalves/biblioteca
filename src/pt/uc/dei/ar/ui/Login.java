@@ -114,21 +114,16 @@ public class Login extends JPanel implements ActionListener {
 			janela.loginOK((Leitor)utilizador);
 
 		}
-
 		if (utilizador instanceof Colaborador) {
 
 			limpaCampos();
 			janela.colaboradorOK();
 
 		}
-
 		if (utilizador instanceof BibliotecarioChefe) {
 
 			limpaCampos();
 			janela.bibliotecarioChefeOK();
 		}
-
 	}
-	
-
 }

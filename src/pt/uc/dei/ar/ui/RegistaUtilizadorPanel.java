@@ -305,9 +305,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 						"O username é: " + txtUsername.getText() + ". A password é: " + passwordBiblio);
 
 			} 
-		
-			
-		
 		}
 	}
 
@@ -337,10 +334,10 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 					"Leitor nº " + numLeitor + ". Username: " + txtUsername.getText() + ". Password :" + password);
 			limpaPainelSimples();
 
-		} else
+		} else{
 
 			enviaMensagemParaValidar("Erro! o Leitor que inseriu já existe.", "");
-
+		}
 	}
 
 	private void limpaPainelRegistaUtilizador() {
@@ -385,5 +382,4 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		// TODO Auto-generated method stub
 		
 	}
-
 }

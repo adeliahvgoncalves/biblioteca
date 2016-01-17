@@ -20,7 +20,6 @@ import pt.uc.dei.ar.Publicacao;
 
 public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
-
 	private Janela janela;
 	private JTextField textFielPesquisa;
 	private CardLayout layout;
@@ -35,12 +34,10 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		this.janela = j;
 		this.layout = new CardLayout(0, 0);
 
-
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 480, 380);
 		add(panel);
 		panel.setLayout(null);
-
 
 		JLabel lblNewLabel = new JLabel("Empréstimo em atraso");
 		lblNewLabel.setBounds(150, 6, 200, 16);
@@ -65,7 +62,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		String[] colunas={"Código de barras", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
 				"Data Empréstimo", "Prazo máximo entrega"};
 
-		
 		Object [][] data=null;
 		//cria tabela
 		tabela = new JTable(data, colunas);
@@ -74,7 +70,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		scrollPane_1.setViewportView(tabela);
 		
 		ArrayList<Emprestimo> emprestimos = biblioteca.consultaEmprestimoExpirado();
-		 data= new Object[emprestimos.size()][10];
+		data= new Object[emprestimos.size()][10];
 
 		for (int i = 0; i < emprestimos.size(); i++) {
 
@@ -82,8 +78,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			Publicacao pub = (Publicacao) emp.getPublicacao();
 		
 		this.preencheTabelaEmprestimo();
+		
 		}
-
 	}
 
 	private void preencheTabelaEmprestimo(){
@@ -112,13 +108,12 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	        			emp.getLeitor().getEmail(),
 	        			emp.getDataEmp(),
 	        			emp.dataMaximaEntrega(), });
-	 }
+	        
+		}
 
-		
 		tabela.setModel(dtm);
+		
 	}
-
-
 
 	public Object [][] geraDadosDaTabelaEmprestimosExpirados(){
 
@@ -139,15 +134,16 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			data[i][7] = emp.getLeitor().getEmail();
 			data[i][8] = emp.getDataEmp();
 			data[i][9] = emp.dataMaximaEntrega();
+			
 		}
 
 		return data;
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
 
 		if (e.getSource() == this.btnSair) {
 
@@ -158,9 +154,5 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			janela.bibliotecarioChefeOK();
 
 		}
-
 	}
-
-
-
 }

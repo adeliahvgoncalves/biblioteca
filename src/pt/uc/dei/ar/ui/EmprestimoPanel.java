@@ -17,9 +17,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
-public class EmprestimoPanel extends JPanel implements ActionListener {
+public class EmprestimoPanel extends JPanel implements ActionListener, FocusListener {
 
 	private Janela janela;
 
@@ -74,22 +75,12 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		// Caixas de Texto
 
 		txtCodigoBarras = new JTextField();
-		txtCodigoBarras.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				lblMensagem.setText("");
-			}
-		});
+		txtCodigoBarras.addFocusListener(this);
 		txtCodigoBarras.setBounds(256, 30, 130, 26);
 		EmprestimoPanel.add(txtCodigoBarras);
 
 		txtNumeroLeitor = new JTextField();
-		txtNumeroLeitor.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				lblMensagem.setText("");
-			}
-		});
+		txtNumeroLeitor.addFocusListener(this);
 		txtNumeroLeitor.setBounds(256, 63, 130, 26);
 		EmprestimoPanel.add(txtNumeroLeitor);
 
@@ -130,14 +121,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 		// Caixas de texto
 
 		txtCodigoBarrasDevolucao = new JTextField();
-		txtCodigoBarrasDevolucao.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-
-				lblMensagemDevolver.setText("");
-
-			}
-		});
+		txtCodigoBarrasDevolucao.addFocusListener(this);
 		txtCodigoBarrasDevolucao.setBounds(256, 30, 130, 26);
 		DevolvePanel.add(txtCodigoBarrasDevolucao);
 		txtCodigoBarrasDevolucao.setColumns(10);
@@ -200,6 +184,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 			limpaPainel();
 			janela.bibliotecarioChefeOK();
+			
 		}
 
 		else if (e.getSource() == this.btnSair || e.getSource() == this.btnSairDevolucao) {
@@ -207,6 +192,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			sairEmprestimoPanel();
+			
 		}
 
 		else if (e.getSource() == this.btnEmprestar) {
@@ -249,8 +235,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 				txtCodigoBarras.setText("");
 				txtNumeroLeitor.setText("");
 
-
-
 				if (biblioteca.autorizaRequisitavel(biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras))){
 
 					boolean emprestou = biblioteca.criaEmprestimo(numLeitor, codigoBarras);
@@ -259,9 +243,11 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 						Biblioteca biblioteca = Biblioteca.getInstance();
 						BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 						lblMensagem.setText("Empréstimo efectuado com sucesso.");
-					}
-					else{
+						
+					} else{
+						
 						lblMensagem.setText("A publicação já se encontra ocupada.");
+						
 					}
 				}	
 
@@ -270,7 +256,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 					lblMensagem.setText("Erro! É um jornal, consultar na biblioteca.");
 
 				}
-
 			}
 		}
 		catch(NumberFormatException e){
@@ -278,11 +263,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 			lblMensagem.setText("Coloque apenas números");
 
 		}
-
 	}
 
 	private void validarBotaoDevolve() {
-
 
 		try{
 
@@ -309,12 +292,36 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 				}
 			}
 		}
-		
 		catch(NumberFormatException e){
 
 			lblMensagemDevolver.setText("Coloque apenas números");
 
 		}
+	}
 
+	@Override
+	public void focusGained(FocusEvent e) {
+		
+		if(e.getSource() == this.txtCodigoBarras){
+			
+			lblMensagem.setText("");
+			
+		}
+		else if(e.getSource() == this.txtNumeroLeitor){
+			
+			lblMensagem.setText("");
+			
+		}
+		else if(e.getSource() == this.txtCodigoBarrasDevolucao){
+			
+			lblMensagemDevolver.setText("");
+			
+		}
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
