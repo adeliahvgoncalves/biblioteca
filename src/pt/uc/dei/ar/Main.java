@@ -130,8 +130,7 @@ public class Main {
 		//	maravilha.devolveEmprestimo(5);
 		//	System.out.println("devolvidos2"+maravilha);
 
-		//LEITOR
-		maravilha.imprimeListaTotalPublicacoes();	
+		
 
 
 		//Pesquisa por área

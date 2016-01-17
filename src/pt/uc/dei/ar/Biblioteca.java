@@ -94,21 +94,6 @@ public class Biblioteca {
 		listaDeEmprestimo.add(emprestimo);
 	}
 
-	/**
-	 * Remove uma publicação
-	 * @param publicacao
-	 */
-	public void removePublicacao(Publicacao publicacao) {
-		listaDePublicacoes.remove(publicacao);
-	}
-
-	/**
-	 * Remove utilizador
-	 * @param utilizador
-	 */
-	public void removeUtilizador(Utilizador utilizador) {
-		listaDeUtilizadores.remove(utilizador);
-	}
 
 	/**
 	 * Pesquisa utilizador por username
@@ -120,10 +105,10 @@ public class Biblioteca {
 
 		for (Utilizador utilizador : listaDeUtilizadores) {
 			if(utilizador.getUsername().equalsIgnoreCase(username)){
-				utilizadorPorUsername= utilizador;
+				utilizadorPorUsername = utilizador;
 			}
 		}
-		System.out.println(utilizadorPorUsername);
+	
 		return utilizadorPorUsername;
 	}
 
@@ -189,7 +174,7 @@ public class Biblioteca {
 			if(utilizador instanceof Leitor)
 
 				if(((Leitor) utilizador).getCartaoCidadao().equalsIgnoreCase(cartaoCidadao)){
-					leitorNumLeitor=(Leitor) utilizador;
+					leitorNumLeitor = (Leitor) utilizador;
 				}
 		}
 
@@ -208,16 +193,16 @@ public class Biblioteca {
 	 * @param morada
 	 * @param email
 	 * @param telefone
-	 * @return true se criado corretamente
+	 * @return número de leitor
 	 */
 	public int criaLeitor(String username, String hashedPassword, String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
-		Leitor leitor1=(Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
-		Leitor leitor=null;
-		if(leitor1==null){
-			leitor= new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+		Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
+		Leitor leitor = null;
+		if(leitor1 == null){
+			leitor = new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 			this.adicionaUtilizador(leitor);
-			System.out.println(leitor.getNome() +"  " + "Leitor com o numero" + leitor.getNumLeitor());
+			
 		}
 		return leitor.getNumLeitor();
 
@@ -232,7 +217,7 @@ public class Biblioteca {
 	 * @return true se criado corretamente
 	 */
 	public boolean criaColaborador(String username, String hashedPassword, String nome, int numColaborador){
-		Colaborador colaborador=new Colaborador(username, hashedPassword, nome, numColaborador);
+		Colaborador colaborador = new Colaborador(username, hashedPassword, nome, numColaborador);
 		this.adicionaUtilizador(colaborador);
 		return true;
 	}
@@ -246,7 +231,7 @@ public class Biblioteca {
 	 * @return true se criado corretamente
 	 */
 	public boolean criaBibliotecarioChefe(String username, String hashedPassword, String nome, int numColaborador){
-		BibliotecarioChefe bibliotecarioChefe=new BibliotecarioChefe(username, hashedPassword, nome, numColaborador);
+		BibliotecarioChefe bibliotecarioChefe = new BibliotecarioChefe(username, hashedPassword, nome, numColaborador);
 		this.adicionaUtilizador(bibliotecarioChefe);
 		return true;
 
@@ -262,15 +247,14 @@ public class Biblioteca {
 	 * @param periodicidade
 	 * @param volume
 	 * @param numeroSequencial
-	 * @return
+	 * @return código de barras
 	 */
-
 	public int criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int volume){
 
-		Revista revista= new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
+		Revista revista = new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
-		System.out.println(revista.getTitulo()+"codigo de barras"+revista.getCodBarras());
+		
 		return revista.getCodBarras();
 	}
 
@@ -283,14 +267,13 @@ public class Biblioteca {
 	 * @param areas
 	 * @param periodicidade
 	 * @param numEdicao
-	 * @return
+	 * @return código de barras
 	 */
-
 	public int criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int numEdicao){
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
-		System.out.println(jornal.getTitulo()+"  "+"codigo de barras"+jornal.getCodBarras());
+		
 		return jornal.getCodBarras();
 	}
 
@@ -303,13 +286,13 @@ public class Biblioteca {
 	 * @param areas
 	 * @param nomeDoOrientador
 	 * @param tipoDeTese
-	 * @return
+	 * @return código de barras
 	 */
 	public int criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
 		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
-		System.out.println(tese.getTitulo()+"  "+"codigo de barras"+tese.getCodBarras());
+		
 		return tese.getCodBarras();
 	}
 
@@ -323,13 +306,13 @@ public class Biblioteca {
 	 * @param numEdicao
 	 * @param iSBN
 	 * @param editor
-	 * @return
+	 * @return código de barras
 	 */
 	public int criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
 		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
-		System.out.println(livro.getTitulo()+"  "+"codigo de barras"+livro.getCodBarras());
+		
 		return livro.getCodBarras();
 
 	}
@@ -345,15 +328,15 @@ public class Biblioteca {
 
 			if(utilizador instanceof Colaborador){
 
-				if(((Colaborador) utilizador).getNumColaborador()==numCol){
-					utilizadorColaborador=utilizador;
+				if(((Colaborador) utilizador).getNumColaborador() == numCol){
+					utilizadorColaborador = utilizador;
 				}
 			}
 			else if (utilizador instanceof BibliotecarioChefe)
 
-				if(((BibliotecarioChefe) utilizador).getNumColaborador()==numCol){
+				if(((BibliotecarioChefe) utilizador).getNumColaborador() == numCol){
 
-					utilizadorColaborador=utilizador;
+					utilizadorColaborador = utilizador;
 				}
 
 		}
@@ -374,8 +357,8 @@ public class Biblioteca {
 		for (Utilizador utilizador : listaDeUtilizadores) {
 			if(utilizador instanceof Leitor)
 
-				if(((Leitor) utilizador).getNumLeitor()==numLeitor){
-					leitorNumLeitor=(Leitor) utilizador;
+				if(((Leitor) utilizador).getNumLeitor() == numLeitor){
+					leitorNumLeitor = (Leitor) utilizador;
 				}
 		}
 
@@ -394,7 +377,7 @@ public class Biblioteca {
 
 		for (Publicacao publicacao : listaDePublicacoes) {
 			if(publicacao.getCodBarras() == codigoBarras ){
-				publicaçãoComCodigoBarras=publicacao;
+				publicaçãoComCodigoBarras = publicacao;
 			}
 		}
 		return publicaçãoComCodigoBarras;	
@@ -417,11 +400,11 @@ public class Biblioteca {
 			return false;
 		}
 
-		Emprestimo emprestimo= new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
+		Emprestimo emprestimo = new Emprestimo(utilizador, new Date(), (Requisitavel) publicacao);
 		this.adicionaEmprestimo(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 		publicacao.setOcupado(true);
-		System.out.println("Criei emprestimo "+emprestimo);
+		
 
 		return true;
 	}
@@ -429,8 +412,8 @@ public class Biblioteca {
 
 	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
-			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
+			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
+			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
 				emprestimo.setDataDev(new Date());
 				publicacaoParaDevolver.setOcupado(false);
 			}
@@ -447,9 +430,9 @@ public class Biblioteca {
 	public boolean devolveEmprestimo(int codigoBarras) {
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			Publicacao publicacaoParaDevolver=(Publicacao) emprestimo.getPublicacao();
+			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
 
-			if(publicacaoParaDevolver.getCodBarras()==codigoBarras){
+			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
 
 				if (!publicacaoParaDevolver.isOcupado()) {
 
@@ -464,17 +447,6 @@ public class Biblioteca {
 		}
 		return false;
 	}
-
-	/**
-	 * Imprime a listagem de publicações
-	 */
-	public void imprimeListaTotalPublicacoes(){
-		System.out.println("Listagem total de publicacções:");
-		for (Publicacao publicacao : listaDePublicacoes) {
-			System.out.println(publicacao);
-		}
-	}
-
 
 
 	/**
@@ -496,6 +468,7 @@ public class Biblioteca {
 
 
 	/**
+	 * Pesquisa publicação por autor
 	 * @param emprestimo 
 	 * @return Publicações que contém parte nome de autor
 	 */
@@ -511,6 +484,7 @@ public class Biblioteca {
 	}
 
 	/**
+	 * Pesquisa publicação por título
 	 * @param emprestimo 
 	 * @return Publicações que contém esse título
 	 */
@@ -528,15 +502,16 @@ public class Biblioteca {
 	}
 
 	/**
+	 * Pesquisa publicação por título
 	 * @param String nome 
 	 * @return Publicacao
 	 */
 	public Publicacao pesquisaPublicacao(String nome) {
-		Publicacao pesquisaNome=null;
+		Publicacao pesquisaNome = null;
 		for (Publicacao publicacao: listaDePublicacoes){
 			if(publicacao.getTitulo().equalsIgnoreCase(nome))	{	
 
-				pesquisaNome=publicacao;
+				pesquisaNome = publicacao;
 			}
 
 		}
@@ -575,18 +550,19 @@ public class Biblioteca {
 	}
 
 	/**
+	 * 
 	 * @return número total de empréstimos do último ano em formato inteiro
 	 */
 	public int totalEmprestimosUltimoAno() {
 
 		Calendar dataAtual = new GregorianCalendar(); 
-		int ano = dataAtual.get(Calendar.YEAR);
+		dataAtual.get(Calendar.YEAR);
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 
 		ArrayList<Emprestimo> emprestimosUltimoAno= new ArrayList<Emprestimo>();
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			Calendar dataDeEmp= Calendar.getInstance();
+			Calendar dataDeEmp = Calendar.getInstance();
 			dataDeEmp.setTime(emprestimo.getDataEmp());
 
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
@@ -654,7 +630,7 @@ public class Biblioteca {
 				} else {
 					ArrayList<Integer>daysArray = countMap.get(pub);
 					daysArray.add( new Integer(diasEmprestimo) );
-					//countMap.put(pub, daysArray);
+					
 				}	
 			}
 		}
@@ -663,7 +639,7 @@ public class Biblioteca {
 	
 	
 	/**
-	 * 
+	 *Gera um Map que indica quantas vezes a publicação foi emprestada por mês
 	 * @param dataAtual
 	 * @return um dicionario com a contagem de repeticoes mensais por cada Publicacao
 	 */
