@@ -172,7 +172,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void preencheTabelaEmprestimo(){
+	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table
@@ -195,7 +195,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	}
 
 
-	public Object [][] geraDadosDaTabelaLeitorEmprestimos(){
+	private Object [][] geraDadosDaTabelaLeitorEmprestimos(){
 
 		ArrayList<Emprestimo> emprestimos = ((Leitor)utilizador).consultaEmprestimosLeitor();
 		Object [][] data= new Object[emprestimos.size()][17];
@@ -254,7 +254,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 	}
 
 
-	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
+	private void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table
@@ -275,7 +275,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 	}
 
-	public Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
+	private Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 
 		Object [][] data= new Object[pubs.size()][16];
@@ -343,13 +343,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 		return data;
 	}
 
-
-	public void limpaPainel(){
-
-
-	}
-
-	public void sairLeitorPanel(){
+	private void sairLeitorPanel(){
 
 		janela.sairOK();
 	}
@@ -409,7 +403,10 @@ public class LeitorPanel extends JPanel implements ActionListener {
 
 		}
 		else if(e.getSource()==this.btnSairPublicacoes){
-
+			
+			txtPesquisa.setText("Pesquisa");
+			txtPesquisa.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+			txtPesquisa.setForeground(Color.LIGHT_GRAY);
 			sairLeitorPanel();
 
 		}

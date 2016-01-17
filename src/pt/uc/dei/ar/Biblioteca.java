@@ -706,32 +706,6 @@ public class Biblioteca implements Serializable{
 		return this.listaDeUtilizadores.size() > 0;
 	}
 	
-	/**
-	 * @return
-	 */
-	public int mediaEmprestimo() {
-		// TODO implement here
-		return 0;
-	}
-
-
-	/**
-	 * @return
-	 */
-	public int duracaoMinimaEmprestimo() {
-		return 0;
-
-	}
-
-	/**
-	 * @return
-	 */
-	public int duracacaoMaximaEmprestimo() {
-		return 0;
-		
-	}
-	
-	
 	
 	/**
 	 * @return the listaDeUtilizadores

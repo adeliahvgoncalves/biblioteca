@@ -8,17 +8,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
 import pt.uc.dei.ar.Biblioteca;
-
-import javax.swing.JPasswordField;
+import pt.uc.dei.ar.BibliotecaSerializer;
 import java.awt.CardLayout;
 import javax.swing.JFormattedTextField;
 import java.awt.Color;
-import java.awt.Container;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -219,6 +216,8 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		} else if (e.getSource() == this.btnSair) {
 
 			limpaPainelRegistaUtilizador();
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			janela.sairOK();
 
 		} else if (e.getSource() == this.btnVoltar) {
@@ -236,7 +235,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 			} else
 
-				abrePainelBibliotecarioColaboradorOK();
+			abrePainelBibliotecarioColaboradorOK();
 			limpaPainelRegistaUtilizador();
 
 		}
@@ -336,6 +335,8 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 					formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), txtEmail.getText(),
 					txtContactoTelefonico.getText());
 
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!",
 					"Leitor nº " + numLeitor + ". Username: " + txtUsername.getText() + ". Password :" + password);
 			limpaPainelSimples();

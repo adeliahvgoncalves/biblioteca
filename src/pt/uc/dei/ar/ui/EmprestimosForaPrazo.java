@@ -32,7 +32,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	public EmprestimosForaPrazo(Janela j) {
 		setLayout(null);
 		
-		//TODO: ver do cardlayout
 		this.janela = j;
 		this.layout = new CardLayout(0, 0);
 
@@ -87,7 +86,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 	}
 
-	public void preencheTabelaEmprestimo(){
+	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table

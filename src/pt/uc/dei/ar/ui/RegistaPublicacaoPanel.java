@@ -7,6 +7,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.Periodicidade;
 import pt.uc.dei.ar.TipoDeTese;
 
@@ -324,11 +325,17 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 		if (e.getSource() == this.btnSair) {
 
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
+			lblMensagem.setText("");
+			limpaPainel();
 			janela.sairOK();
 		}
 
 		else if (e.getSource() == this.btnVoltar) {
-
+			
+			lblMensagem.setText("");
+			limpaPainel();
 			janela.bibliotecarioChefeOK();
 
 		} else if (e.getSource() == this.comboBox) {
@@ -371,7 +378,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 
 	}
 
-	public void registaPublicacao() {
+	private void registaPublicacao() {
 
 		String str = (String) this.comboBox.getSelectedItem();
 		
@@ -450,7 +457,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 				registaPeriodico(areas, str);
 		}
 	}
-	public void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
+	private void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
 		
 		int codigoBarras;
 		
@@ -459,11 +466,13 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 				txtEditor.getText());
 
 		limpaPainel();
+		Biblioteca biblioteca = Biblioteca.getInstance();
+		BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 		enviaMensagem("Livro inserido com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 		
 	}
 	
-	public void registaTese(ArrayList<String> autores, ArrayList<String> areas){
+	private void registaTese(ArrayList<String> autores, ArrayList<String> areas){
 		
 		String strTese = (String) this.comboBoxTipoTese.getSelectedItem();
 		int codigoBarras;
@@ -474,6 +483,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 					txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Mestrado);
 
 			limpaPainel();
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 		} else
@@ -481,11 +492,13 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 					txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
 		
 			limpaPainel();
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 	}
 	
-	public void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
+	private void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
 		
 		String strPeriodicidade = (String) this.comboBoxPeriodicidade.getSelectedItem();
 		int codigoBarras;
@@ -521,6 +534,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 					txtDataRecepcao.getText(), areas, periodicidade, Integer.parseInt(txtVolume.getText()));
 		
 			limpaPainel();
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Revista inserida com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 			
 		}
@@ -530,13 +545,21 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 			txtDataRecepcao.getText(), areas, periodicidade, Integer.parseInt(txtNumEdicaoJornal.getText()));
 		
 			limpaPainel();
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Jornal inserido com sucesso.CÓDIGO DE BARRAS: " + codigoBarras);
 		}
 
 	}
 
-	public void limpaPainel(){
+	private void limpaPainel(){
 		
+		txtDataRecepcao.setText("DD/MM/AAAA");
+		txtDataRecepcao.setForeground(Color.LIGHT_GRAY);
+		txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
+		txtDataPublicacao.setText("DD/MM/AAAA");
+		txtDataPublicacao.setForeground(Color.LIGHT_GRAY);
+		txtDataPublicacao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAreas.setText("área , área , área");
 		txtAreas.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAreas.setForeground(Color.LIGHT_GRAY);
@@ -544,8 +567,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		txtAutores.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAutores.setForeground(Color.LIGHT_GRAY);
 		txtTitulo.setText("");
-		txtDataPublicacao.setText("");
-		txtDataRecepcao.setText("");
 		txtNumEdicao.setText("");
 		txtEditor.setText("");
 		txtIsbn.setText("");
@@ -554,27 +575,28 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener{
 		txtVolume.setText("");
 		txtNumEdicaoJornal.setText("");
 		
+		
 	}	
 
-	public void abrePainelLivroOK() {
+	private void abrePainelLivroOK() {
 
 		layout.show(pnlTipoPublicacao, "livro");
 
 	}
 
-	public void abrePainelTeseOK() {
+	private void abrePainelTeseOK() {
 
 		layout.show(pnlTipoPublicacao, "tese");
 
 	}
 
-	public void abrePainelPeriodicoOK() {
+	private void abrePainelPeriodicoOK() {
 
 		layout.show(pnlTipoPublicacao, "periodico");
 
 	}
 
-	public void enviaMensagem(String s) {
+	private void enviaMensagem(String s) {
 
 		lblMensagem.setText(s);
 

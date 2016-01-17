@@ -2,8 +2,6 @@ package pt.uc.dei.ar;
 
 import java.io.*;
 
-import javax.media.j3d.Billboard;
-
 public class BibliotecaSerializer {
 
 	private ObjectInputStream iS;

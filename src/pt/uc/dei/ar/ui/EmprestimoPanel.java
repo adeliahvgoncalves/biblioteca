@@ -5,6 +5,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.Publicacao;
 
 import java.awt.Panel;
@@ -161,7 +162,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void limpaPainel() {
+	private void limpaPainel() {
 
 		lblMensagem.setText("");
 		lblMensagemDevolver.setText("");
@@ -171,7 +172,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void sairEmprestimoPanel() {
+	private void sairEmprestimoPanel() {
 
 		limpaPainel();
 		janela.sairOK();
@@ -203,6 +204,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 		else if (e.getSource() == this.btnSair || e.getSource() == this.btnSairDevolucao) {
 
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			sairEmprestimoPanel();
 		}
 
@@ -218,7 +221,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void validarBotaoEmprestimo() {
+	private void validarBotaoEmprestimo() {
 
 
 		try{
@@ -253,6 +256,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 					boolean emprestou = biblioteca.criaEmprestimo(numLeitor, codigoBarras);
 					if (emprestou) {
 
+						Biblioteca biblioteca = Biblioteca.getInstance();
+						BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 						lblMensagem.setText("Empréstimo efectuado com sucesso.");
 					}
 					else{
@@ -276,7 +281,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 	}
 
-	public void validarBotaoDevolve() {
+	private void validarBotaoDevolve() {
 
 
 		try{
@@ -293,6 +298,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener {
 
 				if (biblioteca.devolveEmprestimo(codigoBarras)){
 
+					Biblioteca biblioteca = Biblioteca.getInstance();
+					BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 					lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
 
 				} else{

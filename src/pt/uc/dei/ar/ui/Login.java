@@ -85,7 +85,7 @@ public class Login extends JPanel implements ActionListener {
 		}
 	}
 
-	public String leUser() {
+	private String leUser() {
 
 		return txtUser.getText();
 
@@ -98,7 +98,7 @@ public class Login extends JPanel implements ActionListener {
 
 	}
 
-	public void limpaCampos() {
+	private void limpaCampos() {
 
 		lblMensagem.setText("");
 		txtUser.setText("");
@@ -106,7 +106,7 @@ public class Login extends JPanel implements ActionListener {
 
 	}
 
-	public void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
+	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
 
 		if (utilizador instanceof Leitor) {
 			

@@ -121,7 +121,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 
 	}
 
-	public void preencheTabelaEmprestimo(){
+	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table
@@ -163,7 +163,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener {
 		}
 	}
 
-	public Object [][] obterUmaPublicacao(){
+	private Object [][] obterUmaPublicacao(){
 		//aloco a minha tabela vazia
 		Object [][] data= new Object[1][17]; 
 
