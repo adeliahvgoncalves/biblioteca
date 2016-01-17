@@ -2,10 +2,12 @@ package pt.uc.dei.ar;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 /**
@@ -550,7 +552,7 @@ public class Biblioteca {
 	}
 
 	/**
-	 * 
+	 * Determina o total de empréstimos nos últimos 12 meses
 	 * @return número total de empréstimos do último ano em formato inteiro
 	 */
 	public int totalEmprestimosUltimoAno() {
@@ -574,72 +576,7 @@ public class Biblioteca {
 	}
 
 	/**
-	 * @return
-	 */
-	public int mediaEmprestimo() {
-		// TODO implement here
-		return 0;
-	}
-
-
-	/**
-	 * @return
-	 */
-	public int duracaoMinimaEmprestimo() {
-		return 0;
-
-	}
-
-	/**
-	 * @return
-	 */
-	public int duracacaoMaximaEmprestimo() {
-		return 0;
-		
-	}
-	
-	
-	/**
-	 * Para 1 ano, devolve um Map que relaciona as Publicacoes com os dias que esteve emprestado
-	 * de forma a fazermos o maximo, mínimo e média
-	 * 
-	 * @param dataAtual
-	 * @return um map publicacao, dias de empréstimo
-	 */
-	public Map<Publicacao,ArrayList<Integer>> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
-		
-		Calendar dataAnoAnterior = Calendar.getInstance();
-		dataAnoAnterior.set(Calendar.MONTH, -12);
-
-		Map<Publicacao,ArrayList<Integer>> countMap = new HashMap<Publicacao,ArrayList<Integer>>();
-
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			
-			Calendar dataDeEmp= Calendar.getInstance();
-			dataDeEmp.setTime(emprestimo.getDataEmp());
-
-			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
-
-				int diasEmprestimo = emprestimo.diasDeEmprestimo();
-
-				if (!countMap.containsKey(pub)) {
-					ArrayList<Integer>daysArray = new ArrayList<Integer>(1);
-					daysArray.add( new Integer(diasEmprestimo) );
-					countMap.put(pub,daysArray);
-				} else {
-					ArrayList<Integer>daysArray = countMap.get(pub);
-					daysArray.add( new Integer(diasEmprestimo) );
-					
-				}	
-			}
-		}
-		return countMap;
-	}
-	
-	
-	/**
-	 *Gera um Map que indica quantas vezes a publicação foi emprestada por mês
+	 *Gera um Map que indica quantos empréstimos houve para cada obra em cada um dos últimos 12 meses
 	 * @param dataAtual
 	 * @return um dicionario com a contagem de repeticoes mensais por cada Publicacao
 	 */
@@ -672,9 +609,9 @@ public class Biblioteca {
 		return countMap;
 	}
 	
-
-
+	
 	/**
+	 * Gera um Map que indica quantos empréstimos houve para cada obra  no total dos últimos 12 meses
 	 * @param ArrayList Emprestimo 
 	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
@@ -705,7 +642,81 @@ public class Biblioteca {
 
 		return countMap;
 	}
+	
+	/**
+	 * Para os últimos 12 meses, devolve um Map que relaciona as Publicacoes com os dias 
+	 * que esteve emprestado
+	 * de forma a fazermos o maximo, mínimo e média
+	 * 
+	 * @param dataAtual
+	 * @return um map publicacao, dias de empréstimo
+	 */
+	public Map<Publicacao,ContagensPublicacao> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
+		
+		Calendar dataAnoAnterior = Calendar.getInstance();
+		dataAnoAnterior.set(Calendar.MONTH, -12);
 
+		Map<Publicacao,ArrayList<Integer>> countMap = new HashMap<Publicacao,ArrayList<Integer>>();
+
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Calendar dataDeEmp= Calendar.getInstance();
+			dataDeEmp.setTime(emprestimo.getDataEmp());
+
+			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
+				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
+
+				int diasEmprestimo = emprestimo.diasDeEmprestimo();
+
+				if (!countMap.containsKey(pub)) {
+					ArrayList<Integer>daysArray = new ArrayList<Integer>(1);
+					daysArray.add( new Integer(diasEmprestimo) );
+					countMap.put(pub,daysArray);
+				} else {
+					ArrayList<Integer>daysArray = countMap.get(pub);
+					daysArray.add( new Integer(diasEmprestimo) );
+					
+				}	
+			}
+		}
+		// pegar no hash já calculado com arrays de dias por poblicacao e converter num novo hash
+		// que associe à publicacao o Contagens com o maximo/minimo/media
+		Map<Publicacao, ContagensPublicacao> counts = new HashMap<Publicacao,ContagensPublicacao>();
+		for (Entry<Publicacao, ArrayList<Integer>> entry : countMap.entrySet()) {
+			Publicacao publicacao = entry.getKey(); // chave 
+		    ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
+		    ContagensPublicacao contagens = new ContagensPublicacao(arrayInteiros); // cria a nova estrutura de dados
+		    counts.put(publicacao, contagens); // põe a contagem para a public no hash
+		}
+		return counts;
+	}
+	
+	/**
+	 * @return
+	 */
+	public int mediaEmprestimo() {
+		// TODO implement here
+		return 0;
+	}
+
+
+	/**
+	 * @return
+	 */
+	public int duracaoMinimaEmprestimo() {
+		return 0;
+
+	}
+
+	/**
+	 * @return
+	 */
+	public int duracacaoMaximaEmprestimo() {
+		return 0;
+		
+	}
+	
+	
+	
 	/**
 	 * @return the listaDeUtilizadores
 	 */

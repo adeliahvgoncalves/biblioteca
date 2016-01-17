@@ -186,11 +186,11 @@ public class Main {
 		}
 
 		
-		Map<Publicacao,ArrayList<Integer>> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
+		Map<Publicacao,ContagensPublicacao> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
 		
-		for (Map.Entry<Publicacao,ArrayList<Integer>> entry : diasEmpPorPub.entrySet()) { 
+		for (Map.Entry<Publicacao,ContagensPublicacao> entry : diasEmpPorPub.entrySet()) { 
 
-			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue()+"x"); 
+			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue() +"x"); 
 		}
 
 		EventQueue.invokeLater(new Runnable() {
