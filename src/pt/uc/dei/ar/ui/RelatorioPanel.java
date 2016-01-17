@@ -25,10 +25,12 @@ public class RelatorioPanel extends JPanel {
 	public RelatorioPanel(Janela j) {
 		
 		this.janela=j;
+		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(6, 6, 488, 388);
 		panel.setLayout(null);
+		add(panel);
 		
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.setBounds(233, 316, 117, 52);
@@ -44,7 +46,7 @@ public class RelatorioPanel extends JPanel {
 				
 				JFileChooser fs = new JFileChooser(new File("c:\\"));
 				fs.setDialogTitle("Gravar um ficheiro");
-				fs.setFileFilter(new SaveFile(".txt", "Text File"));
+				fs.setFileFilter(new SaveFile(".csv", "Ficheiro CSV"));
 				int result = fs.showSaveDialog(null);
 				
 				if(result==JFileChooser.APPROVE_OPTION){

@@ -18,6 +18,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 	private JButton btnPesquisaPublicacao;
 	private JButton btnEmprestimosAtraso;
 	private JButton btnRegistaPublicacao;
+	private JButton btnGerarRelatrio;
 
 	/**
 	 * Create the panel.
@@ -67,7 +68,8 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		btnRegistaPublicacao.setBounds(69, 153, 144, 47);
 		panel.add(btnRegistaPublicacao);
 
-		JButton btnGerarRelatrio = new JButton("Gerar Relatório");
+		btnGerarRelatrio = new JButton("Gerar Relatório");
+		btnGerarRelatrio.addActionListener(this);
 		btnGerarRelatrio.setBounds(69, 224, 144, 47);
 		panel.add(btnGerarRelatrio);
 
@@ -106,6 +108,10 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 			janela.registaPublicacaoOK();
 			
+		}
+		else if(e.getSource() == this.btnGerarRelatrio){
+			
+			janela.relatorioPanelOK();
 		}
 		
 	}

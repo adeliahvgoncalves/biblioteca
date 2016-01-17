@@ -46,6 +46,7 @@ public class Janela extends JFrame {
 	private PesquisarPublicacao pesquisaPublicacao;
 	private EmprestimosForaPrazo emprestimosForaPrazo;
 	private RegistaPublicacaoPanel registaPublicacao;
+	private RelatorioPanel relatorioPanel;
 	
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 
@@ -81,6 +82,9 @@ public class Janela extends JFrame {
 		
 		this.registaPublicacao= new RegistaPublicacaoPanel(this);
 		getContentPane().add(registaPublicacao, "registaPublicacao");
+		
+		this.relatorioPanel= new RelatorioPanel(this);
+		getContentPane().add(relatorioPanel, "relatorioPanel");
 
 	}
 
@@ -138,6 +142,12 @@ public class Janela extends JFrame {
 	public void registaPublicacaoOK(){
 		
 		layout.show(getContentPane(),"registaPublicacao");
+		
+	}
+	
+	public void relatorioPanelOK(){
+		
+		layout.show(getContentPane(),"relatorioPanel");
 		
 	}
 
