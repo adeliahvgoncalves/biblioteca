@@ -8,31 +8,31 @@ import java.util.ArrayList;
  */
 public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6207854092828194070L;
 
 	/**
-     * Número de edição do livro.
-     * 
-     */
-    private String numEdicao;
+	 * Número de edição do livro.
+	 * 
+	 */
+	private String numEdicao;
 
-    /**
-     * ISBN do livro.
-     */
-    private String ISBN;
+	/**
+	 * ISBN do livro.
+	 */
+	private String ISBN;
 
-    /**
-     * Editor do livro.
-     */
-    private String editor;
+	/**
+	 * Editor do livro.
+	 */
+	private String editor;
 
-    
 
-	
+
+
 
 	/**
 	 * Construtor da classe Livro
@@ -86,17 +86,14 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		return editor;
 	}
 
-	
+
 	/**
 	 Implementa interface requisitável
-     * @return o máximo de dias de requisição em formato inteiro
-     */
-    public int maximoDiasRequisicao() {
-        return 15;
-    }
-
-    
-
+	 * @return o máximo de dias de requisição em formato inteiro
+	 */
+	public int maximoDiasRequisicao() {
+		return 15;
+	}
 
 
 	/* (non-Javadoc)
@@ -106,9 +103,15 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	@Override
 	public String toString() {
 		return "Livro [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
-				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + editor + "]";
+		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + getEditor() + "]";
 	}
-    
-    
+	
+	/**
+	 * Preenche detalhes da publicação no CSV
+	 * @return detalhes da publicação
+	 */
+	public String detalhes(){
+		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + numEdicao + "," + ISBN + "," + getEditor();
 
+	}
 }

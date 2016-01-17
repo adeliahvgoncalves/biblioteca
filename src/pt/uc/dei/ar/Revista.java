@@ -107,6 +107,13 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + "volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}
     
-    
+	/**
+	 * Preenche detalhes da publicação no CSV
+	 * @return detalhes da publicação
+	 */
+    public String detalhes(){
+    	return getDataReceçao() +  "," + getListaDeAreas() +","+getPeriodicidade() +  "," +getVolume()+"," +getNumeroSequencial();
+
+    }
 
 }

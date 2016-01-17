@@ -306,7 +306,7 @@ public class LeitorPanel extends JPanel implements ActionListener {
 				data[i][8] = "--";	
 				data[i][9] = "--";
 				data[i][10] = "--";	
-				data[i][11] = "--";	
+				data[i][11] =  ((Jornal) pub).getNumEdicao();	
 				data[i][12] = "--";	
 				data[i][13] = "--";	
 				data[i][14] = "--";	

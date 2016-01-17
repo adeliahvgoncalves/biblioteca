@@ -174,7 +174,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			
 			
 		}
-		//TODO: desaparecer com a mensagem quando volto ao pesquisar!
+		
 		
 
 		data[0][0] = pub.getCodBarras();
