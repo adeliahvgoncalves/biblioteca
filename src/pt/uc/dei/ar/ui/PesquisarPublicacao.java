@@ -1,5 +1,11 @@
 package pt.uc.dei.ar.ui;
 
+/**
+ * Interface do Bibliotário Chefe para pesquisar uma publicação da Biblioteca.
+ * Pesquisa por código de barras a publicação a pesquisar.
+ * 
+ */
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -32,23 +38,53 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
-	private Janela janela;
+		
+	/**
+	 *A janela é atributo da PesquisarPublicacao
+	 */
+	private  Janela janela;
+	/**
+	 * O txtPesquisa é atributo do PesquisarPublicacao
+	 */
 	private JTextField txtPesquisa;
-	private CardLayout layout;
+	/**
+	 * A tabela é atributo do PesquisarPublicacao
+	 */
 	private JTable tabela;
+	/**
+	 * O btnPesquisar é atributo do PesquisarPublicacao
+	 */
 	private JButton btnPesquisar;
+	/**
+	 * btnSair é atributo do PesquisarPublicacao
+	 */
 	private JButton btnSair;
+	/**
+	 * btnVoltar é atributo do PesquisarPublicacao
+	 */
 	private JButton btnVoltar;
-	private Biblioteca biblioteca = Biblioteca.getInstance();
+	/**
+	 * pub é atributo do PesquisarPublicacao
+	 */
 	private Publicacao pub;
-	
+	/**
+	 * lblMensagem é atributo do PesquisarPublicacao
+	 */
 	private JLabel lblMensagem;
 
+	/**
+	 * Instanciar o objeto biblioteca
+	 */
+	private Biblioteca biblioteca = Biblioteca.getInstance();
+	
+	
+	/**
+	 * Create the panel PesquisarPublicacao.
+	 */
 	public PesquisarPublicacao(Janela j) {
 		setLayout(null);
 
 		this.janela = j;
-		this.layout = new CardLayout(0, 0);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 480, 380);
@@ -109,8 +145,11 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		panel.add(lblMensagem);
 
 	}
-
-	private void preencheTabelaEmprestimo(){
+	
+	/**
+	 * Preenche a tabela da publicação pesquisada
+	 */
+	private void preencheTabelaPesquisaPublicacao(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		
@@ -133,29 +172,13 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-		if (e.getSource() == this.btnSair) {
-
-			janela.sairOK();
-
-		} else if (e.getSource() == this.btnVoltar) {
-
-			janela.bibliotecarioChefeOK();
-
-		}
-		else if (e.getSource() == this.btnPesquisar) {
-
-			this.preencheTabelaEmprestimo();
-			txtPesquisa.setText("");
-			
-		}
-	}
-
+	/**
+	 * Gera os dados da tabela obterUmaPublicacao
+	 * @return um objeto matriz(data)
+	 */
 	private Object [][] obterUmaPublicacao(){
-		//aloco a minha tabela vazia
+		
+		//aloco a tabela vazia
 		Object [][] data= new Object[1][17]; 
 
 		String text = this.txtPesquisa.getText();
@@ -249,7 +272,34 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		return data;
 		
 	}
+	
+	/**
+	 * actionPerformed dos botões à disposição 
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 
+		if (e.getSource() == this.btnSair) {
+
+			janela.sairOK();
+
+		} else if (e.getSource() == this.btnVoltar) {
+
+			janela.bibliotecarioChefeOK();
+
+		}
+		else if (e.getSource() == this.btnPesquisar) {
+
+			this.preencheTabelaPesquisaPublicacao();
+			txtPesquisa.setText("");
+			
+		}
+	}
+	
+	/**
+	 * focusGained
+	 */
 	@Override
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stub
@@ -262,14 +312,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		}
 	}
 
+	/**
+	 * focusLost
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 }
-
-
-
-
-

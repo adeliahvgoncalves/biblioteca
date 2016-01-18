@@ -23,44 +23,133 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+/**
+ * Interface do RegistaPublicacaoPanel para registar uma publicação na Biblioteca.
+ * Regista os diversos tipos de publicações na Biblioteca.
+ * 
+ */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
+	
+	/**
+	 *A janela é atributo do RegistaPublicacaoPanel
+	 */
+	private Janela janela;
+	/**
+	 *pnlTipoPublicacao é atributo da RegistaPublicacaoPanel
+	 */
+	private JPanel pnlTipoPublicacao;
+	/**
+	 *pnlTese é atributo da RegistaPublicacaoPanel
+	 */
+	private JPanel pnlTese;
+	/**
+	 *pnlLivro é atributo da RegistaPublicacaoPanel
+	 */
+	private JPanel pnlLivro;
+	/**
+	 *pnlPeriodico é atributo da RegistaPublicacaoPanel
+	 */
+	private JPanel pnlPeriodico;
+	/**
+	 *txtTitulo é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtTitulo;
+	/**
+	 *txtAreas é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtAreas;
+	/**
+	 *txtDataPublicacao é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtDataPublicacao;
+	/**
+	 *txtDataPublicacao é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtDataRecepcao;
+	/**
+	 *txtAutores é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtAutores;
+	/**
+	 *txtNumEdicao é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtNumEdicao;
+	/**
+	 *txtEditor é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtEditor;
+	/**
+	 *txtIsbn é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtIsbn;
+	/**
+	 *txtAutor é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtAutor;
+	/**
+	 *txtOrientador é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtOrientador;
+	/**
+	 *txtVolume é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtVolume;
+	/**
+	 *txtNumEdicaoJornal é atributo da RegistaPublicacaoPanel
+	 */
 	private JTextField txtNumEdicaoJornal;
 	
+	/**
+	 *lblNumEdicaoJornal é atributo da RegistaPublicacaoPanel
+	 */
 	private JLabel lblNumEdicaoJornal;
+	/**
+	 *lblVolume é atributo da RegistaPublicacaoPanel
+	 */
 	private JLabel lblVolume;
-
-	private JButton btnSair;
-	private JButton btnVoltar;
-	private JButton btnRegistar;
-
-	private Janela janela;
-	private CardLayout layout;
-
-	private JPanel pnlTipoPublicacao;
-	private JPanel pnlTese;
-	private JPanel pnlLivro;
-	private JPanel pnlPeriodico;
-
-	private JComboBox comboBox;
-	private JComboBox comboBoxTipoTese;
-	private JComboBox comboBoxPeriodicidade;
-	
-	private Biblioteca biblioteca = Biblioteca.getInstance();
+	/**
+	 *lblMensagem é atributo da RegistaPublicacaoPanel
+	 */
 	private JLabel lblMensagem;
 
 	/**
-	 * Create the panel.
+	 *btnSair é atributo da RegistaPublicacaoPanel
+	 */
+	private JButton btnSair;
+	/**
+	 *btnVoltar é atributo da RegistaPublicacaoPanel
+	 */
+	private JButton btnVoltar;
+	/**
+	 *btnRegistar é atributo da RegistaPublicacaoPanel
+	 */
+	private JButton btnRegistar;
+
+	/**
+	 *layout é atributo da RegistaPublicacaoPanel
+	 */
+	private CardLayout layout;
+
+	/**
+	 *comboBox é atributo da RegistaPublicacaoPanel
+	 */
+	private JComboBox comboBox;
+	/**
+	 *comboBoxTipoTese é atributo da RegistaPublicacaoPanel
+	 */
+	private JComboBox comboBoxTipoTese;
+	/**
+	 *comboBoxPeriodicidade é atributo da RegistaPublicacaoPanel
+	 */
+	private JComboBox comboBoxPeriodicidade;
+	
+	/**
+	 * Instanciar o objeto biblioteca
+	 */
+	private Biblioteca biblioteca = Biblioteca.getInstance();
+	
+	/**
+	 * Create the panel RegistaPublicacaoPanel.
 	 */
 	public RegistaPublicacaoPanel(Janela j) {
 		setLayout(null);
@@ -281,6 +370,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		
 	}
 
+	/**
+	 * actionPerformed dos botões à disposição no Jpanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -334,35 +426,40 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 
 		else if (e.getSource() == this.btnRegistar) {
 
-			registaPublicacao();
+			verificaRegistoPublicacao();
 
 		}
 	}
 
-	private void registaPublicacao() {
+	/**
+	 * Verifica se se pode registar a Publicacao conforme os parametros do construtor de cada Publicacao
+	 */
+	private void verificaRegistoPublicacao() {
 
 		String str = (String) this.comboBox.getSelectedItem();
 		
+		//Coloca a String do txtAutores em ArrayList<String>(parametro da contrucao do objecto Livro)
 		String[] auxAutores = this.txtAutores.getText().split(",");
 		ArrayList<String> autores = new ArrayList<String>();
 		String auxTrimAutor;
-		
-		String[] auxArea = this.txtAreas.getText().split(",");
-		ArrayList<String> areas = new ArrayList<String>();
-		String auxTrimArea;
-		
-		ArrayList<String> autor=new ArrayList<>();
-		autor.add(txtAutor.getText());
-		
 		for (int i = 0; i < auxAutores.length; i++) {
 			auxTrimAutor=auxAutores[i].trim();
 			autores.add(auxTrimAutor);
 		}
+		
+		//Coloca a String do txtAreas em ArrayList<String>(parametro da contrucao do objecto Publicacao)
+		String[] auxArea = this.txtAreas.getText().split(",");
+		ArrayList<String> areas = new ArrayList<String>();
+		String auxTrimArea;
 		for (int i = 0; i < auxArea.length; i++) {
 			auxTrimArea=auxArea[i].trim();
 			areas.add(auxTrimArea);
 		}
-
+		
+		//Coloca a String do txtAutor em ArrayList<String>(parametro da contrucao do objecto Tese)
+		ArrayList<String> autor=new ArrayList<>();
+		autor.add(txtAutor.getText());
+		
 		if (str.equals("Livro")) {
 
 			if (txtTitulo.getText().equals("") || txtAreas.getText().equals("")
@@ -425,6 +522,11 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 	
+	/**
+	 * Regista uma Publicacão do tipo Livro na Biblioteca
+	 * @param autores
+	 * @param areas
+	 */
 	private void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
 		
 		int codigoBarras;
@@ -440,6 +542,11 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		
 	}
 	
+	/**
+	 * Regista uma Publicacao do tipo Tese na Biblioteca
+	 * @param autores
+	 * @param areas
+	 */
 	private void registaTese(ArrayList<String> autores, ArrayList<String> areas){
 		
 		String strTese = (String) this.comboBoxTipoTese.getSelectedItem();
@@ -468,6 +575,11 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 	
+	/**
+	 * Regista uma Publicacao do tipo Periodico (Revista ou Jornal na Biblioteca)
+	 * @param areas
+	 * @param tipoPeriodico
+	 */
 	private void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
 		
 		String strPeriodicidade = (String) this.comboBoxPeriodicidade.getSelectedItem();
@@ -521,6 +633,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 
+	/**
+	 * Limpa os JTextFields do pnlRegistaPublicacao
+	 */
 	private void limpaPainel(){
 		
 		txtDataRecepcao.setText("DD/MM/AAAA");
@@ -546,30 +661,45 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			
 	}	
 
+	/**
+	 * Mostra o painel pnlLivro
+	 */
 	private void abrePainelLivroOK() {
 
 		layout.show(pnlTipoPublicacao, "livro");
 
 	}
 
+	/**
+	 * Mostra o painel pnlTese
+	 */
 	private void abrePainelTeseOK() {
 
 		layout.show(pnlTipoPublicacao, "tese");
 
 	}
-
+	/**
+	 * Mostra o painel pnlPeriodico
+	 */
 	private void abrePainelPeriodicoOK() {
 
 		layout.show(pnlTipoPublicacao, "periodico");
 
 	}
 
-	private void enviaMensagem(String s) {
+	/**
+	 * Método genérico para enviar mensagens ao utilizador
+	 * @param string
+	 */
+	private void enviaMensagem(String string) {
 
-		lblMensagem.setText(s);
+		lblMensagem.setText(string);
 
 	}
 
+	/**
+	 * focusGained
+	 */
 	@Override
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stub
@@ -599,6 +729,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 
+	/**
+	 * focusLost
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
