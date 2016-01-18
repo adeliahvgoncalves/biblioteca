@@ -2,44 +2,76 @@ package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JToolBar;
-
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecaSerializer;
-import pt.uc.dei.ar.Publicacao;
-
 import java.awt.Panel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButton;
-import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.ArrayList;
 
+
+/**
+ * 
+ *  Interface do painel de empréstimo, disponível ao bibliotecário chefe e colaborador
+ *
+ */
 public class EmprestimoPanel extends JPanel implements ActionListener, FocusListener {
 
+	/**
+	 * A janela é atributo do EmprestimoPanel
+	 */
 	private Janela janela;
-
+	/**
+	 * txtCodigoBarras é atributo do EmprestimoPanel
+	 */
 	private JTextField txtCodigoBarras;
+	/**
+	 * txtNumeroLeitor é atributo do EmprestimoPanel
+	 */
 	private JTextField txtNumeroLeitor;
+	/**
+	 * txtCodigoBarrasDevolucao é atributo do EmprestimoPanel
+	 */
 	private JTextField txtCodigoBarrasDevolucao;
-
+	/**
+	 * lblMensagem é atributo do EmprestimoPanel
+	 */
 	private JLabel lblMensagem;
+	/**
+	 * lblMensagemDevolver é atributo do EmprestimoPanel
+	 */
 	private JLabel lblMensagemDevolver;
-
+	/**
+	 * btnEmprestarVoltar é atributo do EmprestimoPanel
+	 */
 	private JButton btnEmprestarVoltar;
+	/**
+	 * btnDevolverVoltar é atributo do EmprestimoPanel
+	 */
 	private JButton btnDevolverVoltar;
-
+	/**
+	 * btnEmprestar é atributo do EmprestimoPanel
+	 */
 	private JButton btnEmprestar;
+	/**
+	 * btnDevolver é atributo do EmprestimoPanel
+	 */
 	private JButton btnDevolver;
+	/**
+	 * btnSairDevolucao é atributo do EmprestimoPanel
+	 */
 	private JButton btnSairDevolucao;
-
+	/**
+	 * btnSair é atributo do EmprestimoPanel
+	 */
 	private JButton btnSair;
-
+	/**
+	 * Instanciar o objeto biblioteca
+	 */
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 
 	/**
@@ -146,6 +178,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
+	/**
+	 * Limpa painel
+	 */
 	private void limpaPainel() {
 
 		lblMensagem.setText("");
@@ -156,6 +191,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
+	/**
+	 * Permite sair do painel emprestimo
+	 */
 	private void sairEmprestimoPanel() {
 
 		limpaPainel();
@@ -163,13 +201,18 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
+	/**
+	 * Ativa a visibilidade do botão voltar 
+	 */
 	public void activaVisibilidaBotaoVoltar() {
 
 		btnEmprestarVoltar.setVisible(true);
 		btnDevolverVoltar.setVisible(true);
-
 	}
-
+	
+	/**
+	 * Desativa a visibilidade do botão voltar 
+	 */
 	public void desativaVisibilidaBotaoVoltar() {
 
 		btnEmprestarVoltar.setVisible(false);
@@ -177,6 +220,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
+	/**
+	 * actionPerformed dos botões à disposição 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -184,14 +230,14 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 			limpaPainel();
 			janela.bibliotecarioChefeOK();
-			
+
 		}
 		else if (e.getSource() == this.btnSair || e.getSource() == this.btnSairDevolucao) {
 
 			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			sairEmprestimoPanel();
-			
+
 		}
 		else if (e.getSource() == this.btnEmprestar) {
 
@@ -206,6 +252,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
+	/**
+	 * Valida botão emprestar
+	 */
 	private void validarBotaoEmprestimo() {
 
 
@@ -244,12 +293,12 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 						Biblioteca biblioteca = Biblioteca.getInstance();
 						BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 						lblMensagem.setText("Empréstimo efectuado com sucesso.");
-						
+
 					} 
 					else{
-						
+
 						lblMensagem.setText("A publicação já se encontra ocupada.");
-						
+
 					}
 				}	
 				else{
@@ -266,6 +315,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		}
 	}
 
+	/**
+	 * Valida botão devolver
+	 */
 	private void validarBotaoDevolve() {
 
 		try{
@@ -301,30 +353,36 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 		}
 	}
+	
+	/**
+	 * focusGained
+	 */
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		
+
 		if(e.getSource() == this.txtCodigoBarras){
-			
+
 			lblMensagem.setText("");
-			
+
 		}
 		else if(e.getSource() == this.txtNumeroLeitor){
-			
+
 			lblMensagem.setText("");
-			
+
 		}
 		else if(e.getSource() == this.txtCodigoBarrasDevolucao){
-			
+
 			lblMensagemDevolver.setText("");
-			
+
 		}
 	}
 
+	/**
+	 * focusGained
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 }

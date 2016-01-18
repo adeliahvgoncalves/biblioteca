@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
+
 
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecarioChefe;
@@ -13,23 +13,39 @@ import pt.uc.dei.ar.Leitor;
 import pt.uc.dei.ar.Utilizador;
 
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
+import java.awt.event.ActionEvent;
+
+
+/**
+ * 
+ * Interface de login
+ *
+ */
 public class Login extends JPanel implements ActionListener {
 
+	/**
+	 * txtUser é atributo do Login
+	 */
 	private JTextField txtUser;
+	/**
+	 * pwdText é atributo do Login
+	 */
 	private JPasswordField pwdText;
+	/**
+	 * lblMensagem é atributo do Login
+	 */
 	private JLabel lblMensagem;
-
+	/**
+	 * janela é atributo do Login
+	 */
 	private Janela janela;
-
+	/**
+	 * btnLogin é atributo do Login
+	 */
 	private JButton btnLogin;
 
 	public Login(Janela j) {
@@ -66,6 +82,9 @@ public class Login extends JPanel implements ActionListener {
 
 	}
 	
+	/**
+	 * actionPerformed dos botões da classe
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		Biblioteca biblioteca = Biblioteca.getInstance();
@@ -85,12 +104,20 @@ public class Login extends JPanel implements ActionListener {
 		}
 	}
 
+	/**
+	 * 
+	 * @return txtUser em formato String
+	 */
 	private String leUser() {
 
 		return txtUser.getText();
 
 	}
 
+	/**
+	 * 
+	 * @return pwdText
+	 */
 	@SuppressWarnings("deprecation")
 	public String lePass() {
 
@@ -98,6 +125,9 @@ public class Login extends JPanel implements ActionListener {
 
 	}
 
+	/**
+	 * Limpa campos
+	 */
 	private void limpaCampos() {
 
 		lblMensagem.setText("");
@@ -106,6 +136,11 @@ public class Login extends JPanel implements ActionListener {
 
 	}
 
+	/**
+	 * Verifica o tipo de utilizador que acede ao programa para lhe mostrar o painel 
+	 * de operações que lhe estão permitidas
+	 * @param utilizador
+	 */
 	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
 
 		if (utilizador instanceof Leitor) {

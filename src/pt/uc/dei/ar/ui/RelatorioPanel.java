@@ -89,6 +89,7 @@ public class RelatorioPanel extends JPanel implements ActionListener{
 
 		}
 		if(e.getSource()==this.btnExportar){
+			
 
 			JFileChooser fs = new JFileChooser(new File("c:\\"));
 			fs.setDialogTitle("Gravar um ficheiro");

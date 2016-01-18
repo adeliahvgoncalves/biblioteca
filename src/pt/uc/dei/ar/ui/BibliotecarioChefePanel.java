@@ -1,27 +1,61 @@
 package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
+
+import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.ExportadorCSV;
+
 import java.awt.Panel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
 
+/**
+ * 
+ * Interface do bibliotecário chefe (disponibiliza a visualização de 
+ * todas as operações que lhe são permitidas)
+ *
+ */
 public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
+	/**
+	 * A janela é atributo do BibliotecarioChefePanel
+	 */
 	private Janela janela;
+	/**
+	 * btnSair é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnSair;
+	/**
+	 * btnRegistarUtilizador é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnRegistarUtilizador;
+	/**
+	 * btnEmprestaDevolve é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnEmprestaDevolve;
+	/**
+	 * btnPesquisaPublicacao é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnPesquisaPublicacao;
+	/**
+	 * btnEmprestimosAtraso é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnEmprestimosAtraso;
+	/**
+	 * btnRegistaPublicacao é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnRegistaPublicacao;
+	/**
+	 * btnGerarRelatrio é atributo do BibliotecarioChefePanel
+	 */
 	private JButton btnGerarRelatrio;
 
 	/**
-	 * Create the panel.
+	 * Create the panel
 	 */
 	public BibliotecarioChefePanel(Janela j) {
 
@@ -74,9 +108,13 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		panel.add(btnGerarRelatrio);
 
 	}
+	
+	/**
+	 * actionPerformed dos botões à disposição do bibliotecário chefe
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO faltam os botoes Emprestimos em atraso, gerar relatorio e registar Pub, ainda faltam os paineis.
+		
 
 		if(e.getSource() == this.btnSair){
 
@@ -110,7 +148,9 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 			
 		}
 		else if(e.getSource() == this.btnGerarRelatrio){
-			
+
+			ExportadorCSV exportador = new ExportadorCSV(Biblioteca.getInstance());
+			String csv = exportador.geraCSV(Calendar.getInstance());
 			janela.relatorioPanelOK();
 			
 		}

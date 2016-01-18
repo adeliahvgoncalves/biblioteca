@@ -7,35 +7,52 @@ import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.Utilizador;
 import java.awt.CardLayout;
 
+/**
+ * 
+ *Janela que inclui todos os paineis
+ *
+ */
 public class Janela extends JFrame {
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Janela frame = new Janela();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
+	
 	/**
 	 * Create the frame.
 	 */
+	/**
+	 * layout é atributo da janela
+	 */
 	private CardLayout layout;
+	/**
+	 * login é atributo da janela
+	 */
 	private Login login;
+	/**
+	 * EmprestimoPanel emprestimo é atributo da janela
+	 */
 	private EmprestimoPanel emprestimo;
+	/**
+	 * LeitorPanel	leitor é atributo da janela
+	 */
 	private LeitorPanel	leitor;
+	/**
+	 * RegistaUtilizadorPanel registaUtilizador é atributo da janela
+	 */
 	private RegistaUtilizadorPanel registaUtilizador;
+	/**
+	 * PesquisarPublicacao pesquisaPublicacao é atributo da janela
+	 */
 	private PesquisarPublicacao pesquisaPublicacao;
+	/**
+	 * EmprestimosForaPrazo emprestimosForaPrazo é atributo da janela
+	 */
 	private EmprestimosForaPrazo emprestimosForaPrazo;
+	/**
+	 * RegistaPublicacaoPanel registaPublicacao é atributo da janela
+	 */
 	private RegistaPublicacaoPanel registaPublicacao;
+	/**
+	 * RelatorioPanel relatorioPanel é atributo da janela
+	 */
 	private RelatorioPanel relatorioPanel;
 
 	public Janela() {
@@ -87,6 +104,10 @@ public class Janela extends JFrame {
 
 	}
 
+	/**
+	 * Login
+	 * @param utilizador
+	 */
 	public void loginOK(Utilizador utilizador) {
 
 		leitor.setUtilizador(utilizador);
@@ -94,6 +115,9 @@ public class Janela extends JFrame {
 
 	}
 
+	/**
+	 * Colaborador
+	 */
 	public void colaboradorOK() {
 
 		emprestimo.desativaVisibilidaBotaoVoltar();
@@ -101,6 +125,9 @@ public class Janela extends JFrame {
 
 	}
 
+	/**
+	 * Bibliotecário chefe empréstimos
+	 */
 	public void emprestimoPanelBibliotecarioChefeOK(){
 
 		layout.show(getContentPane(), "emprestimo");
@@ -108,35 +135,54 @@ public class Janela extends JFrame {
 
 	}
 
+	/**
+	 * Bibliotecário chefe
+	 */
 	public void bibliotecarioChefeOK(){
 
 		layout.show(getContentPane(), "bibliotecarioChefe");
 
 	}
 
+	/**
+	 * Sair 
+	 */
 	public void sairOK() {
 
 		layout.show(getContentPane(), "login");
 
 	}
 
+	/**
+	 * Registar utilizador
+	 */
 	public void registaUtilizadorOK(){
 
 		layout.show(getContentPane(), "registaUtilizador");
 
 	}
 
+	/**
+	 * Pesquisar publicação
+	 */
 	public void pesquisaPublicacaoOK(){
 
 		layout.show(getContentPane(), "pesquisaPublicacao");
 
 	}
 
+	/**
+	 * Empréstimos expirados
+	 */
 	public void emprestimosForaPrazoOK(){
 
 		layout.show(getContentPane(), "emprestimosForaPrazo");
 
 	}
+	
+	/**
+	 * Registar publicação
+	 */
 
 	public void registaPublicacaoOK(){
 
@@ -144,6 +190,9 @@ public class Janela extends JFrame {
 
 	}
 
+	/**
+	 * Gerar relatório da evolução dos empréstimos globais
+	 */
 	public void relatorioPanelOK(){
 
 		layout.show(getContentPane(),"relatorioPanel");

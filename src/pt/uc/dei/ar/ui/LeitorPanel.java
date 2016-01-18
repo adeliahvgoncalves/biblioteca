@@ -3,8 +3,7 @@ package pt.uc.dei.ar.ui;
 import javax.swing.JPanel;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.Panel;
 import javax.swing.JLabel;
@@ -23,7 +22,7 @@ import pt.uc.dei.ar.Tese;
 import pt.uc.dei.ar.Utilizador;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
+
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -34,21 +33,55 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Interface do leitor (disponibiliza a visualização de 
+ * todas as operações que lhe são permitidas)
+ */
 public class LeitorPanel extends JPanel implements ActionListener, FocusListener {
 
+	/**
+	 * A janela é atributo do LeitorPanel
+	 */
 	private Janela janela;
+	/**
+	 * Utilizador utilizador é atributo do LeitorPanel
+	 */
 	private Utilizador utilizador;
+	/**
+	 * tabelaPubTotal é atributo do LeitorPanel
+	 */
 	private JTable tabelaPubTotal;
+	/**
+	 * txtPesquisa é atributo do LeitorPanel
+	 */
 	private JTextField txtPesquisa;
+	/**
+	 * tabela é atributo do LeitorPanel
+	 */
 	private JTable tabela;
+	/**
+	 * lblLeitor é atributo do LeitorPanel
+	 */
 	private JLabel lblLeitor;
-
+	/**
+	 * comboBox é atributo do LeitorPanel
+	 */
 	private JComboBox comboBox;
-
+	/**
+	 * Instanciar a biblioteca
+	 */
 	private Biblioteca biblioteca = Biblioteca.getInstance();
-
+	/**
+	 * btnPesquisa é atributo do LeitorPanel
+	 */
 	private JButton btnPesquisa;
+	/**
+	 * btnSairEmprestimo é atributo do LeitorPanel
+	 */
 	private JButton btnSairEmprestimo;
+	/**
+	 * btnSairPublicacoes é atributo do LeitorPanel
+	 */
 	private JButton btnSairPublicacoes;
 
 	/**
@@ -157,6 +190,9 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
+	/**
+	 * Preenche a tabela empréstimos
+	 */
 	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
@@ -180,6 +216,10 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		
 	}
 
+	/**
+	 * Gera dados para preencher a tabela de empréstimos do leitor
+	 * @return objeto matriz
+	 */
 	private Object [][] geraDadosDaTabelaLeitorEmprestimos(){
 
 		ArrayList<Emprestimo> emprestimos = ((Leitor)utilizador).consultaEmprestimosLeitor();
@@ -238,6 +278,11 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 		return data;
 	}
+	
+	/**
+	 * Preenche uma tabela 
+	 * @param pubs
+	 */
 
 	private void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
@@ -261,6 +306,11 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
+	/**
+	 * Gera uma tabela
+	 * @param pubs
+	 * @return objeto matriz
+	 */
 	private Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		Object [][] data= new Object[pubs.size()][16];
@@ -329,12 +379,18 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		
 	}
 
+	/**
+	 * Sair do painel
+	 */
 	private void sairLeitorPanel(){
 
 		janela.sairOK();
 		
 	}
 
+	/**
+	 * actionPerformed dos botões
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -409,6 +465,9 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
+	/**
+	 * focusGained 
+	 */
 	@Override
 	public void focusGained(FocusEvent e) {
 		
@@ -421,6 +480,9 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		}
 	}
 
+	/**
+	 * focusLost
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
