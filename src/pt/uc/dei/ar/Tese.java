@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Tese herda de não periódico e implementa o requisitável
+ * Tese herda de não periódico e implementa o requisitável e o Serializable
  */
 
 public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = 5044302263170947142L;
 
@@ -74,6 +74,16 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 		return 10;
 	}
 	
+
+	/**
+	 * Preenche detalhes da publicação no CSV
+	 * @return detalhes da publicação
+	 */
+	public String detalhes(){
+		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + getNomeDoOrientador() + "," + getTipoDeTese();
+
+	}
+	
 	/* (non-Javadoc)
 	 * Metódo toString é a representação textual do objeto.
 	 * @see java.lang.Object#toString()
@@ -85,14 +95,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	}
 
 	
-	/**
-	 * Preenche detalhes da publicação no CSV
-	 * @return detalhes da publicação
-	 */
-	public String detalhes(){
-		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + getNomeDoOrientador() + "," + getTipoDeTese();
-
-	}
 
 	
 }

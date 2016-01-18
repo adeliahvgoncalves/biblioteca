@@ -13,12 +13,12 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 /**
- * Biblioteca representa a biblioteca e todos os seus recursos
+ * Biblioteca representa a biblioteca e todos os seus recursos e implementa o Serializable
  */
 public class Biblioteca implements Serializable{
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = -459669107686914825L;
 
@@ -42,12 +42,15 @@ public class Biblioteca implements Serializable{
 	 * Lista de empréstimos é atributo da classe biblioteca
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
-	
+
+	/**
+	 * Contadores da biblioteca  que guardam  números sequenciais
+	 */
 	private Contadores contadores;
 
 
 	/**
-	 * 
+	 * Instanciar a biblioteca
 	 */
 	private static Biblioteca instance;
 
@@ -64,7 +67,7 @@ public class Biblioteca implements Serializable{
 		this.listaDePublicacoes =new ArrayList<Publicacao>();
 		this.listaDeEmprestimo = new ArrayList<Emprestimo>();
 	}
-	
+
 	/**
 	 * Método público estático de acesso único ao objeto
 	 * @param 
@@ -75,7 +78,7 @@ public class Biblioteca implements Serializable{
 		{
 			instance = BibliotecaSerializer.getInstance().abreBiblioteca();
 			if (instance == null) {
-				
+
 				instance = new Biblioteca();
 			}
 			// O valor é retornado para quem está a pedir
@@ -84,7 +87,7 @@ public class Biblioteca implements Serializable{
 		// Retorna o a instância do objeto
 
 	}
-	
+
 	/**
 	 * Adiciona uma publicação nova
 	 * @param Publicacao
@@ -123,26 +126,26 @@ public class Biblioteca implements Serializable{
 				utilizadorPorUsername = utilizador;
 			}
 		}
-	
+
 		return utilizadorPorUsername;
 	}
 
-	
+
 	/**
 	 * Verifica se a publicação é requisitavel
 	 * @param publicacao
 	 * @return true se implementa o requisitável
 	 */
 	public boolean autorizaRequisitavel(Publicacao publicacao){
-		
-		 if(publicacao instanceof Requisitavel ){
-			 
-			 return true;
-		 } 
+
+		if(publicacao instanceof Requisitavel ){
+
+			return true;
+		} 
 		return false;
 	}
-	
-	
+
+
 
 	/**
 	 * Gerar password random para o utilizador
@@ -217,7 +220,7 @@ public class Biblioteca implements Serializable{
 		if(leitor1 == null){
 			leitor = new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 			this.adicionaUtilizador(leitor);
-			
+
 		}
 		return leitor.getNumLeitor();
 
@@ -269,7 +272,7 @@ public class Biblioteca implements Serializable{
 
 		Revista revista = new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
-		
+
 		return revista.getCodBarras();
 	}
 
@@ -288,7 +291,7 @@ public class Biblioteca implements Serializable{
 			Periodicidade periodicidade, int numEdicao){
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
-		
+
 		return jornal.getCodBarras();
 	}
 
@@ -307,7 +310,7 @@ public class Biblioteca implements Serializable{
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
 		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
-		
+
 		return tese.getCodBarras();
 	}
 
@@ -327,7 +330,7 @@ public class Biblioteca implements Serializable{
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
 		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
-		
+
 		return livro.getCodBarras();
 
 	}
@@ -358,8 +361,6 @@ public class Biblioteca implements Serializable{
 
 		return utilizadorColaborador;
 	}
-
-
 
 
 	/**
@@ -419,23 +420,11 @@ public class Biblioteca implements Serializable{
 		this.adicionaEmprestimo(emprestimo);
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 		publicacao.setOcupado(true);
-		
+
 
 		return true;
 	}
 
-
-	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
-			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
-				emprestimo.setDataDev(new Date());
-				publicacaoParaDevolver.setOcupado(false);
-			}
-
-		}
-
-	}
 
 	/**
 	 * Devolve empréstimo
@@ -470,38 +459,49 @@ public class Biblioteca implements Serializable{
 	 * @return arrayList de publicações daquela área 
 	 */
 	public ArrayList<Publicacao> pesquisaPorArea(String area) {
-		ArrayList<Publicacao> publicacaoPorArea= new ArrayList<Publicacao>();
 
+		ArrayList<Publicacao> publicacaoPorArea= new ArrayList<Publicacao>();
 		for(Publicacao publicacao: listaDePublicacoes){
-			if(publicacao.getListaDeAreas().contains(area)){
-				publicacaoPorArea.add(publicacao);
+			ArrayList<String> areas=publicacao.getListaDeAreas();
+
+			for (String areaProcura : areas) {
+
+				if(areaProcura.equalsIgnoreCase(area)){
+					publicacaoPorArea.add(publicacao);
+				}
 			}
 		}
 		return publicacaoPorArea;
 	}
 
 
-
 	/**
 	 * Pesquisa publicação por autor
 	 * @param emprestimo 
-	 * @return Publicações que contém parte nome de autor
+	 * @return Publicações que contém nome do autor
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNomeAutor(String nome) {
-		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
 
-		for (Publicacao publicacao: listaDePublicacoes){
-			if(publicacao instanceof NaoPeriodico && ((NaoPeriodico) publicacao).getListaDeAutores().contains(nome)){	
-				publicacaoComParteNome.add(publicacao);
+		ArrayList<Publicacao> publicacaoAutor= new ArrayList<Publicacao>();
+		for(Publicacao publicacao: listaDePublicacoes){
+			if(publicacao instanceof NaoPeriodico){
+				ArrayList<String> autores=((NaoPeriodico) publicacao).getListaDeAutores();
+
+
+				for (String autorProcura : autores) {
+					if(autorProcura.equalsIgnoreCase(nome)){
+						publicacaoAutor.add(publicacao);
+					}
+				}
 			}
 		}
-		return publicacaoComParteNome;
+		return publicacaoAutor;
 	}
 
 	/**
 	 * Pesquisa publicação por título
 	 * @param emprestimo 
-	 * @return Publicações que contém esse título
+	 * @return Publicações que contém parte de título
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
@@ -595,18 +595,18 @@ public class Biblioteca implements Serializable{
 	 */
 	public Map<String, Integer>  geraMapaRepeticoesMensais(Calendar dataAtual){
 
-		//Calendar dataAtual= new GregorianCalendar();
+	
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
-		
+
 		Map<String, Integer> countMap = new HashMap<String, Integer>();
-		
+
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Calendar dataDeEmp= Calendar.getInstance();
 			dataDeEmp.setTime(emprestimo.getDataEmp());
-	
+
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
-				
+
 				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
 
 				String chave = pub.getCodBarras() + "-" + dataDeEmp.get(Calendar.MONTH);
@@ -621,15 +621,15 @@ public class Biblioteca implements Serializable{
 		}
 		return countMap;
 	}
-	
-	
+
+
 	/**
 	 * Gera um Map que indica quantos empréstimos houve para cada obra  no total dos últimos 12 meses
 	 * @param ArrayList Emprestimo 
 	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
 	public Map<Publicacao, Integer> totalEmprestimosPorPublicacaoNoAno() {
-		
+
 		Calendar dataAtual= new GregorianCalendar();
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
@@ -655,7 +655,7 @@ public class Biblioteca implements Serializable{
 
 		return countMap;
 	}
-	
+
 	/**
 	 * Para os últimos 12 meses, devolve um Map que relaciona as Publicacoes com os dias 
 	 * que esteve emprestado
@@ -664,8 +664,8 @@ public class Biblioteca implements Serializable{
 	 * @param dataAtual
 	 * @return um map publicacao, dias de empréstimo
 	 */
-	public Map<Publicacao,ContagensPublicacao> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
-		
+	public Map<Publicacao,MatemáticaFuncoes> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
+
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 
@@ -687,27 +687,27 @@ public class Biblioteca implements Serializable{
 				} else {
 					ArrayList<Integer>daysArray = countMap.get(pub);
 					daysArray.add( new Integer(diasEmprestimo) );
-					
+
 				}	
 			}
 		}
 		// pegar no hash já calculado com arrays de dias por poblicacao e converter num novo hash
 		// que associe à publicacao o Contagens com o maximo/minimo/media
-		Map<Publicacao, ContagensPublicacao> counts = new HashMap<Publicacao,ContagensPublicacao>();
+		Map<Publicacao, MatemáticaFuncoes> counts = new HashMap<Publicacao,MatemáticaFuncoes>();
 		for (Entry<Publicacao, ArrayList<Integer>> entry : countMap.entrySet()) {
 			Publicacao publicacao = entry.getKey(); // chave 
-		    ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
-		    ContagensPublicacao contagens = new ContagensPublicacao(arrayInteiros); // cria a nova estrutura de dados
-		    counts.put(publicacao, contagens); // põe a contagem para a public no hash
+			ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
+			MatemáticaFuncoes contagens = new MatemáticaFuncoes(arrayInteiros); // cria a nova estrutura de dados
+			counts.put(publicacao, contagens); // põe a contagem para a public no hash
 		}
 		return counts;
 	}
-	
+
 	public boolean temDados(){
 		return this.listaDeUtilizadores.size()>0;
 	}
 
-	
+
 	/**
 	 * @return the listaDeUtilizadores
 	 */
@@ -766,6 +766,18 @@ public class Biblioteca implements Serializable{
 		return "Biblioteca [listaDeUtilizadores=" + listaDeUtilizadores + ", listaDePublicacoes=" + listaDePublicacoes
 				+ ", listaDeEmprestimo=" + listaDeEmprestimo + "]";
 	}
-	
-	
+
+
+	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
+			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
+				emprestimo.setDataDev(new Date());
+				publicacaoParaDevolver.setOcupado(false);
+			}
+
+		}
+
+	}
+
 }

@@ -4,7 +4,7 @@ package pt.uc.dei.ar;
 import java.io.Serializable;
 
 /**
- * Colaborador herda da classe Utilizador.
+ * Colaborador herda da classe Utilizador e implementa o Serializable
  */
 public class Colaborador extends Utilizador implements Serializable {
 

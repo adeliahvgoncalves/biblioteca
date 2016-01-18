@@ -3,7 +3,7 @@ package pt.uc.dei.ar;
 import java.io.Serializable;
 
 /**
- * BibliotecarioChefe herda da classe Utilizador.
+ * BibliotecarioChefe herda da classe Utilizador e implementa o Serializable
  */
 public class BibliotecarioChefe extends Utilizador implements Serializable{
 

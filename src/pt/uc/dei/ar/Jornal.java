@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Jornal herda de periódico que herda de publicação.
+ * Jornal herda de periódico que herda de publicação e implementa o Serializable
  */
 public class Jornal extends Periodico implements Serializable{
 
@@ -37,12 +37,6 @@ public class Jornal extends Periodico implements Serializable{
 	}
 
 
-
-
-
-
-
-
 	/**
 	 *
 	 * @return o número de edição em formato inteiro
@@ -50,10 +44,6 @@ public class Jornal extends Periodico implements Serializable{
 	public int getNumEdicao() {
 		return numEdicao;
 	}
-
-
-
-
 
 
 

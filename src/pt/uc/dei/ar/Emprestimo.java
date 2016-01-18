@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Empréstimo representa o empréstimo de uma publicação requisitável
+ * Empréstimo representa o empréstimo de uma publicação requisitável e implementa o Serializable
  */
 public class Emprestimo implements Serializable {
 
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = -5436843370567100689L;
 
@@ -120,14 +120,26 @@ public class Emprestimo implements Serializable {
 		return publicacao;
 	}
 
+	/**
+	 * 
+	 * @return numEmpUltimo
+	 */
 	public static int getNumEmpUltimo() {
 		return numEmpUltimo;
 	}
 
+	/**
+	 * 
+	 * @param numEmpUltimo
+	 */
 	public static void setNumEmpUltimo(int numEmpUltimo) {
 		Emprestimo.numEmpUltimo = numEmpUltimo;
 	}
 	
+	/**
+	 * Determina a data máxima de empréstimo
+	 * @return dataMaximaEntrega
+	 */
 	public Date dataMaximaEntrega(){
 
 		Calendar c = Calendar.getInstance();
@@ -142,7 +154,7 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Determina o número de dias que esteve emprestado
 	 * @param emprestimo
 	 * @return dias que a publicação esteve emprestada em formato inteiro
 	 */

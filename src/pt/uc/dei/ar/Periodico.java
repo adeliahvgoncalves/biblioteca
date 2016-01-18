@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Periódico herda de Publicação.
+ * Periódico herda de Publicação e implementa o Serializable
  */
 public class Periodico extends Publicacao implements Serializable {
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = -8255569193119008522L;
 	/**

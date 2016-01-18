@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * O não periódico herda de Publicação.
+ * O não periódico herda de Publicação e implementa o Serializable
  */
 public class NaoPeriodico extends Publicacao implements Serializable {
 
 	 /**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = 9197568589647852671L;
 	/**

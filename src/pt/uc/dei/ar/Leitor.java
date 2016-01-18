@@ -7,57 +7,57 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Leitor herda da classe Utilizador.
+ * Leitor herda da classe Utilizador e implementa o Serializable
  */
 public class Leitor extends Utilizador implements Serializable {
 
-	
-	 /**
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5729849162098592996L;
 
 
 	/**
-     * Lista de empréstimos é atributo da classe Leitor
-     */
-    private ArrayList<Emprestimo> listaDeEmprestimos;
-    
-    
-    /**
-     * Número de leitor é atributo da classe leitor
-     */
-    private int numLeitor=0;
-    
-    /**
-     * Número de leitor sequencial permite a criação de números sequenciais
-     */
-    private static int ultimoNumLeitorSequencial=0;
-    
-    /**
-     *Data de nascimento do utilizador. 
-     */
-    private Date dataNascimento;
+	 * Lista de empréstimos é atributo da classe Leitor
+	 */
+	private ArrayList<Emprestimo> listaDeEmprestimos;
 
-    /**
-     * Cartao de Cidadão do utilizador.
-     */
-    private String cartaoCidadao;
 
-    /**
-     * Morada do utilizador.
-     */
-    private String morada;
+	/**
+	 * Número de leitor é atributo da classe leitor
+	 */
+	private int numLeitor=0;
 
-    /**
-     * E-mail do utilizador.
-     */
-    private String email;
+	/**
+	 * Número de leitor sequencial permite a criação de números sequenciais
+	 */
+	private static int ultimoNumLeitorSequencial=0;
 
-    /**
-     * Número de telefone, contacto telefónico do utilizador.
-     */
-    private String telefone;
+	/**
+	 *Data de nascimento do utilizador. 
+	 */
+	private Date dataNascimento;
+
+	/**
+	 * Cartao de Cidadão do utilizador.
+	 */
+	private String cartaoCidadao;
+
+	/**
+	 * Morada do utilizador.
+	 */
+	private String morada;
+
+	/**
+	 * E-mail do utilizador.
+	 */
+	private String email;
+
+	/**
+	 * Número de telefone, contacto telefónico do utilizador.
+	 */
+	private String telefone;
 
 	/**
 	 * Construtor da classe Leitor.
@@ -73,7 +73,7 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @param telefone
 	 */
 	public Leitor(String username, String hashedPassword, String nome,
-			 String dataNascimento, String cartaoCidadao, String morada, String email, String telefone) {
+			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone) {
 		super(username, hashedPassword, nome);
 		this.listaDeEmprestimos = new ArrayList<Emprestimo>();
 		ultimoNumLeitorSequencial++;
@@ -90,7 +90,7 @@ public class Leitor extends Utilizador implements Serializable {
 		this.telefone = telefone;
 	}
 
-	
+
 	/**
 	 * @return o arrayList de empréstimos do leitor
 	 */
@@ -176,33 +176,23 @@ public class Leitor extends Utilizador implements Serializable {
 		this.telefone = telefone;
 	}
 
-//	/* (non-Javadoc)
-//	 * @see java.lang.Object#toString()
-//	 */
-//	@Override
-//	public String toString() {
-//		return "Leitor [listaDeEmprestimo=" + listaDeEmprestimos + ", numLeitor=" + numLeitor + ", dataNascimento="
-//				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
-//				+ ", telefone=" + telefone + "]";
-//	}
-	
+	/**
+	 * 
+	 * @return ultimoNumLeitorSequencial em formato inteiro
+	 */
 	public static int getUltimoNumLeitorSequencial() {
 		return ultimoNumLeitorSequencial;
 	}
-
+	
+	/**
+	 * 
+	 * @param ultimoNumLeitorSequencial
+	 */
 	public static void setUltimoNumLeitorSequencial(int ultimoNumLeitorSequencial) {
 		Leitor.ultimoNumLeitorSequencial = ultimoNumLeitorSequencial;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Leitor [numLeitor=" + numLeitor + ", dataNascimento="
-				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
-				+ ", telefone=" + telefone + "]";
-	}
+	
 
 	/**
 	 * Adiciona um empréstimo novo
@@ -219,7 +209,16 @@ public class Leitor extends Utilizador implements Serializable {
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
 		return listaDeEmprestimos;
 	}
-	
-	
-    
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Leitor [numLeitor=" + numLeitor + ", dataNascimento="
+				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
+				+ ", telefone=" + telefone + "]";
+	}
+
+
 }

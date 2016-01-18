@@ -1,27 +1,56 @@
 package pt.uc.dei.ar;
 
 import java.io.*;
-
+/**
+ * 
+ * Gera o ficheiro de objetos, serializa a biblioteca
+ *
+ */
 public class BibliotecaSerializer {
 
+	/**
+	 * iS é atributo da classe BibliotecaSerializer
+	 * "Deserializes" dados e objetos escitors previamente usando ObjectOutputStream
+	 */
 	private ObjectInputStream iS;
+	
+	/**
+	 * oS é atributo da classe BibliotecaSerializer
+	 */
 	private ObjectOutputStream oS;
 
+	/**
+	 * filePath é atributo da classe BibliotecaSerializer
+	 */
 	private String filePath;
 
+	/**
+	 * 
+	 */
 	private static BibliotecaSerializer instance;
 	
+	/**
+	 * Construtor da BibliotecaSerializer
+	 * @param filePath
+	 */
 	public BibliotecaSerializer() {
 		super();
 		String userHome = System.getProperty("user.home");
 		this.filePath = userHome + "/Dropbox/biblioteca.dat";
 	}
 
+	/**
+	 * Construtor da BibliotecaSerializer
+	 * @param filePath
+	 */
 	public BibliotecaSerializer(String filePath){
 		super();
 		this.filePath = filePath;
 	}
 	
+	/**
+	 * Verifica se a biblioteca foi instanciada
+	 */
 	public static BibliotecaSerializer getInstance(){
 
 		if(instance == null)  {
@@ -34,6 +63,11 @@ public class BibliotecaSerializer {
 
 	}
 
+	/**
+	 * Abre a biblioteca ou a partir do ficheiro de objetos ou 
+	 * através dos dados inserido inicialmente, caso ainda não haja o ficheiro
+	 * @return a biblioteca
+	 */
 	public Biblioteca abreBiblioteca(){
 
 		try {
@@ -58,6 +92,11 @@ public class BibliotecaSerializer {
 		}
 	}
 
+	/**
+	 * Grava no ficheiro de objetos
+	 * @param biblioteca
+	 * @return true se gravou corretamente no ficheiro de objetos
+	 */
 	public boolean gravaBiblioteca(Biblioteca biblioteca){
 
 		try {
@@ -80,28 +119,48 @@ public class BibliotecaSerializer {
 		}
 	}
 
-	//Método para abrir um ficheiro para leitura
+	/**
+	 * Método para abrir um ficheiro para leitura
+	 * @param nomeDoFicheiro
+	 * @throws IOException
+	 */
 	private void abreLeitura(String nomeDoFicheiro) throws IOException {
 		iS = new ObjectInputStream(new FileInputStream(nomeDoFicheiro));
 	}
 
-	//Método para abrir um ficheiro para escrita
-	//Recebe o nome do ficheiro
+	/**
+	 * Método para abrir um ficheiro para escrita
+	 * @param nomeDoFicheiro
+	 * @throws IOException
+	 */
 	private void abreEscrita(String nomeDoFicheiro) throws IOException {
 		oS = new ObjectOutputStream(new FileOutputStream(nomeDoFicheiro));
 	}
 
-	//Método para ler um objeto do ficheiro //Devolve o objeto lido
+	
+	/**
+	 * Método para ler um objeto do ficheiro
+	 * @return o objeto lido
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private Object leObjeto() throws IOException, ClassNotFoundException{ 
 		return iS.readObject();
 	}
 
-	//Método para escrever um objeto no ficheiro //Recebe o objeto a escrever
+	/**
+	 * Método para escrever um objeto no ficheiro 
+	 * @param o (objeto a escrever)
+	 * @throws IOException
+	 */
 	private void escreveObjeto(Object o) throws IOException {
 		oS.writeObject(o); 
 	}
 
-	//Método para fechar um ficheiro aberto em modo leitura 
+	/**
+	 * Método para fechar um ficheiro aberto em modo leitura 
+	 * @throws IOException
+	 */
 	private void fechaLeitura() throws IOException
 	{
 		try {
@@ -111,7 +170,11 @@ public class BibliotecaSerializer {
 			e.printStackTrace();
 		}
 	}
-	//Método para fechar um ficheiro aberto em modo escrita 
+	
+	/**
+	 * Método para fechar um ficheiro aberto em modo escrita 
+	 * @throws IOException
+	 */
 	private void fechaEscrita() throws IOException
 	{
 		try {

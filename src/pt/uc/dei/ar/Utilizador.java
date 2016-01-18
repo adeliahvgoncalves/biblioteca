@@ -3,12 +3,12 @@ package pt.uc.dei.ar;
 import java.io.Serializable;
 
 /**
- * A classe Utilizador representa os utilizadores de uma Biblioteca.
+ * A classe Utilizador representa os utilizadores de uma Biblioteca e implementa o Serializable
  */
 public class Utilizador implements Serializable {
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = -5032289784271982472L;
 
@@ -71,10 +71,5 @@ public class Utilizador implements Serializable {
 	public String toString() {
 		return "Utilizador [username=" + username + ", hashedPassword=" + hashedPassword + ", nome=" + nome + "]";
 	}
-
-	
-
-   
-	
 
 }

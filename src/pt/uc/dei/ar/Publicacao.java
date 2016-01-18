@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Publicação representa uma publicação periódica ou não periódica.
+ * Publicação representa uma publicação periódica ou não periódica e implementa o Serializable
  */
 public class Publicacao implements Serializable{
 
@@ -48,7 +48,7 @@ public class Publicacao implements Serializable{
 	 * Data de receção da publicação
 	 */
 	private Date dataReceçao;
-	
+
 	/**
 	 * Publicação requisitada ou não
 	 */
@@ -75,7 +75,7 @@ public class Publicacao implements Serializable{
 
 		this.listaDeAreas = new ArrayList<String>(areas);
 		this.ocupado=false;
-		
+
 		ultimocodBarras++;
 		this.codBarras = ultimocodBarras;
 		DateFormat dp=new SimpleDateFormat("dd/MM/yyyy");
@@ -153,7 +153,7 @@ public class Publicacao implements Serializable{
 		this.listaDeAreas.add(area);
 	}
 
-	
+
 
 	/**
 	 * @return the ocupado
@@ -170,14 +170,55 @@ public class Publicacao implements Serializable{
 		this.ocupado = ocupado;
 	}
 
-
+	/**
+	 * 
+	 * @return ultimocodBarras em formato inteiro
+	 */
 	public static int getUltimocodBarras() {
 		return ultimocodBarras;
 	}
 
 
+	/**
+	 * 
+	 * @param ultimocodBarras
+	 */
 	public static void setUltimocodBarras(int ultimocodBarras) {
 		Publicacao.ultimocodBarras = ultimocodBarras;
+	}
+
+
+	/**
+	 * Definir chave de um Map
+	 * @return this.codBarras + this.titulo.hashCode()
+	 */
+	@Override
+	public int hashCode() {
+
+		return this.codBarras + this.titulo.hashCode();
+	}
+
+	/**
+	 * Verificação da chave 
+	 * @return boolean
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Publicacao other = (Publicacao) obj;
+		if (codBarras != other.codBarras)
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		return true;
 	}
 
 
@@ -190,29 +231,4 @@ public class Publicacao implements Serializable{
 		return "Publicacao [titulo=" + titulo + ", dataPublicacao=" + dataPublicacao + ", listaDeAreas=" + listaDeAreas
 				+ ", codBarras=" + codBarras + ", dataReceçao=" + dataReceçao + "]";
 	}
-
-	@Override
-    public int hashCode() {
-        
-        return this.codBarras + this.titulo.hashCode();
-    }
-	
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final Publicacao other = (Publicacao) obj;
-        if (codBarras != other.codBarras)
-            return false;
-        if (titulo == null) {
-            if (other.titulo != null)
-                return false;
-        } else if (!titulo.equals(other.titulo))
-            return false;
-        return true;
-    }
 }

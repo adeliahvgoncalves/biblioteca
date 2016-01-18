@@ -11,10 +11,21 @@ import java.util.Collections;
  * @author adelia
  *
  */
-public class ContagensPublicacao {
+public class MatemáticaFuncoes {
 
+	/**
+	 * Máximo é atributo da classe MatemáticaFuncoes
+	 */
 	private int maximo;
+	
+	/**
+	 * Mínimo é atributo da classe MatemáticaFuncoes
+	 */
 	private int minimo;
+	
+	/**
+	 * Média é atributo da classe MatemáticaFuncoes
+	 */
 	private double media;
 	
 	/**
@@ -25,7 +36,7 @@ public class ContagensPublicacao {
 	 * @param minimo
 	 * @param media
 	 */
-	public ContagensPublicacao(ArrayList<Integer> lista) {
+	public MatemáticaFuncoes(ArrayList<Integer> lista) {
 		super();
 		this.maximo =  Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo
@@ -33,35 +44,40 @@ public class ContagensPublicacao {
 	}
 	
 	/**
-	 * @return the maximo
+	 * @return the maximo em formato inteiro
 	 */
 	public int getMaximo() {
 		return maximo;
 	}
+	
 	/**
 	 * @param maximo the maximo to set
 	 */
 	public void setMaximo(int maximo) {
 		this.maximo = maximo;
 	}
+	
 	/**
-	 * @return the minimo
+	 * @return the minimo em formato inteiro
 	 */
 	public int getMinimo() {
 		return minimo;
 	}
+	
 	/**
 	 * @param minimo the minimo to set
 	 */
 	public void setMinimo(int minimo) {
 		this.minimo = minimo;
 	}
+	
 	/**
-	 * @return the media
+	 * @return the media em formato double
 	 */
 	public double getMedia() {
 		return media;
 	}
+	
 	/**
 	 * @param media the media to set
 	 */
@@ -74,7 +90,7 @@ public class ContagensPublicacao {
 	 * Calcula a media da lista fornecida
 	 * 
 	 * @param list
-	 * @return
+	 * @return media em formato double
 	 */
 	private double calculaMedia(ArrayList<Integer> list){
 		double sum = 0.0;

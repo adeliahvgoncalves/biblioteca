@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Livro herda de não periódico e implementa o requisitável.
+ * Livro herda de não periódico e implementa o requisitável e o  Serializable
  */
 public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 
@@ -96,6 +96,14 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	}
 
 
+	/**
+	 * Preenche detalhes da publicação no CSV
+	 * @return detalhes da publicação
+	 */
+	public String detalhes(){
+		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + numEdicao + "," + ISBN + "," + getEditor();
+
+	}
 	/* (non-Javadoc)
 	 *  Metódo toString é a representação textual do objeto.
 	 * @see java.lang.Object#toString()
@@ -106,12 +114,5 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + getEditor() + "]";
 	}
 	
-	/**
-	 * Preenche detalhes da publicação no CSV
-	 * @return detalhes da publicação
-	 */
-	public String detalhes(){
-		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + numEdicao + "," + ISBN + "," + getEditor();
-
-	}
+	
 }
