@@ -147,6 +147,7 @@ public class Main {
 
 			
 			 maravilha.criaEmprestimoaMao(1, data1, 5);
+			 
 			 maravilha.criaEmprestimoaMao(1, data22, 5);
 			 maravilha.criaEmprestimoaMao(3, data1, 14);
 			 maravilha.criaEmprestimoaMao(5, data1, 11);
@@ -160,9 +161,9 @@ public class Main {
 			maravilha.criaEmprestimoaMao(2, data2, 14);
 			
 			maravilha.devolveEmprestimoAMao(11, data2);
-			maravilha.devolveEmprestimoAMao(4, data2);
-			maravilha.devolveEmprestimoAMao(3, data3);
-			maravilha.devolveEmprestimoAMao(2, data4);
+			maravilha.devolveEmprestimoAMao(4, data2); //5
+			maravilha.devolveEmprestimoAMao(3, data3);//5
+			maravilha.devolveEmprestimoAMao(2, data4); //14
 
 		
 			maravilha.criaEmprestimoaMao(1, data4, 9);

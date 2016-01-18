@@ -203,8 +203,9 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
+	 * Consulta de empréstimos ativos do leitor
 	 * @param String Nome 
-	 * @return
+	 * @return emprestimosAtuais
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
 		ArrayList<Emprestimo> emprestimosAtuais= new ArrayList<Emprestimo>();
@@ -217,6 +218,10 @@ public class Leitor extends Utilizador implements Serializable {
 		return emprestimosAtuais;
 	}
 	
+	/**
+	 * Remove empréstimo
+	 * @param emprestimo
+	 */
 	public void removeEmprestimo(Emprestimo emprestimo) {
 		listaDeEmprestimos.remove(emprestimo);
 	}
