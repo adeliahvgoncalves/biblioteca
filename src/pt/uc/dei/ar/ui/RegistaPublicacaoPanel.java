@@ -23,15 +23,17 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+
 /**
  * Interface do RegistaPublicacaoPanel para registar uma publicação na Biblioteca.
  * Regista os diversos tipos de publicações na Biblioteca.
- * 
+ * @author Adelia Goncalves e Maria Joao Silva
+ *
  */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	
 	/**
-	 *A janela é atributo do RegistaPublicacaoPanel
+	 *A janela é atributo da RegistaPublicacaoPanel
 	 */
 	private Janela janela;
 	/**
@@ -98,7 +100,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	 *txtNumEdicaoJornal é atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtNumEdicaoJornal;
-	
 	/**
 	 *lblNumEdicaoJornal é atributo da RegistaPublicacaoPanel
 	 */
@@ -111,7 +112,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	 *lblMensagem é atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblMensagem;
-
 	/**
 	 *btnSair é atributo da RegistaPublicacaoPanel
 	 */
@@ -124,12 +124,10 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	 *btnRegistar é atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnRegistar;
-
 	/**
 	 *layout é atributo da RegistaPublicacaoPanel
 	 */
 	private CardLayout layout;
-
 	/**
 	 *comboBox é atributo da RegistaPublicacaoPanel
 	 */
@@ -150,6 +148,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	
 	/**
 	 * Create the panel RegistaPublicacaoPanel.
+	 * @param j
 	 */
 	public RegistaPublicacaoPanel(Janela j) {
 		setLayout(null);
@@ -634,7 +633,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	}
 
 	/**
-	 * Limpa os JTextFields do pnlRegistaPublicacao
+	 * Limpa os JTextFields do RegistaPublicacao
 	 */
 	private void limpaPainel(){
 		

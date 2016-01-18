@@ -1,11 +1,5 @@
 package pt.uc.dei.ar.ui;
 
-/**
- * Interface do Bibliotário Chefe para pesquisar uma publicação da Biblioteca.
- * Pesquisa por código de barras a publicação a pesquisar.
- * 
- */
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -37,6 +31,12 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+/**
+ * Interface do Bibliotário Chefe para pesquisar uma publicação da Biblioteca.
+ * Pesquisa por código de barras a publicação a pesquisar.
+ * @author Adelia Goncalves e Maria Joao Silva
+ *
+ */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 		
 	/**

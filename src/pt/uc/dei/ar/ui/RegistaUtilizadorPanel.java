@@ -19,37 +19,99 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+/**
+ * Interface do RegistaUtilizadorPanel para registar Utilizador na Biblioteca.
+ * Regista os diversos tipos de Utilizadores na Biblioteca.
+ * @author Adelia Goncalves e Maria Joao Silva
+ */
 public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener{
 
-	private JTextField txtNome;
-	private JTextField txtUsername;
-	private JTextField txtNumFuncionario;
-	private JTextField txtCC;
-	private JTextField txtMorada;
-	private JTextField txtEmail;
-	private JTextField txtContactoTelefonico;
-	private JLabel lblMensagem;
-	private JLabel lblMensagemLeitor;
-
-	private JFormattedTextField formattedTextFieldData;
-
+	/**
+	 *Janela é atributo da RegistaUtilizadorPanel
+	 */
+	private Janela janela;
+	/**
+	 * pnlBiblioColaborador é atributo da RegistaUtilizadorPanel
+	 */
 	private JPanel pnlBiblioColaborador;
+	/**
+	 * pnlLeitor é atributo da RegistaUtilizadorPanel
+	 */
 	private JPanel pnlLeitor;
-
+	/**
+	 *pnlUtilizadores é atributo da RegistaUtilizadorPanel
+	 */
 	private JPanel pnlUtilizadores;
-
+	/**
+	 *txtNome é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtNome;
+	/**
+	 * txtUserName é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtUsername;
+	/**
+	 *txtNumFuncionario é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtNumFuncionario;
+	/**
+	 *txtCC é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtCC;
+	/**
+	 *txtMorada é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtMorada;
+	/**
+	 *txtEmail é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtEmail;
+	/**
+	 *txtContactoTelefonico é atributo da RegistaUtilizadorPanel
+	 */
+	private JTextField txtContactoTelefonico;
+	/**
+	 *formattedTextFiel é atributo da RegistaUtilizadorPanel
+	 */
+	private JFormattedTextField formattedTextFieldData;
+	/**
+	 * lblMensagem é atributo da RegistaUtilizadorPanel
+	 */
+	private JLabel lblMensagem;
+	/**
+	 *lblMensagemLeitor é atributo da RegistaUtilizadorPanel
+	 */
+	private JLabel lblMensagemLeitor;
+	/**
+	 * btnRegistaUtilizador é atributo da RegistaUtilizadorPanel
+	 */
 	private JButton btnRegistaUtilizador;
+	/**
+	 * btnSair é atributo da RegistaUtilizadorPanel
+	 */
 	private JButton btnSair;
+	/**
+	 * btnVoltar é atributo da RegistaUtilizadorPanel
+	 */
 	private JButton btnVoltar;
-
+	/**
+	 *comboBox é atributo da RegistaUtilizadorPanel 
+	 */
 	private JComboBox comboBox;
-
+	/**
+	 *layout é atributo da RegistaUtilizadorPanel 
+	 */
 	private CardLayout layout;
 
-	private Janela janela;
-
+	/**
+	 * Instanciar o objeto biblioteca
+	 */
 	Biblioteca biblioteca = Biblioteca.getInstance();
 
+	/**
+	 * Create the panel RegistaUtilizadorPanel.
+	 * @param j
+	 */
 	public RegistaUtilizadorPanel(Janela j) {
 		setLayout(null);
 
@@ -194,6 +256,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		panel.add(lblMensagemLeitor);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -238,6 +303,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
+	 */
 	public void focusGained(FocusEvent e) {
 
 		formattedTextFieldData.setText("");
@@ -245,18 +313,27 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
+	/**
+	 * Mostra o Jpanel pnlLeitor
+	 */
 	private void abrePainelLeitorOK() {
 
 		layout.show(pnlUtilizadores, "leitor");
 
 	}
 
+	/**
+	 * Mostra o Jpanel pnlBiblioColaborador
+	 */
 	private void abrePainelBibliotecarioColaboradorOK() {
 
 		layout.show(pnlUtilizadores, "biblioColaborador");
 
 	}
 
+	/**
+	 * Regista os Utilizadores do Tipo Bibliotecario Chefe e Colaborador na Biblioteca
+	 */
 	private void registaUtilizadorColaboradorBiblioChefe() {
 
 		String str = (String) this.comboBox.getSelectedItem();
@@ -308,6 +385,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 
+	/**
+	 *Regista Utilizadores de tipo Leitor na Biblioteca 
+	 */
 	private void registaUtilizadorLeitor() {
 
 		if (txtUsername.getText().equals("") || txtNome.getText().equals("") || txtCC.getText().equals("")) {
@@ -340,6 +420,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 
+	/**
+	 *  Limpa os JTextFields e Jlabels do pnlRegistaUtilizador
+	 */
 	private void limpaPainelRegistaUtilizador() {
 
 		// TODO melhorar a limpeza dos campos
@@ -357,13 +440,21 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	private void enviaMensagemParaValidar(String s, String st) {
+	/**
+	 * Método genérico para enviar mensagens ao utilizador
+	 * @param string
+	 * @param stringDois
+	 */
+	private void enviaMensagemParaValidar(String string, String stringDois) {
 
-		lblMensagem.setText(s);
-		lblMensagemLeitor.setText(st);
+		lblMensagem.setText(string);
+		lblMensagemLeitor.setText(stringDois);
 
 	}
 
+	/**
+	 * Limpa os JTextFields e Jlabels do pnlRegistaUtilizador, método simplificado
+	 */
 	private void limpaPainelSimples() {
 
 		this.txtUsername.setText("");
@@ -377,6 +468,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
+	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub

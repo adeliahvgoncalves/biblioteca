@@ -27,13 +27,34 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Interface do RelatorioPanel para exportar o relatatorio para Bibliotecario Chefe
+ * @author Adelia Goncalves e Maria Joao Silva
+ *
+ */
 public class RelatorioPanel extends JPanel implements ActionListener{
 
-	private JTextArea txtArea;
+	/**
+	 * janel é atributo da RelatorioPanel
+	 */
 	private Janela janela;
+	/**
+	 *txtArea é atributo da RelatorioPanel
+	 */
+	private JTextArea txtArea;
+	/**
+	 * btnSair é atributo da RelatorioPanel
+	 */
 	private JButton btnSair;
+	/**
+	 * btnVoltar é atributo da RelatorioPanel
+	 */
 	private JButton btnVoltar;
+	/**
+	 * btnExportar é atributo da RelatorioPanel
+	 */
 	private JButton btnExportar;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -47,7 +68,7 @@ public class RelatorioPanel extends JPanel implements ActionListener{
 		panel.setLayout(null);
 		add(panel);
 
-		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(this);
 		btnVoltar.setBounds(267, 316, 93, 52);
 		panel.add(btnVoltar);
@@ -73,6 +94,10 @@ public class RelatorioPanel extends JPanel implements ActionListener{
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * acciona os botoes do Jpanel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -90,6 +115,7 @@ public class RelatorioPanel extends JPanel implements ActionListener{
 		}
 		if(e.getSource()==this.btnExportar){
 			
+			//cria o FileChooser do tipo .cvs
 
 			JFileChooser fs = new JFileChooser(new File("c:\\"));
 			fs.setDialogTitle("Gravar um ficheiro");
