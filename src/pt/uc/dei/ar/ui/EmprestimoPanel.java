@@ -186,7 +186,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 			janela.bibliotecarioChefeOK();
 			
 		}
-
 		else if (e.getSource() == this.btnSair || e.getSource() == this.btnSairDevolucao) {
 
 			Biblioteca biblioteca = Biblioteca.getInstance();
@@ -194,12 +193,12 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 			sairEmprestimoPanel();
 			
 		}
-
 		else if (e.getSource() == this.btnEmprestar) {
 
 			validarBotaoEmprestimo();
 
-		} else if (e.getSource() == this.btnDevolver) {
+		} 
+		else if (e.getSource() == this.btnDevolver) {
 
 			validarBotaoDevolve();
 
@@ -220,11 +219,13 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 				lblMensagem.setText("Não preencheu os campos do empréstimo.");
 
-			} else if (biblioteca.pesquisaUtilizadorPorNumLeitor(numLeitor) == null) {
+			} 
+			else if (biblioteca.pesquisaUtilizadorPorNumLeitor(numLeitor) == null) {
 
 				lblMensagem.setText("O leitor não existe como leitor da biblioteca.");
 
-			} else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
+			} 
+			else if (biblioteca.pesquisaPublicacaoPorCodBarras(codigoBarras) == null) {
 
 				lblMensagem.setText("A publicação inserida não existe na biblioteca.");
 
@@ -244,13 +245,13 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 						BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 						lblMensagem.setText("Empréstimo efectuado com sucesso.");
 						
-					} else{
+					} 
+					else{
 						
 						lblMensagem.setText("A publicação já se encontra ocupada.");
 						
 					}
 				}	
-
 				else{
 
 					lblMensagem.setText("Erro! É um jornal, consultar na biblioteca.");
@@ -275,7 +276,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 				lblMensagemDevolver.setText("A publicação inserida não existe na biblioteca.");
 
-			}	else {
+			}	
+			else {
 
 				txtCodigoBarrasDevolucao.setText("");
 
@@ -285,7 +287,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 					BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 					lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
 
-				} else{
+				} 
+				else{
 
 					lblMensagemDevolver.setText(" Erro! O livro não está emprestado");
 
