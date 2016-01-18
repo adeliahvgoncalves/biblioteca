@@ -5,7 +5,7 @@ package pt.uc.dei.ar.ui;
 import javax.swing.filechooser.FileFilter;
 
 import pt.uc.dei.ar.Biblioteca;
-import pt.uc.dei.ar.MatemáticaFuncoes;
+import pt.uc.dei.ar.MatematicaFuncoes;
 import pt.uc.dei.ar.ExportadorCSV;
 import pt.uc.dei.ar.Publicacao;
 import pt.uc.dei.ar.Revista;

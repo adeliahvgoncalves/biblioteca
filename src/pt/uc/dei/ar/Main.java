@@ -179,9 +179,9 @@ public class Main {
 			System.out.println(((String)entry.getKey()) + ", emprestado " + entry.getValue()+"x"); 
 		}
 		
-		Map<Publicacao,MatemáticaFuncoes> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
+		Map<Publicacao,MatematicaFuncoes> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
 		
-		for (Map.Entry<Publicacao,MatemáticaFuncoes> entry : diasEmpPorPub.entrySet()) { 
+		for (Map.Entry<Publicacao,MatematicaFuncoes> entry : diasEmpPorPub.entrySet()) { 
 
 			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue() +"x"); 
 		}

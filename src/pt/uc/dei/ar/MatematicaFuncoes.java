@@ -11,7 +11,7 @@ import java.util.Collections;
  * @author adelia
  *
  */
-public class MatemáticaFuncoes {
+public class MatematicaFuncoes {
 
 	/**
 	 * Máximo é atributo da classe MatemáticaFuncoes
@@ -36,7 +36,7 @@ public class MatemáticaFuncoes {
 	 * @param minimo
 	 * @param media
 	 */
-	public MatemáticaFuncoes(ArrayList<Integer> lista) {
+	public MatematicaFuncoes(ArrayList<Integer> lista) {
 		super();
 		this.maximo =  Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo

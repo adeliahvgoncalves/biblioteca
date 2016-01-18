@@ -664,7 +664,7 @@ public class Biblioteca implements Serializable{
 	 * @param dataAtual
 	 * @return um map publicacao, dias de empréstimo
 	 */
-	public Map<Publicacao,MatemáticaFuncoes> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
+	public Map<Publicacao,MatematicaFuncoes> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
 
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
@@ -693,11 +693,11 @@ public class Biblioteca implements Serializable{
 		}
 		// pegar no hash já calculado com arrays de dias por poblicacao e converter num novo hash
 		// que associe à publicacao o Contagens com o maximo/minimo/media
-		Map<Publicacao, MatemáticaFuncoes> counts = new HashMap<Publicacao,MatemáticaFuncoes>();
+		Map<Publicacao, MatematicaFuncoes> counts = new HashMap<Publicacao,MatematicaFuncoes>();
 		for (Entry<Publicacao, ArrayList<Integer>> entry : countMap.entrySet()) {
 			Publicacao publicacao = entry.getKey(); // chave 
 			ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
-			MatemáticaFuncoes contagens = new MatemáticaFuncoes(arrayInteiros); // cria a nova estrutura de dados
+			MatematicaFuncoes contagens = new MatematicaFuncoes(arrayInteiros); // cria a nova estrutura de dados
 			counts.put(publicacao, contagens); // põe a contagem para a public no hash
 		}
 		return counts;
