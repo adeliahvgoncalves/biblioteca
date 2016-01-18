@@ -362,7 +362,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 				String passwordColaborador = biblioteca.gerarPassword();
 
-				biblioteca.criaColaborador(txtUsername.getText(), passwordColaborador, txtNome.getText(),
+				biblioteca.criaColaborador(txtUsername.getText(), txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
 
 				limpaPainelSimples();
@@ -374,7 +374,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 
 				String passwordBiblio = biblioteca.gerarPassword();
 
-				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), passwordBiblio, txtNome.getText(),
+				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
 				
 				limpaPainelSimples();
@@ -404,7 +404,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 			int numLeitor = 0;
 			String password = biblioteca.gerarPassword();
 
-			numLeitor = biblioteca.criaLeitor(txtUsername.getText(), password, txtNome.getText(),
+			numLeitor = biblioteca.criaLeitor(txtUsername.getText(), txtNome.getText(),
 					formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), txtEmail.getText(),
 					txtContactoTelefonico.getText());
 

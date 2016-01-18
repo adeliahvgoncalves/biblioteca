@@ -222,6 +222,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	private Object [][] geraDadosDaTabelaLeitorEmprestimos(){
 
+	
 		ArrayList<Emprestimo> emprestimos = ((Leitor)utilizador).consultaEmprestimosLeitor();
 		Object [][] data= new Object[emprestimos.size()][17];
 

@@ -46,7 +46,6 @@ public class Emprestimo implements Serializable {
 	private Requisitavel publicacao;
 
 
-
 	/**
 	 * Construtor da classe Empréstimo
 	 * @param numEmp
@@ -64,8 +63,6 @@ public class Emprestimo implements Serializable {
 		this.leitor = leitor;
 		this.publicacao=publicacao;
 	}
-
-
 
 
 
@@ -135,7 +132,7 @@ public class Emprestimo implements Serializable {
 	public static void setNumEmpUltimo(int numEmpUltimo) {
 		Emprestimo.numEmpUltimo = numEmpUltimo;
 	}
-	
+
 	/**
 	 * Determina a data máxima de empréstimo
 	 * @return dataMaximaEntrega
@@ -178,7 +175,7 @@ public class Emprestimo implements Serializable {
 		else if (diasEmprestimo==0){
 			diasEmprestimo=1;
 		}
-			return  diasEmprestimo;
+		return  diasEmprestimo;
 	}
 
 

@@ -213,15 +213,16 @@ public class Biblioteca implements Serializable{
 	 * @param telefone
 	 * @return número de leitor
 	 */
-	public int criaLeitor(String username, String hashedPassword, String nome,
+	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
 		Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
 		Leitor leitor = null;
 		if(leitor1 == null){
-			leitor = new Leitor(username, hashedPassword, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+			leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 			this.adicionaUtilizador(leitor);
 
 		}
+		System.out.println("num leitor:"+leitor.getNumLeitor() + "Password"+leitor.getHashedPassword());
 		return leitor.getNumLeitor();
 
 	}
@@ -234,9 +235,10 @@ public class Biblioteca implements Serializable{
 	 * @param numColaborador
 	 * @return true se criado corretamente
 	 */
-	public boolean criaColaborador(String username, String hashedPassword, String nome, int numColaborador){
-		Colaborador colaborador = new Colaborador(username, hashedPassword, nome, numColaborador);
+	public boolean criaColaborador(String username,  String nome, int numColaborador){
+		Colaborador colaborador = new Colaborador(username,  nome, numColaborador);
 		this.adicionaUtilizador(colaborador);
+		System.out.println( "Password"+colaborador.getHashedPassword());
 		return true;
 	}
 
@@ -248,9 +250,10 @@ public class Biblioteca implements Serializable{
 	 * @param numColaborador
 	 * @return true se criado corretamente
 	 */
-	public boolean criaBibliotecarioChefe(String username, String hashedPassword, String nome, int numColaborador){
-		BibliotecarioChefe bibliotecarioChefe = new BibliotecarioChefe(username, hashedPassword, nome, numColaborador);
+	public boolean criaBibliotecarioChefe(String username, String nome, int numColaborador){
+		BibliotecarioChefe bibliotecarioChefe = new BibliotecarioChefe(username, nome, numColaborador);
 		this.adicionaUtilizador(bibliotecarioChefe);
+		System.out.println( "Password"+bibliotecarioChefe.getHashedPassword());
 		return true;
 
 	}
@@ -272,7 +275,7 @@ public class Biblioteca implements Serializable{
 
 		Revista revista = new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
-
+		System.out.print ( revista.getCodBarras());
 		return revista.getCodBarras();
 	}
 
@@ -291,7 +294,7 @@ public class Biblioteca implements Serializable{
 			Periodicidade periodicidade, int numEdicao){
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
-
+		System.out.print ( jornal.getCodBarras());
 		return jornal.getCodBarras();
 	}
 
@@ -310,7 +313,7 @@ public class Biblioteca implements Serializable{
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
 		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
-
+		System.out.print ( tese.getCodBarras());
 		return tese.getCodBarras();
 	}
 
@@ -330,7 +333,7 @@ public class Biblioteca implements Serializable{
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
 		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
-
+		System.out.print ( livro.getCodBarras());
 		return livro.getCodBarras();
 
 	}
@@ -436,7 +439,7 @@ public class Biblioteca implements Serializable{
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
 
-			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
+			if(publicacaoParaDevolver.getCodBarras() == codigoBarras && emprestimo.getDataDev()==null){
 
 				if (!publicacaoParaDevolver.isOcupado()) {
 
@@ -445,6 +448,9 @@ public class Biblioteca implements Serializable{
 				} else {
 					emprestimo.setDataDev(new Date());
 					publicacaoParaDevolver.setOcupado(false);
+					Leitor leitor = emprestimo.getLeitor();
+					Leitor leitor2 = (Leitor)this.pesquisaUtilizadorPorNumLeitor(leitor.getNumLeitor());
+					leitor.removeEmprestimo(emprestimo);
 					return true;
 				}
 			}
@@ -595,7 +601,7 @@ public class Biblioteca implements Serializable{
 	 */
 	public Map<String, Integer>  geraMapaRepeticoesMensais(Calendar dataAtual){
 
-	
+
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 
@@ -768,16 +774,34 @@ public class Biblioteca implements Serializable{
 	}
 
 
+	public boolean criaEmprestimoaMao(int numLeitor,Date dataEmp, int codBarras){
+		Leitor leitor1 = (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
+		Requisitavel pub1= (Requisitavel)pesquisaPublicacaoPorCodBarras(codBarras);
+		Emprestimo	emprestimo=new Emprestimo(leitor1, dataEmp, pub1);
+		this.adicionaEmprestimo(emprestimo);
+		((Leitor) leitor1).adicionaEmprestimo(emprestimo);
+		Publicacao pub=(Publicacao) pub1;
+		pub.setOcupado(true);
+		return true;
+	}
+	
 	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
 			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
-				emprestimo.setDataDev(new Date());
+				emprestimo.setDataDev(Date);
+				Leitor leitor = emprestimo.getLeitor();
+				Leitor leitor2 = (Leitor)this.pesquisaUtilizadorPorNumLeitor(leitor.getNumLeitor());
+				leitor.removeEmprestimo(emprestimo);
 				publicacaoParaDevolver.setOcupado(false);
+			
+				
 			}
 
 		}
 
 	}
+
+
 
 }

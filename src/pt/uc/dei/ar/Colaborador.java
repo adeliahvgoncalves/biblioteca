@@ -27,8 +27,8 @@ public class Colaborador extends Utilizador implements Serializable {
 	 * @param nome
 	 * @param numColaborador
 	 */
-	public Colaborador(String username, String hashedPassword, String nome, int numColaborador) {
-		super(username, hashedPassword, nome);
+	public Colaborador(String username,  String nome, int numColaborador) {
+		super(username, nome);
 		this.numColaborador = numColaborador;
 	}
 

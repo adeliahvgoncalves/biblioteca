@@ -72,9 +72,9 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @param email
 	 * @param telefone
 	 */
-	public Leitor(String username, String hashedPassword, String nome,
+	public Leitor(String username, String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone) {
-		super(username, hashedPassword, nome);
+		super(username, nome);
 		this.listaDeEmprestimos = new ArrayList<Emprestimo>();
 		ultimoNumLeitorSequencial++;
 		this.numLeitor = ultimoNumLeitorSequencial;
@@ -207,7 +207,18 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @return
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
-		return listaDeEmprestimos;
+		ArrayList<Emprestimo> emprestimosAtuais= new ArrayList<Emprestimo>();
+		for (Emprestimo emprestimo : listaDeEmprestimos) {
+			if(emprestimo.getDataDev()==null){
+				emprestimosAtuais.add(emprestimo);
+			}
+			
+		}
+		return emprestimosAtuais;
+	}
+	
+	public void removeEmprestimo(Emprestimo emprestimo) {
+		listaDeEmprestimos.remove(emprestimo);
 	}
 
 	/* (non-Javadoc)

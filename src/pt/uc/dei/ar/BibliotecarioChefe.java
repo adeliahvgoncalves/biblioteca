@@ -26,8 +26,8 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 	 * @param nome
 	 * @param numColaborador
 	 */
-	public BibliotecarioChefe(String username, String hashedPassword, String nome, int numColaborador) {
-		super(username, hashedPassword, nome);
+	public BibliotecarioChefe(String username, String nome, int numColaborador) {
+		super(username, nome);
 		this.numColaborador = numColaborador;
 	}
 

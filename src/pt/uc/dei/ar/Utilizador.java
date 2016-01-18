@@ -30,13 +30,12 @@ public class Utilizador implements Serializable {
 	/**
 	 * Construtor da classe utilizador
 	 * @param username
-	 * @param hashedPassword
 	 * @param nome
 	 */
-	public Utilizador(String username, String hashedPassword, String nome) {
+	public Utilizador(String username, String nome) {
 		super();
 		this.username = username;
-		this.hashedPassword = hashedPassword;
+		this.hashedPassword = Biblioteca.getInstance().gerarPassword();
 		this.nome = nome;
 	}
 
