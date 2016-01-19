@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
 /**
- *SaveFilter é uma class abstrata usada pelo JFileChooser do RelatorioPanel
+ *SaveFilter é uma class usada pelo JFileChooser do RelatorioPanel
  *para filtrar a extencao dos ficheiros mostrados ao Utilizador
  * @author Adelia Goncalves e Maria Joao Silva
  */

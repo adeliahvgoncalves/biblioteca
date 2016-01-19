@@ -116,7 +116,7 @@ public class RelatorioPanel extends JPanel implements ActionListener{
 		if(e.getSource()==this.btnExportar){
 			
 			//cria o FileChooser do tipo .cvs
-
+			
 			JFileChooser fs = new JFileChooser(new File("c:\\"));
 			fs.setDialogTitle("Gravar um ficheiro");
 			fs.setFileFilter(new SaveFile(".csv", "Ficheiro CSV"));
