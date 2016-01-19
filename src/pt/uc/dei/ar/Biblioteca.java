@@ -34,14 +34,14 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Lista de publicações e atributo da classe biblioteca
+	 * Lista de publicacoes e atributo da classe biblioteca
 	 */
 	private ArrayList<Publicacao> listaDePublicacoes;
 
 
 
 	/**
-	 * Lista de empréstimos e atributo da classe biblioteca
+	 * Lista de emprestimos e atributo da classe biblioteca
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
 
