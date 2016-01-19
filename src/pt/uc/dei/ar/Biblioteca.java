@@ -604,13 +604,14 @@ public class Biblioteca implements Serializable{
 
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
-
+		Date data1=dataAnoAnterior.getTime();
+		System.out.println("NAO VEJOUM CU"+data1);
 		Map<String, Integer> countMap = new HashMap<String, Integer>();
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Calendar dataDeEmp= Calendar.getInstance();
 			dataDeEmp.setTime(emprestimo.getDataEmp());
-
+		
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
 
 				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
@@ -686,6 +687,7 @@ public class Biblioteca implements Serializable{
 
 				int diasEmprestimo = emprestimo.diasDeEmprestimo();
 
+				System.out.println("dias emprestimo" + diasEmprestimo);
 				if (!countMap.containsKey(pub)) {
 					ArrayList<Integer>daysArray = new ArrayList<Integer>(1);
 					daysArray.add( new Integer(diasEmprestimo) );
@@ -777,6 +779,14 @@ public class Biblioteca implements Serializable{
 		this.contadores = contadores;
 	}
 
+
+	//	public Utilizador criaUtilizador1(String username, String password, String nome, int numColaborador){
+	//	
+	//		
+	//		BiliotecarioChefe bibChefe= new Utilizador("dio", "123", "João Francisco Sousa Andrade", 1237);
+	//		listaDeUtilizadores.add(bibChefe);
+	//	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -798,23 +808,51 @@ public class Biblioteca implements Serializable{
 		return true;
 	}
 
-	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
-		for (Emprestimo emprestimo : listaDeEmprestimo) {
-			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
-			if(publicacaoParaDevolver.getCodBarras() == codigoBarras){
-				emprestimo.setDataDev(Date);
-				Leitor leitor = emprestimo.getLeitor();
-				Leitor leitor2 = (Leitor)this.pesquisaUtilizadorPorNumLeitor(leitor.getNumLeitor());
-				leitor.removeEmprestimo(emprestimo);
-				publicacaoParaDevolver.setOcupado(false);
 
 
-			}
 
-		}
+	public void devolveEmprestimoAMao(int numEmp, Date Date){
+
+
+		Emprestimo publicacaoParaDevolver = pesquisaEmprestimo(numEmp);
+
+		publicacaoParaDevolver.setDataDev(Date);
+		Leitor leitor = publicacaoParaDevolver.getLeitor();
+		Leitor leitor2 = (Leitor)this.pesquisaUtilizadorPorNumLeitor(leitor.getNumLeitor());
+		leitor.removeEmprestimo(publicacaoParaDevolver);
 
 	}
 
 
 
+
+
+
+	public Emprestimo pesquisaEmprestimo(int numEmp) {
+
+		Emprestimo emprestimoNum=null;
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+
+			if(emprestimo.getNumEmp() == numEmp )
+				emprestimoNum=emprestimo;
+
+
+		}
+		return emprestimoNum;
+
+
+	}
+
+	//Lista emprestimos
+
+	public String emprestimosListagem(){
+		for (Emprestimo emprestimo : listaDeEmprestimo) {
+			Publicacao pub= (Publicacao) emprestimo.getPublicacao();
+
+			System.out.println(pub.getCodBarras()+"Emp"+emprestimo.getNumEmp()+"Data Emp"+emprestimo.getDataEmp()+"Data Dev"+emprestimo.getDataDev());
+
+
+		}
+		return null;
+	}
 }

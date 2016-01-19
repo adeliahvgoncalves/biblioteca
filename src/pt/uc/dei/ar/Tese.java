@@ -80,7 +80,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	 * @return detalhes da publicação
 	 */
 	public String detalhes(){
-		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + getNomeDoOrientador() + "," + getTipoDeTese();
+		return  getListaDeAreas() + ";" + getDataReceçao() + "; " + getListaDeAutores() + "; " + getNomeDoOrientador() + ";" + getTipoDeTese();
 
 	}
 	

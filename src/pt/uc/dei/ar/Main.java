@@ -83,10 +83,10 @@ public class Main {
 			Date data22=calendar22.getTime();
 			Calendar calendar2=Calendar.getInstance();
 			calendar2.set(2015, 0, 5);
-			Date data2=calendar1.getTime();
+			Date data2=calendar2.getTime();
 			Calendar calendar3=Calendar.getInstance();
 			calendar3.set(2015, 0, 9);
-			Date data3=calendar1.getTime();
+			Date data3=calendar3.getTime();
 			Calendar calendar4=Calendar.getInstance();
 			calendar4.set(2015, 1, 6);
 			Date data4=calendar4.getTime();
@@ -110,7 +110,7 @@ public class Main {
 			Date data10=calendar10.getTime();
 			Calendar calendar11=Calendar.getInstance();
 			calendar11.set(2015, 9, 30);
-			Date data11=calendar8.getTime();		
+			Date data11=calendar11.getTime();		
 			Calendar calendar12=Calendar.getInstance();
 			calendar12.set(2015, 10, 18);
 			Date data12=calendar12.getTime();
@@ -146,98 +146,80 @@ public class Main {
 			//Criar emprestimo e devoluçoes
 
 
-			maravilha.criaEmprestimoaMao(1, data1, 5);
-			maravilha.devolveEmprestimoAMao(5, data1);
+			maravilha.criaEmprestimoaMao(1, data1, 5); 
+			maravilha.devolveEmprestimoAMao(1, data1);
 			maravilha.criaEmprestimoaMao(1, data22, 5);
-			maravilha.devolveEmprestimoAMao(5, data22);
+			maravilha.devolveEmprestimoAMao(2, data22);
 			maravilha.criaEmprestimoaMao(3, data1, 14);
-			maravilha.devolveEmprestimoAMao(14, data22);
+			maravilha.devolveEmprestimoAMao(3, data22);
 			maravilha.criaEmprestimoaMao(5, data1, 11);
-			maravilha.devolveEmprestimoAMao(11, data2);
-
+			maravilha.devolveEmprestimoAMao(4, data2); 
 			maravilha.criaEmprestimoaMao(4, data2, 5);
 			maravilha.devolveEmprestimoAMao(5, data3);
 			maravilha.criaEmprestimoaMao(3, data3, 5);
-			maravilha.devolveEmprestimoAMao(5, data3);
+			maravilha.devolveEmprestimoAMao(6, data3);
 			maravilha.criaEmprestimoaMao(2, data2, 14);
-			maravilha.devolveEmprestimoAMao(14, data4);
-
+			maravilha.devolveEmprestimoAMao(7, data4);
 			maravilha.criaEmprestimoaMao(1, data4, 9);
-			maravilha.devolveEmprestimoAMao(9, data5);
+			maravilha.devolveEmprestimoAMao(8, data5);
 			maravilha.criaEmprestimoaMao(1, data5, 11);
-			maravilha.criaEmprestimoaMao(6, data5, 9);
-			maravilha.devolveEmprestimoAMao(11, data5);
 			maravilha.devolveEmprestimoAMao(9, data5);
-
+			maravilha.criaEmprestimoaMao(6, data5, 9);
+			maravilha.devolveEmprestimoAMao(10, data5);
 			maravilha.criaEmprestimoaMao(1, data6, 9);
+			maravilha.devolveEmprestimoAMao(11, data7);
 			maravilha.criaEmprestimoaMao(1, data6, 3);
-
-			maravilha.devolveEmprestimoAMao(9, data7);
-			maravilha.devolveEmprestimoAMao(3, data8);
-
+			maravilha.devolveEmprestimoAMao(12, data8);
 			maravilha.criaEmprestimoaMao(1, data9, 9);
-			maravilha.devolveEmprestimoAMao(9, data9);
+			maravilha.devolveEmprestimoAMao(13, data9);
 			maravilha.criaEmprestimoaMao(1, data9, 5);
-
-			maravilha.devolveEmprestimoAMao(5, data10);
+			maravilha.devolveEmprestimoAMao(14, data10);
 			maravilha.criaEmprestimoaMao(1, data10, 9);
+			maravilha.devolveEmprestimoAMao(15, data11);
 			maravilha.criaEmprestimoaMao(1, data11, 11);
+			maravilha.devolveEmprestimoAMao(16, data12);
 			maravilha.criaEmprestimoaMao(1, data11, 5);
-
-			maravilha.devolveEmprestimoAMao(9, data11);
-			maravilha.devolveEmprestimoAMao(11, data12);
-			maravilha.devolveEmprestimoAMao(5, data12);
-
+			maravilha.devolveEmprestimoAMao(17, data12);
 			maravilha.criaEmprestimoaMao(1,data12,8);
-
-			maravilha.devolveEmprestimoAMao(8, data12);
+			maravilha.devolveEmprestimoAMao(18, data12);
 			maravilha.criaEmprestimoaMao(1,data12,7);
-
-			maravilha.devolveEmprestimoAMao(7, data13);
+			maravilha.devolveEmprestimoAMao(19, data13);
 			maravilha.criaEmprestimoaMao (5,data13,5);
-
-			maravilha.devolveEmprestimoAMao(5, data14);
+			maravilha.devolveEmprestimoAMao(20, data14);
 			maravilha.criaEmprestimoaMao (5,data14,5);
-
-			maravilha.devolveEmprestimoAMao(5, data14);
+			maravilha.devolveEmprestimoAMao(21, data14);
 			maravilha.criaEmprestimoaMao(1, data14, 9);
-
-			maravilha.devolveEmprestimoAMao(9, data15);
-
+			maravilha.devolveEmprestimoAMao(22, data15);
 			maravilha.criaEmprestimoaMao(1, data16, 5);
-
-			maravilha.devolveEmprestimoAMao(5, data17);
+			maravilha.devolveEmprestimoAMao(23, data17);
 			maravilha.criaEmprestimoaMao(6, data17, 5);
-
-			maravilha.devolveEmprestimoAMao(5, data19);
+			maravilha.devolveEmprestimoAMao(24, data19);
 			maravilha.criaEmprestimoaMao(4, data19, 5);
-
-			maravilha.devolveEmprestimoAMao(5, data20);
-
+			maravilha.devolveEmprestimoAMao(25, data20);
 			maravilha.criaEmprestimoaMao(2, data17, 9);
-
-			maravilha.devolveEmprestimoAMao(9, data18);
+			maravilha.devolveEmprestimoAMao(26, data18);
 			maravilha.criaEmprestimoaMao(3, data19, 9);
-
-			maravilha.devolveEmprestimoAMao(9, data19);
-			
-			maravilha.criaEmprestimoaMao(1, data18,3);
-
-			maravilha.criaEmprestimoaMao(1, data18,4);
-			maravilha.criaEmprestimoaMao(2, data18,14);
+			maravilha.devolveEmprestimoAMao(27, data19);			
+			maravilha.criaEmprestimoaMao(1, data18,3); 
+			maravilha.devolveEmprestimoAMao(28, data19);
+			maravilha.criaEmprestimoaMao(1, data18,4); 
+			maravilha.criaEmprestimoaMao(2, data18,14); 
 			maravilha.criaEmprestimoaMao(1, data18,10);
-			maravilha.criaEmprestimoaMao(1, data18,6);
-			maravilha.devolveEmprestimoAMao(6, data19);
+			maravilha.criaEmprestimoaMao(1, data19,6);
+			maravilha.devolveEmprestimoAMao(31, data18);
 			maravilha.criaEmprestimoaMao(1, data19,8);		
-			maravilha.devolveEmprestimoAMao(8, data20);	
+			maravilha.devolveEmprestimoAMao(32, data20);	
 			maravilha.criaEmprestimoaMao(2, data20,8);
 			maravilha.criaEmprestimoaMao(4, data21,6);	
-			maravilha.devolveEmprestimoAMao(6, data21);
+			maravilha.devolveEmprestimoAMao(34, data21);
 			maravilha.criaEmprestimoaMao(6, data21,6);
 
 		}
 
 
+		
+	maravilha.emprestimosListagem();
+		
 		//Pesquisa por área
 		maravilha.pesquisaPorArea("Economia");
 		System.out.println("area"+maravilha.pesquisaPorArea("Economia"));

@@ -36,8 +36,17 @@ public class ExportadorCSV {
 	 */
 	public Object [][] geraDadosDoRelatório(Calendar now){
 
+	
 		ArrayList<Publicacao> publicacoes = this.biblioteca.getListaDePublicacoes();
-		Object [][] data= new Object[publicacoes.size()][20];
+		ArrayList<Publicacao> publicacoesSemJornal=new ArrayList<Publicacao>();
+		for (Publicacao publicacao : publicacoes) {
+			if(publicacao instanceof Livro || publicacao instanceof Tese || publicacao instanceof Revista){
+				
+				publicacoesSemJornal.add(publicacao);
+			}
+			
+		}
+		Object [][] data= new Object[publicacoesSemJornal.size()][20];
 		Biblioteca biblioteca = this.biblioteca;
 		Map<Publicacao,Integer> totalEmprestimosPorPublicacaoNoAno = biblioteca.totalEmprestimosPorPublicacaoNoAno();
 		Map<Publicacao,MatematicaFuncoes> contagensPorPublicacao = biblioteca.obterDiasEmprestimoPorPublicacao(now);
@@ -48,10 +57,10 @@ public class ExportadorCSV {
 		int k;
 		Publicacao pub;
 
-		for (int i = 0; i < publicacoes.size(); i++) {
+		for (int i = 0; i < publicacoesSemJornal.size(); i++) {
 
 			k = 0;
-			pub = publicacoes.get(i);
+			pub = publicacoesSemJornal.get(i);
 
 			if(pub instanceof Livro || pub instanceof Tese || pub instanceof Revista){
 

@@ -155,7 +155,7 @@ public class Emprestimo implements Serializable {
 	 * @param emprestimo
 	 * @return dias que a publicação esteve emprestada em formato inteiro
 	 */
-	public int diasDeEmprestimo(){
+	public int diasDeEmprestimo(){ // o q representa no calendario esse dia e subtrair
 		long m1 = 0;
 		long m2 = 0;
 		int diasEmprestimo=0;

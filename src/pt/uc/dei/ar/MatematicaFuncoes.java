@@ -37,7 +37,7 @@ public class MatematicaFuncoes {
 	 * @param media
 	 */
 	public MatematicaFuncoes(ArrayList<Integer> lista) {
-		super();
+	
 		this.maximo =  Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo
 		this.media  = this.calculaMedia(lista);

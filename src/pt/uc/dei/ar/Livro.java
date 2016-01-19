@@ -101,7 +101,7 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	 * @return detalhes da publicação
 	 */
 	public String detalhes(){
-		return  getListaDeAreas() + "," + getDataReceçao() + ", " + getListaDeAutores() + ", " + numEdicao + "," + ISBN + "," + getEditor();
+		return  getListaDeAreas() + ";" + getDataReceçao() + "; " + getListaDeAutores() + "; " + numEdicao + ";" + ISBN + ";" + getEditor();
 
 	}
 	/* (non-Javadoc)

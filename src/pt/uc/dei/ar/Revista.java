@@ -99,7 +99,7 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	 * @return detalhes da publicação
 	 */
 	public String detalhes(){
-		return getDataReceçao() +  "," + getListaDeAreas() +","+getPeriodicidade() +  "," +getVolume()+"," +getNumeroSequencial();
+		return getDataReceçao() +  ";" + getListaDeAreas() +";"+getPeriodicidade() +  ";" +getVolume()+";" +getNumeroSequencial();
 
 	}
 
