@@ -385,6 +385,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	private void sairLeitorPanel(){
 
+		preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 		janela.sairOK();
 		
 	}
