@@ -11,6 +11,8 @@ import com.michaelbaranov.microba.calendar.DatePicker;
 
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecaSerializer;
+import pt.uc.dei.ar.BibliotecarioChefe;
+import pt.uc.dei.ar.Colaborador;
 import pt.uc.dei.ar.Utilizador;
 
 import java.awt.CardLayout;
@@ -363,28 +365,25 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 					"novamente e se persistir o erro dirija-se aos Recurso Humanos. ");
 		}
 		else{
+			
+			int numFuncionario = Integer.parseInt(txtNumFuncionario.getText());
+			
 			if (str.equals("Colaborador")) {
-
-				String passwordColaborador = biblioteca.gerarPassword();
-
-				biblioteca.criaColaborador(txtUsername.getText(), txtNome.getText(),
-						Integer.parseInt(txtNumFuncionario.getText()));
+				
+				Colaborador colaborador = biblioteca.criaColaborador(txtUsername.getText(), txtNome.getText(), numFuncionario);
 
 				limpaPainelSimples();
 				enviaMensagemParaValidar(" O Colaborador foi registado correctamente",
-						"O username é: " + txtUsername.getText() + ". A password é: " + passwordColaborador);
+						"O username é: " + txtUsername.getText() + ". A password é: " + colaborador.getHashedPassword());
 
 			}
 			if (str.equals("Biblio Chefe")) {
 
-				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), txtNome.getText(),
-						Integer.parseInt(txtNumFuncionario.getText()));
+				BibliotecarioChefe chefe = biblioteca.criaBibliotecarioChefe(txtUsername.getText(), txtNome.getText(), numFuncionario);
 				
 				limpaPainelSimples();
 				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente",
-						"O username é: " + txtUsername.getText() + ". A password é: " + 
-				biblioteca.pesquisaUtilizadorPorUsername(txtUsername.getText()).getHashedPassword());
-
+						"O username é: " + txtUsername.getText() + ". A password é: " + chefe.getHashedPassword());
 			} 
 		}
 	}

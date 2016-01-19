@@ -142,8 +142,6 @@ public class Emprestimo implements Serializable {
 		Calendar c = Calendar.getInstance();
 		c.setTime(this.dataEmp);
 		c.add(Calendar.DATE, publicacao.maximoDiasRequisicao());
-
-
 		Date dataMaximaEntrega = c.getTime();
 		return dataMaximaEntrega;
 
@@ -155,7 +153,7 @@ public class Emprestimo implements Serializable {
 	 * @param emprestimo
 	 * @return dias que a publicação esteve emprestada em formato inteiro
 	 */
-	public int diasDeEmprestimo(){ // o q representa no calendario esse dia e subtrair
+	public int diasDeEmprestimo(){ 
 		long m1 = 0;
 		long m2 = 0;
 		int diasEmprestimo=0;
@@ -163,17 +161,19 @@ public class Emprestimo implements Serializable {
 
 			m1 = this.getDataEmp().getTime();
 			m2 = this.getDataDev().getTime();
-		} else if (this.getDataDev()==null){
+		} else {
+			
 			m1 = this.getDataEmp().getTime();
-			Date now=new Date();
-			m2 = now.getTime();
+		
+			
+			Calendar dataMesAnterior = Calendar.getInstance();
+			dataMesAnterior.set(Calendar.DAY_OF_MONTH, 1);
+			dataMesAnterior.add(Calendar.DAY_OF_MONTH, -1);
+			m2 = dataMesAnterior.getTimeInMillis();
 		}
 		diasEmprestimo=  (int) ((m2 - m1) / 1000 / 60 / 60 / 24);
-		if(diasEmprestimo>0){
-			diasEmprestimo=  diasEmprestimo;
-		}
-		else if (diasEmprestimo==0){
-			diasEmprestimo=1;
+		if (diasEmprestimo == 0){
+			diasEmprestimo = 1;
 		}
 		return  diasEmprestimo;
 	}
