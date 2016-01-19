@@ -361,7 +361,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	/**
 	 * Transforma um DatePicker em String
 	 * @param datepicker
-	 * @return
+	 * @return data em formato String
 	 */
 	private String transformaDatePickerEmString(DatePicker datepicker){
 		

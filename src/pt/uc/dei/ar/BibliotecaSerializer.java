@@ -37,6 +37,7 @@ public class BibliotecaSerializer {
 		super();
 		String userHome = System.getProperty("user.home");
 		this.filePath = userHome + "/Dropbox/AcertarRumo20152016/biblioteca.dat";
+		//this.filePath ="bib.dat";
 	}
 
 	/**

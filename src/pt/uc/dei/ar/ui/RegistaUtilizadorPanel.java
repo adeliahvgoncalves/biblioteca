@@ -7,8 +7,12 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
+import com.michaelbaranov.microba.calendar.DatePicker;
+
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecaSerializer;
+import pt.uc.dei.ar.Utilizador;
+
 import java.awt.CardLayout;
 import javax.swing.JFormattedTextField;
 import java.awt.Color;
@@ -18,13 +22,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.SimpleDateFormat;
 
 /**
  * Interface do RegistaUtilizadorPanel para registar Utilizador na Biblioteca.
  * Regista os diversos tipos de Utilizadores na Biblioteca.
  * @author Adelia Goncalves e Maria Joao Silva
  */
-public class RegistaUtilizadorPanel extends JPanel implements ActionListener, FocusListener{
+public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 	/**
 	 *Janela é atributo da RegistaUtilizadorPanel
@@ -71,10 +76,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	 */
 	private JTextField txtContactoTelefonico;
 	/**
-	 *formattedTextFiel é atributo da RegistaUtilizadorPanel
-	 */
-	private JFormattedTextField formattedTextFieldData;
-	/**
 	 * lblMensagem é atributo da RegistaUtilizadorPanel
 	 */
 	private JLabel lblMensagem;
@@ -102,11 +103,18 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 	 *layout é atributo da RegistaUtilizadorPanel 
 	 */
 	private CardLayout layout;
+	
+	/**
+	 * datePickerDataNascimento é atributo da RegistaUtilizadorPanel
+	 */
+	private DatePicker datePickerDataNascimento;
 
 	/**
 	 * Instanciar o objeto biblioteca
 	 */
 	Biblioteca biblioteca = Biblioteca.getInstance();
+	
+	private Utilizador utilizador;
 
 	/**
 	 * Create the panel RegistaUtilizadorPanel.
@@ -169,14 +177,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		lblDataNascimento.setBounds(78, 10, 108, 16);
 		pnlLeitor.add(lblDataNascimento);
 
-		formattedTextFieldData = new JFormattedTextField();
-		formattedTextFieldData.addFocusListener(this);
-		formattedTextFieldData.setFocusLostBehavior(JFormattedTextField.REVERT);
-		formattedTextFieldData.setForeground(Color.LIGHT_GRAY);
-		formattedTextFieldData.setText("DD/MM/AAAA");
-		formattedTextFieldData.setBounds(235, 5, 130, 26);
-		pnlLeitor.add(formattedTextFieldData);
-
 		JLabel lblCartoCidadao = new JLabel("Cartão Cidadao");
 		lblCartoCidadao.setBounds(78, 38, 96, 16);
 		pnlLeitor.add(lblCartoCidadao);
@@ -212,6 +212,10 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		txtContactoTelefonico.setBounds(235, 117, 130, 26);
 		pnlLeitor.add(txtContactoTelefonico);
 		txtContactoTelefonico.setColumns(10);
+		
+		datePickerDataNascimento = new DatePicker();
+		datePickerDataNascimento.setBounds(235, 6, 130, 28);
+		pnlLeitor.add(datePickerDataNascimento);
 
 		// Bibliotecario Chefe e Colaborador
 
@@ -254,6 +258,12 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		this.lblMensagemLeitor = new JLabel("");
 		lblMensagemLeitor.setBounds(30, 287, 407, 16);
 		panel.add(lblMensagemLeitor);
+	}
+	
+	private String transformaDatePickerEmString(DatePicker datepicker){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		return sdf.format(datepicker.getDate());
 	}
 
 	/* (non-Javadoc)
@@ -300,16 +310,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 			limpaPainelRegistaUtilizador();
 
 		}
-
-	}
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
-	 */
-	public void focusGained(FocusEvent e) {
-
-		formattedTextFieldData.setText("");
-		formattedTextFieldData.setForeground(Color.BLACK);
 
 	}
 
@@ -372,14 +372,13 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 			}
 			if (str.equals("Biblio Chefe")) {
 
-				String passwordBiblio = biblioteca.gerarPassword();
-
 				biblioteca.criaBibliotecarioChefe(txtUsername.getText(), txtNome.getText(),
 						Integer.parseInt(txtNumFuncionario.getText()));
 				
 				limpaPainelSimples();
 				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente",
-						"O username é: " + txtUsername.getText() + ". A password é: " + passwordBiblio);
+						"O username é: " + txtUsername.getText() + ". A password é: " + 
+				biblioteca.pesquisaUtilizadorPorUsername(txtUsername.getText()).getHashedPassword());
 
 			} 
 		}
@@ -402,16 +401,15 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		} else if (biblioteca.pesquisaUtilizadorPorCartaoCidadao(txtCC.getText()) == null) {
 
 			int numLeitor = 0;
-			String password = biblioteca.gerarPassword();
 
 			numLeitor = biblioteca.criaLeitor(txtUsername.getText(), txtNome.getText(),
-					formattedTextFieldData.getText(), txtCC.getText(), txtMorada.getText(), txtEmail.getText(),
+					transformaDatePickerEmString(datePickerDataNascimento), txtCC.getText(), txtMorada.getText(), txtEmail.getText(),
 					txtContactoTelefonico.getText());
-
-			Biblioteca biblioteca = Biblioteca.getInstance();
+      
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagemParaValidar("O Leitor foi introduzido com sucesso!",
-					"Leitor nº " + numLeitor + ". Username: " + txtUsername.getText() + ". Password :" + password);
+					"Leitor nº " + numLeitor + ". Username: " + txtUsername.getText() + ". Password :" + 
+			biblioteca.pesquisaUtilizadorPorNumLeitor(numLeitor).getHashedPassword());
 			limpaPainelSimples();
 
 		} else{
@@ -434,7 +432,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		this.txtMorada.setText("");
 		this.txtEmail.setText("");
 		this.txtContactoTelefonico.setText("");
-		this.formattedTextFieldData.setText("");
 		this.lblMensagem.setText("");
 		this.lblMensagemLeitor.setText("");
 
@@ -464,16 +461,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener, Fo
 		this.txtMorada.setText("");
 		this.txtEmail.setText("");
 		this.txtContactoTelefonico.setText("");
-		this.formattedTextFieldData.setText("");
 
-	}
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
-	 */
-	@Override
-	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }
