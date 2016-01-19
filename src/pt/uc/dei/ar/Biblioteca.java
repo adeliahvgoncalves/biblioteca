@@ -215,13 +215,13 @@ public class Biblioteca implements Serializable{
 	 */
 	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
-		Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
-		Leitor leitor = null;
-		if(leitor1 == null){
+	//	Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
+	//	Leitor leitor = null;
+		//if(leitor1 == null){
+		Leitor leitor=null;
 			leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 			this.adicionaUtilizador(leitor);
 
-		}
 		System.out.println("num leitor:"+leitor.getNumLeitor() + "Password"+leitor.getHashedPassword());
 		return leitor.getNumLeitor();
 
