@@ -14,6 +14,8 @@ import java.util.Random;
 
 /**
  * Biblioteca representa a biblioteca e todos os seus recursos e implementa o Serializable
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ *
  */
 public class Biblioteca implements Serializable{
 
@@ -25,26 +27,26 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Lista de utilizadores é atributo da classe biblioteca
+	 * Lista de utilizadores e atributo da classe biblioteca
 	 */
 	private ArrayList<Utilizador> listaDeUtilizadores;
 
 
 
 	/**
-	 * Lista de publicações é atributo da classe biblioteca
+	 * Lista de publicações e atributo da classe biblioteca
 	 */
 	private ArrayList<Publicacao> listaDePublicacoes;
 
 
 
 	/**
-	 * Lista de empréstimos é atributo da classe biblioteca
+	 * Lista de empréstimos e atributo da classe biblioteca
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimo;
 
 	/**
-	 * Contadores da biblioteca  que guardam  números sequenciais
+	 * Contadores da biblioteca  que guardam  numeros sequenciais
 	 */
 	private Contadores contadores;
 
@@ -69,7 +71,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Método público estático de acesso único ao objeto
+	 * Metodo publico estatico de acesso unico ao objeto
 	 * @param 
 	 */
 	public static Biblioteca getInstance(){
@@ -89,7 +91,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Adiciona uma publicação nova
+	 * Adiciona uma publicacao nova
 	 * @param Publicacao
 	 */
 	public void adicionaPublicacao(Publicacao publicacao) {
@@ -105,7 +107,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Adiciona um empréstimo novo
+	 * Adiciona um emprestimo novo
 	 * @param Emprestimo
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
@@ -132,9 +134,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Verifica se a publicação é requisitavel
+	 * Verifica se a publicacao e requisitavel
 	 * @param publicacao
-	 * @return true se implementa o requisitável
+	 * @return true se implementa o requisitavel
 	 */
 	public boolean autorizaRequisitavel(Publicacao publicacao){
 
@@ -167,7 +169,7 @@ public class Biblioteca implements Serializable{
 	 * Login encontrado
 	 * @param username
 	 * @param password
-	 * @return se encontrou o utilizador registado é devolvido, se não devolve null
+	 * @return se encontrou o utilizador registado e devolvido, se nao devolve null
 	 */
 	public Utilizador login(String username, String password){
 
@@ -182,9 +184,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Pesquisa utilizador com cartão do cidadão
-	 * @param string  cartão do cidadão
-	 * @return um Leitor  com esse cartão do cidadão
+	 * Pesquisa utilizador com cartao do cidadao
+	 * @param string  cartao do cidadao
+	 * @return um Leitor  com esse cartao do cidadao
 	 */
 	public Utilizador pesquisaUtilizadorPorCartaoCidadao(String cartaoCidadao) {
 		Leitor leitorNumLeitor = null;
@@ -211,7 +213,7 @@ public class Biblioteca implements Serializable{
 	 * @param morada
 	 * @param email
 	 * @param telefone
-	 * @return número de leitor
+	 * @return numero de leitor
 	 */
 	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
@@ -260,15 +262,15 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Cria revista e adiciona ao arrayList Publicação
+	 * Cria revista e adiciona ao arrayList Publicacao
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param areas
 	 * @param periodicidade
 	 * @param volume
 	 * @param numeroSequencial
-	 * @return código de barras
+	 * @return codigo de barras
 	 */
 	public int criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int volume){
@@ -281,14 +283,14 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Cria Jornal e adiciona ao arrayList Publicação
+	 * Cria Jornal e adiciona ao arrayList Publicacao
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param areas
 	 * @param periodicidade
 	 * @param numEdicao
-	 * @return código de barras
+	 * @return codigo de barras
 	 */
 	public int criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int numEdicao){
@@ -299,15 +301,15 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Cria tese e adiciona ao arrayList Publicação
+	 * Cria tese e adiciona ao arrayList Publicacao
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param autores
 	 * @param areas
 	 * @param nomeDoOrientador
 	 * @param tipoDeTese
-	 * @return código de barras
+	 * @return codigo de barras
 	 */
 	public int criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
@@ -318,16 +320,16 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Cria livro e adiciona ao arrayList Publicação
+	 * Cria livro e adiciona ao arrayList Publicacao
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param autores
 	 * @param areas
 	 * @param numEdicao
 	 * @param iSBN
 	 * @param editor
-	 * @return código de barras
+	 * @return codigo de barras
 	 */
 	public int criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
@@ -339,9 +341,9 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa utilizador com número de colaborador
-	 * @param int número de colaborador
-	 * @return um Utilizador utilizador com esse número de colaborador
+	 * Pesquisa utilizador com numero de colaborador
+	 * @param int numero de colaborador
+	 * @return um Utilizador utilizador com esse numero de colaborador
 	 */
 	public Utilizador pesquisaUtilizadorPorNumColaborador(int numCol) {
 		Utilizador utilizadorColaborador = null;
@@ -367,8 +369,8 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Pesquisa utilizador com número de leitor
-	 * @param int número de leitor
+	 * Pesquisa utilizador com numero de leitor
+	 * @param int numero de leitor
 	 * @return um Utilizador utilizador com esse número de leitor
 	 */
 	public Utilizador pesquisaUtilizadorPorNumLeitor(int numLeitor) {
@@ -386,9 +388,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Pesquisa pubicação por código de barras
+	 * Pesquisa pubicacao por codigo de barras
 	 * @param int codigoBarras 
-	 * @return uma Publicação publicaçãoComCodigoBarras
+	 * @return uma Publicacao publicacaoComCodigoBarras
 	 */
 	public Publicacao pesquisaPublicacaoPorCodBarras(int codigoBarras) {
 
@@ -430,9 +432,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Devolve empréstimo
+	 * Devolve emprestimo
 	 * @param codigoBarras
-	 * @return false se nao existir o empréstimo
+	 * @return false se nao existir o emprestimo
 	 */
 	public boolean devolveEmprestimo(int codigoBarras) {
 
@@ -460,9 +462,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Pesquisa por área
+	 * Pesquisa por area
 	 * @param String area 
-	 * @return arrayList de publicações daquela área 
+	 * @return arrayList de publicacoes daquela area 
 	 */
 	public ArrayList<Publicacao> pesquisaPorArea(String area) {
 
@@ -482,9 +484,9 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Pesquisa publicação por autor
+	 * Pesquisa publicacao por autor
 	 * @param emprestimo 
-	 * @return Publicações que contém nome do autor
+	 * @return Publicacoes que contem nome do autor
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNomeAutor(String nome) {
 
@@ -505,9 +507,9 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa publicação por título
+	 * Pesquisa publicacao por titulo
 	 * @param emprestimo 
-	 * @return Publicações que contém parte de título
+	 * @return Publicacoes que contem parte de titulo
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
@@ -523,7 +525,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa publicação por título
+	 * Pesquisa publicacao por titulo
 	 * @param String nome 
 	 * @return Publicacao
 	 */
@@ -541,8 +543,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Lista os empréstimos que já deveriam ter sido devolvidos
-	 * @return empréstimo expirados
+	 * Lista os emprestimos que ja deveriam ter sido devolvidos
+	 * @return emprestimo expirados
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimoExpirado() {
 
@@ -571,8 +573,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Determina o total de empréstimos nos últimos 12 meses
-	 * @return número total de empréstimos do último ano em formato inteiro
+	 * Determina o total de emprestimos nos ultimos 12 meses
+	 * @return numero total de emprestimos do ultimo ano em formato inteiro
 	 */
 	public int totalEmprestimosUltimoAno() {
 
@@ -595,7 +597,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 *Gera um Map que indica quantos empréstimos houve para cada obra em cada um dos últimos 12 meses
+	 *Gera um Map que indica quantos emprestimos houve para cada obra em cada um dos ultimos 12 meses
 	 * @param dataAtual
 	 * @return um dicionario com a contagem de repeticoes mensais por cada Publicacao
 	 */
@@ -631,7 +633,7 @@ public class Biblioteca implements Serializable{
 
 
 	/**
-	 * Gera um Map que indica quantos empréstimos houve para cada obra  no total dos últimos 12 meses
+	 * Gera um Map que indica quantos emprestimos houve para cada obra  no total dos ultimos 12 meses
 	 * @param ArrayList Emprestimo 
 	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
@@ -664,12 +666,12 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Para os últimos 12 meses, devolve um Map que relaciona as Publicacoes com os dias 
+	 * Para os ultimos 12 meses, devolve um Map que relaciona as Publicacoes com os dias 
 	 * que esteve emprestado
-	 * de forma a fazermos o maximo, mínimo e média
+	 * de forma a fazermos o maximo, minimo e media
 	 * 
 	 * @param dataAtual
-	 * @return um map publicacao, dias de empréstimo
+	 * @return um map publicacao, dias de emprestimo
 	 */
 	public Map<Publicacao,MatematicaFuncoes> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
 
@@ -699,7 +701,7 @@ public class Biblioteca implements Serializable{
 				}	
 			}
 		}
-		// pegar no hash já calculado com arrays de dias por poblicacao e converter num novo hash
+		// pegar no hash ja calculado com arrays de dias por poblicacao e converter num novo hash
 		// que associe à publicacao o Contagens com o maximo/minimo/media
 		Map<Publicacao, MatematicaFuncoes> counts = new HashMap<Publicacao,MatematicaFuncoes>();
 		for (Entry<Publicacao, ArrayList<Integer>> entry : countMap.entrySet()) {
