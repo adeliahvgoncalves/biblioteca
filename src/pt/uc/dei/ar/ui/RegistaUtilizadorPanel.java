@@ -32,80 +32,80 @@ import java.text.SimpleDateFormat;
 public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 	/**
-	 *Janela é atributo da RegistaUtilizadorPanel
+	 *Janela e atributo da RegistaUtilizadorPanel
 	 */
 	private Janela janela;
 	/**
-	 * pnlBiblioColaborador é atributo da RegistaUtilizadorPanel
+	 * pnlBiblioColaborador e atributo da RegistaUtilizadorPanel
 	 */
 	private JPanel pnlBiblioColaborador;
 	/**
-	 * pnlLeitor é atributo da RegistaUtilizadorPanel
+	 * pnlLeitor e atributo da RegistaUtilizadorPanel
 	 */
 	private JPanel pnlLeitor;
 	/**
-	 *pnlUtilizadores é atributo da RegistaUtilizadorPanel
+	 *pnlUtilizadores e atributo da RegistaUtilizadorPanel
 	 */
 	private JPanel pnlUtilizadores;
 	/**
-	 *txtNome é atributo da RegistaUtilizadorPanel
+	 *txtNome e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtNome;
 	/**
-	 * txtUserName é atributo da RegistaUtilizadorPanel
+	 * txtUserName e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtUsername;
 	/**
-	 *txtNumFuncionario é atributo da RegistaUtilizadorPanel
+	 *txtNumFuncionario e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtNumFuncionario;
 	/**
-	 *txtCC é atributo da RegistaUtilizadorPanel
+	 *txtCC e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtCC;
 	/**
-	 *txtMorada é atributo da RegistaUtilizadorPanel
+	 *txtMorada e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtMorada;
 	/**
-	 *txtEmail é atributo da RegistaUtilizadorPanel
+	 *txtEmail e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtEmail;
 	/**
-	 *txtContactoTelefonico é atributo da RegistaUtilizadorPanel
+	 *txtContactoTelefonico e atributo da RegistaUtilizadorPanel
 	 */
 	private JTextField txtContactoTelefonico;
 	/**
-	 * lblMensagem é atributo da RegistaUtilizadorPanel
+	 * lblMensagem e atributo da RegistaUtilizadorPanel
 	 */
 	private JLabel lblMensagem;
 	/**
-	 *lblMensagemLeitor é atributo da RegistaUtilizadorPanel
+	 *lblMensagemLeitor e atributo da RegistaUtilizadorPanel
 	 */
 	private JLabel lblMensagemLeitor;
 	/**
-	 * btnRegistaUtilizador é atributo da RegistaUtilizadorPanel
+	 * btnRegistaUtilizador e atributo da RegistaUtilizadorPanel
 	 */
 	private JButton btnRegistaUtilizador;
 	/**
-	 * btnSair é atributo da RegistaUtilizadorPanel
+	 * btnSair e atributo da RegistaUtilizadorPanel
 	 */
 	private JButton btnSair;
 	/**
-	 * btnVoltar é atributo da RegistaUtilizadorPanel
+	 * btnVoltar e atributo da RegistaUtilizadorPanel
 	 */
 	private JButton btnVoltar;
 	/**
-	 *comboBox é atributo da RegistaUtilizadorPanel 
+	 *comboBox e atributo da RegistaUtilizadorPanel 
 	 */
 	private JComboBox comboBox;
 	/**
-	 *layout é atributo da RegistaUtilizadorPanel 
+	 *layout e atributo da RegistaUtilizadorPanel 
 	 */
 	private CardLayout layout;
 	
 	/**
-	 * datePickerDataNascimento é atributo da RegistaUtilizadorPanel
+	 * datePickerDataNascimento e atributo da RegistaUtilizadorPanel
 	 */
 	private DatePicker datePickerDataNascimento;
 
@@ -260,6 +260,11 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		panel.add(lblMensagemLeitor);
 	}
 	
+	/**
+	 * Transforma um DatePicker em String
+	 * @param datepicker
+	 * @return data em formato String
+	 */
 	private String transformaDatePickerEmString(DatePicker datepicker){
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -438,7 +443,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	}
 
 	/**
-	 * Método genérico para enviar mensagens ao utilizador
+	 * Metodo generico para enviar mensagens ao utilizador
 	 * @param string
 	 * @param stringDois
 	 */
@@ -450,7 +455,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	}
 
 	/**
-	 * Limpa os JTextFields e Jlabels do pnlRegistaUtilizador, método simplificado
+	 * Limpa os JTextFields e Jlabels do pnlRegistaUtilizador, metodo simplificado
 	 */
 	private void limpaPainelSimples() {
 

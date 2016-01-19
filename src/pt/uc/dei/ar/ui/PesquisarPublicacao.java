@@ -32,43 +32,43 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 /**
- * Interface do Bibliotário Chefe para pesquisar uma publicação da Biblioteca.
- * Pesquisa por código de barras a publicação a pesquisar.
+ * Interface do Bibliotario Chefe para pesquisar uma publicacao da Biblioteca.
+ * Pesquisa por codigo de barras a publicacao a pesquisar.
  * @author Adelia Goncalves e Maria Joao Silva
  *
  */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 		
 	/**
-	 *A janela é atributo da PesquisarPublicacao
+	 *A janela e atributo da PesquisarPublicacao
 	 */
 	private  Janela janela;
 	/**
-	 * O txtPesquisa é atributo do PesquisarPublicacao
+	 * O txtPesquisa e atributo do PesquisarPublicacao
 	 */
 	private JTextField txtPesquisa;
 	/**
-	 * A tabela é atributo do PesquisarPublicacao
+	 * A tabela e atributo do PesquisarPublicacao
 	 */
 	private JTable tabela;
 	/**
-	 * O btnPesquisar é atributo do PesquisarPublicacao
+	 * O btnPesquisar e atributo do PesquisarPublicacao
 	 */
 	private JButton btnPesquisar;
 	/**
-	 * btnSair é atributo do PesquisarPublicacao
+	 * btnSair e atributo do PesquisarPublicacao
 	 */
 	private JButton btnSair;
 	/**
-	 * btnVoltar é atributo do PesquisarPublicacao
+	 * btnVoltar e atributo do PesquisarPublicacao
 	 */
 	private JButton btnVoltar;
 	/**
-	 * pub é atributo do PesquisarPublicacao
+	 * pub e atributo do PesquisarPublicacao
 	 */
 	private Publicacao pub;
 	/**
-	 * lblMensagem é atributo do PesquisarPublicacao
+	 * lblMensagem e atributo do PesquisarPublicacao
 	 */
 	private JLabel lblMensagem;
 
@@ -147,7 +147,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	}
 	
 	/**
-	 * Preenche a tabela da publicação pesquisada
+	 * Preenche a tabela da publicacao pesquisada
 	 */
 	private void preencheTabelaPesquisaPublicacao(){
 
@@ -273,8 +273,9 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		
 	}
 	
-	/**
-	 * actionPerformed dos botões à disposição 
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -297,8 +298,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		}
 	}
 	
-	/**
-	 * focusGained
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusGained(FocusEvent e) {
@@ -312,12 +313,11 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		}
 	}
 
-	/**
-	 * focusLost
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 }

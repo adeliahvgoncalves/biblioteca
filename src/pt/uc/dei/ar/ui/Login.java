@@ -28,23 +28,23 @@ import java.awt.event.ActionEvent;
 public class Login extends JPanel implements ActionListener {
 
 	/**
-	 * txtUser é atributo do Login
+	 * txtUser e atributo do Login
 	 */
 	private JTextField txtUser;
 	/**
-	 * pwdText é atributo do Login
+	 * pwdText e atributo do Login
 	 */
 	private JPasswordField pwdText;
 	/**
-	 * lblMensagem é atributo do Login
+	 * lblMensagem e atributo do Login
 	 */
 	private JLabel lblMensagem;
 	/**
-	 * janela é atributo do Login
+	 * janela e atributo do Login
 	 */
 	private Janela janela;
 	/**
-	 * btnLogin é atributo do Login
+	 * btnLogin e atributo do Login
 	 */
 	private JButton btnLogin;
 
@@ -83,7 +83,7 @@ public class Login extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * actionPerformed dos botões da classe
+	 * actionPerformed dos botoes da classe
 	 */
 	public void actionPerformed(ActionEvent e) {
 
@@ -115,7 +115,7 @@ public class Login extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * 
+	 * ler o conteudo da JtextField password
 	 * @return pwdText
 	 */
 	@SuppressWarnings("deprecation")
@@ -138,7 +138,7 @@ public class Login extends JPanel implements ActionListener {
 
 	/**
 	 * Verifica o tipo de utilizador que acede ao programa para lhe mostrar o painel 
-	 * de operações que lhe estão permitidas
+	 * de operacoes que lhe estao permitidas
 	 * @param utilizador
 	 */
 	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {

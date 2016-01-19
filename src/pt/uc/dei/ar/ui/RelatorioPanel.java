@@ -35,23 +35,23 @@ import java.awt.event.ActionEvent;
 public class RelatorioPanel extends JPanel implements ActionListener{
 
 	/**
-	 * janel é atributo da RelatorioPanel
+	 * janel e atributo da RelatorioPanel
 	 */
 	private Janela janela;
 	/**
-	 *txtArea é atributo da RelatorioPanel
+	 *txtArea e atributo da RelatorioPanel
 	 */
 	private JTextArea txtArea;
 	/**
-	 * btnSair é atributo da RelatorioPanel
+	 * btnSair e atributo da RelatorioPanel
 	 */
 	private JButton btnSair;
 	/**
-	 * btnVoltar é atributo da RelatorioPanel
+	 * btnVoltar e atributo da RelatorioPanel
 	 */
 	private JButton btnVoltar;
 	/**
-	 * btnExportar é atributo da RelatorioPanel
+	 * btnExportar e atributo da RelatorioPanel
 	 */
 	private JButton btnExportar;
 	

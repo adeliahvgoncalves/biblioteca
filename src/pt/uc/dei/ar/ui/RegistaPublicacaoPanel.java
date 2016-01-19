@@ -28,116 +28,122 @@ import com.michaelbaranov.microba.calendar.DatePicker;
 
 
 /**
- * Interface do RegistaPublicacaoPanel para registar uma publicação na Biblioteca.
- * Regista os diversos tipos de publicações na Biblioteca.
+ * Interface do RegistaPublicacaoPanel para registar uma publicacao na Biblioteca.
+ * Regista os diversos tipos de publicacoes na Biblioteca.
  * @author Adelia Goncalves e Maria Joao Silva
  *
  */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	
 	/**
-	 *A janela é atributo da RegistaPublicacaoPanel
+	 *A janela e atributo da RegistaPublicacaoPanel
 	 */
 	private Janela janela;
 	/**
-	 *pnlTipoPublicacao é atributo da RegistaPublicacaoPanel
+	 *pnlTipoPublicacao e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlTipoPublicacao;
 	/**
-	 *pnlTese é atributo da RegistaPublicacaoPanel
+	 *pnlTese e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlTese;
 	/**
-	 *pnlLivro é atributo da RegistaPublicacaoPanel
+	 *pnlLivro e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlLivro;
 	/**
-	 *pnlPeriodico é atributo da RegistaPublicacaoPanel
+	 *pnlPeriodico e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlPeriodico;
 	/**
-	 *txtTitulo é atributo da RegistaPublicacaoPanel
+	 *txtTitulo e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtTitulo;
 	/**
-	 *txtAreas é atributo da RegistaPublicacaoPanel
+	 *txtAreas e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAreas;
 	/**
-	 *txtAutores é atributo da RegistaPublicacaoPanel
+	 *txtAutores e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAutores;
 	/**
-	 *txtNumEdicao é atributo da RegistaPublicacaoPanel
+	 *txtNumEdicao e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtNumEdicao;
 	/**
-	 *txtEditor é atributo da RegistaPublicacaoPanel
+	 *txtEditor e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtEditor;
 	/**
-	 *txtIsbn é atributo da RegistaPublicacaoPanel
+	 *txtIsbn e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtIsbn;
 	/**
-	 *txtAutor é atributo da RegistaPublicacaoPanel
+	 *txtAutor e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAutor;
 	/**
-	 *txtOrientador é atributo da RegistaPublicacaoPanel
+	 *txtOrientador e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtOrientador;
 	/**
-	 *txtVolume é atributo da RegistaPublicacaoPanel
+	 *txtVolume e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtVolume;
 	/**
-	 *txtNumEdicaoJornal é atributo da RegistaPublicacaoPanel
+	 *txtNumEdicaoJornal e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtNumEdicaoJornal;
 	/**
-	 *lblNumEdicaoJornal é atributo da RegistaPublicacaoPanel
+	 *lblNumEdicaoJornal e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblNumEdicaoJornal;
 	/**
-	 *lblVolume é atributo da RegistaPublicacaoPanel
+	 *lblVolume e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblVolume;
 	/**
-	 *lblMensagem é atributo da RegistaPublicacaoPanel
+	 *lblMensagem e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblMensagem;
 	/**
-	 *btnSair é atributo da RegistaPublicacaoPanel
+	 *btnSair e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnSair;
 	/**
-	 *btnVoltar é atributo da RegistaPublicacaoPanel
+	 *btnVoltar e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnVoltar;
 	/**
-	 *btnRegistar é atributo da RegistaPublicacaoPanel
+	 *btnRegistar e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnRegistar;
 	/**
-	 *layout é atributo da RegistaPublicacaoPanel
+	 *layout e atributo da RegistaPublicacaoPanel
 	 */
 	private CardLayout layout;
 	/**
-	 *comboBox é atributo da RegistaPublicacaoPanel
+	 *comboBox e atributo da RegistaPublicacaoPanel
 	 */
 	private JComboBox comboBox;
 	/**
-	 *comboBoxTipoTese é atributo da RegistaPublicacaoPanel
+	 *comboBoxTipoTese e atributo da RegistaPublicacaoPanel
 	 */
 	private JComboBox comboBoxTipoTese;
 	/**
-	 *comboBoxPeriodicidade é atributo da RegistaPublicacaoPanel
+	 *comboBoxPeriodicidade e atributo da RegistaPublicacaoPanel
 	 */
 	private JComboBox comboBoxPeriodicidade;
 	
+	/**
+	 * datePickerDataPub e atributo de RegistaPublicacaoPanel
+	 */
 	private DatePicker datePickerDataPub;
 	
+	/**
+	 * datePickerDataRecepcao e atributo de RegistaPublicacaoPanel
+	 */
 	private DatePicker datePickerDataRecepcao;
 	
 	/**
@@ -370,7 +376,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	}
 
 	/**
-	 * actionPerformed dos botões à disposição no Jpanel
+	 * actionPerformed dos botoes a disposicao no Jpanel
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -462,8 +468,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		if (str.equals("Livro")) {
 
 			if (txtTitulo.getText().equals("") || txtAreas.getText().equals("")
-					//|| txtDataRecepcao.getText().equals("")
-					//|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("")
 					|| txtNumEdicao.getText().equals("") || txtEditor.getText().equals("")
 					|| txtIsbn.getText().equals("") || txtAutores.getText().equals("")) {
 
@@ -478,8 +482,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		if (str.equals("Tese")) {
 
 			if (txtTitulo.getText().equals("") || txtAreas.getText().equals("")
-				//	|| txtDataRecepcao.getText().equals("")
-				//	|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("")
 					|| txtOrientador.getText().equals("") || txtAutor.getText().equals("")) {
 
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
@@ -495,7 +497,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		if(str.equals("Revista")){
 			
 			if(txtTitulo.getText().equals("") || txtAreas.getText().equals("")
-					//|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("") 
 					|| txtVolume.getText().equals("")){
 				
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
@@ -508,8 +509,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 		if(str.equals("Jornal")){
 			
-			if(txtTitulo.getText().equals("") || txtAreas.getText().equals("")
-					//|| txtDataPublicacao.getText().equals("") || txtDataRecepcao.getText().equals("") 
+			if(txtTitulo.getText().equals("") || txtAreas.getText().equals("") 
 					|| txtNumEdicaoJornal.getText().equals("")){
 				
 				enviaMensagem("ERRO: Não introduziu os campos todos para registar a publicação.");
@@ -524,7 +524,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	}
 	
 	/**
-	 * Regista uma Publicacão do tipo Livro na Biblioteca
+	 * Regista uma Publicacao do tipo Livro na Biblioteca
 	 * @param autores
 	 * @param areas
 	 */
@@ -563,17 +563,17 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			limpaPainel();
 			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
-		//	enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 		} else{
 			
-			//codigoBarras = biblioteca.criaTese(txtTitulo.getText(), txtDataPublicacao.getText(),
-			//		txtDataRecepcao.getText(), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
+			codigoBarras = biblioteca.criaTese(txtTitulo.getText(), transformaDatePickerEmString(datePickerDataPub),
+					transformaDatePickerEmString(datePickerDataRecepcao), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
 		
 			limpaPainel();
 			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
-		//	enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
+			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 		}
 	}
@@ -641,12 +641,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	 */
 	private void limpaPainel(){
 		
-		//txtDataRecepcao.setText("DD/MM/AAAA");
-	//	txtDataRecepcao.setForeground(Color.LIGHT_GRAY);
-	//	txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
-		//txtDataPublicacao.setText("DD/MM/AAAA");
-		//txtDataPublicacao.setForeground(Color.LIGHT_GRAY);
-		//txtDataPublicacao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAreas.setText("área , área , área");
 		txtAreas.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		txtAreas.setForeground(Color.LIGHT_GRAY);
@@ -691,7 +685,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	}
 
 	/**
-	 * Método genérico para enviar mensagens ao utilizador
+	 * Metodo generico para enviar mensagens ao utilizador
 	 * @param string
 	 */
 	private void enviaMensagem(String string) {
@@ -700,9 +694,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 
 	}
 
-	/**
-	 * focusGained
-	 */
 	/* (non-Javadoc)
 	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
@@ -723,20 +714,10 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			txtAreas.setForeground(Color.BLACK);
 			txtAreas.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		}
-//		else if(e.getSource() == this.txtDataPublicacao){
-//			txtDataPublicacao.setText("");
-//			txtDataPublicacao.setForeground(Color.BLACK);
-//			txtDataPublicacao.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-//		}
-	//	else if(e.getSource() == this.txtDataRecepcao){
-		//	txtDataRecepcao.setForeground(Color.BLACK);
-			//txtDataRecepcao.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
-		//	txtDataRecepcao.setText("");
-	//	}
 	}
 
-	/**
-	 * focusLost
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {

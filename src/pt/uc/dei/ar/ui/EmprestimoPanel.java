@@ -16,57 +16,57 @@ import java.awt.event.FocusListener;
 
 /**
  * 
- *  Interface do painel de empréstimo, disponível ao bibliotecário chefe e colaborador
+ *  Interface do painel de emprestimo, disponivel ao bibliotecario chefe e colaborador
  *
  */
 public class EmprestimoPanel extends JPanel implements ActionListener, FocusListener {
 
 	/**
-	 * A janela é atributo do EmprestimoPanel
+	 * A janela e atributo do EmprestimoPanel
 	 */
 	private Janela janela;
 	/**
-	 * txtCodigoBarras é atributo do EmprestimoPanel
+	 * txtCodigoBarras e atributo do EmprestimoPanel
 	 */
 	private JTextField txtCodigoBarras;
 	/**
-	 * txtNumeroLeitor é atributo do EmprestimoPanel
+	 * txtNumeroLeitor e atributo do EmprestimoPanel
 	 */
 	private JTextField txtNumeroLeitor;
 	/**
-	 * txtCodigoBarrasDevolucao é atributo do EmprestimoPanel
+	 * txtCodigoBarrasDevolucao e atributo do EmprestimoPanel
 	 */
 	private JTextField txtCodigoBarrasDevolucao;
 	/**
-	 * lblMensagem é atributo do EmprestimoPanel
+	 * lblMensagem e atributo do EmprestimoPanel
 	 */
 	private JLabel lblMensagem;
 	/**
-	 * lblMensagemDevolver é atributo do EmprestimoPanel
+	 * lblMensagemDevolver e atributo do EmprestimoPanel
 	 */
 	private JLabel lblMensagemDevolver;
 	/**
-	 * btnEmprestarVoltar é atributo do EmprestimoPanel
+	 * btnEmprestarVoltar e atributo do EmprestimoPanel
 	 */
 	private JButton btnEmprestarVoltar;
 	/**
-	 * btnDevolverVoltar é atributo do EmprestimoPanel
+	 * btnDevolverVoltar e atributo do EmprestimoPanel
 	 */
 	private JButton btnDevolverVoltar;
 	/**
-	 * btnEmprestar é atributo do EmprestimoPanel
+	 * btnEmprestar e atributo do EmprestimoPanel
 	 */
 	private JButton btnEmprestar;
 	/**
-	 * btnDevolver é atributo do EmprestimoPanel
+	 * btnDevolver e atributo do EmprestimoPanel
 	 */
 	private JButton btnDevolver;
 	/**
-	 * btnSairDevolucao é atributo do EmprestimoPanel
+	 * btnSairDevolucao e atributo do EmprestimoPanel
 	 */
 	private JButton btnSairDevolucao;
 	/**
-	 * btnSair é atributo do EmprestimoPanel
+	 * btnSair e atributo do EmprestimoPanel
 	 */
 	private JButton btnSair;
 	/**
@@ -202,7 +202,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 
 	/**
-	 * Ativa a visibilidade do botão voltar 
+	 * Ativa a visibilidade do botao voltar 
 	 */
 	public void activaVisibilidaBotaoVoltar() {
 
@@ -211,7 +211,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 	
 	/**
-	 * Desativa a visibilidade do botão voltar 
+	 * Desativa a visibilidade do botao voltar 
 	 */
 	public void desativaVisibilidaBotaoVoltar() {
 
@@ -221,7 +221,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 
 	/**
-	 * actionPerformed dos botões à disposição 
+	 * actionPerformed dos botoes à disposicao 
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -253,7 +253,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 
 	/**
-	 * Valida botão emprestar
+	 * Valida botao emprestar
 	 */
 	private void validarBotaoEmprestimo() {
 
@@ -316,7 +316,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 
 	/**
-	 * Valida botão devolver
+	 * Valida botao devolver
 	 */
 	private void validarBotaoDevolve() {
 

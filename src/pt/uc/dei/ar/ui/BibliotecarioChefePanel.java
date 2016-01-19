@@ -15,42 +15,42 @@ import java.awt.event.ActionEvent;
 
 /**
  * 
- * Interface do bibliotecário chefe (disponibiliza a visualização de 
- * todas as operações que lhe são permitidas)
+ * Interface do bibliotecario chefe (disponibiliza a visualizacao de 
+ * todas as operacoes que lhe sao permitidas)
  *
  */
 public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 	/**
-	 * A janela é atributo do BibliotecarioChefePanel
+	 * A janela e atributo do BibliotecarioChefePanel
 	 */
 	private Janela janela;
 	/**
-	 * btnSair é atributo do BibliotecarioChefePanel
+	 * btnSair e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnSair;
 	/**
-	 * btnRegistarUtilizador é atributo do BibliotecarioChefePanel
+	 * btnRegistarUtilizador e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnRegistarUtilizador;
 	/**
-	 * btnEmprestaDevolve é atributo do BibliotecarioChefePanel
+	 * btnEmprestaDevolve e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnEmprestaDevolve;
 	/**
-	 * btnPesquisaPublicacao é atributo do BibliotecarioChefePanel
+	 * btnPesquisaPublicacao e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnPesquisaPublicacao;
 	/**
-	 * btnEmprestimosAtraso é atributo do BibliotecarioChefePanel
+	 * btnEmprestimosAtraso e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnEmprestimosAtraso;
 	/**
-	 * btnRegistaPublicacao é atributo do BibliotecarioChefePanel
+	 * btnRegistaPublicacao e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnRegistaPublicacao;
 	/**
-	 * btnGerarRelatrio é atributo do BibliotecarioChefePanel
+	 * btnGerarRelatrio e atributo do BibliotecarioChefePanel
 	 */
 	private JButton btnGerarRelatrio;
 
@@ -110,7 +110,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * actionPerformed dos botões à disposição do bibliotecário chefe
+	 * actionPerformed dos botoes a disposicao do bibliotecario chefe
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

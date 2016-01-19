@@ -19,39 +19,39 @@ public class Janela extends JFrame {
 	 * Create the frame.
 	 */
 	/**
-	 * layout é atributo da janela
+	 * layout e atributo da janela
 	 */
 	private CardLayout layout;
 	/**
-	 * login é atributo da janela
+	 * login e atributo da janela
 	 */
 	private Login login;
 	/**
-	 * EmprestimoPanel emprestimo é atributo da janela
+	 * EmprestimoPanel emprestimo e atributo da janela
 	 */
 	private EmprestimoPanel emprestimo;
 	/**
-	 * LeitorPanel	leitor é atributo da janela
+	 * LeitorPanel	leitor e atributo da janela
 	 */
 	private LeitorPanel	leitor;
 	/**
-	 * RegistaUtilizadorPanel registaUtilizador é atributo da janela
+	 * RegistaUtilizadorPanel registaUtilizador e atributo da janela
 	 */
 	private RegistaUtilizadorPanel registaUtilizador;
 	/**
-	 * PesquisarPublicacao pesquisaPublicacao é atributo da janela
+	 * PesquisarPublicacao pesquisaPublicacao e atributo da janela
 	 */
 	private PesquisarPublicacao pesquisaPublicacao;
 	/**
-	 * EmprestimosForaPrazo emprestimosForaPrazo é atributo da janela
+	 * EmprestimosForaPrazo emprestimosForaPrazo e atributo da janela
 	 */
 	private EmprestimosForaPrazo emprestimosForaPrazo;
 	/**
-	 * RegistaPublicacaoPanel registaPublicacao é atributo da janela
+	 * RegistaPublicacaoPanel registaPublicacao e atributo da janela
 	 */
 	private RegistaPublicacaoPanel registaPublicacao;
 	/**
-	 * RelatorioPanel relatorioPanel é atributo da janela
+	 * RelatorioPanel relatorioPanel e atributo da janela
 	 */
 	private RelatorioPanel relatorioPanel;
 
@@ -126,7 +126,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Bibliotecário chefe empréstimos
+	 * Bibliotecario chefe emprestimos
 	 */
 	public void emprestimoPanelBibliotecarioChefeOK(){
 
@@ -136,7 +136,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Bibliotecário chefe
+	 * Bibliotecario chefe
 	 */
 	public void bibliotecarioChefeOK(){
 
@@ -163,7 +163,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Pesquisar publicação
+	 * Pesquisar publicacao
 	 */
 	public void pesquisaPublicacaoOK(){
 
@@ -172,7 +172,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Empréstimos expirados
+	 * Emprestimos expirados
 	 */
 	public void emprestimosForaPrazoOK(){
 
@@ -181,7 +181,7 @@ public class Janela extends JFrame {
 	}
 	
 	/**
-	 * Registar publicação
+	 * Registar publicacao
 	 */
 
 	public void registaPublicacaoOK(){
@@ -191,7 +191,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Gerar relatório da evolução dos empréstimos globais
+	 * Gerar relatorio da evolucao dos emprestimos globais
 	 */
 	public void relatorioPanelOK(){
 

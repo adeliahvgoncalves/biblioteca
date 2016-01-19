@@ -19,33 +19,33 @@ import pt.uc.dei.ar.Emprestimo;
 import pt.uc.dei.ar.Publicacao;
 
 /**
- * Interface de consulta de empréstimo expirados
+ * Interface de consulta de emprestimo expirados
  *
  */
 public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 	/**
-	 * A janela é atributo do EmprestimosForaPrazo
+	 * A janela e atributo do EmprestimosForaPrazo
 	 */
 	private Janela janela;
 	/**
-	 * textFielPesquisa é atributo do EmprestimosForaPrazo
+	 * textFielPesquisa e atributo do EmprestimosForaPrazo
 	 */
 	private JTextField textFielPesquisa;
 	/**
-	 * layout é atributo do EmprestimosForaPrazo
+	 * layout e atributo do EmprestimosForaPrazo
 	 */
 	private CardLayout layout;
 	/**
-	 * tabela é atributo do EmprestimosForaPrazo
+	 * tabela e atributo do EmprestimosForaPrazo
 	 */
 	private JTable tabela;
 	/**
-	 * btnSair é atributo do EmprestimosForaPrazo
+	 * btnSair e atributo do EmprestimosForaPrazo
 	 */
 	private JButton btnSair;
 	/**
-	 * btnVoltar é atributo do EmprestimosForaPrazo
+	 * btnVoltar e atributo do EmprestimosForaPrazo
 	 */
 	private JButton btnVoltar;
 	/**
@@ -108,7 +108,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Preenche a tabela empréstimo expirados
+	 * Preenche a tabela emprestimo expirados
 	 */
 	private void preencheTabelaEmprestimo(){
 
@@ -144,7 +144,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Gera os dados da tabela empréstimo expirados
+	 * Gera os dados da tabela emprestimo expirados
 	 * @return um objeto matriz
 	 */
 	public Object [][] geraDadosDaTabelaEmprestimosExpirados(){
@@ -174,7 +174,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * actionPerformed dos botões da classe
+	 * actionPerformed dos botoes da classe
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

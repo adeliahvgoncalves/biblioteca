@@ -34,37 +34,37 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Interface do leitor (disponibiliza a visualização de 
- * todas as operações que lhe são permitidas)
+ * Interface do leitor (disponibiliza a visualizacao de 
+ * todas as operacoes que lhe sao permitidas)
  */
 public class LeitorPanel extends JPanel implements ActionListener, FocusListener {
 
 	/**
-	 * A janela é atributo do LeitorPanel
+	 * A janela e atributo do LeitorPanel
 	 */
 	private Janela janela;
 	/**
-	 * Utilizador utilizador é atributo do LeitorPanel
+	 * Utilizador utilizador e atributo do LeitorPanel
 	 */
 	private Utilizador utilizador;
 	/**
-	 * tabelaPubTotal é atributo do LeitorPanel
+	 * tabelaPubTotal e atributo do LeitorPanel
 	 */
 	private JTable tabelaPubTotal;
 	/**
-	 * txtPesquisa é atributo do LeitorPanel
+	 * txtPesquisa e atributo do LeitorPanel
 	 */
 	private JTextField txtPesquisa;
 	/**
-	 * tabela é atributo do LeitorPanel
+	 * tabela e atributo do LeitorPanel
 	 */
 	private JTable tabela;
 	/**
-	 * lblLeitor é atributo do LeitorPanel
+	 * lblLeitor e atributo do LeitorPanel
 	 */
 	private JLabel lblLeitor;
 	/**
-	 * comboBox é atributo do LeitorPanel
+	 * comboBox e atributo do LeitorPanel
 	 */
 	private JComboBox comboBox;
 	/**
@@ -72,15 +72,15 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 	/**
-	 * btnPesquisa é atributo do LeitorPanel
+	 * btnPesquisa e atributo do LeitorPanel
 	 */
 	private JButton btnPesquisa;
 	/**
-	 * btnSairEmprestimo é atributo do LeitorPanel
+	 * btnSairEmprestimo e atributo do LeitorPanel
 	 */
 	private JButton btnSairEmprestimo;
 	/**
-	 * btnSairPublicacoes é atributo do LeitorPanel
+	 * btnSairPublicacoes e atributo do LeitorPanel
 	 */
 	private JButton btnSairPublicacoes;
 
@@ -191,7 +191,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	}
 
 	/**
-	 * Preenche a tabela empréstimos
+	 * Preenche a tabela emprestimos
 	 */
 	private void preencheTabelaEmprestimo(){
 
@@ -217,7 +217,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	}
 
 	/**
-	 * Gera dados para preencher a tabela de empréstimos do leitor
+	 * Gera dados para preencher a tabela de emprestimos do leitor
 	 * @return objeto matriz
 	 */
 	private Object [][] geraDadosDaTabelaLeitorEmprestimos(){
