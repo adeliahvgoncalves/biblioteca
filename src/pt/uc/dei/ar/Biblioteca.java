@@ -709,6 +709,10 @@ public class Biblioteca implements Serializable{
 		return counts;
 	}
 
+	/**
+	 * Verifica se a biblioteca a inicializar tem dados
+	 * @return boolean
+	 */
 	public boolean temDados(){
 		return this.listaDeUtilizadores.size()>0;
 	}
@@ -755,11 +759,18 @@ public class Biblioteca implements Serializable{
 	public void setListaDeEmprestimo(ArrayList<Emprestimo> listaDeEmprestimo) {
 		this.listaDeEmprestimo = listaDeEmprestimo;
 	}
-
+	/**
+	 * 
+	 * @return contador em formato Contadores
+	 */
 	public Contadores getContadores() {
 		return contadores;
 	}
 
+	/**
+	 * 
+	 * @param contadores
+	 */
 	public void setContadores(Contadores contadores) {
 		this.contadores = contadores;
 	}
@@ -784,7 +795,7 @@ public class Biblioteca implements Serializable{
 		pub.setOcupado(true);
 		return true;
 	}
-	
+
 	public void devolveEmprestimoAMao(int codigoBarras, Date Date){
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
 			Publicacao publicacaoParaDevolver = (Publicacao) emprestimo.getPublicacao();
@@ -794,8 +805,8 @@ public class Biblioteca implements Serializable{
 				Leitor leitor2 = (Leitor)this.pesquisaUtilizadorPorNumLeitor(leitor.getNumLeitor());
 				leitor.removeEmprestimo(emprestimo);
 				publicacaoParaDevolver.setOcupado(false);
-			
-				
+
+
 			}
 
 		}

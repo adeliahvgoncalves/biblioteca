@@ -145,91 +145,92 @@ public class Main {
 
 			//Criar emprestimo e devoluçoes
 
-			
-			 maravilha.criaEmprestimoaMao(1, data1, 5);
-			 
-			 maravilha.criaEmprestimoaMao(1, data22, 5);
-			 maravilha.criaEmprestimoaMao(3, data1, 14);
-			 maravilha.criaEmprestimoaMao(5, data1, 11);
-			
+
+			maravilha.criaEmprestimoaMao(1, data1, 5);
 			maravilha.devolveEmprestimoAMao(5, data1);
+			maravilha.criaEmprestimoaMao(1, data22, 5);
 			maravilha.devolveEmprestimoAMao(5, data22);
+			maravilha.criaEmprestimoaMao(3, data1, 14);
 			maravilha.devolveEmprestimoAMao(14, data22);
+			maravilha.criaEmprestimoaMao(5, data1, 11);
+			maravilha.devolveEmprestimoAMao(11, data2);
+
 
 			maravilha.criaEmprestimoaMao(4, data2, 5);
+			maravilha.devolveEmprestimoAMao(5, data22);
 			maravilha.criaEmprestimoaMao(3, data3, 5);
+			maravilha.devolveEmprestimoAMao(5, data2);
 			maravilha.criaEmprestimoaMao(2, data2, 14);
-			
-			maravilha.devolveEmprestimoAMao(11, data2);
-			maravilha.devolveEmprestimoAMao(4, data2); //5
-			maravilha.devolveEmprestimoAMao(3, data3);//5
-			maravilha.devolveEmprestimoAMao(2, data4); //14
+			maravilha.devolveEmprestimoAMao(14, data4);
 
-		
+
+
+
 			maravilha.criaEmprestimoaMao(1, data4, 9);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data9);
 			maravilha.criaEmprestimoaMao(1, data5, 11);
 			maravilha.criaEmprestimoaMao(6, data5, 9);
-			
+
 			maravilha.devolveEmprestimoAMao(11, data5);
 			maravilha.devolveEmprestimoAMao(9, data5);
-			
+
 			maravilha.criaEmprestimoaMao(1, data6, 9);
 			maravilha.criaEmprestimoaMao(1, data6, 3);
-			
+
 			maravilha.devolveEmprestimoAMao(9, data7);
 			maravilha.devolveEmprestimoAMao(3, data8);
 
 			maravilha.criaEmprestimoaMao(1, data9, 9);
 			maravilha.devolveEmprestimoAMao(9, data9);
 			maravilha.criaEmprestimoaMao(1, data9, 5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data10);
 			maravilha.criaEmprestimoaMao(1, data10, 9);
 			maravilha.criaEmprestimoaMao(1, data11, 11);
 			maravilha.criaEmprestimoaMao(1, data11, 5);
-			
+
 			maravilha.devolveEmprestimoAMao(9, data11);
 			maravilha.devolveEmprestimoAMao(11, data12);
 			maravilha.devolveEmprestimoAMao(5, data12);
 
 			maravilha.criaEmprestimoaMao(1,data12,8);
-			
+
 			maravilha.devolveEmprestimoAMao(8, data12);
 			maravilha.criaEmprestimoaMao(1,data12,7);
-			
+
 			maravilha.devolveEmprestimoAMao(7, data13);
 			maravilha.criaEmprestimoaMao (5,data13,5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data14);
 			maravilha.criaEmprestimoaMao (5,data14,5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data14);
 			maravilha.criaEmprestimoaMao(1, data14, 9);
-			
+
 			maravilha.devolveEmprestimoAMao(9, data15);
-			
+
 			maravilha.criaEmprestimoaMao(1, data16, 5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data16);
 			maravilha.criaEmprestimoaMao(6, data17, 5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data19);
 			maravilha.criaEmprestimoaMao(4, data19, 5);
-			
+
 			maravilha.devolveEmprestimoAMao(5, data20);
-			
+
 			maravilha.criaEmprestimoaMao(2, data17, 9);
-			
+
 			maravilha.devolveEmprestimoAMao(9, data18);
 			maravilha.criaEmprestimoaMao(3, data19, 9);
-			
+
 			maravilha.devolveEmprestimoAMao(9, data19);
+			
 			maravilha.criaEmprestimoaMao(1, data18,3);
-			
+
 			maravilha.criaEmprestimoaMao(1, data18,4);
-			
+			maravilha.criaEmprestimoaMao(2, data18,14);
 			maravilha.criaEmprestimoaMao(1, data18,10);
 			maravilha.criaEmprestimoaMao(1, data18,6);
 			maravilha.devolveEmprestimoAMao(6, data18);
@@ -239,62 +240,62 @@ public class Main {
 			maravilha.criaEmprestimoaMao(4, data21,6);	
 			maravilha.devolveEmprestimoAMao(6, data21);
 			maravilha.criaEmprestimoaMao(6, data21,6);
-			
+
 		}
 
 
-			//Pesquisa por área
-			maravilha.pesquisaPorArea("Economia");
-			System.out.println("area"+maravilha.pesquisaPorArea("Economia"));
+		//Pesquisa por área
+		maravilha.pesquisaPorArea("Economia");
+		System.out.println("area"+maravilha.pesquisaPorArea("Economia"));
 
-			//Pesquisa os seus emprestimos por numero de leitor
-			Leitor leitor= (Leitor) maravilha.pesquisaUtilizadorPorNumLeitor(2);
-			leitor.getListaDeEmprestimo();
-			System.out.println("Emprestimos do leitor" +leitor.getNome()+leitor.getListaDeEmprestimo());
-
-
-			//Bibliotecario-chefe
-
-			//Consultar informação de uma publicação por nome ou codigo de barras
-			//		faculdadeNova.pesquisaPublicacaoComParteNome("A moeda");
-			//		System.out.println(faculdadeNova.pesquisaPublicacaoComParteNome("A moeda"));
-			//		faculdadeNova.pesquisaPublicacaoPorCodBarras(4);
-			//		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
-
-			//Consultar os empréstimos que já deviam ter sido devolvidos
-			ArrayList<Emprestimo> emprestimosExpirados = maravilha.consultaEmprestimoExpirado();
-			System.out.println("Emprestimos expirados:" +emprestimosExpirados);
-
-			//Emprestimos do leitor
-			System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
+		//Pesquisa os seus emprestimos por numero de leitor
+		Leitor leitor= (Leitor) maravilha.pesquisaUtilizadorPorNumLeitor(2);
+		leitor.getListaDeEmprestimo();
+		System.out.println("Emprestimos do leitor" +leitor.getNome()+leitor.getListaDeEmprestimo());
 
 
-			//testar o gera utilizador e gerar password
+		//Bibliotecario-chefe
 
-			System.out.println("Password"+maravilha.gerarPassword());
+		//Consultar informação de uma publicação por nome ou codigo de barras
+		//		faculdadeNova.pesquisaPublicacaoComParteNome("A moeda");
+		//		System.out.println(faculdadeNova.pesquisaPublicacaoComParteNome("A moeda"));
+		//		faculdadeNova.pesquisaPublicacaoPorCodBarras(4);
+		//		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
+
+		//Consultar os empréstimos que já deviam ter sido devolvidos
+		ArrayList<Emprestimo> emprestimosExpirados = maravilha.consultaEmprestimoExpirado();
+		System.out.println("Emprestimos expirados:" +emprestimosExpirados);
+
+		//Emprestimos do leitor
+		System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
 
 
-			Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoAno();
+		//testar o gera utilizador e gerar password
 
-			for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
+		System.out.println("Password"+maravilha.gerarPassword());
 
-				System.out.println(((Publicacao)entry.getKey()).getTitulo() + ", emprestado " + entry.getValue()+"x"); 
-			}
 
-			Map<String, Integer> repeticaoMensal=maravilha.geraMapaRepeticoesMensais(new GregorianCalendar());
+		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoAno();
 
-			for (Map.Entry<String, Integer> entry : repeticaoMensal.entrySet()) { 
+		for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
 
-				System.out.println(((String)entry.getKey()) + ", emprestado " + entry.getValue()+"x"); 
-			}
+			System.out.println(((Publicacao)entry.getKey()).getTitulo() + ", emprestado " + entry.getValue()+"x"); 
+		}
 
-			Map<Publicacao,MatematicaFuncoes> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
+		Map<String, Integer> repeticaoMensal=maravilha.geraMapaRepeticoesMensais(new GregorianCalendar());
 
-			for (Map.Entry<Publicacao,MatematicaFuncoes> entry : diasEmpPorPub.entrySet()) { 
+		for (Map.Entry<String, Integer> entry : repeticaoMensal.entrySet()) { 
 
-				System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue() +"x"); 
-			}
-		
+			System.out.println(((String)entry.getKey()) + ", emprestado " + entry.getValue()+"x"); 
+		}
+
+		Map<Publicacao,MatematicaFuncoes> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
+
+		for (Map.Entry<Publicacao,MatematicaFuncoes> entry : diasEmpPorPub.entrySet()) { 
+
+			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue() +"x"); 
+		}
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
