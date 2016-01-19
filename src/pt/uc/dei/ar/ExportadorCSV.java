@@ -47,43 +47,46 @@ public class ExportadorCSV {
 
 		int k;
 		Publicacao pub;
+
 		for (int i = 0; i < publicacoes.size(); i++) {
 
 			k = 0;
 			pub = publicacoes.get(i);
 
-			data[i][k++] = pub.getCodBarras();
-			data[i][k++] = pub.getTitulo();
-			data[i][k++] = formatter.format(pub.getDataPublicacao());
+			if(pub instanceof Livro || pub instanceof Tese || pub instanceof Revista){
 
-			// Preenche dados dos meses usando o mapa de repeticoes
-			int mesAtual = this.indiceDoMesDoAnoAnterior(now);
-			int indiceTemp = k;
-			for (int j = indiceTemp; j < indiceTemp + 12; j++) {
-				String chavePublicacaoMes = pub.getCodBarras()+"-"+mesAtual;
-				Integer repeticoes = mapaRepeticoesMensais.get(chavePublicacaoMes);
-				data[i][j] = repeticoes != null ? repeticoes : "0";
-				mesAtual = (mesAtual+1) % 12;
-				k++;
-			}
+				data[i][k++] = pub.getCodBarras();
+				data[i][k++] = pub.getTitulo();
+				data[i][k++] = formatter.format(pub.getDataPublicacao());
 
-			Integer total = totalEmprestimosPorPublicacaoNoAno.get(pub);
-			data[i][k++] = total != null ? total : "0";
-			MatematicaFuncoes contagens = contagensPorPublicacao.get(pub);
+				// Preenche dados dos meses usando o mapa de repeticoes
+				int mesAtual = this.indiceDoMesDoAnoAnterior(now);
+				int indiceTemp = k;
+				for (int j = indiceTemp; j < indiceTemp + 12; j++) {
+					String chavePublicacaoMes = pub.getCodBarras()+"-"+mesAtual;
+					Integer repeticoes = mapaRepeticoesMensais.get(chavePublicacaoMes);
+					data[i][j] = repeticoes != null ? repeticoes : "0";
+					mesAtual = (mesAtual+1) % 12;
+					k++;
+				}
 
-			data[i][k++] = contagens != null ? contagens.getMinimo() : "-";
-			data[i][k++] = contagens != null ? contagens.getMaximo() : "-";
-			data[i][k++] = contagens != null ? contagens.getMedia() : "-";
-			if(pub instanceof Revista){
-				data[i][k++] = ((Revista) pub).detalhes();
-			} else if(pub instanceof Livro){
-				data[i][k++] = ((Livro) pub).detalhes();
-			}
-			else if(pub instanceof Tese){
-				data[i][k++] = ((Tese) pub).detalhes();
+				Integer total = totalEmprestimosPorPublicacaoNoAno.get(pub);
+				data[i][k++] = total != null ? total : "0";
+				MatematicaFuncoes contagens = contagensPorPublicacao.get(pub);
+
+				data[i][k++] = contagens != null ? contagens.getMinimo() : "-";
+				data[i][k++] = contagens != null ? contagens.getMaximo() : "-";
+				data[i][k++] = contagens != null ? contagens.getMedia() : "-";
+				if(pub instanceof Revista){
+					data[i][k++] = ((Revista) pub).detalhes();
+				} else if(pub instanceof Livro){
+					data[i][k++] = ((Livro) pub).detalhes();
+				}
+				else if(pub instanceof Tese){
+					data[i][k++] = ((Tese) pub).detalhes();
+				}
 			}
 		}
-
 		return data;
 	}
 
@@ -115,7 +118,7 @@ public class ExportadorCSV {
 		for (int i = 0; i < 12; i++) {
 			mesAtual = mesAtual + 1 % 12;
 			builder.append("Mês "+ mesAtual);
-			if (i < 12 - 1) {
+			if (i < 12 ) {
 				builder.append(",");
 			}
 		}

@@ -215,12 +215,12 @@ public class Biblioteca implements Serializable{
 	 */
 	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
-	//	Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
-	//	Leitor leitor = null;
+		//	Leitor leitor1 = (Leitor) pesquisaUtilizadorPorCartaoCidadao(cartaoCidadao);
+		//	Leitor leitor = null;
 		//if(leitor1 == null){
 		Leitor leitor=null;
-			leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
-			this.adicionaUtilizador(leitor);
+		leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+		this.adicionaUtilizador(leitor);
 
 		System.out.println("num leitor:"+leitor.getNumLeitor() + "Password"+leitor.getHashedPassword());
 		return leitor.getNumLeitor();
@@ -702,9 +702,11 @@ public class Biblioteca implements Serializable{
 		Map<Publicacao, MatematicaFuncoes> counts = new HashMap<Publicacao,MatematicaFuncoes>();
 		for (Entry<Publicacao, ArrayList<Integer>> entry : countMap.entrySet()) {
 			Publicacao publicacao = entry.getKey(); // chave 
+
 			ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
 			MatematicaFuncoes contagens = new MatematicaFuncoes(arrayInteiros); // cria a nova estrutura de dados
 			counts.put(publicacao, contagens); // põe a contagem para a public no hash
+
 		}
 		return counts;
 	}

@@ -112,16 +112,16 @@ public class Main {
 			calendar11.set(2015, 9, 30);
 			Date data11=calendar8.getTime();		
 			Calendar calendar12=Calendar.getInstance();
-			calendar12.set(2015, 10, 30);
+			calendar12.set(2015, 10, 18);
 			Date data12=calendar12.getTime();
 			Calendar calendar13=Calendar.getInstance();
-			calendar13.set(2015, 10, 30);
+			calendar13.set(2015, 10, 20);
 			Date data13=calendar13.getTime();
 			Calendar calendar14=Calendar.getInstance();
 			calendar14.set(2015, 10, 30);
 			Date data14=calendar14.getTime();
 			Calendar calendar15=Calendar.getInstance();
-			calendar15.set(2016, 01, 07);
+			calendar15.set(2016, 00, 07);
 			Date data15=calendar15.getTime();
 			Calendar calendar16=Calendar.getInstance();
 			calendar16.set(2015, 11, 8);
@@ -155,23 +155,17 @@ public class Main {
 			maravilha.criaEmprestimoaMao(5, data1, 11);
 			maravilha.devolveEmprestimoAMao(11, data2);
 
-
 			maravilha.criaEmprestimoaMao(4, data2, 5);
-			maravilha.devolveEmprestimoAMao(5, data22);
+			maravilha.devolveEmprestimoAMao(5, data3);
 			maravilha.criaEmprestimoaMao(3, data3, 5);
-			maravilha.devolveEmprestimoAMao(5, data2);
+			maravilha.devolveEmprestimoAMao(5, data3);
 			maravilha.criaEmprestimoaMao(2, data2, 14);
 			maravilha.devolveEmprestimoAMao(14, data4);
 
-
-
-
 			maravilha.criaEmprestimoaMao(1, data4, 9);
-
-			maravilha.devolveEmprestimoAMao(5, data9);
+			maravilha.devolveEmprestimoAMao(9, data5);
 			maravilha.criaEmprestimoaMao(1, data5, 11);
 			maravilha.criaEmprestimoaMao(6, data5, 9);
-
 			maravilha.devolveEmprestimoAMao(11, data5);
 			maravilha.devolveEmprestimoAMao(9, data5);
 
@@ -212,7 +206,7 @@ public class Main {
 
 			maravilha.criaEmprestimoaMao(1, data16, 5);
 
-			maravilha.devolveEmprestimoAMao(5, data16);
+			maravilha.devolveEmprestimoAMao(5, data17);
 			maravilha.criaEmprestimoaMao(6, data17, 5);
 
 			maravilha.devolveEmprestimoAMao(5, data19);
@@ -233,7 +227,7 @@ public class Main {
 			maravilha.criaEmprestimoaMao(2, data18,14);
 			maravilha.criaEmprestimoaMao(1, data18,10);
 			maravilha.criaEmprestimoaMao(1, data18,6);
-			maravilha.devolveEmprestimoAMao(6, data18);
+			maravilha.devolveEmprestimoAMao(6, data19);
 			maravilha.criaEmprestimoaMao(1, data19,8);		
 			maravilha.devolveEmprestimoAMao(8, data20);	
 			maravilha.criaEmprestimoaMao(2, data20,8);
