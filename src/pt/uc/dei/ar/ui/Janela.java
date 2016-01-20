@@ -8,13 +8,12 @@ import pt.uc.dei.ar.Utilizador;
 import java.awt.CardLayout;
 
 /**
- * 
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *Janela que inclui todos os paineis
  *
  */
 public class Janela extends JFrame {
 
-	
 	/**
 	 * Create the frame.
 	 */
@@ -55,6 +54,9 @@ public class Janela extends JFrame {
 	 */
 	private RelatorioPanel relatorioPanel;
 
+	/**
+	 * Create the JFrame
+	 */
 	public Janela() {
 
 		setTitle("Biblioteca");
@@ -183,7 +185,6 @@ public class Janela extends JFrame {
 	/**
 	 * Registar publicacao
 	 */
-
 	public void registaPublicacaoOK(){
 
 		layout.show(getContentPane(),"registaPublicacao");

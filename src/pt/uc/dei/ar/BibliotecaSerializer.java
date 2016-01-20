@@ -4,23 +4,23 @@ import java.io.*;
 /**
  * 
  * Gera o ficheiro de objetos, serializa a biblioteca
- *
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class BibliotecaSerializer {
 
 	/**
-	 * iS é atributo da classe BibliotecaSerializer
-	 * "Deserializes" dados e objetos escitors previamente usando ObjectOutputStream
+	 * iS e atributo da classe BibliotecaSerializer
+	 * "Deserializes" dados e objetos escritos previamente usando ObjectOutputStream
 	 */
 	private ObjectInputStream iS;
 	
 	/**
-	 * oS é atributo da classe BibliotecaSerializer
+	 * oS e atributo da classe BibliotecaSerializer
 	 */
 	private ObjectOutputStream oS;
 
 	/**
-	 * filePath é atributo da classe BibliotecaSerializer
+	 * filePath e atributo da classe BibliotecaSerializer
 	 */
 	private String filePath;
 
@@ -66,7 +66,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Abre a biblioteca ou a partir do ficheiro de objetos ou 
-	 * através dos dados inserido inicialmente, caso ainda não haja o ficheiro
+	 * atraves dos dados inserido inicialmente, caso ainda nao haja o ficheiro
 	 * @return a biblioteca
 	 */
 	public Biblioteca abreBiblioteca(){
@@ -121,7 +121,7 @@ public class BibliotecaSerializer {
 	}
 
 	/**
-	 * Método para abrir um ficheiro para leitura
+	 * Metodo para abrir um ficheiro para leitura
 	 * @param nomeDoFicheiro
 	 * @throws IOException
 	 */
@@ -130,7 +130,7 @@ public class BibliotecaSerializer {
 	}
 
 	/**
-	 * Método para abrir um ficheiro para escrita
+	 * Metodo para abrir um ficheiro para escrita
 	 * @param nomeDoFicheiro
 	 * @throws IOException
 	 */
@@ -140,7 +140,7 @@ public class BibliotecaSerializer {
 
 	
 	/**
-	 * Método para ler um objeto do ficheiro
+	 * Metodo para ler um objeto do ficheiro
 	 * @return o objeto lido
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -150,7 +150,7 @@ public class BibliotecaSerializer {
 	}
 
 	/**
-	 * Método para escrever um objeto no ficheiro 
+	 * Metodo para escrever um objeto no ficheiro 
 	 * @param o (objeto a escrever)
 	 * @throws IOException
 	 */
@@ -159,7 +159,7 @@ public class BibliotecaSerializer {
 	}
 
 	/**
-	 * Método para fechar um ficheiro aberto em modo leitura 
+	 * Metodo para fechar um ficheiro aberto em modo leitura 
 	 * @throws IOException
 	 */
 	private void fechaLeitura() throws IOException
@@ -173,7 +173,7 @@ public class BibliotecaSerializer {
 	}
 	
 	/**
-	 * Método para fechar um ficheiro aberto em modo escrita 
+	 * Metodo para fechar um ficheiro aberto em modo escrita 
 	 * @throws IOException
 	 */
 	private void fechaEscrita() throws IOException

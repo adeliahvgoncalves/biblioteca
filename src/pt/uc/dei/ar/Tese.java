@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Tese herda de não periódico e implementa o requisitável e o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * Tese herda de nao periodico e implementa o requisitavel e o Serializable
  */
-
 public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
-
 
 	/**
 	 * SerialVersion
@@ -25,7 +24,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
      */
 	private TipoDeTese tipoDeTese;
 
-	
 	/**
 	 * Construtor da classe Tese
 	 * @param titulo
@@ -39,11 +37,11 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	public Tese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese) {
 		super(titulo, dataPublicacao, dataReceçao, autores, areas);
+		
 		this.nomeDoOrientador = nomeDoOrientador;
 		this.tipoDeTese = tipoDeTese;
+		
 	}
-
-
 
 	/**
 	 *
@@ -53,8 +51,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 		return nomeDoOrientador;
 	}
 
-	
-	
 	/**
 	 *
 	 * @return o tipo de tese em tipo de tese
@@ -63,21 +59,18 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 		return tipoDeTese;
 	}
 
-	
-
 	/**
-	 * Implementa interface requisitável
-     * @return o máximo de dias de requisição em formato inteiro
+	 * Implementa interface requisitavel
+     * @return o maximo de dias de requisiçao em formato inteiro
      */
 	@Override
 	public int maximoDiasRequisicao() {
 		return 10;
 	}
-	
 
 	/**
-	 * Preenche detalhes da publicação no CSV
-	 * @return detalhes da publicação
+	 * Preenche detalhes da publicacao no CSV
+	 * @return detalhes da publicacao
 	 */
 	public String detalhes(){
 		return  getListaDeAreas() + ";" + getDataReceçao() + "; " + getListaDeAutores() + "; " + getNomeDoOrientador() + ";" + getTipoDeTese();
@@ -85,7 +78,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	}
 	
 	/* (non-Javadoc)
-	 * Metódo toString é a representação textual do objeto.
+	 * Metodo toString e a representacao textual do objeto.
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -94,7 +87,4 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", nomeDoOrientador=" + nomeDoOrientador + ", tipoDeTese=" + tipoDeTese + "]";
 	}
 
-	
-
-	
 }

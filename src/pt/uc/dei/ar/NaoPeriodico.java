@@ -5,6 +5,7 @@ import java.util.*;
 
 /**
  * O não periódico herda de Publicação e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class NaoPeriodico extends Publicacao implements Serializable {
 
@@ -13,16 +14,15 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	 */
 	private static final long serialVersionUID = 9197568589647852671L;
 	/**
-     * Lista de autores do não periódico
+     * Lista de autores do nao periodico
      */
     private ArrayList<String> listaDeAutores;
 	
-  
 	/**
-	 * Construtor da classe Não Periódico
+	 * Construtor da classe Nao Periodico
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param listaDeAutores
 	 */
 	public NaoPeriodico(String titulo, String dataPublicacao,  String dataReceçao, ArrayList<String> autores,  ArrayList<String> areas) {
@@ -32,7 +32,6 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 		
 	}
 
-
 	/**
 	 * 
 	 * @return a lista de autores em formato String
@@ -41,18 +40,16 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 		return listaDeAutores;
 	}
 
-
 	/**
-	 * Método que permite adicionar autores 
+	 * Metodo que permite adicionar autores 
      * @param String
      */
     public void adicionaAutor(String autor) {
     	this.listaDeAutores.add(autor);
     }
-    
 
     /* (non-Javadoc)
-     * Metódo toString é a representação textual do objeto.
+     * Metodo toString e a representação textual do objeto.
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

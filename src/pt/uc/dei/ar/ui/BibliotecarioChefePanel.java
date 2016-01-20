@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
 /**
- * 
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do bibliotecario chefe (disponibiliza a visualizacao de 
  * todas as operacoes que lhe sao permitidas)
  *

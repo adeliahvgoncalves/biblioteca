@@ -25,6 +25,7 @@ import java.awt.event.FocusListener;
 import java.text.SimpleDateFormat;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do RegistaUtilizadorPanel para registar Utilizador na Biblioteca.
  * Regista os diversos tipos de Utilizadores na Biblioteca.
  * @author Adelia Goncalves e Maria Joao Silva

@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 
 /**
- * 
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface de login
  *
  */
@@ -48,6 +48,10 @@ public class Login extends JPanel implements ActionListener {
 	 */
 	private JButton btnLogin;
 
+	/**
+	 * Create the Panel
+	 * @param janela
+	 */
 	public Login(Janela j) {
 
 		this.janela = j;

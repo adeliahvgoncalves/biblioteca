@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Livro herda de não periódico e implementa o requisitável e o  Serializable
+ * Livro herda de nao periodico e implementa o requisitavel e o  Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
-
 
 	/**
 	 * 
@@ -15,7 +15,7 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	private static final long serialVersionUID = -6207854092828194070L;
 
 	/**
-	 * Número de edição do livro.
+	 * Numero de edicao do livro.
 	 * 
 	 */
 	private String numEdicao;
@@ -29,10 +29,6 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	 * Editor do livro.
 	 */
 	private String editor;
-
-
-
-
 
 	/**
 	 * Construtor da classe Livro
@@ -48,24 +44,20 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 	public Livro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor) {
 		super(titulo, dataPublicacao, dataReceçao, autores, areas);
+		
 		this.numEdicao = numEdicao;
 		this.ISBN = iSBN;
 		this.editor = editor;
+		
 	}
-
-
-
 
 	/**
 	 *  
-	 * @return o número da edição em formato string
+	 * @return o numero da edicao em formato string
 	 */
 	public String getNumEdicao() {
 		return numEdicao;
 	}
-
-
-
 
 	/**
 	 *
@@ -75,9 +67,6 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		return ISBN;
 	}
 
-
-
-
 	/**
 	 * 
 	 * @return o editor em formato String
@@ -86,24 +75,22 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		return editor;
 	}
 
-
 	/**
-	 Implementa interface requisitável
-	 * @return o máximo de dias de requisição em formato inteiro
+	 *Implementa interface requisitavel
+	 * @return o maximo de dias de requisicao em formato inteiro
 	 */
 	public int maximoDiasRequisicao() {
 		return 15;
 	}
 
-
 	/**
-	 * Preenche detalhes da publicação no CSV
-	 * @return detalhes da publicação
+	 * Preenche detalhes da publicacao no CSV
+	 * @return detalhes da publicacao
 	 */
 	public String detalhes(){
 		return  getListaDeAreas() + ";" + getDataReceçao() + "; " + getListaDeAutores() + "; " + numEdicao + ";" + ISBN + ";" + getEditor();
-
 	}
+	
 	/* (non-Javadoc)
 	 *  Metódo toString é a representação textual do objeto.
 	 * @see java.lang.Object#toString()
@@ -113,6 +100,5 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		return "Livro [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
 		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + getEditor() + "]";
 	}
-	
 	
 }

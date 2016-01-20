@@ -7,30 +7,29 @@ import java.util.Collections;
 /**
  * Estrutura de apoio ao calculo de media/maximo/minimo 
  * de emprestimos de uma Publicacao
- * 
- * @author adelia
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *
  */
 public class MatematicaFuncoes {
 
 	/**
-	 * Máximo é atributo da classe MatemáticaFuncoes
+	 * Maximo e atributo da classe MatematicaFuncoes
 	 */
 	private int maximo;
 	
 	/**
-	 * Mínimo é atributo da classe MatemáticaFuncoes
+	 * Minimo e atributo da classe MatematicaFuncoes
 	 */
 	private int minimo;
 	
 	/**
-	 * Média é atributo da classe MatemáticaFuncoes
+	 * Media e atributo da classe MatematicaFuncoes
 	 */
 	private double media;
 	
 	/**
 	 * Construtor que dando a lista de inteiros constroi-se 
-	 * já com a media/minimo/maximo
+	 * ja com a media/minimo/maximo
 	 * 
 	 * @param maximo
 	 * @param minimo
@@ -41,6 +40,7 @@ public class MatematicaFuncoes {
 		this.maximo =  Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo
 		this.media  = this.calculaMedia(lista);
+		
 	}
 	
 	/**
@@ -85,7 +85,6 @@ public class MatematicaFuncoes {
 		this.media = media;
 	}
 	
-	
 	/**
 	 * Calcula a media da lista fornecida
 	 * 
@@ -94,13 +93,16 @@ public class MatematicaFuncoes {
 	 */
 	private double calculaMedia(ArrayList<Integer> list){
 		double sum = 0.0;
+		
 		if (list == null|| list.size() == 0) {
 			return sum;
 		}
 		for( Integer i : list) {
 		  sum += i;
 		}
-		return sum / list.size();		
+		
+		return sum / list.size();
+		
 	}
 
 	/* (non-Javadoc)
@@ -110,6 +112,5 @@ public class MatematicaFuncoes {
 	public String toString() {
 		return "ContagensPublicacao [maximo=" + maximo + ", minimo=" + minimo + ", media=" + media + "]";
 	}
-	
-	
+		
 }

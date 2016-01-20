@@ -32,10 +32,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do Bibliotario Chefe para pesquisar uma publicacao da Biblioteca.
  * Pesquisa por codigo de barras a publicacao a pesquisar.
- * @author Adelia Goncalves e Maria Joao Silva
- *
  */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 		

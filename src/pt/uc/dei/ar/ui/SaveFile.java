@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *SaveFilter é uma class usada pelo JFileChooser do RelatorioPanel
  *para filtrar a extencao dos ficheiros mostrados ao Utilizador
- * @author Adelia Goncalves e Maria Joao Silva
  */
 public class SaveFile extends FileFilter {
 
@@ -47,5 +47,4 @@ public class SaveFile extends FileFilter {
 	public String getDescription() {
 		return description + String.format(" (*%s)",extension);
 	}
-
 }

@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 /**
  * Colaborador herda da classe Utilizador e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Colaborador extends Utilizador implements Serializable {
 
@@ -13,7 +14,7 @@ public class Colaborador extends Utilizador implements Serializable {
 	 */
 	private static final long serialVersionUID = -3819311207656290305L;
 	/**
-     * Número de colaborador.
+     * Numero de colaborador.
      */
     private int numColaborador;
 	
@@ -36,7 +37,7 @@ public class Colaborador extends Utilizador implements Serializable {
 
 
 	/**
-     * @return o número de colaborador do utilizador em formato inteiro
+     * @return o numero de colaborador do utilizador em formato inteiro
      */
     public int getNumColaborador() {
         return numColaborador;

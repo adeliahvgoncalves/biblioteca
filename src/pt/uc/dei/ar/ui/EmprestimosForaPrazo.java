@@ -19,6 +19,7 @@ import pt.uc.dei.ar.Emprestimo;
 import pt.uc.dei.ar.Publicacao;
 
 /**
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface de consulta de emprestimo expirados
  *
  */

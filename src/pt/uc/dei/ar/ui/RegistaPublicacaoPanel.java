@@ -28,10 +28,10 @@ import com.michaelbaranov.microba.calendar.DatePicker;
 
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do RegistaPublicacaoPanel para registar uma publicacao na Biblioteca.
  * Regista os diversos tipos de publicacoes na Biblioteca.
- * @author Adelia Goncalves e Maria Joao Silva
- *
+ * 
  */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	

@@ -34,6 +34,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * Create the panel
  * Interface do leitor (disponibiliza a visualizacao de 
  * todas as operacoes que lhe sao permitidas)
  */
@@ -284,7 +286,6 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 * Preenche uma tabela 
 	 * @param pubs
 	 */
-
 	private void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
@@ -467,8 +468,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
-	/**
-	 * focusGained 
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusGained(FocusEvent e) {
@@ -482,8 +483,9 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		}
 	}
 
-	/**
-	 * focusLost
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {

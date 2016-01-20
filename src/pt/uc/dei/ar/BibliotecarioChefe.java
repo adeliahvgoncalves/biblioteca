@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * BibliotecarioChefe herda da classe Utilizador e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class BibliotecarioChefe extends Utilizador implements Serializable{
 
@@ -12,7 +13,7 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 	 */
 	private static final long serialVersionUID = 6026760943183249613L;
 	/**
-     * Número de colaborador.
+     * Numero de colaborador.
      */
     private int numColaborador;
     
@@ -35,7 +36,7 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 
 
 	/**
-     * @return o número de colaborador do utilizador em formato inteiro.
+     * @return o numero de colaborador do utilizador em formato inteiro.
      */
     public int getNumColaborador() {
         return numColaborador;

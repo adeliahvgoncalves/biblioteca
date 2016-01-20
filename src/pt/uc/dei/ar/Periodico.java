@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Periódico herda de Publicação e implementa o Serializable
+ * Periodico herda de Publicacao e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Periodico extends Publicacao implements Serializable {
 
@@ -13,14 +14,12 @@ public class Periodico extends Publicacao implements Serializable {
 	 */
 	private static final long serialVersionUID = -8255569193119008522L;
 	/**
-     * Periodicidade do periódico
+     * Periodicidade do periodico
      */
     private Periodicidade periodicidade;
 
-	
-
 	/**
-	 * Construtor da classe Periódico
+	 * Construtor da classe Periodico
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param dataReceçao
@@ -30,11 +29,10 @@ public class Periodico extends Publicacao implements Serializable {
 	public Periodico(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade) {
 		super(titulo, dataPublicacao, dataReceçao, areas);
+		
 		this.periodicidade = periodicidade;
+		
 	}
-
-
-
 
 	/**
 	 * 
@@ -44,11 +42,8 @@ public class Periodico extends Publicacao implements Serializable {
 		return periodicidade;
 	}
 
-
-
-
 	/* (non-Javadoc)
-	 * Metódo toString é a representação textual do objeto.
+	 * Metodo toString e a representação textual do objeto.
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -56,7 +51,4 @@ public class Periodico extends Publicacao implements Serializable {
 		return "Periodico [periodicidade=" + periodicidade + "]";
 	}
 
-
-
-	
 }

@@ -15,7 +15,7 @@ import java.awt.event.FocusListener;
 
 
 /**
- * 
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *  Interface do painel de emprestimo, disponivel ao bibliotecario chefe e colaborador
  *
  */
@@ -354,10 +354,9 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		}
 	}
 	
-	/**
-	 * focusGained
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
-
 	@Override
 	public void focusGained(FocusEvent e) {
 
@@ -378,8 +377,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		}
 	}
 
-	/**
-	 * focusGained
+	/* (non-Javadoc)
+	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {

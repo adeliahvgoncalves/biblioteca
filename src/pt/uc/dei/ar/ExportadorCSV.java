@@ -8,13 +8,13 @@ import java.util.Map;
 
 /**
  * 
- * ExportadorCSV é uma classe auxiliar cuja responsabilidade é gerar o relatório
- *
+ * ExportadorCSV e uma classe auxiliar cuja responsabilidade e gerar o relatório
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class ExportadorCSV {
 
 	/**
-	 * A biblioteca é atributo do exportadorCSV
+	 * A biblioteca e atributo do exportadorCSV
 	 */
 	private Biblioteca biblioteca;
 
@@ -30,7 +30,7 @@ public class ExportadorCSV {
 	}
 
 	/**
-	 * Gera os dados do relatório
+	 * Gera os dados do relatorio
 	 * @param now
 	 * @return um objeto matriz
 	 */
@@ -100,7 +100,7 @@ public class ExportadorCSV {
 	}
 
 	/**
-	 * Método auxiliar para determinar o mês correspondente a 12 meses atrás
+	 * Metodo auxiliar para determinar o mes correspondente a 12 meses atras
 	 * @param now
 	 * @return mesAtual em formato inteiro
 	 */

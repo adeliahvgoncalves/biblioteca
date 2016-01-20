@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Empréstimo representa o empréstimo de uma publicação requisitável e implementa o Serializable
+ * Emprestimo representa o empréstimo de uma publicação requisitável e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Emprestimo implements Serializable {
 
@@ -15,39 +16,39 @@ public class Emprestimo implements Serializable {
 	private static final long serialVersionUID = -5436843370567100689L;
 
 	/**
-	 * Número de empréstimo é atributo do empréstimo, sendo sequencial
+	 * Numero de emprestimo e atributo do emprestimo, sendo sequencial
 	 */
 	private int numEmp;
 
 	/**
-	 * Número de empréstimo último facilita a criação do número de empréstimo sequencial
+	 * Numero de emprestimo ultimo facilita a criacao do numero de emprestimo sequencial
 	 */
 	private  static int numEmpUltimo=0;
 
 	/**
-	 * Leitor é atributo de empréstimo
+	 * Leitor e atributo de emprestimo
 	 */
 	private Leitor leitor;
 
 	/**
-	 * Data de empréstimo é atributo de empréstimo
+	 * Data de emprestimo e atributo de emprestimo
 	 */
 	private Date dataEmp;
 
 	/**
-	 * Data de devolução é atributo de empréstimo, após devolução
+	 * Data de devolucao e atributo de emprestimo, apos devolucao
 	 */
 	private Date dataDev;
 
 
 	/**
-	 * Publicação é atributo de empréstimo
+	 * Publicacao e atributo de emprestimo
 	 */
 	private Requisitavel publicacao;
 
 
 	/**
-	 * Construtor da classe Empréstimo
+	 * Construtor da classe Emprestimo
 	 * @param numEmp
 	 * @param numEmpUltimo
 	 * @param leitor
@@ -67,7 +68,7 @@ public class Emprestimo implements Serializable {
 
 
 	/**
-	 * @return o número de empréstimo, em formato inteiro
+	 * @return o numero de emprestimo, em formato inteiro
 	 */
 	public int getNumEmp() {
 		return numEmp;
@@ -84,7 +85,7 @@ public class Emprestimo implements Serializable {
 
 
 	/**
-	 * @return a data de empréstimo em formato data
+	 * @return a data de emprestimo em formato data
 	 */
 	public Date getDataEmp() {
 		return dataEmp;
@@ -92,7 +93,7 @@ public class Emprestimo implements Serializable {
 
 
 	/**
-	 * @return a data de devolução em formato data
+	 * @return a data de devolucao em formato data
 	 */
 	public Date getDataDev() {
 		return dataDev;
@@ -102,7 +103,7 @@ public class Emprestimo implements Serializable {
 
 	/**
 	 * @param dataDev the dataDev to set
-	 * a utilizar na devolução da publicação requisitável
+	 * a utilizar na devolucao da publicacao requisitavel
 	 */
 	public void setDataDev(Date dataDev) {
 		this.dataDev = dataDev;
@@ -111,7 +112,7 @@ public class Emprestimo implements Serializable {
 
 
 	/**
-	 * @return a publicação que seja requisitável
+	 * @return a publicacao que seja requisitavel
 	 */
 	public Requisitavel getPublicacao() {
 		return publicacao;
@@ -134,7 +135,7 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * Determina a data máxima de empréstimo
+	 * Determina a data maxima de emprestimo
 	 * @return dataMaximaEntrega
 	 */
 	public Date dataMaximaEntrega(){
@@ -151,9 +152,9 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * Determina o número de dias que esteve emprestado
+	 * Determina o numero de dias que esteve emprestado
 	 * @param emprestimo
-	 * @return dias que a publicação esteve emprestada em formato inteiro
+	 * @return dias que a publicacao esteve emprestada em formato inteiro
 	 */
 	public int diasDeEmprestimo(){ // o q representa no calendario esse dia e subtrair
 		long m1 = 0;

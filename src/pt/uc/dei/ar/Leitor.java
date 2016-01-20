@@ -8,54 +8,44 @@ import java.util.*;
 
 /**
  * Leitor herda da classe Utilizador e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Leitor extends Utilizador implements Serializable {
-
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5729849162098592996L;
-
-
 	/**
-	 * Lista de empréstimos é atributo da classe Leitor
+	 * Lista de emprestimos e atributo da classe Leitor
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimos;
-
-
 	/**
-	 * Número de leitor é atributo da classe leitor
+	 * Numero de leitor e atributo da classe leitor
 	 */
 	private int numLeitor=0;
-
 	/**
-	 * Número de leitor sequencial permite a criação de números sequenciais
+	 * Numero de leitor sequencial permite a criacao de numeros sequenciais
 	 */
 	private static int ultimoNumLeitorSequencial=0;
-
 	/**
 	 *Data de nascimento do utilizador. 
 	 */
 	private Date dataNascimento;
-
 	/**
-	 * Cartao de Cidadão do utilizador.
+	 * Cartao de Cidadao do utilizador.
 	 */
 	private String cartaoCidadao;
-
 	/**
 	 * Morada do utilizador.
 	 */
 	private String morada;
-
 	/**
 	 * E-mail do utilizador.
 	 */
 	private String email;
-
 	/**
-	 * Número de telefone, contacto telefónico do utilizador.
+	 * Numero de telefone, contacto telefonico do utilizador.
 	 */
 	private String telefone;
 
@@ -75,24 +65,27 @@ public class Leitor extends Utilizador implements Serializable {
 	public Leitor(String username, String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone) {
 		super(username, nome);
+		
 		this.listaDeEmprestimos = new ArrayList<Emprestimo>();
 		ultimoNumLeitorSequencial++;
 		this.numLeitor = ultimoNumLeitorSequencial;
+		
 		DateFormat df=new SimpleDateFormat("dd/MM/yyyy");
 		try{
 			this.dataNascimento=df.parse(dataNascimento);
 		} catch (ParseException e){
 			e.printStackTrace();
 		}	
+		
 		this.cartaoCidadao = cartaoCidadao;
 		this.morada = morada;
 		this.email = email;
 		this.telefone = telefone;
+		
 	}
 
-
 	/**
-	 * @return o arrayList de empréstimos do leitor
+	 * @return o arrayList de emprestimos do leitor
 	 */
 	public ArrayList<Emprestimo> getListaDeEmprestimo() {
 		return listaDeEmprestimos;
@@ -106,7 +99,7 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return o número de leitor em formato inteiro
+	 * @return o numero de leitor em formato inteiro
 	 */
 	public int getNumLeitor() {
 		return numLeitor;
@@ -123,11 +116,11 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @return a data de nascimento em formato data
 	 */
 	public Date getDataNascimento() {
-		return dataNascimento;
+		return dataNascimento;	
 	}
 
 	/**
-	 * @return o cartão do cidadão em formato String
+	 * @return o cartao do cidadao em formato String
 	 */
 	public String getCartaoCidadao() {
 		return cartaoCidadao;
@@ -145,7 +138,7 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @param morada the morada to set
 	 */
 	public void setMorada(String morada) {
-		this.morada = morada;
+		this.morada = morada;	
 	}
 
 	/**
@@ -166,7 +159,7 @@ public class Leitor extends Utilizador implements Serializable {
 	 * @return o telefone em formato string
 	 */
 	public String getTelefone() {
-		return telefone;
+		return telefone;	
 	}
 
 	/**
@@ -192,10 +185,8 @@ public class Leitor extends Utilizador implements Serializable {
 		Leitor.ultimoNumLeitorSequencial = ultimoNumLeitorSequencial;
 	}
 
-	
-
 	/**
-	 * Adiciona um empréstimo novo
+	 * Adiciona um emprestimo novo
 	 * @param Emprestimo
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
@@ -203,23 +194,26 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * Consulta de empréstimos ativos do leitor
+	 * Consulta de emprestimos ativos do leitor
 	 * @param String Nome 
 	 * @return emprestimosAtuais
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
+		
 		ArrayList<Emprestimo> emprestimosAtuais= new ArrayList<Emprestimo>();
+		
 		for (Emprestimo emprestimo : listaDeEmprestimos) {
 			if(emprestimo.getDataDev()==null){
 				emprestimosAtuais.add(emprestimo);
 			}
-			
 		}
+		
 		return emprestimosAtuais;
+		
 	}
 	
 	/**
-	 * Remove empréstimo
+	 * Remove emprestimo
 	 * @param emprestimo
 	 */
 	public void removeEmprestimo(Emprestimo emprestimo) {
@@ -235,6 +229,5 @@ public class Leitor extends Utilizador implements Serializable {
 				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
 				+ ", telefone=" + telefone + "]";
 	}
-
-
+	
 }

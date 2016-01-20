@@ -4,23 +4,20 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Jornal herda de periódico que herda de publicação e implementa o Serializable
+ * Jornal herda de periodico que herda de publicacao e implementa o Serializable
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Jornal extends Periodico implements Serializable{
 
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3200155503690447291L;
 	/**
-     * Número de Edição é um atributo da classe jornal.
+     * Numero de Edicao e um atributo da classe jornal.
      */
     private int numEdicao;
 	
-
-
-
 	/**
 	 * Construtor da classe Jornal
 	 * @param titulo
@@ -33,20 +30,20 @@ public class Jornal extends Periodico implements Serializable{
 	public Jornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
 			Periodicidade periodicidade, int numEdicao) {
 		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
+		
 		this.numEdicao = numEdicao;
+		
 	}
-
 
 	/**
 	 *
-	 * @return o número de edição em formato inteiro
+	 * @return o numero de edicao em formato inteiro
 	 */
 	public int getNumEdicao() {
+		
 		return numEdicao;
+		
 	}
-
-
-
 
 	/* (non-Javadoc)
 	 * Metódo toString é a representação textual do objeto.
@@ -54,11 +51,10 @@ public class Jornal extends Periodico implements Serializable{
 	 */
 	@Override
 	public String toString() {
+		
 		return "Jornal [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
 				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + ", numEdicao=" + numEdicao + "]";
+		
 	}
-
-
-    
 
 }

@@ -3,6 +3,7 @@ package pt.uc.dei.ar;
 import java.io.Serializable;
 
 /**
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * A classe Utilizador representa os utilizadores de uma Biblioteca e implementa o Serializable
  */
 public class Utilizador implements Serializable {
@@ -18,7 +19,7 @@ public class Utilizador implements Serializable {
     private String username;
 
     /**
-     * Password de entrada do utilizador, a ser escolhida pelo utilizador.
+     * Password de entrada do utilizador
      */
     private String hashedPassword;
 
@@ -34,9 +35,11 @@ public class Utilizador implements Serializable {
 	 */
 	public Utilizador(String username, String nome) {
 		super();
+		
 		this.username = username;
 		this.hashedPassword = Biblioteca.getInstance().gerarPassword();
 		this.nome = nome;
+		
 	}
 
 	/**
@@ -46,8 +49,6 @@ public class Utilizador implements Serializable {
 		return username;
 	}
 
-	
-
 	/**
 	 * @return a password em formato String
 	 */
@@ -55,7 +56,6 @@ public class Utilizador implements Serializable {
 		return hashedPassword;
 	}
 
-	
 	/**
 	 * @return o nome do utilizador em formato String
 	 */
