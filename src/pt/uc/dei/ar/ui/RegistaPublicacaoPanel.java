@@ -333,7 +333,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		pnlTese.add(txtOrientador);
 		txtOrientador.setColumns(10);
 
-		// Butões
+		// Botões
 
 		btnSair = new JButton("Sair");
 		btnSair.addActionListener(this);
@@ -355,11 +355,11 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		pnlRegistaPublicacao.add(lblMensagem);
 		
 		datePickerDataPub = new DatePicker();
-		datePickerDataPub.setBounds(151, 111, 117, 28);
+		datePickerDataPub.setBounds(151, 111, 129, 28);
 		pnlRegistaPublicacao.add(datePickerDataPub);
 		
 		datePickerDataRecepcao = new DatePicker();
-		datePickerDataRecepcao.setBounds(151, 139, 117, 28);
+		datePickerDataRecepcao.setBounds(151, 139, 129, 28);
 		pnlRegistaPublicacao.add(datePickerDataRecepcao);
 		
 	}

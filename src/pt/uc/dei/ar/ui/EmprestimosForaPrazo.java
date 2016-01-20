@@ -111,7 +111,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	/**
 	 * Preenche a tabela emprestimo expirados
 	 */
-	private void preencheTabelaEmprestimo(){
+	public void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0);
 		// add header of the table

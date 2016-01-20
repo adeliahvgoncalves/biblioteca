@@ -7,9 +7,15 @@ import pt.uc.dei.ar.ExportadorCSV;
 
 import java.awt.Panel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
@@ -138,7 +144,8 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		}
 
 		else if(e.getSource() == this.btnEmprestimosAtraso){
-
+			
+			
 			janela.emprestimosForaPrazoOK();
 			
 		}
@@ -149,10 +156,30 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		}
 		else if(e.getSource() == this.btnGerarRelatrio){
 
-			ExportadorCSV exportador = new ExportadorCSV(Biblioteca.getInstance());
-			String csv = exportador.geraCSV(Calendar.getInstance());
-			janela.relatorioPanelOK();
+			
+			//janela.relatorioPanelOK();
+			JFileChooser fs = new JFileChooser(new File("c:\\"));
+			fs.setDialogTitle("Gravar um ficheiro");
+			fs.setFileFilter(new SaveFile(".csv", "Ficheiro CSV"));
+			int result = fs.showSaveDialog(null);
+
+			if(result==JFileChooser.APPROVE_OPTION){
+				ExportadorCSV exportador = new ExportadorCSV(Biblioteca.getInstance());
+				String csv = exportador.geraCSV(Calendar.getInstance());
+				File fi=fs.getSelectedFile();
+				try {
+					FileWriter fw = new FileWriter(fi.getPath());
+					fw.write(csv);
+					fw.flush();
+					fw.close();
+				} catch (Exception e2){
+					JOptionPane.showMessageDialog(null, e2.getMessage());
+				}
+			}
+
+		}
+
 			
 		}
-	}
+
 }

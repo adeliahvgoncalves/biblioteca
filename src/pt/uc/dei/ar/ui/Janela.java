@@ -178,6 +178,7 @@ public class Janela extends JFrame {
 	 */
 	public void emprestimosForaPrazoOK(){
 
+		this.emprestimosForaPrazo.preencheTabelaEmprestimo();
 		layout.show(getContentPane(), "emprestimosForaPrazo");
 
 	}

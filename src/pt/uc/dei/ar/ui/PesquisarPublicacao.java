@@ -282,18 +282,29 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 		if (e.getSource() == this.btnSair) {
 
+			preencheTabelaPesquisaPublicacao();
+			this.lblMensagem.setText("");
 			janela.sairOK();
 
 		} else if (e.getSource() == this.btnVoltar) {
 
+			preencheTabelaPesquisaPublicacao();
+			this.lblMensagem.setText("");
 			janela.bibliotecarioChefeOK();
 
 		}
 		else if (e.getSource() == this.btnPesquisar) {
 
-			this.preencheTabelaPesquisaPublicacao();
-			txtPesquisa.setText("");
-			
+			if(txtPesquisa.getText().equals("")){
+				
+				this.lblMensagem.setText("Erro! Não inseriu uma publicação. Tente novamente.");
+				
+			}
+			else {
+				this.lblMensagem.setText("");
+				this.preencheTabelaPesquisaPublicacao();
+				txtPesquisa.setText("");
+			}
 		}
 	}
 	
@@ -304,7 +315,6 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==this.txtPesquisa){
-			
 			txtPesquisa.setText("");
 			txtPesquisa.setForeground(Color.BLACK);
 			txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
