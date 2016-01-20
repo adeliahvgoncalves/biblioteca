@@ -113,7 +113,14 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	 */
 	public void preencheTabelaEmprestimo(){
 
-		DefaultTableModel dtm = new DefaultTableModel(0, 0);
+		DefaultTableModel dtm = new DefaultTableModel(0, 0){
+			
+			//impede o utilizador de escrever dentro das celulas	
+			public boolean isCellEditable(int row, int columns){
+				return false;
+			}
+		};
+		
 		// add header of the table
 		String[] colunas={"Código de barras", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
 				"Data Empréstimo", "Prazo máximo entrega"};

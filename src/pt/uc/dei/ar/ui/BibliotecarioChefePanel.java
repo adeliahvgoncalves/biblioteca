@@ -166,9 +166,17 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 			if(result==JFileChooser.APPROVE_OPTION){
 				ExportadorCSV exportador = new ExportadorCSV(Biblioteca.getInstance());
 				String csv = exportador.geraCSV(Calendar.getInstance());
-				File fi=fs.getSelectedFile();
+		
+				//File fi=fs.getSelectedFile();
+				String path=fs.getSelectedFile().getAbsolutePath();
+				
+				
+			if(!path.substring(path.length()-4).equals(".csv")){
+					path=path+".csv";
+			}
+			
 				try {
-					FileWriter fw = new FileWriter(fi.getPath());
+					FileWriter fw = new FileWriter(path);
 					fw.write(csv);
 					fw.flush();
 					fw.close();

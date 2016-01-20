@@ -150,7 +150,13 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	 */
 	private void preencheTabelaPesquisaPublicacao(){
 
-		DefaultTableModel dtm = new DefaultTableModel(0, 0);
+		DefaultTableModel dtm = new DefaultTableModel(0, 0){
+			
+			//impede o utilizador de escrever dentro das celulas	
+			public boolean isCellEditable(int row, int columns){
+				return false;
+			}
+		};
 		
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 

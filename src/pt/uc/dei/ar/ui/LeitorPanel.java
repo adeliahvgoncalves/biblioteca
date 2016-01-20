@@ -166,6 +166,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		tabela = new JTable(data, colunas);
 		tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
+		
 		scrollPane_1.setViewportView(tabela);
 		lblLeitor = new JLabel("");
 		lblLeitor.setBounds(110, 19, 310, 16);
@@ -197,7 +198,13 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	private void preencheTabelaEmprestimo(){
 
-		DefaultTableModel dtm = new DefaultTableModel(0, 0);
+		DefaultTableModel dtm = new DefaultTableModel(0, 0){
+			
+			//impede o utilizador de escrever dentro das celulas	
+			public boolean isCellEditable(int row, int columns){
+				return false;
+			}
+		};
 		
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
@@ -288,7 +295,14 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	private void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
-		DefaultTableModel dtm = new DefaultTableModel(0, 0);
+		DefaultTableModel dtm = new DefaultTableModel(0, 0){
+			
+		//impede o utilizador de escrever dentro das celulas	
+			public boolean isCellEditable(int row, int columns){
+				return false;
+			}
+		};
+		
 		// add header of the table
 		String[] colunas={"Código de Barras", "Tipo Publicação", "Título", "Autor(es)", "Data Publicação", "Data Receçao" , "Área(s)", 
 				"Periocidade" ,"Volume"," Nº Sequencial", "Nº Edição", "Orientador", "Tipo de Tese", "Editor", "ISBN","Emprestada"
