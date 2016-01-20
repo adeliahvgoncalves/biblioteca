@@ -49,11 +49,7 @@ public class Janela extends JFrame {
 	 * RegistaPublicacaoPanel registaPublicacao e atributo da janela
 	 */
 	private RegistaPublicacaoPanel registaPublicacao;
-	/**
-	 * RelatorioPanel relatorioPanel e atributo da janela
-	 */
-	private RelatorioPanel relatorioPanel;
-
+	
 	/**
 	 * Create the JFrame
 	 */
@@ -100,9 +96,6 @@ public class Janela extends JFrame {
 
 		this.registaPublicacao= new RegistaPublicacaoPanel(this);
 		getContentPane().add(registaPublicacao, "registaPublicacao");
-
-		this.relatorioPanel= new RelatorioPanel(this);
-		getContentPane().add(relatorioPanel, "relatorioPanel");
 
 	}
 
@@ -192,12 +185,4 @@ public class Janela extends JFrame {
 
 	}
 
-	/**
-	 * Gerar relatorio da evolucao dos emprestimos globais
-	 */
-	public void relatorioPanelOK(){
-
-		layout.show(getContentPane(),"relatorioPanel");
-
-	}
 }

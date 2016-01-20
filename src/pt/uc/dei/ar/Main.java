@@ -39,8 +39,8 @@ public class Main {
 			area3.add("Medicina desportiva");
 
 
-			maravilha.criaJornal("Diário Económico", "01/01/2016", "02/01/2016", areas1, Periodicidade.Diaria, 2);
-			maravilha.criaJornal("Wall Street Journal", "09/01/2016", "10/01/2016",areas1,Periodicidade.Diaria, 9);
+			maravilha.criaJornal("Diário Económico", "01/01/2016", "02/01/2016", areas1, Periodicidade.Diaria, "2");
+			maravilha.criaJornal("Wall Street Journal", "09/01/2016", "10/01/2016",areas1,Periodicidade.Diaria, "9");
 			maravilha.criaRevista("Times", "08/01/2016", "10/01/2016", areas1,Periodicidade.Quinzenal, 2);
 			maravilha.criaRevista("Forbes", "05/01/2016", "10/01/2016",areas1, Periodicidade.Quinzenal, 1);
 			maravilha.criaRevista("The economist", "24/12/2015", "02/01/2016",area2, Periodicidade.Quinzenal, 2);

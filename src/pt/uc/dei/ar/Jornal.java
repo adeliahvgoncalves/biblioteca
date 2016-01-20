@@ -16,7 +16,7 @@ public class Jornal extends Periodico implements Serializable{
 	/**
      * Numero de Edicao e um atributo da classe jornal.
      */
-    private int numEdicao;
+    private String numEdicao;
 	
 	/**
 	 * Construtor da classe Jornal
@@ -28,7 +28,7 @@ public class Jornal extends Periodico implements Serializable{
 	 * @param numEdicao
 	 */
 	public Jornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
-			Periodicidade periodicidade, int numEdicao) {
+			Periodicidade periodicidade, String numEdicao) {
 		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
 		
 		this.numEdicao = numEdicao;
@@ -39,7 +39,7 @@ public class Jornal extends Periodico implements Serializable{
 	 *
 	 * @return o numero de edicao em formato inteiro
 	 */
-	public int getNumEdicao() {
+	public String getNumEdicao() {
 		
 		return numEdicao;
 		

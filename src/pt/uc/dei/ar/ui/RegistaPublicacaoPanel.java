@@ -626,7 +626,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		else if((tipoPeriodico.equals("Jornal"))){
 			
 			codigoBarras =biblioteca.criaJornal(txtTitulo.getText(), transformaDatePickerEmString(datePickerDataPub),
-					transformaDatePickerEmString(datePickerDataRecepcao), areas, periodicidade, Integer.parseInt(txtNumEdicaoJornal.getText()));
+					transformaDatePickerEmString(datePickerDataRecepcao), areas, periodicidade,txtNumEdicaoJornal.getText());
 		
 			limpaPainel();
 			Biblioteca biblioteca = Biblioteca.getInstance();

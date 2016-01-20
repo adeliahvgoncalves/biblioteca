@@ -287,7 +287,7 @@ public class Biblioteca implements Serializable{
 	 * @return codigo de barras
 	 */
 	public int criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
-			Periodicidade periodicidade, int numEdicao){
+			Periodicidade periodicidade, String numEdicao){
 		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
 		return jornal.getCodBarras();

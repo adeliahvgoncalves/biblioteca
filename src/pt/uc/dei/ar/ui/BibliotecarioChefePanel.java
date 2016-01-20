@@ -20,9 +20,9 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
 /**
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
- * Interface do bibliotecario chefe (disponibiliza a visualizacao de 
- * todas as operacoes que lhe sao permitidas)
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ *         Interface do bibliotecario chefe (disponibiliza a visualizacao de
+ *         todas as operacoes que lhe sao permitidas)
  *
  */
 public class BibliotecarioChefePanel extends JPanel implements ActionListener {
@@ -65,7 +65,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 	 */
 	public BibliotecarioChefePanel(Janela j) {
 
-		this.janela=j;
+		this.janela = j;
 		setLayout(null);
 
 		Panel panel = new Panel();
@@ -114,80 +114,66 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		panel.add(btnGerarRelatrio);
 
 	}
-	
+
 	/**
 	 * actionPerformed dos botoes a disposicao do bibliotecario chefe
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 
-		if(e.getSource() == this.btnSair){
+		if (e.getSource() == this.btnSair) {
 
 			janela.sairOK();
 
-		}
-		else if(e.getSource() == this.btnRegistarUtilizador){
+		} else if (e.getSource() == this.btnRegistarUtilizador) {
 
 			janela.registaUtilizadorOK();
 
-		}
-		else if(e.getSource() == this.btnEmprestaDevolve){
+		} else if (e.getSource() == this.btnEmprestaDevolve) {
 
 			janela.emprestimoPanelBibliotecarioChefeOK();
 
-		}
-		else if(e.getSource() == this.btnPesquisaPublicacao){
+		} else if (e.getSource() == this.btnPesquisaPublicacao) {
 
 			janela.pesquisaPublicacaoOK();
 
 		}
 
-		else if(e.getSource() == this.btnEmprestimosAtraso){
-			
-			
+		else if (e.getSource() == this.btnEmprestimosAtraso) {
+
 			janela.emprestimosForaPrazoOK();
-			
-		}
-		else if(e.getSource() == this.btnRegistaPublicacao){
+
+		} else if (e.getSource() == this.btnRegistaPublicacao) {
 
 			janela.registaPublicacaoOK();
-			
-		}
-		else if(e.getSource() == this.btnGerarRelatrio){
 
-			
-			//janela.relatorioPanelOK();
+		} else if (e.getSource() == this.btnGerarRelatrio) {
+
+			// janela.relatorioPanelOK();
 			JFileChooser fs = new JFileChooser(new File("c:\\"));
 			fs.setDialogTitle("Gravar um ficheiro");
 			fs.setFileFilter(new SaveFile(".csv", "Ficheiro CSV"));
 			int result = fs.showSaveDialog(null);
 
-			if(result==JFileChooser.APPROVE_OPTION){
+			if (result == JFileChooser.APPROVE_OPTION) {
 				ExportadorCSV exportador = new ExportadorCSV(Biblioteca.getInstance());
 				String csv = exportador.geraCSV(Calendar.getInstance());
-		
-				//File fi=fs.getSelectedFile();
-				String path=fs.getSelectedFile().getAbsolutePath();
-				
-				
-			if(!path.substring(path.length()-4).equals(".csv")){
-					path=path+".csv";
-			}
-			
+
+				String path = fs.getSelectedFile().getAbsolutePath();
+
+				if (!path.substring(path.length() - 4).equals(".csv")) {
+					path = path + ".csv";
+				}
+
 				try {
 					FileWriter fw = new FileWriter(path);
 					fw.write(csv);
 					fw.flush();
 					fw.close();
-				} catch (Exception e2){
+				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
 			}
-
 		}
-
-			
-		}
-
+	}
 }
