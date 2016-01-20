@@ -212,64 +212,10 @@ public class Main {
 			maravilha.criaEmprestimoaMao(2, data20,8);
 			maravilha.criaEmprestimoaMao(4, data21,6);	
 			maravilha.devolveEmprestimoAMao(34, data21);
-			maravilha.criaEmprestimoaMao(6, data21,6);
-
-		}
 
 
-		
-	maravilha.emprestimosListagem();
-		
-		//Pesquisa por área
-		maravilha.pesquisaPorArea("Economia");
-		System.out.println("area"+maravilha.pesquisaPorArea("Economia"));
-
-		//Pesquisa os seus emprestimos por numero de leitor
-		Leitor leitor= (Leitor) maravilha.pesquisaUtilizadorPorNumLeitor(2);
-		leitor.getListaDeEmprestimo();
-		System.out.println("Emprestimos do leitor" +leitor.getNome()+leitor.getListaDeEmprestimo());
 
 
-		//Bibliotecario-chefe
-
-		//Consultar informação de uma publicação por nome ou codigo de barras
-		//		faculdadeNova.pesquisaPublicacaoComParteNome("A moeda");
-		//		System.out.println(faculdadeNova.pesquisaPublicacaoComParteNome("A moeda"));
-		//		faculdadeNova.pesquisaPublicacaoPorCodBarras(4);
-		//		System.out.print(faculdadeNova.pesquisaPublicacaoPorCodBarras(4));
-
-		//Consultar os empréstimos que já deviam ter sido devolvidos
-		ArrayList<Emprestimo> emprestimosExpirados = maravilha.consultaEmprestimoExpirado();
-		System.out.println("Emprestimos expirados:" +emprestimosExpirados);
-
-		//Emprestimos do leitor
-		System.out.println("Emprestimos do leitor:" +leitor.getNome()+leitor.getListaDeEmprestimo());
-
-
-		//testar o gera utilizador e gerar password
-
-		System.out.println("Password"+maravilha.gerarPassword());
-
-
-		Map<Publicacao, Integer> repeticoesEmprestimos = maravilha.totalEmprestimosPorPublicacaoNoAno();
-
-		for (Map.Entry<Publicacao, Integer> entry : repeticoesEmprestimos.entrySet()) { 
-
-			System.out.println(((Publicacao)entry.getKey()).getTitulo() + ", emprestado " + entry.getValue()+"x"); 
-		}
-
-		Map<String, Integer> repeticaoMensal=maravilha.geraMapaRepeticoesMensais(new GregorianCalendar());
-
-		for (Map.Entry<String, Integer> entry : repeticaoMensal.entrySet()) { 
-
-			System.out.println(((String)entry.getKey()) + ", emprestado " + entry.getValue()+"x"); 
-		}
-
-		Map<Publicacao,MatematicaFuncoes> diasEmpPorPub=maravilha.obterDiasEmprestimoPorPublicacao(new GregorianCalendar());
-
-		for (Map.Entry<Publicacao,MatematicaFuncoes> entry : diasEmpPorPub.entrySet()) { 
-
-			System.out.println(((String)entry.getKey().getTitulo()) + ", emprestado " + entry.getValue() +"x"); 
 		}
 
 		EventQueue.invokeLater(new Runnable() {
@@ -283,5 +229,4 @@ public class Main {
 			}
 		});
 	}
-
 }
