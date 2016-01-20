@@ -134,8 +134,8 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Bibliotecario x");
-		lblNewLabel.setBounds(85, 5, 309, 16);
+		JLabel lblNewLabel = new JLabel("Regista Utilizador");
+		lblNewLabel.setBounds(182, 5, 116, 16);
 		panel.add(lblNewLabel);
 
 		comboBox = new JComboBox();

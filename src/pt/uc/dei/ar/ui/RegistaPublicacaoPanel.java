@@ -166,7 +166,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		add(pnlRegistaPublicacao);
 		pnlRegistaPublicacao.setLayout(null);
 
-		JLabel lblRegistarPublicaes = new JLabel("Registar Publicações");
+		JLabel lblRegistarPublicaes = new JLabel("Regista Publicação");
 		lblRegistarPublicaes.setBounds(165, 6, 129, 16);
 		pnlRegistaPublicacao.add(lblRegistarPublicaes);
 
