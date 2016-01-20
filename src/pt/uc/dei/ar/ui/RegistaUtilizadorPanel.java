@@ -101,7 +101,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	/**
 	 *comboBox e atributo da RegistaUtilizadorPanel 
 	 */
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	/**
 	 *layout e atributo da RegistaUtilizadorPanel 
 	 */
@@ -116,8 +116,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	 * Instanciar o objeto biblioteca
 	 */
 	Biblioteca biblioteca = Biblioteca.getInstance();
-	
-	private Utilizador utilizador;
 
 	/**
 	 * Create the panel RegistaUtilizadorPanel.
@@ -138,9 +136,9 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		lblNewLabel.setBounds(182, 5, 116, 16);
 		panel.add(lblNewLabel);
 
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.addActionListener(this);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Leitor", "Colaborador", "Biblio Chefe" }));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Leitor", "Colaborador", "Biblio Chefe" }));
 		comboBox.setBounds(98, 33, 133, 27);
 		panel.add(comboBox);
 

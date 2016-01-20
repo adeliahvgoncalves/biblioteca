@@ -25,7 +25,10 @@ import java.awt.event.ActionListener;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
@@ -68,7 +71,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	/**
 	 * comboBox e atributo do LeitorPanel
 	 */
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	/**
 	 * Instanciar a biblioteca
 	 */
@@ -124,8 +127,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		btnPesquisa.setBounds(375, 11, 90,26);
 		pnlListaPublicacoes.add(btnPesquisa);
 
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Total","Área", "Autor", "Título"}));
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Total","Área", "Autor", "Título"}));
 		comboBox.setMaximumRowCount(3);
 		comboBox.addActionListener(this);
 		comboBox.setBounds(6, 11, 88, 27);
@@ -184,11 +187,12 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 		Object [][] dataPublicacao = null;
 
+	
 		dataPublicacao = geraDadosDaTabelaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 
 		tabelaPubTotal = new JTable(dataPublicacao, colunasPublicacao);
 		tabelaPubTotal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tabela.setFillsViewportHeight(true);
+		tabelaPubTotal.setFillsViewportHeight(true);
 		scrollPane.setViewportView(tabelaPubTotal);
 
 	}
@@ -237,14 +241,25 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 		for (int i = 0; i < emprestimos.size(); i++) {
 
+			
 			Emprestimo emp = emprestimos.get(i);
 			Publicacao pub = (Publicacao) emp.getPublicacao();
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			Date emprestimo = emp.getDataEmp(); 
+			Date datadev = emp.dataMaximaEntrega();  
+			String dataEmp = df.format(emprestimo);
+			String datadevolucao = df.format(datadev);
+			Date publicac=pub.getDataPublicacao();
+			String dataPublicacao=df.format(publicac);
+			Date rec=pub.getDataReceçao();
+			String dataRececao=df.format(rec);
+			
 
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
-			data[i][4] = pub.getDataPublicacao();
-			data[i][5] = pub.getDataReceçao();
+			data[i][4] = dataPublicacao;
+			data[i][5] = dataRececao;
 			data[i][6] = pub.getListaDeAreas();
 
 			if (pub instanceof Revista){
@@ -281,8 +296,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 			}
 
-			data[i][15] = emp.getDataEmp();
-			data[i][16] = emp.dataMaximaEntrega();
+			data[i][15] = dataEmp;
+			data[i][16] = datadevolucao;
 			
 		}
 
@@ -293,12 +308,12 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 * Preenche uma tabela 
 	 * @param pubs
 	 */
-	private void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
+	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
 			
 		//impede o utilizador de escrever dentro das celulas	
-			public boolean isCellEditable(int row, int columns){
+		public boolean isCellEditable(int row, int columns){
 				return false;
 			}
 		};
@@ -373,7 +388,6 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 				data[i][14] = ((Livro) pub).getISBN();
 
 			}else if (pub instanceof Tese){
-
 				data[i][3] = ((NaoPeriodico) pub).getListaDeAutores();	
 				data[i][7] = "--";	
 				data[i][8] = "--";	
@@ -503,7 +517,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

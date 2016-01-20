@@ -15,7 +15,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
-import javax.swing.JFileChooser;
+
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 

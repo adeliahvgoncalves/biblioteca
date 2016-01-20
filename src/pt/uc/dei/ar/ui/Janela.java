@@ -49,14 +49,14 @@ public class Janela extends JFrame {
 	 * RegistaPublicacaoPanel registaPublicacao e atributo da janela
 	 */
 	private RegistaPublicacaoPanel registaPublicacao;
-	
+
 	/**
 	 * Create the JFrame
 	 */
 	public Janela() {
 
 		setTitle("Biblioteca");
-		
+
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
@@ -104,7 +104,8 @@ public class Janela extends JFrame {
 	 * @param utilizador
 	 */
 	public void loginOK(Utilizador utilizador) {
-
+		Biblioteca biblioteca=Biblioteca.getInstance();
+		leitor.preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 		leitor.setUtilizador(utilizador);
 		layout.show(getContentPane(), "leitor");
 
@@ -175,7 +176,7 @@ public class Janela extends JFrame {
 		layout.show(getContentPane(), "emprestimosForaPrazo");
 
 	}
-	
+
 	/**
 	 * Registar publicacao
 	 */

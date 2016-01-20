@@ -126,15 +126,15 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	/**
 	 *comboBox e atributo da RegistaPublicacaoPanel
 	 */
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	/**
 	 *comboBoxTipoTese e atributo da RegistaPublicacaoPanel
 	 */
-	private JComboBox comboBoxTipoTese;
+	private JComboBox<String> comboBoxTipoTese;
 	/**
 	 *comboBoxPeriodicidade e atributo da RegistaPublicacaoPanel
 	 */
-	private JComboBox comboBoxPeriodicidade;
+	private JComboBox<String> comboBoxPeriodicidade;
 	
 	/**
 	 * datePickerDataPub e atributo de RegistaPublicacaoPanel
@@ -170,8 +170,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		lblRegistarPublicaes.setBounds(165, 6, 129, 16);
 		pnlRegistaPublicacao.add(lblRegistarPublicaes);
 
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Livro", "Tese", "Revista", "Jornal" }));
+		comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Livro", "Tese", "Revista", "Jornal" }));
 		comboBox.addActionListener(this);
 		comboBox.setBounds(336, 25, 101, 27);
 		pnlRegistaPublicacao.add(comboBox);
@@ -271,8 +271,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		pnlTipoPublicacao.add(pnlPeriodico, "periodico");
 		pnlPeriodico.setLayout(null);
 
-		comboBoxPeriodicidade = new JComboBox();
-		comboBoxPeriodicidade.setModel(new DefaultComboBoxModel(
+		comboBoxPeriodicidade = new JComboBox<String>();
+		comboBoxPeriodicidade.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "Diário", "Semanal", "Quinzenal", "Mensal", "Trimestral", "Semestral", "Anual" }));
 		comboBoxPeriodicidade.setBounds(299, 6, 134, 27);
 		pnlPeriodico.add(comboBoxPeriodicidade);
@@ -306,8 +306,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		pnlTipoPublicacao.add(pnlTese, "tese");
 		pnlTese.setLayout(null);
 
-		comboBoxTipoTese = new JComboBox();
-		comboBoxTipoTese.setModel(new DefaultComboBoxModel(new String[] { "Mestrado", "Doutoramento" }));
+		comboBoxTipoTese = new JComboBox<String>();
+		comboBoxTipoTese.setModel(new DefaultComboBoxModel<String>(new String[] { "Mestrado", "Doutoramento" }));
 		comboBoxTipoTese.setBounds(279, 6, 153, 27);
 		pnlTese.add(comboBoxTipoTese);
 

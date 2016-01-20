@@ -17,13 +17,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
- * Interface de login
+ *         Interface de login
  *
  */
-public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
+public class Login extends JPanel implements ActionListener, KeyEventDispatcher {
 
 	/**
 	 * txtUser e atributo do Login
@@ -48,6 +47,7 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 	/**
 	 * Create the Panel
+	 * 
 	 * @param janela
 	 */
 	public Login(Janela j) {
@@ -66,14 +66,12 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 		txtUser = new JTextField();
 
-		KeyboardFocusManager.getCurrentKeyboardFocusManager()
-		.addKeyEventDispatcher( this);
-
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 
 		txtUser.setBounds(280, 79, 130, 26);
 		txtUser.setColumns(10);
 		add(txtUser);
-		txtUser.addActionListener(this);  
+		txtUser.addActionListener(this);
 
 		pwdText = new JPasswordField();
 		pwdText.setBounds(280, 130, 130, 26);
@@ -90,8 +88,6 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 	}
 
-
-
 	/**
 	 * actionPerformed dos botoes da classe
 	 */
@@ -99,17 +95,19 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 		Biblioteca biblioteca = Biblioteca.getInstance();
 
-		if (leUser().equals("") || lePass().equals("")) {
+		if (e.getSource() == this.btnLogin) {
+			if (leUser().equals("") || lePass().equals("")) {
 
-			lblMensagem.setText("Não inseriu dados nos campos.");
+				lblMensagem.setText("Não inseriu dados nos campos.");
 
-		} else if (biblioteca.login(leUser(), lePass()) != null) {
+			} else if (biblioteca.login(leUser(), lePass()) != null) {
 
-			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));  
+				verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
 
-		} else {
+			} else {
 
-			lblMensagem.setText("O username ou a password não estão correctos");
+				lblMensagem.setText("O username ou a password não estão correctos");
+			}
 		}
 	}
 
@@ -125,6 +123,7 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 	/**
 	 * ler o conteudo da JtextField password
+	 * 
 	 * @return pwdText
 	 */
 	@SuppressWarnings("deprecation")
@@ -146,8 +145,9 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 	}
 
 	/**
-	 * Verifica o tipo de utilizador que acede ao programa para lhe mostrar o painel 
-	 * de operacoes que lhe estao permitidas
+	 * Verifica o tipo de utilizador que acede ao programa para lhe mostrar o
+	 * painel de operacoes que lhe estao permitidas
+	 * 
 	 * @param utilizador
 	 */
 	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
@@ -155,7 +155,7 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 		if (utilizador instanceof Leitor) {
 
 			limpaCampos();
-			janela.loginOK((Leitor)utilizador);
+			janela.loginOK((Leitor) utilizador);
 
 		}
 		if (utilizador instanceof Colaborador) {
@@ -171,16 +171,25 @@ public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 		}
 	}
 
-
-
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
 
-		if(e.getID() == KeyEvent.KEY_RELEASED 
-				&& e.getKeyCode() == KeyEvent.VK_ENTER){
+		if (e.getID() == KeyEvent.KEY_RELEASED && e.getKeyCode() == KeyEvent.VK_ENTER) {
 			Biblioteca biblioteca = Biblioteca.getInstance();
-			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
-			return true;
+
+			if (leUser().equals("") || lePass().equals("")) {
+
+				lblMensagem.setText("Não inseriu dados nos campos.");
+				return true;
+			} else if (biblioteca.login(leUser(), lePass()) != null) {
+
+				verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
+				return true;
+			} else {
+
+				lblMensagem.setText("O username ou a password não estão correctos");
+				return true;
+			}
 		}
 		return false;
 

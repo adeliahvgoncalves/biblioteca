@@ -30,6 +30,9 @@ import pt.uc.dei.ar.Tese;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
@@ -205,6 +208,9 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			
 		}
 		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		
+		
 		data[0][0] = pub.getCodBarras();
 		data[0][1] = pub.getClass().getSimpleName();
 		data[0][2] = pub.getTitulo();
@@ -214,8 +220,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		else if (pub instanceof Livro || pub instanceof Tese){	
 			data[0][3] = ((NaoPeriodico) pub).getListaDeAutores();	
 		}
-		data[0][4] = pub.getDataPublicacao();
-		data[0][5] = pub.getDataReceçao();
+		data[0][4] = pub.getDataPublicacao();;
+		data[0][5] =  pub.getDataReceçao();
 		data[0][6] = pub.getListaDeAreas();
 		if (pub instanceof Revista ){
 			data[0][7] = ((Revista) pub).getPeriodicidade();
@@ -263,9 +269,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 		if(pub.isOcupado()){
 			for(Emprestimo emp: biblioteca.getListaDeEmprestimo()){
-				if(emp.getPublicacao().equals(pub )){
-					data[0][15] = emp.getDataEmp();
-					data[0][16] = emp.dataMaximaEntrega();
+		
+				
+				if(emp.getPublicacao().equals(pub )){				
+					
+					data[0][15] = emp.getDataEmp(); 
+					data[0][16] = emp.dataMaximaEntrega();  
 				}
 			}
 		}

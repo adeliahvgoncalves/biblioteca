@@ -3,7 +3,10 @@ package pt.uc.dei.ar.ui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -56,7 +59,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 	public EmprestimosForaPrazo(Janela j) {
 		setLayout(null);
-		
+
 		this.janela = j;
 		this.layout = new CardLayout(0, 0);
 
@@ -94,7 +97,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tabela.setFillsViewportHeight(true);
 		scrollPane_1.setViewportView(tabela);
-		
+
 		ArrayList<Emprestimo> emprestimos = biblioteca.consultaEmprestimoExpirado();
 		data= new Object[emprestimos.size()][10];
 
@@ -102,9 +105,9 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 			Emprestimo emp = emprestimos.get(i);
 			Publicacao pub = (Publicacao) emp.getPublicacao();
-		
-		this.preencheTabelaEmprestimo();
-		
+
+			this.preencheTabelaEmprestimo();
+
 		}
 	}
 
@@ -114,13 +117,13 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	public void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
-			
+
 			//impede o utilizador de escrever dentro das celulas	
 			public boolean isCellEditable(int row, int columns){
 				return false;
 			}
 		};
-		
+
 		// add header of the table
 		String[] colunas={"Código de barras", "Tipo", "Título", "Número de Leitor", "Nome do Leitor", "Telefone Leitor", "Email Leitor", 
 				"Data Empréstimo", "Prazo máximo entrega"};
@@ -131,24 +134,35 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		ArrayList<Emprestimo> emprestimos = biblioteca.consultaEmprestimoExpirado();
 		Object [][] data= new Object[emprestimos.size()][10];
 
-		for (int i = 0; i < emprestimos.size(); i++) {
 
+
+
+
+		for (int i = 0; i < emprestimos.size(); i++) {
+			
 			Emprestimo emp = emprestimos.get(i);
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			Date emprestimo = emp.getDataEmp(); 
+			Date datadev = emp.dataMaximaEntrega();  
+			String dataEmp = df.format(emprestimo);
+			String datadevolucao = df.format(datadev);
+
+
 			Publicacao pub = (Publicacao) emp.getPublicacao();
-	        dtm.addRow(new Object[] {  pub.getCodBarras(),
-	        			pub.getClass().getSimpleName(),
-	        			pub.getTitulo(),
-	        			emp.getLeitor().getNumLeitor(),
-	        			emp.getLeitor().getNome(),
-	        			emp.getLeitor().getTelefone(),
-	        			emp.getLeitor().getEmail(),
-	        			emp.getDataEmp(),
-	        			emp.dataMaximaEntrega(), });
-	        
+			dtm.addRow(new Object[] {  pub.getCodBarras(),
+					pub.getClass().getSimpleName(),
+					pub.getTitulo(),
+					emp.getLeitor().getNumLeitor(),
+					emp.getLeitor().getNome(),
+					emp.getLeitor().getTelefone(),
+					emp.getLeitor().getEmail(),
+					dataEmp,
+					datadevolucao, });
+
 		}
 
 		tabela.setModel(dtm);
-		
+
 	}
 
 	/**
@@ -174,11 +188,11 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			data[i][7] = emp.getLeitor().getEmail();
 			data[i][8] = emp.getDataEmp();
 			data[i][9] = emp.dataMaximaEntrega();
-			
+
 		}
 
 		return data;
-		
+
 	}
 
 	/**
