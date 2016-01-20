@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import pt.uc.dei.ar.ui.Janela;
 
 public class Main {
@@ -37,8 +36,7 @@ public class Main {
 			ArrayList<String>area3 = new ArrayList<String>();
 			area3.add("Saude");
 			area3.add("Medicina desportiva");
-
-
+			
 			maravilha.criaJornal("Diário Económico", "01/01/2016", "02/01/2016", areas1, Periodicidade.Diaria, "2");
 			maravilha.criaJornal("Wall Street Journal", "09/01/2016", "10/01/2016",areas1,Periodicidade.Diaria, "9");
 			maravilha.criaRevista("Times", "08/01/2016", "10/01/2016", areas1,Periodicidade.Quinzenal, 2);
@@ -70,7 +68,6 @@ public class Main {
 			maravilha.criaLivro("O dinheiro e a pobreza", "12/12/2014", "02/05/2015", autor1, areas1, "1", "12345678912", "Presença");
 			maravilha.criaLivro("A evolução da saúde portuguesa", "01/12/2012", "01/02/2013", autor5, areas1, "1", "12366678912", "Presenca");
 			maravilha.criaTese("O bacalhau e a economia portuguesa", "01/12/2012", "01/02/2013", autor5, area3, "Carlos Pancinhas", TipoDeTese.Doutoramento);
-
 
 			//Criar datas random
 
@@ -141,9 +138,7 @@ public class Main {
 			calendar21.set(2016, 00, 15);
 			Date data21=calendar21.getTime();
 
-
 			//Criar emprestimo e devoluçoes
-
 
 			maravilha.criaEmprestimoaMao(1, data1, 5); 
 			maravilha.devolveEmprestimoAMao(1, data1);
@@ -211,15 +206,12 @@ public class Main {
 			maravilha.criaEmprestimoaMao(2, data20,8);
 			maravilha.criaEmprestimoaMao(4, data21,6);	
 			maravilha.devolveEmprestimoAMao(34, data21);
-
-
-
-
 		}
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Janela frame = new Janela();
 					frame.setVisible(true);
 				} catch (Exception e) {

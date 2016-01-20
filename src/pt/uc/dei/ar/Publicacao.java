@@ -85,7 +85,6 @@ public class Publicacao implements Serializable{
 		} catch (ParseException e){
 			e.printStackTrace();
 		}	
-
 	}
 
 	/**
@@ -182,7 +181,6 @@ public class Publicacao implements Serializable{
 	public int hashCode() {
 
 		return this.codBarras + this.titulo.hashCode();
-		
 	}
 
 	/**

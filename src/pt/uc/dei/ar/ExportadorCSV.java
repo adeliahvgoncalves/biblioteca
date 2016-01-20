@@ -17,9 +17,7 @@ public class ExportadorCSV {
 	 * A biblioteca e atributo do exportadorCSV
 	 */
 	private Biblioteca biblioteca;
-
-
-
+	
 	/**
 	 * Construtor do ExportadorCSV:
 	 * @param biblioteca
@@ -36,7 +34,6 @@ public class ExportadorCSV {
 	 */
 	public Object [][] geraDadosDoRelatório(Calendar now){
 
-	
 		ArrayList<Publicacao> publicacoes = this.biblioteca.getListaDePublicacoes();
 		ArrayList<Publicacao> publicacoesSemJornal=new ArrayList<Publicacao>();
 		for (Publicacao publicacao : publicacoes) {
@@ -44,7 +41,6 @@ public class ExportadorCSV {
 				
 				publicacoesSemJornal.add(publicacao);
 			}
-			
 		}
 		Object [][] data= new Object[publicacoesSemJornal.size()][20];
 		Biblioteca biblioteca = this.biblioteca;
@@ -148,5 +144,4 @@ public class ExportadorCSV {
 		}
 		return builder.toString();
 	}
-
 }

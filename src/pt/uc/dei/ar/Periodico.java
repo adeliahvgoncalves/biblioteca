@@ -1,7 +1,7 @@
 package pt.uc.dei.ar;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Periodico herda de Publicacao e implementa o Serializable
@@ -13,6 +13,7 @@ public class Periodico extends Publicacao implements Serializable {
 	 * SerialVersion
 	 */
 	private static final long serialVersionUID = -8255569193119008522L;
+	
 	/**
      * Periodicidade do periodico
      */
@@ -30,8 +31,7 @@ public class Periodico extends Publicacao implements Serializable {
 			Periodicidade periodicidade) {
 		super(titulo, dataPublicacao, dataReceçao, areas);
 		
-		this.periodicidade = periodicidade;
-		
+		this.periodicidade = periodicidade;	
 	}
 
 	/**
@@ -50,5 +50,4 @@ public class Periodico extends Publicacao implements Serializable {
 	public String toString() {
 		return "Periodico [periodicidade=" + periodicidade + "]";
 	}
-
 }

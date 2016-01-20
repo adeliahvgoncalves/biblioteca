@@ -56,5 +56,4 @@ public class Jornal extends Periodico implements Serializable{
 				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + ", numEdicao=" + numEdicao + "]";
 		
 	}
-
 }

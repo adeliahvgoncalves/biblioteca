@@ -40,7 +40,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 		
 		this.nomeDoOrientador = nomeDoOrientador;
 		this.tipoDeTese = tipoDeTese;
-		
 	}
 
 	/**
@@ -86,5 +85,4 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 		return "Tese [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
 				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", nomeDoOrientador=" + nomeDoOrientador + ", tipoDeTese=" + tipoDeTese + "]";
 	}
-
 }

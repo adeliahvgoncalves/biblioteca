@@ -22,6 +22,10 @@ import java.awt.event.FocusListener;
 public class EmprestimoPanel extends JPanel implements ActionListener, FocusListener {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7853874828033622922L;
+	/**
 	 * A janela e atributo do EmprestimoPanel
 	 */
 	private Janela janela;

@@ -59,7 +59,6 @@ public class Contadores implements Serializable{
 		return contadorLeitor;
 	}
 
-	
 	public void setContadorLeitor(int contadorLeitor) {
 		this.contadorLeitor = contadorLeitor;
 	}
@@ -111,5 +110,4 @@ public class Contadores implements Serializable{
 	public void setContadorEmprestimo(int contadorEmprestimo) {
 		this.contadorEmprestimo = contadorEmprestimo;
 	}
-
 }

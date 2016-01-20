@@ -1,6 +1,5 @@
 package pt.uc.dei.ar;
 
-
 import java.io.Serializable;
 
 /**
@@ -18,9 +17,6 @@ public class Colaborador extends Utilizador implements Serializable {
      */
     private int numColaborador;
 	
-    
-    
-
     /**
      * Construtor da classe Colaborador.
 	 * @param username
@@ -33,18 +29,12 @@ public class Colaborador extends Utilizador implements Serializable {
 		this.numColaborador = numColaborador;
 	}
 
-
-
-
 	/**
      * @return o numero de colaborador do utilizador em formato inteiro
      */
     public int getNumColaborador() {
         return numColaborador;
     }
-
-
-
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -53,5 +43,4 @@ public class Colaborador extends Utilizador implements Serializable {
 	public String toString() {
 		return "Colaborador [numColaborador=" + numColaborador + "]";
 	}
-
 }

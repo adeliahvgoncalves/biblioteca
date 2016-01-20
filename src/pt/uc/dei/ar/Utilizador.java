@@ -34,12 +34,9 @@ public class Utilizador implements Serializable {
 	 * @param nome
 	 */
 	public Utilizador(String username, String nome) {
-		super();
-		
 		this.username = username;
 		this.hashedPassword = Biblioteca.getInstance().gerarPassword();
 		this.nome = nome;
-		
 	}
 
 	/**
@@ -70,5 +67,4 @@ public class Utilizador implements Serializable {
 	public String toString() {
 		return "Utilizador [username=" + username + ", hashedPassword=" + hashedPassword + ", nome=" + nome + "]";
 	}
-
 }

@@ -1,19 +1,19 @@
 package pt.uc.dei.ar.ui;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
@@ -27,12 +27,6 @@ import pt.uc.dei.ar.NaoPeriodico;
 import pt.uc.dei.ar.Publicacao;
 import pt.uc.dei.ar.Revista;
 import pt.uc.dei.ar.Tese;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
@@ -40,35 +34,44 @@ import java.text.SimpleDateFormat;
  * Pesquisa por codigo de barras a publicacao a pesquisar.
  */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
-		
+	
+	private static final long serialVersionUID = 4474035138215254357L;
+	
 	/**
 	 *A janela e atributo da PesquisarPublicacao
 	 */
 	private  Janela janela;
+	
 	/**
 	 * O txtPesquisa e atributo do PesquisarPublicacao
 	 */
 	private JTextField txtPesquisa;
+	
 	/**
 	 * A tabela e atributo do PesquisarPublicacao
 	 */
 	private JTable tabela;
+	
 	/**
 	 * O btnPesquisar e atributo do PesquisarPublicacao
 	 */
 	private JButton btnPesquisar;
+	
 	/**
 	 * btnSair e atributo do PesquisarPublicacao
 	 */
 	private JButton btnSair;
+	
 	/**
 	 * btnVoltar e atributo do PesquisarPublicacao
 	 */
 	private JButton btnVoltar;
+	
 	/**
 	 * pub e atributo do PesquisarPublicacao
 	 */
 	private Publicacao pub;
+	
 	/**
 	 * lblMensagem e atributo do PesquisarPublicacao
 	 */
@@ -78,7 +81,6 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	 * Instanciar o objeto biblioteca
 	 */
 	private Biblioteca biblioteca = Biblioteca.getInstance();
-	
 	
 	/**
 	 * Create the panel PesquisarPublicacao.
@@ -155,6 +157,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
 			
+			private static final long serialVersionUID = -8562864381552948526L;
+
 			//impede o utilizador de escrever dentro das celulas	
 			public boolean isCellEditable(int row, int columns){
 				return false;
@@ -172,12 +176,9 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		Object[][] publicacao = obterUmaPublicacao();
 		for (int i = 0; i < publicacao.length; i++) {
 
-			dtm.addRow(publicacao[i]);
-			
+			dtm.addRow(publicacao[i]);	
 		}
-
 		tabela.setModel(dtm);
-		
 	}
 
 	/**
@@ -197,8 +198,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			
 		} catch (NumberFormatException nfe) {
 			
-			pub = biblioteca.pesquisaPublicacao(txtPesquisa.getText());
-			
+			pub = biblioteca.pesquisaPublicacao(txtPesquisa.getText());	
 		}
 
 		//tento encontrar uma publicacao com o pesqusia, se nao encontro mando a tabela vazia
@@ -208,8 +208,13 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			
 		}
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		
+
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Date publicac = (Date) pub.getDataPublicacao();
+		String dataPublicacao=df.format(publicac);
+		Date rec=(Date) pub.getDataReceçao();
+		String dataRececao=df.format(rec);
 		
 		data[0][0] = pub.getCodBarras();
 		data[0][1] = pub.getClass().getSimpleName();
@@ -220,8 +225,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		else if (pub instanceof Livro || pub instanceof Tese){	
 			data[0][3] = ((NaoPeriodico) pub).getListaDeAutores();	
 		}
-		data[0][4] = pub.getDataPublicacao();;
-		data[0][5] =  pub.getDataReceçao();
+		data[0][4] = dataPublicacao;
+		data[0][5] =  dataRececao;
 		data[0][6] = pub.getListaDeAreas();
 		if (pub instanceof Revista ){
 			data[0][7] = ((Revista) pub).getPeriodicidade();
@@ -273,8 +278,12 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 				
 				if(emp.getPublicacao().equals(pub )){				
 					
-					data[0][15] = emp.getDataEmp(); 
-					data[0][16] = emp.dataMaximaEntrega();  
+					Date emprestimo = emp.getDataEmp(); 
+					Date datadev = emp.dataMaximaEntrega();  
+					String dataEmp = df.format(emprestimo);
+					String datadevolucao = df.format(datadev);
+					data[0][15] = dataEmp; 
+					data[0][16] = datadevolucao;  
 				}
 			}
 		}
@@ -284,9 +293,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		}
 
 		return data;
-		
 	}
-	
 	
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -328,12 +335,10 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	 */
 	@Override
 	public void focusGained(FocusEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getSource()==this.txtPesquisa){
 			txtPesquisa.setText("");
 			txtPesquisa.setForeground(Color.BLACK);
 			txtPesquisa.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-			
 		}
 	}
 
@@ -342,6 +347,6 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	 */
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
+		
 	}
 }

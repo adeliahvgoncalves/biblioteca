@@ -26,7 +26,9 @@ import java.awt.event.ActionEvent;
  *
  */
 public class BibliotecarioChefePanel extends JPanel implements ActionListener {
-
+	
+	private static final long serialVersionUID = -4847245193922439850L;
+	
 	/**
 	 * A janela e atributo do BibliotecarioChefePanel
 	 */
@@ -112,7 +114,6 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		btnGerarRelatrio.addActionListener(this);
 		btnGerarRelatrio.setBounds(69, 224, 144, 47);
 		panel.add(btnGerarRelatrio);
-
 	}
 
 	/**
@@ -136,7 +137,6 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		} else if (e.getSource() == this.btnPesquisaPublicacao) {
 
 			janela.pesquisaPublicacaoOK();
-
 		}
 
 		else if (e.getSource() == this.btnEmprestimosAtraso) {

@@ -1,7 +1,6 @@
 package pt.uc.dei.ar.ui;
 import java.io.File;
 
-import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
 /**
@@ -26,7 +25,6 @@ public class SaveFile extends FileFilter {
 
 		this.extension=extension;
 		this.description=description;
-		
 	}
 
 	/* (non-Javadoc)

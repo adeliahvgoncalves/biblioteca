@@ -22,21 +22,15 @@ public class Biblioteca implements Serializable{
 	 */
 	private static final long serialVersionUID = -459669107686914825L;
 
-
-
 	/**
 	 * Lista de utilizadores e atributo da classe biblioteca
 	 */
 	private ArrayList<Utilizador> listaDeUtilizadores;
 
-
-
 	/**
 	 * Lista de publicacoes e atributo da classe biblioteca
 	 */
 	private ArrayList<Publicacao> listaDePublicacoes;
-
-
 
 	/**
 	 * Lista de emprestimos e atributo da classe biblioteca
@@ -48,12 +42,10 @@ public class Biblioteca implements Serializable{
 	 */
 	private Contadores contadores;
 
-
 	/**
 	 * Instanciar a biblioteca
 	 */
 	private static Biblioteca instance;
-
 
 	/**
 	 * Construtor da classe biblioteca
@@ -83,9 +75,7 @@ public class Biblioteca implements Serializable{
 			}
 			// O valor é retornado para quem está a pedir
 		}
-		return instance;
-		// Retorna o a instância do objeto
-
+		return instance; // Retorna o a instância do objeto
 	}
 
 	/**
@@ -112,7 +102,6 @@ public class Biblioteca implements Serializable{
 		listaDeEmprestimo.add(emprestimo);
 	}
 
-
 	/**
 	 * Pesquisa utilizador por username
 	 * @param string  username
@@ -130,7 +119,6 @@ public class Biblioteca implements Serializable{
 		return utilizadorPorUsername;
 	}
 
-
 	/**
 	 * Verifica se a publicacao e requisitavel
 	 * @param publicacao
@@ -144,8 +132,6 @@ public class Biblioteca implements Serializable{
 		} 
 		return false;
 	}
-
-
 
 	/**
 	 * Gerar password random para o utilizador
@@ -161,7 +147,6 @@ public class Biblioteca implements Serializable{
 
 		return Integer.toString(password);
 	}
-
 
 	/**
 	 * Login encontrado
@@ -180,7 +165,6 @@ public class Biblioteca implements Serializable{
 		return null;
 	}
 
-
 	/**
 	 * Pesquisa utilizador com cartao do cidadao
 	 * @param string  cartao do cidadao
@@ -195,10 +179,8 @@ public class Biblioteca implements Serializable{
 					leitorNumLeitor = (Leitor) utilizador;
 				}
 		}
-
 		return leitorNumLeitor;
 	}
-
 
 	/**
 	 * Cria leitor e adiciona ao arrayList utilizador
@@ -255,7 +237,6 @@ public class Biblioteca implements Serializable{
 
 	}
 
-
 	/**
 	 * Cria revista e adiciona ao arrayList Publicacao
 	 * @param titulo
@@ -274,7 +255,6 @@ public class Biblioteca implements Serializable{
 		this.adicionaPublicacao(revista);
 		return revista.getCodBarras();
 	}
-
 
 	/**
 	 * Cria Jornal e adiciona ao arrayList Publicacao
@@ -352,12 +332,10 @@ public class Biblioteca implements Serializable{
 
 					utilizadorColaborador = utilizador;
 				}
-
 		}
 
 		return utilizadorColaborador;
 	}
-
 
 	/**
 	 * Pesquisa utilizador com numero de leitor
@@ -377,7 +355,6 @@ public class Biblioteca implements Serializable{
 		return leitorNumLeitor;
 	}
 
-
 	/**
 	 * Pesquisa pubicacao por codigo de barras
 	 * @param int codigoBarras 
@@ -395,7 +372,6 @@ public class Biblioteca implements Serializable{
 		return publicaçãoComCodigoBarras;	
 
 	}
-
 
 	/**
 	 * Cria emprestimo
@@ -417,10 +393,8 @@ public class Biblioteca implements Serializable{
 		((Leitor) utilizador).adicionaEmprestimo(emprestimo);
 		publicacao.setOcupado(true);
 
-
 		return true;
 	}
-
 
 	/**
 	 * Devolve emprestimo
@@ -450,7 +424,6 @@ public class Biblioteca implements Serializable{
 		return false;
 	}
 
-
 	/**
 	 * Pesquisa por area
 	 * @param String area 
@@ -472,7 +445,6 @@ public class Biblioteca implements Serializable{
 		return publicacaoPorArea;
 	}
 
-
 	/**
 	 * Pesquisa publicacao por autor
 	 * @param emprestimo 
@@ -484,7 +456,6 @@ public class Biblioteca implements Serializable{
 		for(Publicacao publicacao: listaDePublicacoes){
 			if(publicacao instanceof NaoPeriodico){
 				ArrayList<String> autores=((NaoPeriodico) publicacao).getListaDeAutores();
-
 
 				for (String autorProcura : autores) {
 					if(autorProcura.equalsIgnoreCase(nome)){
@@ -508,7 +479,6 @@ public class Biblioteca implements Serializable{
 			if(publicacao.getTitulo().contains(nome))	{	
 				publicacaoComParteNome.add(publicacao);
 			}
-
 		}
 		return publicacaoComParteNome;
 
@@ -526,10 +496,8 @@ public class Biblioteca implements Serializable{
 
 				pesquisaNome = publicacao;
 			}
-
 		}
 		return pesquisaNome;
-
 	}
 
 	/**
@@ -554,10 +522,8 @@ public class Biblioteca implements Serializable{
 
 				if(dataMaximaEntrega1 < dataAtual){
 					emprestimosDataExpirada.add(emprestimo);
-
 				}
 			}
-
 		}
 		return emprestimosDataExpirada;
 	}
@@ -580,7 +546,6 @@ public class Biblioteca implements Serializable{
 
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataAtual)){
 				emprestimosUltimoAno.add(emprestimo);
-
 			}
 		}
 		return emprestimosUltimoAno.size();
@@ -593,11 +558,9 @@ public class Biblioteca implements Serializable{
 	 */
 	public Map<String, Integer>  geraMapaRepeticoesMensais(Calendar dataAtual){
 
-
 		Calendar dataAnoAnterior = Calendar.getInstance();
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 		
-	
 		Map<String, Integer> countMap = new HashMap<String, Integer>();
 
 		for (Emprestimo emprestimo : listaDeEmprestimo) {
@@ -620,7 +583,6 @@ public class Biblioteca implements Serializable{
 		}
 		return countMap;
 	}
-
 
 	/**
 	 * Gera um Map que indica quantos emprestimos houve para cada obra  no total dos ultimos 12 meses
@@ -679,8 +641,6 @@ public class Biblioteca implements Serializable{
 			Calendar dataDeEmp= Calendar.getInstance();
 			dataDeEmp.setTime(emprestimo.getDataEmp());
 
-
-
 			if(dataDeEmp.after(dataAnoAnterior) && dataDeEmp.before(dataMesAnterior)){
 				Publicacao pub = (Publicacao) emprestimo.getPublicacao();
 
@@ -693,7 +653,6 @@ public class Biblioteca implements Serializable{
 				} else {
 					ArrayList<Integer>daysArray = countMap.get(pub);
 					daysArray.add( new Integer(diasEmprestimo) );
-
 				}	
 			}
 		}
@@ -706,7 +665,6 @@ public class Biblioteca implements Serializable{
 			ArrayList<Integer> arrayInteiros = entry.getValue(); // valor
 			MatematicaFuncoes contagens = new MatematicaFuncoes(arrayInteiros); // cria a nova estrutura de dados
 			counts.put(publicacao, contagens); // põe a contagem para a public no hash
-
 		}
 		return counts;
 	}
@@ -718,7 +676,6 @@ public class Biblioteca implements Serializable{
 	public boolean temDados(){
 		return this.listaDeUtilizadores.size()>0;
 	}
-
 
 	/**
 	 * @return the listaDeUtilizadores
@@ -777,14 +734,6 @@ public class Biblioteca implements Serializable{
 		this.contadores = contadores;
 	}
 
-
-	//	public Utilizador criaUtilizador1(String username, String password, String nome, int numColaborador){
-	//	
-	//		
-	//		BiliotecarioChefe bibChefe= new Utilizador("dio", "123", "João Francisco Sousa Andrade", 1237);
-	//		listaDeUtilizadores.add(bibChefe);
-	//	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -806,8 +755,6 @@ public class Biblioteca implements Serializable{
 		return true;
 	}
 
-
-
 	// Método de apoio àdevolução de empréstimos no main
 	public void devolveEmprestimoAMao(int numEmp, Date Date){
 		Emprestimo publicacaoParaDevolver = pesquisaEmprestimo(numEmp);
@@ -816,8 +763,7 @@ public class Biblioteca implements Serializable{
 		leitor.removeEmprestimo(publicacaoParaDevolver);
 
 	}
-
-
+	
 	// Método de apoio ao método anterior
 	public Emprestimo pesquisaEmprestimo(int numEmp) {
 		Emprestimo emprestimoNum=null;

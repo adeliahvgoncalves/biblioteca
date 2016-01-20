@@ -14,6 +14,7 @@ import java.awt.CardLayout;
  */
 public class Janela extends JFrame {
 
+	private static final long serialVersionUID = 1263932340481970651L;
 	/**
 	 * Create the frame.
 	 */
@@ -96,7 +97,6 @@ public class Janela extends JFrame {
 
 		this.registaPublicacao= new RegistaPublicacaoPanel(this);
 		getContentPane().add(registaPublicacao, "registaPublicacao");
-
 	}
 
 	/**
@@ -108,7 +108,6 @@ public class Janela extends JFrame {
 		leitor.preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
 		leitor.setUtilizador(utilizador);
 		layout.show(getContentPane(), "leitor");
-
 	}
 
 	/**
@@ -118,7 +117,6 @@ public class Janela extends JFrame {
 
 		emprestimo.desativaVisibilidaBotaoVoltar();
 		layout.show(getContentPane(), "emprestimo");
-
 	}
 
 	/**
@@ -128,7 +126,6 @@ public class Janela extends JFrame {
 
 		layout.show(getContentPane(), "emprestimo");
 		emprestimo.activaVisibilidaBotaoVoltar();
-
 	}
 
 	/**
@@ -137,7 +134,6 @@ public class Janela extends JFrame {
 	public void bibliotecarioChefeOK(){
 
 		layout.show(getContentPane(), "bibliotecarioChefe");
-
 	}
 
 	/**
@@ -146,7 +142,6 @@ public class Janela extends JFrame {
 	public void sairOK() {
 
 		layout.show(getContentPane(), "login");
-
 	}
 
 	/**
@@ -155,7 +150,6 @@ public class Janela extends JFrame {
 	public void registaUtilizadorOK(){
 
 		layout.show(getContentPane(), "registaUtilizador");
-
 	}
 
 	/**
@@ -164,7 +158,6 @@ public class Janela extends JFrame {
 	public void pesquisaPublicacaoOK(){
 
 		layout.show(getContentPane(), "pesquisaPublicacao");
-
 	}
 
 	/**
@@ -174,7 +167,6 @@ public class Janela extends JFrame {
 
 		this.emprestimosForaPrazo.preencheTabelaEmprestimo();
 		layout.show(getContentPane(), "emprestimosForaPrazo");
-
 	}
 
 	/**
@@ -183,7 +175,5 @@ public class Janela extends JFrame {
 	public void registaPublicacaoOK(){
 
 		layout.show(getContentPane(),"registaPublicacao");
-
 	}
-
 }

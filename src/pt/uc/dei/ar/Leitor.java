@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Leitor herda da classe Utilizador e implementa o Serializable
@@ -16,34 +17,42 @@ public class Leitor extends Utilizador implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 5729849162098592996L;
+	
 	/**
 	 * Lista de emprestimos e atributo da classe Leitor
 	 */
 	private ArrayList<Emprestimo> listaDeEmprestimos;
+	
 	/**
 	 * Numero de leitor e atributo da classe leitor
 	 */
 	private int numLeitor=0;
+	
 	/**
 	 * Numero de leitor sequencial permite a criacao de numeros sequenciais
 	 */
 	private static int ultimoNumLeitorSequencial=0;
+	
 	/**
 	 *Data de nascimento do utilizador. 
 	 */
 	private Date dataNascimento;
+	
 	/**
 	 * Cartao de Cidadao do utilizador.
 	 */
 	private String cartaoCidadao;
+	
 	/**
 	 * Morada do utilizador.
 	 */
 	private String morada;
+	
 	/**
 	 * E-mail do utilizador.
 	 */
 	private String email;
+	
 	/**
 	 * Numero de telefone, contacto telefonico do utilizador.
 	 */
@@ -81,7 +90,6 @@ public class Leitor extends Utilizador implements Serializable {
 		this.morada = morada;
 		this.email = email;
 		this.telefone = telefone;
-		
 	}
 
 	/**
@@ -125,8 +133,7 @@ public class Leitor extends Utilizador implements Serializable {
 	public String getCartaoCidadao() {
 		return cartaoCidadao;
 	}
-
-
+	
 	/**
 	 * @return a morada em formato String
 	 */
@@ -207,9 +214,7 @@ public class Leitor extends Utilizador implements Serializable {
 				emprestimosAtuais.add(emprestimo);
 			}
 		}
-		
 		return emprestimosAtuais;
-		
 	}
 	
 	/**
@@ -229,5 +234,4 @@ public class Leitor extends Utilizador implements Serializable {
 				+ dataNascimento + ", cartaoCidadao=" + cartaoCidadao + ", morada=" + morada + ", email=" + email
 				+ ", telefone=" + telefone + "]";
 	}
-	
 }

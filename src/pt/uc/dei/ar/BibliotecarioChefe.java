@@ -16,9 +16,6 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
      * Numero de colaborador.
      */
     private int numColaborador;
-    
-   
-    
 
     /**
      * Construtor da classe BibliotecarioChefe.
@@ -32,18 +29,12 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 		this.numColaborador = numColaborador;
 	}
 
-
-
-
 	/**
      * @return o numero de colaborador do utilizador em formato inteiro.
      */
     public int getNumColaborador() {
         return numColaborador;
     }
-
-
-
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -52,7 +43,4 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 	public String toString() {
 		return "BibliotecarioChefe [numColaborador=" + numColaborador + "]";
 	}
-    
-    
-
 }

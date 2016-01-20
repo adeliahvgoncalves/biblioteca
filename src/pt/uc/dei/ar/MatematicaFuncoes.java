@@ -38,7 +38,6 @@ public class MatematicaFuncoes {
 		this.maximo = Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo
 		this.media  = this.calculaMedia(lista);
-		
 	}
 
 	/**
@@ -103,7 +102,6 @@ public class MatematicaFuncoes {
 		}
 		
 		return sum / list.size();
-
 	}
 
 	/*
@@ -115,5 +113,4 @@ public class MatematicaFuncoes {
 	public String toString() {
 		return "ContagensPublicacao [maximo=" + maximo + ", minimo=" + minimo + ", media=" + media + "]";
 	}
-
 }

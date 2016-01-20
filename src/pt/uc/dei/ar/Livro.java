@@ -48,7 +48,6 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		this.numEdicao = numEdicao;
 		this.ISBN = iSBN;
 		this.editor = editor;
-		
 	}
 
 	/**
@@ -100,5 +99,4 @@ public class Livro extends NaoPeriodico implements Requisitavel, Serializable {
 		return "Livro [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
 		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", numEdicao=" + numEdicao + ", ISBN=" + ISBN + ", editor=" + getEditor() + "]";
 	}
-	
 }

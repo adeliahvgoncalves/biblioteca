@@ -1,31 +1,28 @@
 package pt.uc.dei.ar.ui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.michaelbaranov.microba.calendar.DatePicker;
 
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.Periodicidade;
 import pt.uc.dei.ar.TipoDeTese;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JFormattedTextField;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.text.SimpleDateFormat;
-
-import com.michaelbaranov.microba.calendar.DatePicker;
-
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
@@ -35,102 +32,128 @@ import com.michaelbaranov.microba.calendar.DatePicker;
  */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	
+	private static final long serialVersionUID = 159058781127798846L;
+	
 	/**
 	 *A janela e atributo da RegistaPublicacaoPanel
 	 */
 	private Janela janela;
+	
 	/**
 	 *pnlTipoPublicacao e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlTipoPublicacao;
+	
 	/**
 	 *pnlTese e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlTese;
+	
 	/**
 	 *pnlLivro e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlLivro;
+	
 	/**
 	 *pnlPeriodico e atributo da RegistaPublicacaoPanel
 	 */
 	private JPanel pnlPeriodico;
+	
 	/**
 	 *txtTitulo e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtTitulo;
+	
 	/**
 	 *txtAreas e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAreas;
+	
 	/**
 	 *txtAutores e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAutores;
+	
 	/**
 	 *txtNumEdicao e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtNumEdicao;
+	
 	/**
 	 *txtEditor e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtEditor;
+	
 	/**
 	 *txtIsbn e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtIsbn;
+	
 	/**
 	 *txtAutor e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtAutor;
+	
 	/**
 	 *txtOrientador e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtOrientador;
+	
 	/**
 	 *txtVolume e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtVolume;
+	
 	/**
 	 *txtNumEdicaoJornal e atributo da RegistaPublicacaoPanel
 	 */
 	private JTextField txtNumEdicaoJornal;
+	
 	/**
 	 *lblNumEdicaoJornal e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblNumEdicaoJornal;
+	
 	/**
 	 *lblVolume e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblVolume;
+	
 	/**
 	 *lblMensagem e atributo da RegistaPublicacaoPanel
 	 */
 	private JLabel lblMensagem;
+	
 	/**
 	 *btnSair e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnSair;
+	
 	/**
 	 *btnVoltar e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnVoltar;
+	
 	/**
 	 *btnRegistar e atributo da RegistaPublicacaoPanel
 	 */
 	private JButton btnRegistar;
+	
 	/**
 	 *layout e atributo da RegistaPublicacaoPanel
 	 */
 	private CardLayout layout;
+	
 	/**
 	 *comboBox e atributo da RegistaPublicacaoPanel
 	 */
 	private JComboBox<String> comboBox;
+	
 	/**
 	 *comboBoxTipoTese e atributo da RegistaPublicacaoPanel
 	 */
 	private JComboBox<String> comboBoxTipoTese;
+	
 	/**
 	 *comboBoxPeriodicidade e atributo da RegistaPublicacaoPanel
 	 */

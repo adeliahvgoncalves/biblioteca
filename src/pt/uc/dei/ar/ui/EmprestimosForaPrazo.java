@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,19 +26,19 @@ import pt.uc.dei.ar.Publicacao;
  *
  */
 public class EmprestimosForaPrazo extends JPanel implements ActionListener {
-
+	
+	private static final long serialVersionUID = -4505839442695977870L;
+	
 	/**
 	 * A janela e atributo do EmprestimosForaPrazo
 	 */
 	private Janela janela;
-	/**
-	 * textFielPesquisa e atributo do EmprestimosForaPrazo
-	 */
-	private JTextField textFielPesquisa;
+	
 	/**
 	 * layout e atributo do EmprestimosForaPrazo
 	 */
 	private CardLayout layout;
+	
 	/**
 	 * tabela e atributo do EmprestimosForaPrazo
 	 */
@@ -102,12 +101,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		data= new Object[emprestimos.size()][10];
 
 		for (int i = 0; i < emprestimos.size(); i++) {
-
-			Emprestimo emp = emprestimos.get(i);
-			Publicacao pub = (Publicacao) emp.getPublicacao();
-
+			
 			this.preencheTabelaEmprestimo();
-
 		}
 	}
 
@@ -117,6 +112,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	public void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
+			
+			private static final long serialVersionUID = 8713321643904602904L;
 
 			//impede o utilizador de escrever dentro das celulas	
 			public boolean isCellEditable(int row, int columns){
@@ -132,11 +129,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		dtm.setColumnIdentifiers(colunas);
 
 		ArrayList<Emprestimo> emprestimos = biblioteca.consultaEmprestimoExpirado();
-		Object [][] data= new Object[emprestimos.size()][10];
-
-
-
-
 
 		for (int i = 0; i < emprestimos.size(); i++) {
 			
@@ -158,11 +150,9 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 					emp.getLeitor().getEmail(),
 					dataEmp,
 					datadevolucao, });
-
 		}
 
 		tabela.setModel(dtm);
-
 	}
 
 	/**
@@ -188,11 +178,8 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 			data[i][7] = emp.getLeitor().getEmail();
 			data[i][8] = emp.getDataEmp();
 			data[i][9] = emp.dataMaximaEntrega();
-
 		}
-
 		return data;
-
 	}
 
 	/**
@@ -200,7 +187,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 		if (e.getSource() == this.btnSair) {
 

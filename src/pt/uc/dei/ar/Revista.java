@@ -33,7 +33,6 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	 */
 	private static int ultimonumeroSequencial=0;
 
-
 	/**
 	 * Construtor da classe Revista
 	 * @param titulo
@@ -50,7 +49,6 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 		
 		ultimonumeroSequencial++;
 		this.numeroSequencial = ultimonumeroSequencial;
-		
 	}
 
 	/**
@@ -109,5 +107,4 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 		return "Revista [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
 		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + "volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}
-
 }

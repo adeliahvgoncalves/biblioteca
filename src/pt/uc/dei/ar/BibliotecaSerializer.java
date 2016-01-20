@@ -59,9 +59,7 @@ public class BibliotecaSerializer {
 			instance= new BibliotecaSerializer();
 			// O valor é retornado para quem está a pedir
 		}
-		return instance;
-		// Retorna o a instância do objeto
-
+		return instance; // Retorna o a instância do objeto
 	}
 
 	/**
@@ -138,7 +136,6 @@ public class BibliotecaSerializer {
 		oS = new ObjectOutputStream(new FileOutputStream(nomeDoFicheiro));
 	}
 
-	
 	/**
 	 * Metodo para ler um objeto do ficheiro
 	 * @return o objeto lido
@@ -162,12 +159,10 @@ public class BibliotecaSerializer {
 	 * Metodo para fechar um ficheiro aberto em modo leitura 
 	 * @throws IOException
 	 */
-	private void fechaLeitura() throws IOException
-	{
+	private void fechaLeitura() throws IOException {
 		try {
 			iS.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -176,12 +171,10 @@ public class BibliotecaSerializer {
 	 * Metodo para fechar um ficheiro aberto em modo escrita 
 	 * @throws IOException
 	 */
-	private void fechaEscrita() throws IOException
-	{
+	private void fechaEscrita() throws IOException {
 		try {
 			oS.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}

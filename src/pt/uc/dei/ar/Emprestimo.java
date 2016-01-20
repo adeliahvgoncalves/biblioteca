@@ -9,7 +9,6 @@ import java.util.*;
  */
 public class Emprestimo implements Serializable {
 
-
 	/**
 	 * SerialVersion
 	 */
@@ -40,12 +39,10 @@ public class Emprestimo implements Serializable {
 	 */
 	private Date dataDev;
 
-
 	/**
 	 * Publicacao e atributo de emprestimo
 	 */
 	private Requisitavel publicacao;
-
 
 	/**
 	 * Construtor da classe Emprestimo
@@ -60,12 +57,10 @@ public class Emprestimo implements Serializable {
 		super();
 		numEmpUltimo++;
 		this.numEmp = numEmpUltimo;
-		this.dataEmp=dataEmp;
+		this.dataEmp = dataEmp;
 		this.leitor = leitor;
-		this.publicacao=publicacao;
+		this.publicacao = publicacao;
 	}
-
-
 
 	/**
 	 * @return o numero de emprestimo, em formato inteiro
@@ -74,15 +69,12 @@ public class Emprestimo implements Serializable {
 		return numEmp;
 	}
 
-
 	/**
 	 * @return o leitor em formato leitor
 	 */
 	public Leitor getLeitor() {
 		return leitor;
 	}
-
-
 
 	/**
 	 * @return a data de emprestimo em formato data
@@ -91,15 +83,12 @@ public class Emprestimo implements Serializable {
 		return dataEmp;
 	}
 
-
 	/**
 	 * @return a data de devolucao em formato data
 	 */
 	public Date getDataDev() {
 		return dataDev;
 	}
-
-
 
 	/**
 	 * @param dataDev the dataDev to set
@@ -108,8 +97,6 @@ public class Emprestimo implements Serializable {
 	public void setDataDev(Date dataDev) {
 		this.dataDev = dataDev;
 	}
-
-
 
 	/**
 	 * @return a publicacao que seja requisitavel
@@ -145,8 +132,6 @@ public class Emprestimo implements Serializable {
 		c.add(Calendar.DATE, publicacao.maximoDiasRequisicao());
 		Date dataMaximaEntrega = c.getTime();
 		return dataMaximaEntrega;
-
-
 	}
 
 	/**
@@ -158,15 +143,10 @@ public class Emprestimo implements Serializable {
 		long m1 = 0;
 		long m2 = 0;
 		int diasEmprestimo=0;
+		m1 = this.getDataEmp().getTime();
 		if(this.getDataDev() != null){
-
-			m1 = this.getDataEmp().getTime();
 			m2 = this.getDataDev().getTime();
 		} else {
-			
-			m1 = this.getDataEmp().getTime();
-		
-			
 			Calendar dataMesAnterior = Calendar.getInstance();
 			dataMesAnterior.set(Calendar.DAY_OF_MONTH, 1);
 			dataMesAnterior.add(Calendar.DAY_OF_MONTH, -1);
@@ -179,7 +159,6 @@ public class Emprestimo implements Serializable {
 		return  diasEmprestimo;
 	}
 
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -188,6 +167,4 @@ public class Emprestimo implements Serializable {
 		return "Emprestimo [numEmp=" + numEmp + ", leitor=" + leitor + ", dataEmp=" + dataEmp + ", dataDev=" + dataDev
 				+ ", publicacao=" + publicacao + "]";
 	}
-
-
 }

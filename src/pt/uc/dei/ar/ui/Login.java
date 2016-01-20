@@ -15,7 +15,6 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
@@ -24,22 +23,28 @@ import java.awt.event.KeyListener;
  */
 public class Login extends JPanel implements ActionListener, KeyEventDispatcher {
 
+	private static final long serialVersionUID = 3060091237699583333L;
+
 	/**
 	 * txtUser e atributo do Login
 	 */
 	private JTextField txtUser;
+	
 	/**
 	 * pwdText e atributo do Login
 	 */
 	private JPasswordField pwdText;
+	
 	/**
 	 * lblMensagem e atributo do Login
 	 */
 	private JLabel lblMensagem;
+	
 	/**
 	 * janela e atributo do Login
 	 */
 	private Janela janela;
+	
 	/**
 	 * btnLogin e atributo do Login
 	 */
@@ -118,7 +123,6 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 	private String leUser() {
 
 		return txtUser.getText();
-
 	}
 
 	/**
@@ -130,7 +134,6 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 	public String lePass() {
 
 		return pwdText.getText();
-
 	}
 
 	/**
@@ -141,7 +144,6 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 		lblMensagem.setText("");
 		txtUser.setText("");
 		pwdText.setText("");
-
 	}
 
 	/**
@@ -192,6 +194,5 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 			}
 		}
 		return false;
-
 	}
 }

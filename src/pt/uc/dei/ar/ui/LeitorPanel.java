@@ -44,6 +44,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LeitorPanel extends JPanel implements ActionListener, FocusListener {
 
+	private static final long serialVersionUID = -3657988194948333766L;
 	/**
 	 * A janela e atributo do LeitorPanel
 	 */
@@ -204,6 +205,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
 			
+			private static final long serialVersionUID = -5623550706286555854L;
+
 			//impede o utilizador de escrever dentro das celulas	
 			public boolean isCellEditable(int row, int columns){
 				return false;
@@ -311,9 +314,11 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
-			
-		//impede o utilizador de escrever dentro das celulas	
-		public boolean isCellEditable(int row, int columns){
+
+			private static final long serialVersionUID = 2750949889278771486L;
+
+			//impede o utilizador de escrever dentro das celulas	
+			public boolean isCellEditable(int row, int columns){
 				return false;
 			}
 		};
@@ -349,11 +354,16 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		for (int i = 0; i < pubs.size(); i++) {
 			Publicacao pub = pubs.get(i);
 
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			Date publicac=pub.getDataPublicacao();
+			String dataPublicacao=df.format(publicac);
+			Date rec=pub.getDataReceçao();
+			String dataRececao=df.format(rec);
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
 			data[i][2] = pub.getTitulo();
-			data[i][4] = pub.getDataPublicacao();
-			data[i][5] = pub.getDataReceçao();
+			data[i][4] = dataPublicacao;
+			data[i][5] = dataRececao;
 			data[i][6] = pub.getListaDeAreas();
 			if (pub instanceof Revista ){
 				data[i][3] = "--";

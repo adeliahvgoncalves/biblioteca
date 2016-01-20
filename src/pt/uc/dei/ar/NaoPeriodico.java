@@ -1,7 +1,7 @@
 package pt.uc.dei.ar;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * O não periódico herda de Publicação e implementa o Serializable
@@ -13,6 +13,7 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	 * SerialVersion
 	 */
 	private static final long serialVersionUID = 9197568589647852671L;
+	
 	/**
      * Lista de autores do nao periodico
      */
@@ -29,7 +30,6 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 		super(titulo, dataPublicacao, dataReceçao, areas);
 		
 		this.listaDeAutores = new ArrayList<String>(autores);
-		
 	}
 
 	/**
@@ -56,5 +56,4 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	public String toString() {
 		return "NaoPeriodico [listaDeAutores=" + listaDeAutores + "]";
 	}
-
 }

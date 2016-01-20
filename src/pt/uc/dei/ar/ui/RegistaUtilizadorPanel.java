@@ -1,10 +1,16 @@
 package pt.uc.dei.ar.ui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.CardLayout;
 import java.awt.Panel;
-import javax.swing.JComboBox;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.michaelbaranov.microba.calendar.DatePicker;
@@ -13,18 +19,6 @@ import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.BibliotecarioChefe;
 import pt.uc.dei.ar.Colaborador;
-import pt.uc.dei.ar.Utilizador;
-
-import java.awt.CardLayout;
-import javax.swing.JFormattedTextField;
-import java.awt.Color;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.text.SimpleDateFormat;
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
@@ -33,7 +27,8 @@ import java.text.SimpleDateFormat;
  * @author Adelia Goncalves e Maria Joao Silva
  */
 public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
-
+	
+	private static final long serialVersionUID = 5342152693463511660L;
 	/**
 	 *Janela e atributo da RegistaUtilizadorPanel
 	 */
@@ -426,8 +421,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	 */
 	private void limpaPainelRegistaUtilizador() {
 
-		// TODO melhorar a limpeza dos campos
-
 		this.txtUsername.setText("");
 		this.txtNome.setText("");
 		this.txtCC.setText("");
@@ -437,7 +430,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		this.txtContactoTelefonico.setText("");
 		this.lblMensagem.setText("");
 		this.lblMensagemLeitor.setText("");
-
 	}
 
 	/**
@@ -449,7 +441,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 		lblMensagem.setText(string);
 		lblMensagemLeitor.setText(stringDois);
-
 	}
 
 	/**
@@ -464,6 +455,5 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		this.txtMorada.setText("");
 		this.txtEmail.setText("");
 		this.txtContactoTelefonico.setText("");
-
 	}
 }
