@@ -87,12 +87,12 @@ public class ExportadorCSV {
 				data[i][k++] = contagens != null ? contagens.getMaximo() : "-";
 				data[i][k++] = contagens != null ? contagens.getMedia() : "-";
 				if(pub instanceof Revista){
-					data[i][k++] = ((Revista) pub).detalhes();
+					data[i][k++] = "\""+((Revista) pub).detalhes()+"\"";
 				} else if(pub instanceof Livro){
-					data[i][k++] = ((Livro) pub).detalhes();
+					data[i][k++] = "\""+((Livro) pub).detalhes()+"\"";
 				}
 				else if(pub instanceof Tese){
-					data[i][k++] = ((Tese) pub).detalhes();
+					data[i][k++] = "\""+((Tese) pub).detalhes()+"\"";
 				}
 			}
 		}
