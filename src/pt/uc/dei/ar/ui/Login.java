@@ -2,22 +2,20 @@ package pt.uc.dei.ar.ui;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
 import javax.swing.JTextField;
-
-
 import pt.uc.dei.ar.Biblioteca;
 import pt.uc.dei.ar.BibliotecarioChefe;
 import pt.uc.dei.ar.Colaborador;
 import pt.uc.dei.ar.Leitor;
 import pt.uc.dei.ar.Utilizador;
-
 import javax.swing.JPasswordField;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 /**
@@ -25,7 +23,7 @@ import java.awt.event.ActionEvent;
  * Interface de login
  *
  */
-public class Login extends JPanel implements ActionListener {
+public class Login extends JPanel implements ActionListener,KeyEventDispatcher {
 
 	/**
 	 * txtUser e atributo do Login
@@ -67,9 +65,15 @@ public class Login extends JPanel implements ActionListener {
 		add(lblPassword);
 
 		txtUser = new JTextField();
+
+		KeyboardFocusManager.getCurrentKeyboardFocusManager()
+		.addKeyEventDispatcher( this);
+
+
 		txtUser.setBounds(280, 79, 130, 26);
 		txtUser.setColumns(10);
 		add(txtUser);
+		txtUser.addActionListener(this);  
 
 		pwdText = new JPasswordField();
 		pwdText.setBounds(280, 130, 130, 26);
@@ -85,14 +89,15 @@ public class Login extends JPanel implements ActionListener {
 		add(btnLogin);
 
 	}
-	
+
+
+
 	/**
 	 * actionPerformed dos botoes da classe
 	 */
 	public void actionPerformed(ActionEvent e) {
 
 		Biblioteca biblioteca = Biblioteca.getInstance();
-		
 
 		if (leUser().equals("") || lePass().equals("")) {
 
@@ -100,8 +105,8 @@ public class Login extends JPanel implements ActionListener {
 
 		} else if (biblioteca.login(leUser(), lePass()) != null) {
 
-			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
-			
+			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));  
+
 		} else {
 
 			lblMensagem.setText("O username ou a password não estão correctos");
@@ -148,7 +153,7 @@ public class Login extends JPanel implements ActionListener {
 	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
 
 		if (utilizador instanceof Leitor) {
-			
+
 			limpaCampos();
 			janela.loginOK((Leitor)utilizador);
 
@@ -164,5 +169,20 @@ public class Login extends JPanel implements ActionListener {
 			limpaCampos();
 			janela.bibliotecarioChefeOK();
 		}
+	}
+
+
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent e) {
+
+		if(e.getID() == KeyEvent.KEY_RELEASED 
+				&& e.getKeyCode() == KeyEvent.VK_ENTER){
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			verificaTipoUtilizadorParaAvancarPainel(biblioteca.login(leUser(), lePass()));
+			return true;
+		}
+		return false;
+
 	}
 }
