@@ -140,7 +140,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Gerar password random para o utilizador
-	 * @return password com 4 digitos 
+	 * @return password 
 	 */
 	public String gerarPassword(){
 		
