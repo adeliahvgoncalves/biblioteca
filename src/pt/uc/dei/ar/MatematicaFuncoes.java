@@ -91,7 +91,7 @@ public class MatematicaFuncoes {
 	 * @return media em formato double
 	 */
 	private double calculaMedia(ArrayList<Integer> list) {
-		double sum = 0.0;
+		double sum = 0.00;
 
 		if (list == null || list.size() == 0) {
 
@@ -101,7 +101,7 @@ public class MatematicaFuncoes {
 			sum += i;
 		}
 		
-		return sum / list.size();
+		return Math.ceil(sum / list.size());
 	}
 
 	/*
