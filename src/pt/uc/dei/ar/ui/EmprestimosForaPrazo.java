@@ -1,6 +1,5 @@
 package pt.uc.dei.ar.ui;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -36,12 +35,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	 * A janela e atributo do EmprestimosForaPrazo
 	 */
 	private Janela janela;
-	
-	/**
-	 * layout e atributo do EmprestimosForaPrazo
-	 */
-	private CardLayout layout;
-	
 	/**
 	 * tabela e atributo do EmprestimosForaPrazo
 	 */
@@ -67,7 +60,6 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		setLayout(null);
 
 		this.janela = j;
-		this.layout = new CardLayout(0, 0);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 480, 380);
