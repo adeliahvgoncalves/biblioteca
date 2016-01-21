@@ -1,6 +1,7 @@
 package pt.uc.dei.ar;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -16,16 +17,16 @@ public class ExportadorCSV {
 	 * A biblioteca e atributo do exportadorCSV
 	 */
 	private Biblioteca biblioteca;
-	
+
 	/**
 	 * Construtor do ExportadorCSV:
 	 * @param biblioteca
 	 */
 	public ExportadorCSV(Biblioteca biblioteca) {
 		super();
-		
+
 		this.biblioteca = biblioteca;
-		
+
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class ExportadorCSV {
 		ArrayList<Publicacao> publicacoesSemJornal=new ArrayList<Publicacao>();
 		for (Publicacao publicacao : publicacoes) {
 			if(publicacao instanceof Livro || publicacao instanceof Tese || publicacao instanceof Revista){
-				
+
 				publicacoesSemJornal.add(publicacao);
 			}
 		}
@@ -73,6 +74,7 @@ public class ExportadorCSV {
 					Integer repeticoes = mapaRepeticoesMensais.get(chavePublicacaoMes);
 					data[i][j] = repeticoes != null ? repeticoes : "0";
 					mesAtual = (mesAtual+1) % 12;
+
 					k++;
 				}
 
@@ -107,9 +109,8 @@ public class ExportadorCSV {
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 		int mesAtual = dataAnoAnterior.get(Calendar.MONTH);
 		return mesAtual;
-		
 	}
-
+	
 	/**
 	 * Gera o CSV
 	 * @param now
@@ -120,14 +121,15 @@ public class ExportadorCSV {
 		StringBuilder builder = new StringBuilder("");
 
 		builder.append("Código de barras,"+ "Título,"+ "Data publicacao,");
-
-		int mesAtual = this.indiceDoMesDoAnoAnterior(now);
+		SimpleDateFormat ft =   new SimpleDateFormat ("MM.yyyy");
+		now.add(Calendar.MONTH, -12);
 		for (int i = 0; i < 12; i++) {
-			mesAtual = mesAtual + 1 % 12;
-			builder.append("Mês "+ mesAtual);
+			
+			builder.append("Mês "+ ft.format(now.getTime()));
 			if (i < 12 ) {
 				builder.append(",");
 			}
+			now.add(Calendar.MONTH, 1);
 		}
 
 		builder.append("Total empréstimos último ano,"+ "Duraçao mínima empréstimo,"+ 
