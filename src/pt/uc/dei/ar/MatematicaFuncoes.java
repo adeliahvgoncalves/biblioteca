@@ -91,13 +91,10 @@ public class MatematicaFuncoes {
 	 * @param list
 	 * @return media em formato double
 	 */
-<<<<<<< HEAD
-	private double calculaMedia(ArrayList<Integer> list) {
-		double sum = 0.00;
-=======
+
 	private int calculaMedia(ArrayList<Integer> list) {
 		int sum = 0;
->>>>>>> origin/master
+
 
 		if (list == null || list.size() == 0) {
 
@@ -106,12 +103,9 @@ public class MatematicaFuncoes {
 		for (Integer i : list) {
 			sum += i;
 		}
-		
-<<<<<<< HEAD
-		return Math.ceil(sum / list.size());
-=======
+
 		return Math.round(sum / list.size());
->>>>>>> origin/master
+
 	}
 
 	/*
