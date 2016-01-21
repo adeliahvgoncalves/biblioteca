@@ -17,12 +17,11 @@ import java.awt.event.FocusListener;
 /**
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *  Interface do painel de emprestimo, disponivel ao bibliotecario chefe e colaborador
- *
  */
 public class EmprestimoPanel extends JPanel implements ActionListener, FocusListener {
 
 	/**
-	 * 
+	 * Serial Version
 	 */
 	private static final long serialVersionUID = 7853874828033622922L;
 	/**
@@ -80,6 +79,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	/**
 	 * Create the panel.
+	 * @param j
 	 */
 	public EmprestimoPanel(Janela j) {
 		setLayout(null);
@@ -182,9 +182,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
-	/**
-	 * Limpa painel
-	 */
+	//Metodo que limpa o painel
 	private void limpaPainel() {
 
 		lblMensagem.setText("");
@@ -195,9 +193,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
-	/**
-	 * Permite sair do painel emprestimo
-	 */
+	//Metodo que sai do PainelEmprestimo
 	private void sairEmprestimoPanel() {
 
 		limpaPainel();
@@ -206,7 +202,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 
 	/**
-	 * Ativa a visibilidade do botao voltar 
+	 * Ativa a visibilidade do botao voltar quando o Utilizador é um Bibliotecario Chefe
 	 */
 	public void activaVisibilidaBotaoVoltar() {
 
@@ -215,7 +211,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 	}
 	
 	/**
-	 * Desativa a visibilidade do botao voltar 
+	 * Desativa a visibilidade do botao voltar quando o Utilizador é um Colaborador
 	 */
 	public void desativaVisibilidaBotaoVoltar() {
 
@@ -224,8 +220,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
-	/**
-	 * actionPerformed dos botoes à disposicao 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -238,7 +234,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		}
 		else if (e.getSource() == this.btnSair || e.getSource() == this.btnSairDevolucao) {
 
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			sairEmprestimoPanel();
 
@@ -256,9 +251,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	}
 
-	/**
-	 * Valida botao emprestar
-	 */
+	//Valida o Botao de Emprestimo, verifica se a publicacao esta disponivel e se o leitor existe
+	//se estiver e for requisitavel cria o emprestimo
 	private void validarBotaoEmprestimo() {
 
 
@@ -294,7 +288,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 					boolean emprestou = biblioteca.criaEmprestimo(numLeitor, codigoBarras);
 					if (emprestou) {
 
-						Biblioteca biblioteca = Biblioteca.getInstance();
 						BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 						lblMensagem.setText("Empréstimo efectuado com sucesso.");
 
@@ -319,9 +312,8 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		}
 	}
 
-	/**
-	 * Valida botao devolver
-	 */
+	//Valida o Botao de Devolver, verifica se a publicacao esta emprestada
+	//se estiver emprestada faz a sua devolucao, caso contrario avisa o utilizador 
 	private void validarBotaoDevolve() {
 
 		try{
@@ -339,7 +331,6 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 				if (biblioteca.devolveEmprestimo(codigoBarras)){
 
-					Biblioteca biblioteca = Biblioteca.getInstance();
 					BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 					lblMensagemDevolver.setText("O livro foi devolvido com sucesso");
 

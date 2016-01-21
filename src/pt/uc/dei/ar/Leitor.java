@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Leitor herda da classe Utilizador e implementa o Serializable
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Leitor extends Utilizador implements Serializable {
 
 	/**
-	 * 
+	 * Serial Version
 	 */
 	private static final long serialVersionUID = 5729849162098592996L;
 	
@@ -34,27 +34,27 @@ public class Leitor extends Utilizador implements Serializable {
 	private static int ultimoNumLeitorSequencial=0;
 	
 	/**
-	 *Data de nascimento do utilizador. 
+	 *Data de nascimento e atributo do utilizador. 
 	 */
 	private Date dataNascimento;
 	
 	/**
-	 * Cartao de Cidadao do utilizador.
+	 * Cartao de Cidadao e atributo do utilizador.
 	 */
 	private String cartaoCidadao;
 	
 	/**
-	 * Morada do utilizador.
+	 * Morada e atributo do utilizador.
 	 */
 	private String morada;
 	
 	/**
-	 * E-mail do utilizador.
+	 * E-mail e atributo do utilizador.
 	 */
 	private String email;
 	
 	/**
-	 * Numero de telefone, contacto telefonico do utilizador.
+	 * Numero de telefone e atributo, contacto telefonico, do utilizador.
 	 */
 	private String telefone;
 
@@ -90,6 +90,7 @@ public class Leitor extends Utilizador implements Serializable {
 		this.morada = morada;
 		this.email = email;
 		this.telefone = telefone;
+		
 	}
 
 	/**
@@ -218,7 +219,7 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 	
 	/**
-	 * Remove emprestimo
+	 * Remove emprestimo do Leitor
 	 * @param emprestimo
 	 */
 	public void removeEmprestimo(Emprestimo emprestimo) {

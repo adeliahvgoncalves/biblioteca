@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Estrutura de apoio ao calculo de media/maximo/minimo 
  * de emprestimos de uma Publicacao
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *
  */
 public class MatematicaFuncoes {
@@ -24,7 +24,7 @@ public class MatematicaFuncoes {
 	/**
 	 * Media e atributo da classe MatematicaFuncoes
 	 */
-	private double media;
+	private int media;
 
 	/**
 	 * Construtor que dando a lista de inteiros constroi-se 
@@ -38,6 +38,7 @@ public class MatematicaFuncoes {
 		this.maximo = Collections.max(lista); // faz o maximo
 		this.minimo = Collections.min(lista); // faz o maximo
 		this.media  = this.calculaMedia(lista);
+		
 	}
 
 	/**
@@ -49,7 +50,7 @@ public class MatematicaFuncoes {
 
 	/**
 	 * @param maximo
-	 *            the maximo to set
+	 * the maximo to set
 	 */
 	public void setMaximo(int maximo) {
 		this.maximo = maximo;
@@ -64,7 +65,7 @@ public class MatematicaFuncoes {
 
 	/**
 	 * @param minimo
-	 *            the minimo to set
+	 * the minimo to set
 	 */
 	public void setMinimo(int minimo) {
 		this.minimo = minimo;
@@ -73,15 +74,15 @@ public class MatematicaFuncoes {
 	/**
 	 * @return the media em formato double
 	 */
-	public double getMedia() {
+	public int getMedia() {
 		return media;
 	}
 
 	/**
 	 * @param media
-	 *            the media to set
+	 * the media to set
 	 */
-	public void setMedia(double media) {
+	public void setMedia(int media) {
 		this.media = media;
 	}
 
@@ -90,8 +91,13 @@ public class MatematicaFuncoes {
 	 * @param list
 	 * @return media em formato double
 	 */
+<<<<<<< HEAD
 	private double calculaMedia(ArrayList<Integer> list) {
 		double sum = 0.00;
+=======
+	private int calculaMedia(ArrayList<Integer> list) {
+		int sum = 0;
+>>>>>>> origin/master
 
 		if (list == null || list.size() == 0) {
 
@@ -101,7 +107,11 @@ public class MatematicaFuncoes {
 			sum += i;
 		}
 		
+<<<<<<< HEAD
 		return Math.ceil(sum / list.size());
+=======
+		return Math.round(sum / list.size());
+>>>>>>> origin/master
 	}
 
 	/*

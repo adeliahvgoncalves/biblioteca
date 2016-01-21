@@ -3,17 +3,17 @@ package pt.uc.dei.ar;
 import java.io.Serializable;
 
 /**
- * BibliotecarioChefe herda da classe Utilizador e implementa o Serializable
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * BibliotecarioChefe herda da classe Utilizador e implementa o Serializable
  */
 public class BibliotecarioChefe extends Utilizador implements Serializable{
 
 	/**
-	 * 
+	 * Serial Version
 	 */
 	private static final long serialVersionUID = 6026760943183249613L;
 	/**
-     * Numero de colaborador.
+     * Numero de colaborador do BibliotecarioChefe
      */
     private int numColaborador;
 
@@ -26,7 +26,9 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 	 */
 	public BibliotecarioChefe(String username, String nome, int numColaborador) {
 		super(username, nome);
+		
 		this.numColaborador = numColaborador;
+		
 	}
 
 	/**

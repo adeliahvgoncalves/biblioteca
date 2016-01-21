@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Revista herda do periodico que por sua vez herda de publicacao
  * Implementa a interface requisitavel, portanto, pode ser emprestada
  * e implementa o Serializable
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Revista extends Periodico implements Requisitavel, Serializable {
 
@@ -18,13 +17,13 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	private static final long serialVersionUID = -4452420023882536318L;
 
 	/**
-	 *  Volume da revista
+	 *  Volume e atributo da Revista
 	 * 
 	 */
-	private int volume;
+	private String volume;
 
 	/**
-	 * Numero sequencial da revista
+	 * Numero e atributo sequencial da Revista
 	 */
 	private int numeroSequencial;
 
@@ -37,25 +36,25 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	 * Construtor da classe Revista
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param areas
 	 * @param periodicidade
 	 * @param volume
 	 * @param numeroSequencial
 	 */
-	public Revista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
-			Periodicidade periodicidade, int volume) {
-		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
+	public Revista(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
+			Periodicidade periodicidade, String volume) {
+		super(titulo, dataPublicacao, dataRececao, areas, periodicidade);
 		
 		ultimonumeroSequencial++;
 		this.numeroSequencial = ultimonumeroSequencial;
+		
 	}
 
 	/**
-	 * 
 	 * @return o volume em formato inteiro
 	 */
-	public int getVolume() {
+	public String getVolume() {
 		return volume;
 	}
 
@@ -66,8 +65,7 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 		return numeroSequencial;
 	}
 
-	/**
-	 * 
+	/** 
 	 * @return ultimonumeroSequencial em formato inteiro
 	 */
 	public static int getUltimonumeroSequencial() {
@@ -75,7 +73,6 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	}
 
 	/**
-	 * 
 	 * @param ultimonumeroSequencial
 	 */
 	public static void setUltimonumeroSequencial(int ultimonumeroSequencial) {
@@ -95,7 +92,7 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	 * @return detalhes da publicacao
 	 */
 	public String detalhes(){
-		return getDataReceçao() +  ";" + getListaDeAreas() +";"+getPeriodicidade() +  ";" +getVolume()+";" +getNumeroSequencial();
+		return getDataRececao() +  ";" + getListaDeAreas() +";"+getPeriodicidade() +  ";" +getVolume()+";" +getNumeroSequencial();
 	}
 
 	/* (non-Javadoc)
@@ -105,6 +102,6 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	@Override //acrescentar o supertostring
 	public String toString() {
 		return "Revista [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
-		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + "volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
+		+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataRececao() + ", periodicidade" + getPeriodicidade() + "volume=" + volume + ", numeroSequencial=" + numeroSequencial + "]";
 	}
 }

@@ -10,14 +10,10 @@ import java.awt.CardLayout;
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  *Janela que inclui todos os paineis
- *
  */
 public class Janela extends JFrame {
 
 	private static final long serialVersionUID = 1263932340481970651L;
-	/**
-	 * Create the frame.
-	 */
 	/**
 	 * layout e atributo da janela
 	 */
@@ -100,7 +96,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Login
+	 * Mostra o Jpanel de LeitorPanel
 	 * @param utilizador
 	 */
 	public void loginOK(Utilizador utilizador) {
@@ -111,7 +107,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Colaborador
+	 * Mostra o Jpanel EmprestimoPanel do Colaborador
 	 */
 	public void colaboradorOK() {
 
@@ -120,7 +116,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Bibliotecario chefe emprestimos
+	 * Mosta o Jpanel EmprestimoPanel do Bibliotecario chefe
 	 */
 	public void emprestimoPanelBibliotecarioChefeOK(){
 
@@ -129,7 +125,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Bibliotecario chefe
+	 * Mostra o Jpanel BibliotecarioChefePanel do Bibliotecario chefe
 	 */
 	public void bibliotecarioChefeOK(){
 
@@ -137,7 +133,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Sair 
+	 * Mostra o Jpanel do Login, sai da sessao do utilizador
 	 */
 	public void sairOK() {
 
@@ -145,7 +141,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Registar utilizador
+	 * Mostra o JPanel RegistaUtilizadorPanel do Bibliotecario chefe
 	 */
 	public void registaUtilizadorOK(){
 
@@ -153,7 +149,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Pesquisar publicacao
+	 *  Mostra o JPanel PesquisarPublicacao do Bibliotecario chefe
 	 */
 	public void pesquisaPublicacaoOK(){
 
@@ -161,7 +157,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Emprestimos expirados
+	 * Mostra o JPanel EmprestimosForaPrazo do Bibliotecario chefe
 	 */
 	public void emprestimosForaPrazoOK(){
 
@@ -170,7 +166,7 @@ public class Janela extends JFrame {
 	}
 
 	/**
-	 * Registar publicacao
+	 *  Mostra o JPanel RegistaPublicacao do Bibliotecario chefe
 	 */
 	public void registaPublicacaoOK(){
 

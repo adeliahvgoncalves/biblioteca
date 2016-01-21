@@ -92,6 +92,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	/**
 	 * Create the panel.
+	 * @param j
+	 * @param utilizador
 	 */
 	public LeitorPanel(Janela j, Utilizador utilizador) {
 		setLayout(null);
@@ -198,9 +200,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
-	/**
-	 * Preenche a tabela emprestimos
-	 */
+	//Preenche a tabela de emprestimos
 	private void preencheTabelaEmprestimo(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
@@ -232,10 +232,9 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		
 	}
 
-	/**
-	 * Gera dados para preencher a tabela de emprestimos do leitor
-	 * @return objeto matriz
-	 */
+	
+	 // Gera dados para preencher a tabela de emprestimos do leitor
+	 // @return objeto matriz
 	private Object [][] geraDadosDaTabelaLeitorEmprestimos(){
 
 	
@@ -254,7 +253,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 			String datadevolucao = df.format(datadev);
 			Date publicac=pub.getDataPublicacao();
 			String dataPublicacao=df.format(publicac);
-			Date rec=pub.getDataReceçao();
+			Date rec=pub.getDataRececao();
 			String dataRececao=df.format(rec);
 			
 
@@ -308,8 +307,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	}
 	
 	/**
-	 * Preenche uma tabela 
-	 * @param pubs
+	 * Preenche uma tabela de todas as Publicacoes da Biblioteca
+	 * @param publicacao
 	 */
 	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
@@ -342,11 +341,10 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	}
 
-	/**
-	 * Gera uma tabela
-	 * @param pubs
-	 * @return objeto matriz
-	 */
+	
+	 // Gera uma tabela
+	 //param publicacao
+	//return objeto matriz 
 	private Object [][] geraDadosDaTabelaPublicacaoTotal(ArrayList<Publicacao> pubs){
 
 		Object [][] data= new Object[pubs.size()][16];
@@ -357,7 +355,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 			Date publicac=pub.getDataPublicacao();
 			String dataPublicacao=df.format(publicac);
-			Date rec=pub.getDataReceçao();
+			Date rec=pub.getDataRececao();
 			String dataRececao=df.format(rec);
 			data[i][0] = pub.getCodBarras();
 			data[i][1] = pub.getClass().getSimpleName();
@@ -419,9 +417,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		
 	}
 
-	/**
-	 * Sair do painel
-	 */
+	//sai do painel e preenche a nova tabela
 	private void sairLeitorPanel(){
 
 		preencheTabelaListaPublicacaoTotal(biblioteca.getListaDePublicacoes());
@@ -429,8 +425,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 		
 	}
 
-	/**
-	 * actionPerformed dos botões
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -495,6 +491,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	}			
 
 	/**
+	 * Metodo para colocar o nome do utilizador que inicia sessao no cabecalho do Jpanel
 	 * @param utilizador the utilizador to set
 	 */
 	public void setUtilizador(Utilizador utilizador) {

@@ -28,10 +28,12 @@ import pt.uc.dei.ar.TipoDeTese;
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do RegistaPublicacaoPanel para registar uma publicacao na Biblioteca.
  * Regista os diversos tipos de publicacoes na Biblioteca.
- * 
  */
 public class RegistaPublicacaoPanel extends JPanel implements ActionListener, FocusListener {
 	
+	/**
+	 * Serial version
+	 */
 	private static final long serialVersionUID = 159058781127798846L;
 	
 	/**
@@ -176,7 +178,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	
 	/**
 	 * Create the panel RegistaPublicacaoPanel.
-	 * @param j
+	 * @param janela
 	 */
 	public RegistaPublicacaoPanel(Janela j) {
 		setLayout(null);
@@ -387,19 +389,17 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		
 	}
 	
-	/**
-	 * Transforma um DatePicker em String
-	 * @param datepicker
-	 * @return data em formato String
-	 */
+// Transforma um DatePicker em String
+//@param datepicker
+//@return data em formato String
 	private String transformaDatePickerEmString(DatePicker datepicker){
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		return sdf.format(datepicker.getDate());
 	}
 
-	/**
-	 * actionPerformed dos botoes a disposicao no Jpanel
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -459,9 +459,8 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 
-	/**
-	 * Verifica se se pode registar a Publicacao conforme os parametros do construtor de cada Publicacao
-	 */
+
+//Verifica se se pode registar a Publicacao conforme os parametros do construtor de cada tipo de Publicacao
 	private void verificaRegistoPublicacao() {
 
 		String str = (String) this.comboBox.getSelectedItem();
@@ -546,11 +545,10 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		}
 	}
 	
-	/**
-	 * Regista uma Publicacao do tipo Livro na Biblioteca
-	 * @param autores
-	 * @param areas
-	 */
+
+// Regista uma Publicacao do tipo Livro na Biblioteca
+// @param autores
+// @param areas
 	private void registaLivro(ArrayList<String> autores, ArrayList<String> areas){
 		
 		int codigoBarras;
@@ -561,17 +559,14 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 				txtEditor.getText());
 
 		limpaPainel();
-		Biblioteca biblioteca = Biblioteca.getInstance();
 		BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 		enviaMensagem("Livro inserido com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 		
 	}
 	
-	/**
-	 * Regista uma Publicacao do tipo Tese na Biblioteca
-	 * @param autores
-	 * @param areas
-	 */
+// Regista uma Publicacao do tipo Tese na Biblioteca
+// @param autores
+// @param areas
 	private void registaTese(ArrayList<String> autores, ArrayList<String> areas){
 		
 		String strTese = (String) this.comboBoxTipoTese.getSelectedItem();
@@ -584,7 +579,6 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 					transformaDatePickerEmString(datePickerDataRecepcao), autores, areas, txtOrientador.getText(), TipoDeTese.Mestrado);
 
 			limpaPainel();
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
@@ -594,18 +588,15 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 					transformaDatePickerEmString(datePickerDataRecepcao), autores, areas, txtOrientador.getText(), TipoDeTese.Doutoramento);
 		
 			limpaPainel();
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Tese inserida com sucesso. CODIGO DE BARRAS: " + codigoBarras);
 			
 		}
 	}
 	
-	/**
-	 * Regista uma Publicacao do tipo Periodico (Revista ou Jornal na Biblioteca)
-	 * @param areas
-	 * @param tipoPeriodico
-	 */
+// Regista uma Publicacao do tipo Periodico (Revista ou Jornal na Biblioteca)
+//@param areas
+//@param tipoPeriodico
 	private void registaPeriodico(ArrayList<String> areas, String tipoPeriodico){
 		
 		String strPeriodicidade = (String) this.comboBoxPeriodicidade.getSelectedItem();
@@ -638,10 +629,9 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 		if(tipoPeriodico.equals("Revista")){
 			
 			codigoBarras = biblioteca.criaRevista(txtTitulo.getText(), transformaDatePickerEmString(datePickerDataPub),
-					transformaDatePickerEmString(datePickerDataRecepcao), areas, periodicidade, Integer.parseInt(txtVolume.getText()));
+					transformaDatePickerEmString(datePickerDataRecepcao), areas, periodicidade, txtVolume.getText());
 		
 			limpaPainel();
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Revista inserida com sucesso. CÓDIGO DE BARRAS: " + codigoBarras);
 			
@@ -652,16 +642,13 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 					transformaDatePickerEmString(datePickerDataRecepcao), areas, periodicidade,txtNumEdicaoJornal.getText());
 		
 			limpaPainel();
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			enviaMensagem("Jornal inserido com sucesso.CÓDIGO DE BARRAS: " + codigoBarras);
 			
 		}
 	}
 
-	/**
-	 * Limpa os JTextFields do RegistaPublicacao
-	 */
+  //Metodo que limpa os JTextFields do RegistaPublicacaoPanel
 	private void limpaPainel(){
 		
 		txtAreas.setText("área , área , área");
@@ -681,36 +668,29 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 			
 	}	
 
-	/**
-	 * Mostra o painel pnlLivro
-	 */
+	//Mostra o painel pnlLivro
 	private void abrePainelLivroOK() {
 
 		layout.show(pnlTipoPublicacao, "livro");
 
 	}
 
-	/**
-	 * Mostra o painel pnlTese
-	 */
+	//Mostra o painel pnlTese
 	private void abrePainelTeseOK() {
 
 		layout.show(pnlTipoPublicacao, "tese");
 
 	}
-	/**
-	 * Mostra o painel pnlPeriodico
-	 */
+	
+	//Mostra o painel pnlPeriodico
 	private void abrePainelPeriodicoOK() {
 
 		layout.show(pnlTipoPublicacao, "periodico");
 
 	}
 
-	/**
-	 * Metodo generico para enviar mensagens ao utilizador
-	 * @param string
-	 */
+//	 * Metodo generico para enviar mensagens ao utilizador
+//	 * @param string
 	private void enviaMensagem(String string) {
 
 		lblMensagem.setText(string);

@@ -65,6 +65,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 	/**
 	 * Create the panel
+	 * @param j
 	 */
 	public BibliotecarioChefePanel(Janela j) {
 
@@ -117,8 +118,9 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 		panel.add(btnGerarRelatrio);
 	}
 
-	/**
-	 * actionPerformed dos botoes a disposicao do bibliotecario chefe
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

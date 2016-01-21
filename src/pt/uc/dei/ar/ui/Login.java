@@ -18,11 +18,13 @@ import java.awt.event.KeyEvent;
 
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
- *         Interface de login
- *
+ * Interface do login
  */
 public class Login extends JPanel implements ActionListener, KeyEventDispatcher {
 
+	/**
+	 * Serial version
+	 */
 	private static final long serialVersionUID = 3060091237699583333L;
 
 	/**
@@ -52,7 +54,6 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 
 	/**
 	 * Create the Panel
-	 * 
 	 * @param janela
 	 */
 	public Login(Janela j) {
@@ -116,29 +117,20 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 		}
 	}
 
-	/**
-	 * 
-	 * @return txtUser em formato String
-	 */
+	// metodo que le o user do campo do user
 	private String leUser() {
 
 		return txtUser.getText();
 	}
 
-	/**
-	 * ler o conteudo da JtextField password
-	 * 
-	 * @return pwdText
-	 */
+	//ler o conteudo da JtextField password
 	@SuppressWarnings("deprecation")
 	public String lePass() {
 
 		return pwdText.getText();
 	}
 
-	/**
-	 * Limpa campos
-	 */
+	//metodo para limpar os campos de textField e mensagem
 	private void limpaCampos() {
 
 		lblMensagem.setText("");
@@ -146,12 +138,8 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 		pwdText.setText("");
 	}
 
-	/**
-	 * Verifica o tipo de utilizador que acede ao programa para lhe mostrar o
-	 * painel de operacoes que lhe estao permitidas
-	 * 
-	 * @param utilizador
-	 */
+//Verifica o tipo de utilizador que acede ao programa para lhe mostrar o
+//painel de operacoes que lhe estao permitidas
 	private void verificaTipoUtilizadorParaAvancarPainel(Utilizador utilizador) {
 
 		if (utilizador instanceof Leitor) {
@@ -173,6 +161,9 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.KeyEventDispatcher#dispatchKeyEvent(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
 

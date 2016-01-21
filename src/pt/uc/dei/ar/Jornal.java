@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Jornal herda de periodico que herda de publicacao e implementa o Serializable
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Jornal extends Periodico implements Serializable{
 
 	/**
-	 * 
+	 * Serial Version
 	 */
 	private static final long serialVersionUID = 3200155503690447291L;
 	/**
@@ -22,14 +22,14 @@ public class Jornal extends Periodico implements Serializable{
 	 * Construtor da classe Jornal
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param areas
 	 * @param periodicidade
 	 * @param numEdicao
 	 */
-	public Jornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+	public Jornal(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String numEdicao) {
-		super(titulo, dataPublicacao, dataReceçao, areas, periodicidade);
+		super(titulo, dataPublicacao, dataRececao, areas, periodicidade);
 		
 		this.numEdicao = numEdicao;
 		
@@ -53,7 +53,7 @@ public class Jornal extends Periodico implements Serializable{
 	public String toString() {
 		
 		return "Jornal [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
-				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", periodicidade" + getPeriodicidade() + ", numEdicao=" + numEdicao + "]";
+				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataRececao() + ", periodicidade" + getPeriodicidade() + ", numEdicao=" + numEdicao + "]";
 		
 	}
 }
