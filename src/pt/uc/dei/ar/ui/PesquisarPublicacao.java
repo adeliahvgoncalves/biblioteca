@@ -35,6 +35,9 @@ import pt.uc.dei.ar.Tese;
  */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 	
+	/**
+	 *Serial Version 
+	 */
 	private static final long serialVersionUID = 4474035138215254357L;
 	
 	/**
@@ -84,6 +87,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	
 	/**
 	 * Create the panel PesquisarPublicacao.
+	 * @param j
 	 */
 	public PesquisarPublicacao(Janela j) {
 		setLayout(null);
@@ -150,9 +154,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 	}
 	
-	/**
-	 * Preenche a tabela da publicacao pesquisada
-	 */
+	//Preenche a tabela da publicacao pesquisada
 	private void preencheTabelaPesquisaPublicacao(){
 
 		DefaultTableModel dtm = new DefaultTableModel(0, 0){
@@ -181,10 +183,8 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 		tabela.setModel(dtm);
 	}
 
-	/**
-	 * Gera os dados da tabela obterUmaPublicacao
-	 * @return um objeto matriz(data)
-	 */
+//Gera os dados da tabela obterUmaPublicacao
+//@return um objeto matriz(data)
 	private Object [][] obterUmaPublicacao(){
 		
 		//aloco a tabela vazia
@@ -208,12 +208,10 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 			
 		}
 		
-		
-
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		Date publicac = (Date) pub.getDataPublicacao();
 		String dataPublicacao=df.format(publicac);
-		Date rec=(Date) pub.getDataReceçao();
+		Date rec=(Date) pub.getDataRececao();
 		String dataRececao=df.format(rec);
 		
 		data[0][0] = pub.getCodBarras();
@@ -274,7 +272,6 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 
 		if(pub.isOcupado()){
 			for(Emprestimo emp: biblioteca.getListaDeEmprestimo()){
-		
 				
 				if(emp.getPublicacao().equals(pub )){				
 					
@@ -326,6 +323,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 				this.lblMensagem.setText("");
 				this.preencheTabelaPesquisaPublicacao();
 				txtPesquisa.setText("");
+				
 			}
 		}
 	}

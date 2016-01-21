@@ -24,10 +24,12 @@ import pt.uc.dei.ar.Colaborador;
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do RegistaUtilizadorPanel para registar Utilizador na Biblioteca.
  * Regista os diversos tipos de Utilizadores na Biblioteca.
- * @author Adelia Goncalves e Maria Joao Silva
  */
 public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	
+	/**
+	 * Serial Version
+	 */
 	private static final long serialVersionUID = 5342152693463511660L;
 	/**
 	 *Janela e atributo da RegistaUtilizadorPanel
@@ -110,11 +112,11 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 	/**
 	 * Instanciar o objeto biblioteca
 	 */
-	Biblioteca biblioteca = Biblioteca.getInstance();
+	private Biblioteca biblioteca = Biblioteca.getInstance();
 
 	/**
 	 * Create the panel RegistaUtilizadorPanel.
-	 * @param j
+	 * @param janela
 	 */
 	public RegistaUtilizadorPanel(Janela j) {
 		setLayout(null);
@@ -256,11 +258,10 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		panel.add(lblMensagemLeitor);
 	}
 	
-	/**
-	 * Transforma um DatePicker em String
-	 * @param datepicker
-	 * @return data em formato String
-	 */
+
+//	Metodo para transformar um DatePicker em String
+//	@param datepicker
+//	@return data em formato String
 	private String transformaDatePickerEmString(DatePicker datepicker){
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -288,7 +289,6 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		} else if (e.getSource() == this.btnSair) {
 
 			limpaPainelRegistaUtilizador();
-			Biblioteca biblioteca = Biblioteca.getInstance();
 			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			janela.sairOK();
 
@@ -314,27 +314,21 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 	}
 
-	/**
-	 * Mostra o Jpanel pnlLeitor
-	 */
+	//Mostra o Jpanel pnlLeitor
 	private void abrePainelLeitorOK() {
 
 		layout.show(pnlUtilizadores, "leitor");
 
 	}
 
-	/**
-	 * Mostra o Jpanel pnlBiblioColaborador
-	 */
+	//Mostra o Jpanel pnlBiblioColaborador
 	private void abrePainelBibliotecarioColaboradorOK() {
 
 		layout.show(pnlUtilizadores, "biblioColaborador");
 
 	}
 
-	/**
-	 * Regista os Utilizadores do Tipo Bibliotecario Chefe e Colaborador na Biblioteca
-	 */
+	//Regista os Utilizadores do Tipo Bibliotecario Chefe e Colaborador na Biblioteca
 	private void registaUtilizadorColaboradorBiblioChefe() {
 
 		String str = (String) this.comboBox.getSelectedItem();
@@ -382,9 +376,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		}
 	}
 
-	/**
-	 *Regista Utilizadores de tipo Leitor na Biblioteca 
-	 */
+	//Regista Utilizadores de tipo Leitor na Biblioteca 
 	private void registaUtilizadorLeitor() {
 
 		if (txtUsername.getText().equals("") || txtNome.getText().equals("") || txtCC.getText().equals("")) {
@@ -416,9 +408,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		}
 	}
 
-	/**
-	 *  Limpa os JTextFields e Jlabels do pnlRegistaUtilizador
-	 */
+	//Metodo para limpar os JTextFields e Jlabels do pnlRegistaUtilizador
 	private void limpaPainelRegistaUtilizador() {
 
 		this.txtUsername.setText("");
@@ -432,20 +422,17 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		this.lblMensagemLeitor.setText("");
 	}
 
-	/**
-	 * Metodo generico para enviar mensagens ao utilizador
-	 * @param string
-	 * @param stringDois
-	 */
+
+//	 Metodo generico para enviar mensagens ao utilizador
+//	 @param string
+//	 @param stringDois
 	private void enviaMensagemParaValidar(String string, String stringDois) {
 
 		lblMensagem.setText(string);
 		lblMensagemLeitor.setText(stringDois);
 	}
-
-	/**
-	 * Limpa os JTextFields e Jlabels do pnlRegistaUtilizador, metodo simplificado
-	 */
+	
+//	 Metodo simplificado para limpar os JTextFields e Jlabels do pnlRegistaUtilizador
 	private void limpaPainelSimples() {
 
 		this.txtUsername.setText("");

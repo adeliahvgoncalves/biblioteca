@@ -7,9 +7,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * 
- * ExportadorCSV e uma classe auxiliar cuja responsabilidade e gerar o relatório
- * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566) 
+ * ExportadorCSV e uma classe auxiliar cuja responsabilidade e gerar o relatorio
  */
 public class ExportadorCSV {
 
@@ -24,7 +23,9 @@ public class ExportadorCSV {
 	 */
 	public ExportadorCSV(Biblioteca biblioteca) {
 		super();
+		
 		this.biblioteca = biblioteca;
+		
 	}
 
 	/**
@@ -106,6 +107,7 @@ public class ExportadorCSV {
 		dataAnoAnterior.set(Calendar.MONTH, -12);
 		int mesAtual = dataAnoAnterior.get(Calendar.MONTH);
 		return mesAtual;
+		
 	}
 
 	/**

@@ -23,6 +23,9 @@ import pt.uc.dei.ar.Publicacao;
 /**
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface de consulta de emprestimo expirados
+ */
+/**
+ * @author mj
  *
  */
 public class EmprestimosForaPrazo extends JPanel implements ActionListener {
@@ -56,6 +59,10 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	 */
 	private Biblioteca biblioteca = Biblioteca.getInstance();
 
+	/**
+	 * Create the Jpanel
+	 * @param j
+	 */
 	public EmprestimosForaPrazo(Janela j) {
 		setLayout(null);
 
@@ -182,8 +189,9 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 		return data;
 	}
 
-	/**
-	 * actionPerformed dos botoes da classe
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -8,48 +8,48 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Publicacao representa uma publicacao periodica ou nao periodica e implementa o Serializable
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * Publicacao representa uma publicacao periodica ou nao periodica e implementa o Serializable
  */
 public class Publicacao implements Serializable{
 
 	/**
-	 * 
+	 * SerialVersion
 	 */
 	private static final long serialVersionUID = 9149749963203341928L;
 
 	/**
-	 * @title iítulo de uma publicacao
+	 * @title Titulo e atributo de uma publicacao
 	 */
 	private String titulo;
 
 	/**
-	 * Data em que a publicacao foi publicada
+	 * DataPublicacao e atributo de Publicacao, data em que foi publicada
 	 */
 	private Date dataPublicacao;
 
 	/**
-	 * Areas da publicacao
+	 * Areas da publicacao e atributo da Publicacao
 	 */
 	private ArrayList<String> listaDeAreas;
 
 	/**
-	 * Codigo de barras da publicacao
+	 * Codigo de barras e atributo da Publicacao
 	 */
 	private int codBarras=0;
 
 	/**
-	 * e criada esta variavel para facilitar a criacao do numero sequencial
+	 * Criado esta variavel para facilitar a criacao do numero sequencial
 	 */
 	private static int ultimocodBarras=0;
 
 	/**
-	 * Data de rececao da publicacao
+	 * DateRececaoData e atributo da Publicacao, data de rececao da publicacao
 	 */
-	private Date dataReceçao;
+	private Date dataRececao;
 
 	/**
-	 * Publicacao requisitada ou nao
+	 * Ocupado e atributo da Publicacao, requisitada ou nao
 	 */
 	private boolean ocupado;
 
@@ -59,9 +59,9 @@ public class Publicacao implements Serializable{
 	 * @param dataPublicacao
 	 * @param areas
 	 * @param codBarras
-	 * @param dataReceçao
+	 * @param dataRececao
 	 */
-	public Publicacao(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas) {
+	public Publicacao(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas) {
 		super();
 		
 		this.titulo = titulo;
@@ -81,15 +81,15 @@ public class Publicacao implements Serializable{
 		
 		DateFormat dp=new SimpleDateFormat("dd/MM/yyyy");
 		try{
-			this.dataReceçao=dp.parse(dataReceçao);
+			this.dataRececao=dp.parse(dataRececao);
 		} catch (ParseException e){
 			e.printStackTrace();
-		}	
+		}
+		
 	}
 
 	/**
 	 * @return o titulo, em formato String
-	 * 
 	 */
 	public String getTitulo() {
 		return titulo;
@@ -97,7 +97,6 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * @return a data da publicacao, em formato de Data
-	 *
 	 */
 	public Date getDataPublicacao() {
 		return dataPublicacao;
@@ -105,7 +104,6 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * @return a lista de areas em formato String
-	 * 
 	 */
 	public ArrayList<String> getListaDeAreas() {
 		return listaDeAreas;
@@ -113,7 +111,6 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * @param listaDeAreas define a nova lista de areas 
-	 * 
 	 */
 	public void setListaDeAreas(ArrayList<String> listaDeAreas) {
 		this.listaDeAreas = listaDeAreas;
@@ -121,7 +118,6 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * @return o codigo de barras em formato inteiro
-	 * 
 	 */
 	public int getCodBarras() {
 		return codBarras;
@@ -129,10 +125,9 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * @return a data de rececao, em formato data
-	 *
 	 */
-	public Date getDataReceçao() {
-		return dataReceçao;
+	public Date getDataRececao() {
+		return dataRececao;
 	}
 
 	/**
@@ -144,6 +139,7 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
+	 * Metodo que verifica se a publicacao esta ocupada(requisitada)
 	 * @return the ocupado
 	 */
 	public boolean isOcupado() {
@@ -158,7 +154,6 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @return ultimocodBarras em formato inteiro
 	 */
 	public static int getUltimocodBarras() {
@@ -166,7 +161,6 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @param ultimocodBarras
 	 */
 	public static void setUltimocodBarras(int ultimocodBarras) {
@@ -184,7 +178,7 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
-	 * Verificacao da chave 
+	 * Verificacao da chave do Map
 	 * @return boolean
 	 */
 	@Override
@@ -205,6 +199,7 @@ public class Publicacao implements Serializable{
 		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
+		
 	}
 
 	/* (non-Javadoc)
@@ -214,6 +209,6 @@ public class Publicacao implements Serializable{
 	@Override
 	public String toString() {
 		return "Publicacao [titulo=" + titulo + ", dataPublicacao=" + dataPublicacao + ", listaDeAreas=" + listaDeAreas
-				+ ", codBarras=" + codBarras + ", dataReceçao=" + dataReceçao + "]";
+				+ ", codBarras=" + codBarras + ", dataReceçao=" + dataRececao + "]";
 	}
 }

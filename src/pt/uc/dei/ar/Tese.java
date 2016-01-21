@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Tese herda de nao periodico e implementa o requisitavel e o Serializable
  */
 public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
@@ -15,12 +15,12 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	private static final long serialVersionUID = 5044302263170947142L;
 
 	/**
-     * Nome do orientador da tese
+     * Nome e atributo do orientador da Tese
      */
 	private String nomeDoOrientador;
 
 	/**
-     * Tipo de tese
+     * Tipo de tese e atributo de Tese
      */
 	private TipoDeTese tipoDeTese;
 
@@ -28,22 +28,22 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	 * Construtor da classe Tese
 	 * @param titulo
 	 * @param dataPublicacao
-	 * @param dataReceçao
+	 * @param dataRececao
 	 * @param autores
 	 * @param areas
 	 * @param nomeDoOrientador
 	 * @param tipoDeTese
 	 */
-	public Tese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+	public Tese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese) {
-		super(titulo, dataPublicacao, dataReceçao, autores, areas);
+		super(titulo, dataPublicacao, dataRececao, autores, areas);
 		
 		this.nomeDoOrientador = nomeDoOrientador;
 		this.tipoDeTese = tipoDeTese;
+		
 	}
 
 	/**
-	 *
 	 * @return o nome do orientador em formato String
 	 */
 	public String getNomeDoOrientador() {
@@ -51,7 +51,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	}
 
 	/**
-	 *
 	 * @return o tipo de tese em tipo de tese
 	 */
 	public TipoDeTese getTipoDeTese() {
@@ -72,7 +71,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	 * @return detalhes da publicacao
 	 */
 	public String detalhes(){
-		return  getListaDeAreas() + ";" + getDataReceçao() + "; " + getListaDeAutores() + "; " + getNomeDoOrientador() + ";" + getTipoDeTese();
+		return  getListaDeAreas() + ";" + getDataRececao() + "; " + getListaDeAutores() + "; " + getNomeDoOrientador() + ";" + getTipoDeTese();
 
 	}
 	
@@ -83,6 +82,6 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	@Override
 	public String toString() {
 		return "Tese [titulo=" + getTitulo() + ", dataPublicacao=" + getDataPublicacao() + ", listaDeAreas=" + getListaDeAreas()
-				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataReceçao() + ", listaDeAutores=" + getListaDeAutores() + ", nomeDoOrientador=" + nomeDoOrientador + ", tipoDeTese=" + tipoDeTese + "]";
+				+ ", codBarras=" + getCodBarras() + ", dataReceçao=" + getDataRececao() + ", listaDeAutores=" + getListaDeAutores() + ", nomeDoOrientador=" + nomeDoOrientador + ", tipoDeTese=" + tipoDeTese + "]";
 	}
 }

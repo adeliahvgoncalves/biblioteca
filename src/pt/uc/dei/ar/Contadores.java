@@ -2,11 +2,9 @@ package pt.uc.dei.ar;
 
 import java.io.Serializable;
 /**
- * 
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Contadores, e uma classe auxiliar, que representa os contadores de variaveis da biblioteca
  * e implementa o Serializable
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
- *
  */
 public class Contadores implements Serializable{
 
@@ -16,39 +14,43 @@ public class Contadores implements Serializable{
 	private static final long serialVersionUID = -1193456112707634684L;
 
 	/**
-	 * Contador do numero de leitor
+	 * Contador do numero de leitor, e atributo do Contador
 	 */
 	private int contadorLeitor;
 
 	/**
-	 * Contador do numero sequencial da revista
+	 * Contador do numero sequencial da revista, atributo do Contador
 	 */
 	private int contadorRevista;
 
 	/**
-	 * Contador do codigo de barras das publicacoes
+	 * Contador do codigo de barras das publicacoes, atributo do Contador
 	 */
 	private int contadorPublicacao;
 
 	/**
-	 * Contador do numero de emprestimo
+	 * Contador do numero de emprestimo, atributo do Contador
 	 */
 	private int contadorEmprestimo;
 
 	public Contadores() {
 		super();
+		
 		this.contadorLeitor = 0;
 		this.contadorRevista = 0;
 		this.contadorPublicacao = 0;
 		this.contadorEmprestimo = 0;
+		
 	}
 
 	public Contadores(int contadorLeitor, int contadorRevista, int contadorPublicacao, int contadorEmprestimo) {
 		super();
+		
 		this.contadorLeitor = contadorLeitor;
 		this.contadorRevista = contadorRevista;
 		this.contadorPublicacao = contadorPublicacao;
 		this.contadorEmprestimo = contadorEmprestimo;
+		
 	}
 	
 	/**

@@ -7,8 +7,12 @@ import java.util.Date;
 
 import pt.uc.dei.ar.ui.Janela;
 
+/**
+ *@author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ *
+ */
 public class Main {
-
+	
 	public static void main(String[] args) {
 
 		Biblioteca maravilha = Biblioteca.getInstance();
@@ -39,10 +43,10 @@ public class Main {
 			
 			maravilha.criaJornal("Diário Económico", "01/01/2016", "02/01/2016", areas1, Periodicidade.Diaria, "2");
 			maravilha.criaJornal("Wall Street Journal", "09/01/2016", "10/01/2016",areas1,Periodicidade.Diaria, "9");
-			maravilha.criaRevista("Times", "08/01/2016", "10/01/2016", areas1,Periodicidade.Quinzenal, 2);
-			maravilha.criaRevista("Forbes", "05/01/2016", "10/01/2016",areas1, Periodicidade.Quinzenal, 1);
-			maravilha.criaRevista("The economist", "24/12/2015", "02/01/2016",area2, Periodicidade.Quinzenal, 2);
-			maravilha.criaRevista("The week", "12/12/2015", "24/12/2015", area2,Periodicidade.Semanal, 51);
+			maravilha.criaRevista("Times", "08/01/2016", "10/01/2016", areas1,Periodicidade.Quinzenal, "2");
+			maravilha.criaRevista("Forbes", "05/01/2016", "10/01/2016",areas1, Periodicidade.Quinzenal, "1");
+			maravilha.criaRevista("The economist", "24/12/2015", "02/01/2016",area2, Periodicidade.Quinzenal, "2");
+			maravilha.criaRevista("The week", "12/12/2015", "24/12/2015", area2,Periodicidade.Semanal, "51");
 
 			ArrayList<String>autor1 = new ArrayList<String>();
 			autor1.add("Manuel Mota");

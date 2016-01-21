@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * O não periódico herda de Publicação e implementa o Serializable
- *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * O NaoPeriodico herda de Publicacao e implementa o Serializable
  */
 public class NaoPeriodico extends Publicacao implements Serializable {
 
@@ -15,25 +15,25 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	private static final long serialVersionUID = 9197568589647852671L;
 	
 	/**
-     * Lista de autores do nao periodico
+     * Lista de autores e atributo do NaoPeriodico
      */
     private ArrayList<String> listaDeAutores;
 	
 	/**
-	 * Construtor da classe Nao Periodico
+	 * Construtor da classe NaoPeriodico
 	 * @param titulo
 	 * @param dataPublicacao
 	 * @param dataRececao
 	 * @param listaDeAutores
 	 */
-	public NaoPeriodico(String titulo, String dataPublicacao,  String dataReceçao, ArrayList<String> autores,  ArrayList<String> areas) {
-		super(titulo, dataPublicacao, dataReceçao, areas);
+	public NaoPeriodico(String titulo, String dataPublicacao,  String dataRececao, ArrayList<String> autores,  ArrayList<String> areas) {
+		super(titulo, dataPublicacao, dataRececao, areas);
 		
 		this.listaDeAutores = new ArrayList<String>(autores);
+		
 	}
 
 	/**
-	 * 
 	 * @return a lista de autores em formato String
 	 */
 	public ArrayList<String> getListaDeAutores() {

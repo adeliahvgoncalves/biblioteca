@@ -2,9 +2,8 @@ package pt.uc.dei.ar;
 
 import java.io.*;
 /**
- * 
- * Gera o ficheiro de objetos, serializa a biblioteca
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
+ * Gera o ficheiro de objetos, serializa a biblioteca
  */
 public class BibliotecaSerializer {
 

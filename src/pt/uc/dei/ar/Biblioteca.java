@@ -11,9 +11,8 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 /**
- * Biblioteca representa a biblioteca e todos os seus recursos e implementa o Serializable
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
- *
+ * Biblioteca representa a biblioteca e todos os seus recursos e implementa o Serializable
  */
 public class Biblioteca implements Serializable{
 
@@ -75,7 +74,7 @@ public class Biblioteca implements Serializable{
 			}
 			// O valor é retornado para quem está a pedir
 		}
-		return instance; // Retorna o a instância do objeto
+		return instance; // Retorna a instância do objeto
 	}
 
 	/**
@@ -83,7 +82,9 @@ public class Biblioteca implements Serializable{
 	 * @param Publicacao
 	 */
 	public void adicionaPublicacao(Publicacao publicacao) {
+		
 		listaDePublicacoes.add(publicacao);
+
 	}
 
 	/**
@@ -91,7 +92,9 @@ public class Biblioteca implements Serializable{
 	 * @param Utilizador
 	 */
 	public void adicionaUtilizador(Utilizador utilizador) {
+		
 		listaDeUtilizadores.add(utilizador);
+		
 	}
 
 	/**
@@ -99,7 +102,9 @@ public class Biblioteca implements Serializable{
 	 * @param Emprestimo
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
+		
 		listaDeEmprestimo.add(emprestimo);
+		
 	}
 
 	/**
@@ -108,6 +113,7 @@ public class Biblioteca implements Serializable{
 	 * @return um utilizador  com esse username
 	 */
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
+		
 		Utilizador utilizadorPorUsername = null;
 
 		for (Utilizador utilizador : listaDeUtilizadores) {
@@ -115,7 +121,6 @@ public class Biblioteca implements Serializable{
 				utilizadorPorUsername = utilizador;
 			}
 		}
-
 		return utilizadorPorUsername;
 	}
 
@@ -127,7 +132,7 @@ public class Biblioteca implements Serializable{
 	public boolean autorizaRequisitavel(Publicacao publicacao){
 
 		if(publicacao instanceof Requisitavel ){
-
+			
 			return true;
 		} 
 		return false;
@@ -138,6 +143,7 @@ public class Biblioteca implements Serializable{
 	 * @return password com 4 digitos 
 	 */
 	public String gerarPassword(){
+		
 		Random gerador = new Random();
 		int password=0;
 
@@ -149,7 +155,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Login encontrado
+	 * Metodo que verifica se o username e a password do Utilizador estao correctos
 	 * @param username
 	 * @param password
 	 * @return se encontrou o utilizador registado e devolvido, se nao devolve null
@@ -166,16 +172,20 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa utilizador com cartao do cidadao
+	 * Pesquisa um leitor pelo cartao do cidadao
 	 * @param string  cartao do cidadao
 	 * @return um Leitor  com esse cartao do cidadao
 	 */
 	public Utilizador pesquisaUtilizadorPorCartaoCidadao(String cartaoCidadao) {
+		
 		Leitor leitorNumLeitor = null;
+		
 		for (Utilizador utilizador : listaDeUtilizadores) {
+			
 			if(utilizador instanceof Leitor)
 
 				if(((Leitor) utilizador).getCartaoCidadao().equalsIgnoreCase(cartaoCidadao)){
+					
 					leitorNumLeitor = (Leitor) utilizador;
 				}
 		}
@@ -183,7 +193,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Cria leitor e adiciona ao arrayList utilizador
+	 * Cria leitor na Biblioteca e adiciona ao arrayList do utilizador
 	 * @param username
 	 * @param hashedPassword
 	 * @param nome
@@ -197,13 +207,14 @@ public class Biblioteca implements Serializable{
 	 */
 	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
+		
 		Leitor leitor=null;
 		leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
+		
 		this.adicionaUtilizador(leitor);
-
 		System.out.println("num leitor:"+leitor.getNumLeitor() + "Password"+leitor.getHashedPassword());
 		return leitor.getNumLeitor();
-
+		
 	}
 
 	/**
@@ -215,10 +226,12 @@ public class Biblioteca implements Serializable{
 	 * @return true se criado corretamente
 	 */
 	public Colaborador criaColaborador(String username,  String nome, int numColaborador){
+		
 		Colaborador colaborador = new Colaborador(username,  nome, numColaborador);
 		this.adicionaUtilizador(colaborador);
 		System.out.println( "Password"+colaborador.getHashedPassword());
 		return colaborador;
+		
 	}
 
 	/**
@@ -230,6 +243,7 @@ public class Biblioteca implements Serializable{
 	 * @return true se criado corretamente
 	 */
 	public BibliotecarioChefe criaBibliotecarioChefe(String username, String nome, int numColaborador){
+		
 		BibliotecarioChefe bibliotecarioChefe = new BibliotecarioChefe(username, nome, numColaborador);
 		this.adicionaUtilizador(bibliotecarioChefe);
 		System.out.println( "Password"+bibliotecarioChefe.getHashedPassword());
@@ -248,12 +262,13 @@ public class Biblioteca implements Serializable{
 	 * @param numeroSequencial
 	 * @return codigo de barras
 	 */
-	public int criaRevista(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
-			Periodicidade periodicidade, int volume){
+	public int criaRevista(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
+			Periodicidade periodicidade, String volume){
 
-		Revista revista = new Revista(titulo, dataPublicacao, dataReceçao, areas, periodicidade, volume);
+		Revista revista = new Revista(titulo, dataPublicacao, dataRececao, areas, periodicidade, volume);
 		this.adicionaPublicacao(revista);
 		return revista.getCodBarras();
+		
 	}
 
 	/**
@@ -266,11 +281,13 @@ public class Biblioteca implements Serializable{
 	 * @param numEdicao
 	 * @return codigo de barras
 	 */
-	public int criaJornal(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> areas,
+	public int criaJornal(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String numEdicao){
-		Jornal jornal = new Jornal(titulo, dataPublicacao, dataReceçao, areas, periodicidade, numEdicao);
+		
+		Jornal jornal = new Jornal(titulo, dataPublicacao, dataRececao, areas, periodicidade, numEdicao);
 		this.adicionaPublicacao(jornal);
 		return jornal.getCodBarras();
+		
 	}
 
 	/**
@@ -284,11 +301,13 @@ public class Biblioteca implements Serializable{
 	 * @param tipoDeTese
 	 * @return codigo de barras
 	 */
-	public int criaTese(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+	public int criaTese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
-		Tese tese = new Tese(titulo, dataPublicacao, dataReceçao, autores, areas, nomeDoOrientador, tipoDeTese);
+		
+		Tese tese = new Tese(titulo, dataPublicacao, dataRececao, autores, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
 		return tese.getCodBarras();
+		
 	}
 
 	/**
@@ -303,21 +322,23 @@ public class Biblioteca implements Serializable{
 	 * @param editor
 	 * @return codigo de barras
 	 */
-	public int criaLivro(String titulo, String dataPublicacao, String dataReceçao, ArrayList<String> autores,
+	public int criaLivro(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
-		Livro livro = new Livro(titulo, dataPublicacao, dataReceçao, autores, areas, numEdicao, iSBN, editor);
+		
+		Livro livro = new Livro(titulo, dataPublicacao, dataRececao, autores, areas, numEdicao, iSBN, editor);
 		this.adicionaPublicacao(livro);
 		return livro.getCodBarras();
 
 	}
 
 	/**
-	 * Pesquisa utilizador com numero de colaborador
+	 * Pesquisa utilizador pelo numero de colaborador
 	 * @param int numero de colaborador
 	 * @return um Utilizador utilizador com esse numero de colaborador
 	 */
 	public Utilizador pesquisaUtilizadorPorNumColaborador(int numCol) {
 		Utilizador utilizadorColaborador = null;
+		
 		for (Utilizador utilizador : listaDeUtilizadores) {
 
 			if(utilizador instanceof Colaborador){
@@ -343,6 +364,7 @@ public class Biblioteca implements Serializable{
 	 * @return um Utilizador utilizador com esse número de leitor
 	 */
 	public Utilizador pesquisaUtilizadorPorNumLeitor(int numLeitor) {
+		
 		Leitor leitorNumLeitor = null;
 		for (Utilizador utilizador : listaDeUtilizadores) {
 			if(utilizador instanceof Leitor)
@@ -369,14 +391,14 @@ public class Biblioteca implements Serializable{
 				publicaçãoComCodigoBarras = publicacao;
 			}
 		}
+		
 		return publicaçãoComCodigoBarras;	
-
 	}
 
 	/**
-	 * Cria emprestimo
+	 * Cria um emprestimo
 	 * @param codigoBarras
-	 * @param cc
+	 * @param cartao do cidadao
 	 * @return true se criado corretamente
 	 */
 	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
@@ -397,7 +419,7 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Devolve emprestimo
+	 * Devolve um emprestimo
 	 * @param codigoBarras
 	 * @return false se nao existir o emprestimo
 	 */
@@ -425,13 +447,14 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa por area
+	 * Pesquisa publicacoes por area
 	 * @param String area 
 	 * @return arrayList de publicacoes daquela area 
 	 */
 	public ArrayList<Publicacao> pesquisaPorArea(String area) {
 
 		ArrayList<Publicacao> publicacaoPorArea= new ArrayList<Publicacao>();
+		
 		for(Publicacao publicacao: listaDePublicacoes){
 			ArrayList<String> areas=publicacao.getListaDeAreas();
 
@@ -453,6 +476,7 @@ public class Biblioteca implements Serializable{
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNomeAutor(String nome) {
 
 		ArrayList<Publicacao> publicacaoAutor= new ArrayList<Publicacao>();
+		
 		for(Publicacao publicacao: listaDePublicacoes){
 			if(publicacao instanceof NaoPeriodico){
 				ArrayList<String> autores=((NaoPeriodico) publicacao).getListaDeAutores();
@@ -473,6 +497,7 @@ public class Biblioteca implements Serializable{
 	 * @return Publicacoes que contem parte de titulo
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
+		
 		ArrayList<Publicacao> publicacaoComParteNome=new ArrayList<Publicacao>();
 
 		for (Publicacao publicacao: listaDePublicacoes){
@@ -481,7 +506,6 @@ public class Biblioteca implements Serializable{
 			}
 		}
 		return publicacaoComParteNome;
-
 	}
 
 	/**
@@ -674,56 +698,72 @@ public class Biblioteca implements Serializable{
 	 * @return boolean
 	 */
 	public boolean temDados(){
+		
 		return this.listaDeUtilizadores.size()>0;
+		
 	}
 
 	/**
 	 * @return the listaDeUtilizadores
 	 */
 	public ArrayList<Utilizador> getListaDeUtilizadores() {
+		
 		return listaDeUtilizadores;
+		
 	}
 
 	/**
 	 * @param listaDeUtilizadores the listaDeUtilizadores to set
 	 */
 	public void setListaDeUtilizadores(ArrayList<Utilizador> listaDeUtilizadores) {
+		
 		this.listaDeUtilizadores = listaDeUtilizadores;
+		
 	}
 
 	/**
 	 * @return the listaDePublicacoes
 	 */
 	public ArrayList<Publicacao> getListaDePublicacoes() {
+		
 		return listaDePublicacoes;
+		
 	}
 
 	/**
 	 * @param listaDePublicacoes the listaDePublicacoes to set
 	 */
 	public void setListaDePublicacoes(ArrayList<Publicacao> listaDePublicacoes) {
+		
 		this.listaDePublicacoes = listaDePublicacoes;
+		
 	}
 
 	/**
 	 * @return the listaDeEmprestimo
 	 */
 	public ArrayList<Emprestimo> getListaDeEmprestimo() {
+		
 		return listaDeEmprestimo;
+		
 	}
 
 	/**
 	 * @param listaDeEmprestimo the listaDeEmprestimo to set
 	 */
 	public void setListaDeEmprestimo(ArrayList<Emprestimo> listaDeEmprestimo) {
+		
 		this.listaDeEmprestimo = listaDeEmprestimo;
+		
 	}
 	/**
 	 * 
 	 * @return contador em formato Contadores
 	 */
 	public Contadores getContadores() {
+		
 		return contadores;
+		
 	}
 
 	/**
@@ -731,7 +771,9 @@ public class Biblioteca implements Serializable{
 	 * @param contadores
 	 */
 	public void setContadores(Contadores contadores) {
+		
 		this.contadores = contadores;
+		
 	}
 
 	/* (non-Javadoc)
@@ -773,7 +815,6 @@ public class Biblioteca implements Serializable{
 
 		}
 		return emprestimoNum;
-
 
 	}
 }
