@@ -3,6 +3,7 @@ package pt.uc.dei.ar.ui;
 import javax.swing.JPanel;
 
 import pt.uc.dei.ar.Biblioteca;
+import pt.uc.dei.ar.BibliotecaSerializer;
 import pt.uc.dei.ar.ExportadorCSV;
 
 import java.awt.Panel;
@@ -124,6 +125,8 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 		if (e.getSource() == this.btnSair) {
 
+			Biblioteca biblioteca = Biblioteca.getInstance();
+			BibliotecaSerializer.getInstance().gravaBiblioteca(biblioteca);
 			janela.sairOK();
 
 		} else if (e.getSource() == this.btnRegistarUtilizador) {
