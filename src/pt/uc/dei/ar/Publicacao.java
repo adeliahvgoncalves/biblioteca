@@ -19,7 +19,7 @@ public class Publicacao implements Serializable{
 	private static final long serialVersionUID = 9149749963203341928L;
 
 	/**
-	 * @title Titulo e atributo de uma publicacao
+	 * Titulo e atributo de uma publicacao
 	 */
 	private String titulo;
 

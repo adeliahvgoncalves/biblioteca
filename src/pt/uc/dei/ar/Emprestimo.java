@@ -46,7 +46,6 @@ public class Emprestimo implements Serializable {
 
 	/**
 	 * Construtor da classe Emprestimo
-	 * @param numEmp numero de emprestimo
 	 * @param leitor leitor que vai fazer o emprestimo
 	 * @param dataEmp data de emprestimo da publicacao
 	 * @param publicacao a publicacao a ser emprestada
