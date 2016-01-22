@@ -23,10 +23,6 @@ import pt.uc.dei.ar.Publicacao;
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface de consulta de emprestimo expirados
  */
-/**
- * @author mj
- *
- */
 public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = -4505839442695977870L;
@@ -54,7 +50,7 @@ public class EmprestimosForaPrazo extends JPanel implements ActionListener {
 
 	/**
 	 * Create the Jpanel
-	 * @param j
+	 * @param j da janela principal
 	 */
 	public EmprestimosForaPrazo(Janela j) {
 		setLayout(null);

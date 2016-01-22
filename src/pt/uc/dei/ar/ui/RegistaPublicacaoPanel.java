@@ -178,7 +178,7 @@ public class RegistaPublicacaoPanel extends JPanel implements ActionListener, Fo
 	
 	/**
 	 * Create the panel RegistaPublicacaoPanel.
-	 * @param janela
+	 * @param janela janela principal
 	 */
 	public RegistaPublicacaoPanel(Janela j) {
 		setLayout(null);

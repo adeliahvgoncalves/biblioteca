@@ -116,7 +116,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 	/**
 	 * Create the panel RegistaUtilizadorPanel.
-	 * @param janela
+	 * @param janela janela principal
 	 */
 	public RegistaUtilizadorPanel(Janela j) {
 		setLayout(null);

@@ -65,7 +65,7 @@ public class BibliotecarioChefePanel extends JPanel implements ActionListener {
 
 	/**
 	 * Create the panel
-	 * @param j
+	 * @param j janela principal
 	 */
 	public BibliotecarioChefePanel(Janela j) {
 

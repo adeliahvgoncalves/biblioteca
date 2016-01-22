@@ -31,7 +31,7 @@ import pt.uc.dei.ar.Tese;
 /**
  * @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  * Interface do Bibliotario Chefe para pesquisar uma publicacao da Biblioteca.
- * Pesquisa por codigo de barras a publicacao a pesquisar.
+ * Pesquisa por codigo de barras ou por nome a publicacao.
  */
 public class PesquisarPublicacao extends JPanel implements ActionListener, FocusListener {
 	
@@ -87,7 +87,7 @@ public class PesquisarPublicacao extends JPanel implements ActionListener, Focus
 	
 	/**
 	 * Create the panel PesquisarPublicacao.
-	 * @param j
+	 * @param j janela principal
 	 */
 	public PesquisarPublicacao(Janela j) {
 		setLayout(null);

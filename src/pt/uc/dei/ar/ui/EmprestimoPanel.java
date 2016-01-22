@@ -79,7 +79,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 
 	/**
 	 * Create the panel.
-	 * @param j
+	 * @param j janela principal
 	 */
 	public EmprestimoPanel(Janela j) {
 		setLayout(null);
@@ -162,7 +162,7 @@ public class EmprestimoPanel extends JPanel implements ActionListener, FocusList
 		DevolvePanel.add(txtCodigoBarrasDevolucao);
 		txtCodigoBarrasDevolucao.setColumns(10);
 
-		// Butoes
+		// Botoes
 
 		btnDevolver = new JButton("Devolver");
 		btnDevolver.addActionListener(this);

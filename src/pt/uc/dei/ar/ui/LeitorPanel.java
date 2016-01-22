@@ -92,8 +92,8 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 
 	/**
 	 * Create the panel.
-	 * @param j
-	 * @param utilizador
+	 * @param j janela principal 
+	 * @param utilizador leitor que fez login
 	 */
 	public LeitorPanel(Janela j, Utilizador utilizador) {
 		setLayout(null);
