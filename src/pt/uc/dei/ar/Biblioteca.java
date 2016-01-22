@@ -106,7 +106,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa utilizador por username
-	 * @param string  username do utilizador a ser pesquisado
+	 * @param username do utilizador a ser pesquisado
 	 * @return Caso encontre retorna um utilizador com esse username, caso contrario retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
@@ -704,8 +704,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Altera a lista de utilizadores da biblioteca
-	 * @param listaUtilizadores Lista de utilizadores nova
+	 * Altera a lista de utilizadores da bibliotec
+	 * @param listaDeUtilizadores lista de utilizadores
 	 */
 	public void setListaDeUtilizadores(ArrayList<Utilizador> listaDeUtilizadores) {
 		

@@ -30,7 +30,6 @@ public class BibliotecaSerializer {
 	
 	/**
 	 * Construtor da BibliotecaSerializer
-	 * @param filePath o path do ficheiro
 	 */
 	public BibliotecaSerializer() {
 		String userHome = System.getProperty("user.home");
