@@ -46,12 +46,10 @@ public class Emprestimo implements Serializable {
 
 	/**
 	 * Construtor da classe Emprestimo
-	 * @param numEmp
-	 * @param numEmpUltimo
-	 * @param leitor
-	 * @param dataEmp
-	 * @param dataDev
-	 * @param publicacao
+	 * @param numEmp numero de emprestimo
+	 * @param leitor leitor que vai fazer o emprestimo
+	 * @param dataEmp data de emprestimo da publicacao
+	 * @param publicacao a publicacao a ser emprestada
 	 */
 	public Emprestimo( Leitor leitor, Date dataEmp, Requisitavel publicacao) {
 		super();
@@ -63,35 +61,40 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * @return o numero de emprestimo, em formato inteiro
+	 * Obtem o numero de emprestimo
+	 * @return O numero de emprestimo
 	 */
 	public int getNumEmp() {
 		return numEmp;
 	}
 
 	/**
-	 * @return o leitor em formato leitor
+	 * Obtem o leitor que fez o emprestimo
+	 * @return O leitor em formato leitor
 	 */
 	public Leitor getLeitor() {
 		return leitor;
 	}
 
 	/**
-	 * @return a data de emprestimo em formato data
+	 * Obtem a data em que a publicacao foi emprestada
+	 * @return A data de emprestimo em formato data
 	 */
 	public Date getDataEmp() {
 		return dataEmp;
 	}
 
 	/**
-	 * @return a data de devolucao em formato data
+	 * Obtem a data de devolucao em que a publicacao foi devolvida
+	 * @return A data de devolucao 
 	 */
 	public Date getDataDev() {
 		return dataDev;
 	}
 
 	/**
-	 * @param dataDev the dataDev to set
+	 * Altera a data de devolucao em que a publicacao foi devolvida
+	 * @param dataDev a data de devolucao nova
 	 * a utilizar na devolucao da publicacao requisitavel
 	 */
 	public void setDataDev(Date dataDev) {
@@ -99,23 +102,24 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * @return a publicacao que seja requisitavel
+	 * Obtem a publicacao requisitavel do emprestimo 
+	 * @return A publicacao que seja requisitavel
 	 */
 	public Requisitavel getPublicacao() {
 		return publicacao;
 	}
 
 	/**
-	 * 
-	 * @return numEmpUltimo
+	 * Obtem o ultimo numero sequencial do emprestimo
+	 * @return O ultimo numero sequencial do emprestimo
 	 */
 	public static int getNumEmpUltimo() {
 		return numEmpUltimo;
 	}
 
 	/**
-	 * 
-	 * @param numEmpUltimo
+	 * Altera o ultimo numero sequencial do emprestimo
+	 * @param numEmpUltimo o ultimo numero sequencial do emprestimo novo
 	 */
 	public static void setNumEmpUltimo(int numEmpUltimo) {
 		Emprestimo.numEmpUltimo = numEmpUltimo;
@@ -123,7 +127,7 @@ public class Emprestimo implements Serializable {
 
 	/**
 	 * Determina a data maxima de emprestimo
-	 * @return dataMaximaEntrega
+	 * @return A data maxima em que o emprestimo pode ser devolvido
 	 */
 	public Date dataMaximaEntrega(){
 
@@ -136,8 +140,7 @@ public class Emprestimo implements Serializable {
 
 	/**
 	 * Determina o numero de dias que esteve emprestado
-	 * @param emprestimo
-	 * @return dias que a publicacao esteve emprestada em formato inteiro
+	 * @return Dias que a publicacao esteve emprestada em formato inteiro
 	 */
 	public int diasDeEmprestimo(){ 
 		long m1 = 0;

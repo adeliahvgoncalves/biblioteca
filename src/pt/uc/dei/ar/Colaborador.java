@@ -19,10 +19,9 @@ public class Colaborador extends Utilizador implements Serializable {
 	
     /**
      * Construtor da classe Colaborador.
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param numColaborador
+	 * @param username username do colaborador
+	 * @param nome nome do colaborador
+	 * @param numColaborador numero de colaborador do colaborador
 	 */
 	public Colaborador(String username,  String nome, int numColaborador) {
 		super(username, nome);
@@ -32,7 +31,8 @@ public class Colaborador extends Utilizador implements Serializable {
 	}
 
 	/**
-     * @return o numero de colaborador do utilizador em formato inteiro
+	 * Obtem o numero de colaborador do utilizador (colaborador)
+     * @return O numero de colaborador do utilizador (colaborador)
      */
     public int getNumColaborador() {
         return numColaborador;

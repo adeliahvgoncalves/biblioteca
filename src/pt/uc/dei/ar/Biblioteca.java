@@ -373,8 +373,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa pubicacao por codigo de barras.
-	 * @param codigoBarras  
-	 * @return uma Publicacao publicacaoComCodigoBarras
+	 * @param codigoBarras codigo de barras da publicacao a pesquisar  
+	 * @return Uma publicacao caso encontre, se nao retorna null
 	 */
 	public Publicacao pesquisaPublicacaoPorCodBarras(int codigoBarras) {
 
@@ -390,10 +390,10 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Cria um emprestimo
-	 * @param codigoBarras
-	 * @param cartao do cidadao
-	 * @return true se criado corretamente
+	 * Cria um emprestimo na biblioteca.
+	 * @param codigoBarras codigo de barras da publicacao
+	 * @param numLeitor numero de leitor que vai fazer o emprestimo
+	 * @return Se criado correctamente retorna true, se nao retorna false.
 	 */
 	public boolean criaEmprestimo(int numLeitor, int codigoBarras) {
 		Leitor utilizador = (Leitor) pesquisaUtilizadorPorNumLeitor(numLeitor);
@@ -413,9 +413,9 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Devolve um emprestimo
-	 * @param codigoBarras
-	 * @return false se nao existir o emprestimo
+	 * Devolve um emprestimo na biblioteca
+	 * @param codigoBarras codigo de barras da publicacao a ser devolvida
+	 * @return True de criada correctamente, false se nao existir o emprestimo
 	 */
 	public boolean devolveEmprestimo(int codigoBarras) {
 
@@ -442,8 +442,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa publicacoes por area
-	 * @param String area 
-	 * @return arrayList de publicacoes daquela area 
+	 * @param area area a pesquisar
+	 * @return Um arrayList de publicacoes com a area pesquisada
 	 */
 	public ArrayList<Publicacao> pesquisaPorArea(String area) {
 
@@ -464,8 +464,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa publicacao por autor
-	 * @param emprestimo 
-	 * @return Publicacoes que contem nome do autor
+	 * @param nome nome do autor a pesquisar
+	 * @return Publicacoes que contem nome do autor pesquisado
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNomeAutor(String nome) {
 
@@ -487,8 +487,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa publicacao por titulo
-	 * @param emprestimo 
-	 * @return Publicacoes que contem parte de titulo
+	 * @param nome parte do titulo da publicacao a pesquisar 
+	 * @return Publicacoes que contem parte de titulo que foi pesquisado
 	 */
 	public ArrayList<Publicacao> pesquisaPublicacaoComParteNome(String nome) {
 		
@@ -504,13 +504,13 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa publicacao por titulo
-	 * @param String nome 
-	 * @return Publicacao
+	 * @param titulo titulo da publicacao a pesquisar 
+	 * @return Uma publicacao caso encontre, caso contrario devolve null
 	 */
-	public Publicacao pesquisaPublicacao(String nome) {
+	public Publicacao pesquisaPublicacao(String titulo) {
 		Publicacao pesquisaNome = null;
 		for (Publicacao publicacao: listaDePublicacoes){
-			if(publicacao.getTitulo().equalsIgnoreCase(nome))	{	
+			if(publicacao.getTitulo().equalsIgnoreCase(titulo))	{	
 
 				pesquisaNome = publicacao;
 			}
@@ -520,7 +520,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Lista os emprestimos que ja deveriam ter sido devolvidos
-	 * @return emprestimo expirados
+	 * @return Lista de emprestimos expirados
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimoExpirado() {
 
@@ -548,7 +548,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Determina o total de emprestimos nos ultimos 12 meses
-	 * @return numero total de emprestimos do ultimo ano em formato inteiro
+	 * @return Numero total de emprestimos do ultimo ano em formato inteiro
 	 */
 	public int totalEmprestimosUltimoAno() {
 
@@ -571,8 +571,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 *Gera um Map que indica quantos emprestimos houve para cada obra em cada um dos ultimos 12 meses
-	 * @param dataAtual
-	 * @return um dicionario com a contagem de repeticoes mensais por cada Publicacao
+	 * @param dataAtual data actual do sistema
+	 * @return Um dicionario com a contagem de repeticoes mensais por cada publicacao
 	 */
 	public Map<String, Integer>  geraMapaRepeticoesMensais(Calendar dataAtual){
 
@@ -604,8 +604,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Gera um Map que indica quantos emprestimos houve para cada obra  no total dos ultimos 12 meses
-	 * @param ArrayList Emprestimo 
-	 * @return um dicionario com a contagem de repeticoes por cada Publicacao
+	 * @return Um dicionario com a contagem de repeticoes por cada Publicacao
 	 */
 	public Map<Publicacao, Integer> totalEmprestimosPorPublicacaoNoAno() {
 
@@ -639,9 +638,8 @@ public class Biblioteca implements Serializable{
 	 * Para os ultimos 12 meses, devolve um Map que relaciona as Publicacoes com os dias 
 	 * que esteve emprestado
 	 * de forma a fazermos o maximo, minimo e media
-	 * 
-	 * @param dataAtual
-	 * @return um map publicacao, dias de emprestimo
+	 * @param dataAtual data actual do sistema
+	 * @return Um map com publicacao, dias de emprestimo
 	 */
 	public Map<Publicacao,MatematicaFuncoes> obterDiasEmprestimoPorPublicacao(Calendar dataAtual){
 
@@ -688,8 +686,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Verifica se a biblioteca a inicializar tem dados
-	 * @return boolean
+	 * Verifica se a biblioteca a inicializar tem dados.
+	 * @return True se encontrar dados, false se nao encontrar.
 	 */
 	public boolean temDados(){
 		
@@ -698,7 +696,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @return the listaDeUtilizadores
+	 * Obtem a lista de utilizadores
+	 * @return A lista de utilizadores da biblioteca.
 	 */
 	public ArrayList<Utilizador> getListaDeUtilizadores() {
 		
@@ -707,7 +706,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @param listaDeUtilizadores the listaDeUtilizadores to set
+	 * Altera a lista de utilizadores da biblioteca
+	 * @param listaUtilizadores lista de utilizadores nova
 	 */
 	public void setListaDeUtilizadores(ArrayList<Utilizador> listaDeUtilizadores) {
 		
@@ -716,7 +716,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @return the listaDePublicacoes
+	 * Obtem a lista de publicacoes
+	 * @return A lista de publicacoes da biblioteca
 	 */
 	public ArrayList<Publicacao> getListaDePublicacoes() {
 		
@@ -725,7 +726,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @param listaDePublicacoes the listaDePublicacoes to set
+	 * Altera a lista de publivavoes na biblioteca
+	 * @param listaDePublicacoes lista de publicacoes nova
 	 */
 	public void setListaDePublicacoes(ArrayList<Publicacao> listaDePublicacoes) {
 		
@@ -734,7 +736,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @return the listaDeEmprestimo
+	 * Obtem a lista de emprestimos da biblioteca
+	 * @return A lista de emprestimos da biblioteca
 	 */
 	public ArrayList<Emprestimo> getListaDeEmprestimo() {
 		
@@ -743,7 +746,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * @param listaDeEmprestimo the listaDeEmprestimo to set
+	 * Altera a lista de emprestimos na biblioteca
+	 * @param listaDeEmprestimo lista de emprestimo nova
 	 */
 	public void setListaDeEmprestimo(ArrayList<Emprestimo> listaDeEmprestimo) {
 		
@@ -751,8 +755,8 @@ public class Biblioteca implements Serializable{
 		
 	}
 	/**
-	 * 
-	 * @return contador em formato Contadores
+	 * Obtem os contadores 
+	 * @return Os contadores
 	 */
 	public Contadores getContadores() {
 		
@@ -761,8 +765,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * 
-	 * @param contadores
+	 * Altera os contadores
+	 * @param contadores os contadores novos
 	 */
 	public void setContadores(Contadores contadores) {
 		

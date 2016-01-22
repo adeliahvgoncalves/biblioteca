@@ -30,7 +30,7 @@ public class BibliotecaSerializer {
 	
 	/**
 	 * Construtor da BibliotecaSerializer
-	 * @param filePath
+	 * @param filePath o path do ficheiro
 	 */
 	public BibliotecaSerializer() {
 		super();
@@ -41,7 +41,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Construtor da BibliotecaSerializer
-	 * @param filePath
+	 * @param filePath o path do ficheiro
 	 */
 	public BibliotecaSerializer(String filePath){
 		super();
@@ -64,7 +64,7 @@ public class BibliotecaSerializer {
 	/**
 	 * Abre a biblioteca ou a partir do ficheiro de objetos ou 
 	 * atraves dos dados inserido inicialmente, caso ainda nao haja o ficheiro
-	 * @return a biblioteca
+	 * @return A biblioteca.
 	 */
 	public Biblioteca abreBiblioteca(){
 
@@ -92,8 +92,8 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Grava no ficheiro de objetos
-	 * @param biblioteca
-	 * @return true se gravou corretamente no ficheiro de objetos
+	 * @param biblioteca a biblioteca
+	 * @return True se gravou corretamente no ficheiro de objetos, caso contrario false
 	 */
 	public boolean gravaBiblioteca(Biblioteca biblioteca){
 
@@ -119,7 +119,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Metodo para abrir um ficheiro para leitura
-	 * @param nomeDoFicheiro
+	 * @param nomeDoFicheiro o nome do ficheiro para leitura
 	 * @throws IOException
 	 */
 	private void abreLeitura(String nomeDoFicheiro) throws IOException {
@@ -128,7 +128,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Metodo para abrir um ficheiro para escrita
-	 * @param nomeDoFicheiro
+	 * @param nomeDoFicheiro nome do ficheiro para escrita
 	 * @throws IOException
 	 */
 	private void abreEscrita(String nomeDoFicheiro) throws IOException {
@@ -137,7 +137,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Metodo para ler um objeto do ficheiro
-	 * @return o objeto lido
+	 * @return O objeto lido
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
@@ -147,7 +147,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Metodo para escrever um objeto no ficheiro 
-	 * @param o (objeto a escrever)
+	 * @param o objeto a escrever
 	 * @throws IOException
 	 */
 	private void escreveObjeto(Object o) throws IOException {

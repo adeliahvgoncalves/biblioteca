@@ -54,60 +54,64 @@ public class Contadores implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return contadorLeitor em formato inteiro
+	 * Obtem o contador do numero sequencial do leitor
+	 * @return O contador Leitor
 	 */
 	public int getContadorLeitor() {
 		return contadorLeitor;
 	}
 
+	/**
+	 * Altera o contador do numero sequencial do leitor
+	 * @param contadorLeitor o contador do numero sequencial do leitor novo
+	 */
 	public void setContadorLeitor(int contadorLeitor) {
 		this.contadorLeitor = contadorLeitor;
 	}
 
 	/**
-	 * 
-	 * @return contadorRevista em formato inteiro
+	 * Obtem o contador do numero sequencial da revista
+	 * @return O contador do numero sequencial da revista
 	 */
 	public int getContadorRevista() {
 		return contadorRevista;
 	}
 
 	/**
-	 * 
-	 * @param contadorRevista
+	 * Altera o contador do numero sequencial da revista
+	 * @param contadorRevista o contador do numero sequencial da revista novo
 	 */
 	public void setContadorRevista(int contadorRevista) {
 		this.contadorRevista = contadorRevista;
 	}
 
 	/**
-	 * 
-	 * @return contadorPublicacao em formato inteiro
+	 * Obtem o contador do numero sequencial da publicacao
+	 * @return O contador do numero sequencial da publicacao
 	 */
 	public int getContadorPublicacao() {
 		return contadorPublicacao;
 	}
 
 	/**
-	 * 
-	 * @param contadorPublicacao
+	 * Altera o contador do numero sequencial da publicacao
+	 * @param contadorPublicacao o contador do numero sequencial da publicacao novo
 	 */
 	public void setContadorPublicacao(int contadorPublicacao) {
 		this.contadorPublicacao = contadorPublicacao;
 	}
 
 	/**
-	 * 
-	 * @return contadorEmprestimo em formato inteiro
+	 * Obtem o contador do numero sequencial do emprestimo
+	 * @return O contador do numero sequencial do emprestimo
 	 */
 	public int getContadorEmprestimo() {
 		return contadorEmprestimo;
 	}
 
 	/**
-	 * 
-	 * @param contadorEmprestimo
+	 * Altera o contador do numero sequencial do emprestimo
+	 * @param contadorEmprestimo o contador do numero sequencial do emprestimo novo
 	 */
 	public void setContadorEmprestimo(int contadorEmprestimo) {
 		this.contadorEmprestimo = contadorEmprestimo;

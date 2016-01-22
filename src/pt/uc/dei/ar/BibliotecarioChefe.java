@@ -19,10 +19,9 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 
     /**
      * Construtor da classe BibliotecarioChefe.
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param numColaborador
+	 * @param username username do bibliotecario chefe
+	 * @param nome nome do bibliotecario chefe
+	 * @param numColaborador numero de colaborador da biblioteca
 	 */
 	public BibliotecarioChefe(String username, String nome, int numColaborador) {
 		super(username, nome);
@@ -32,7 +31,8 @@ public class BibliotecarioChefe extends Utilizador implements Serializable{
 	}
 
 	/**
-     * @return o numero de colaborador do utilizador em formato inteiro.
+	 * Obtem o numero de colaborador do bibliotecario chefe
+     * @return O numero de colaborador do bibliotecario chefe
      */
     public int getNumColaborador() {
         return numColaborador;
