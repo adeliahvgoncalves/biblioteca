@@ -48,9 +48,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Construtor da classe biblioteca
-	 * @param listaDeUtilizadores ArrayList com os Utilizadores da Biblioteca
-	 * @param listaDePublicacoes ArrayList com as Publicacoes da Biblioteca
-	 * @param listaDeEmprestimo ArrayList com os Emprestimos da Biblioteca
+	 *  
 	 */
 	public Biblioteca() {
 		this.listaDeUtilizadores = new ArrayList<Utilizador>();
@@ -59,7 +57,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Metodo publico estatico de acesso unico ao objeto
+	 *  Metodo publico estatico de acesso unico ao objeto
+	 * @return A instancia do objeto
 	 */
 	public static Biblioteca getInstance(){
 
@@ -77,7 +76,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona uma publicacao nova
-	 * @param Publicacao publicacao que vai ser adicionada
+	 * @param publicacao publicacao que vai ser adicionada
 	 */
 	public void adicionaPublicacao(Publicacao publicacao) {
 		
@@ -87,7 +86,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona um utilizador novo
-	 * @param Utilizador utilizador que vai ser adicionado
+	 * @param utilizador utilizador que vai ser adicionado
 	 */
 	public void adicionaUtilizador(Utilizador utilizador) {
 		
@@ -97,7 +96,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona um emprestimo novo
-	 * @param Emprestimo emprestimo que vai ser adicionado
+	 * @param  emprestimo  emprestimo que vai ser adicionado
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
 		
@@ -171,7 +170,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa um leitor pelo cartao do cidadao
-	 * @param string cartao do cidadao do leitor
+	 * @param cartaoCidadao cartao do cidadao do leitor
 	 * @return Se encontrar um Leitor com esse cartao do cidadao retorna esse leitor, caso contrario retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorCartaoCidadao(String cartaoCidadao) {
@@ -326,7 +325,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa utilizador pelo numero de colaborador
-	 * @param int numero de colaborador a pesquisar
+	 * @param numCol numero de colaborador a pesquisar
 	 * @return Um utilizador com esse numero de colaborador, caso nao encontre retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorNumColaborador(int numCol) {
@@ -706,7 +705,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Altera a lista de utilizadores da biblioteca
-	 * @param listaUtilizadores lista de utilizadores nova
+	 * @param listaUtilizadores Lista de utilizadores nova
 	 */
 	public void setListaDeUtilizadores(ArrayList<Utilizador> listaDeUtilizadores) {
 		

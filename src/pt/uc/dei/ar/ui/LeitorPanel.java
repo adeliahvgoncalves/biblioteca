@@ -308,7 +308,7 @@ public class LeitorPanel extends JPanel implements ActionListener, FocusListener
 	
 	/**
 	 * Preenche uma tabela de todas as Publicacoes da Biblioteca
-	 * @param publicacao
+	 * @param pubs Publicacao
 	 */
 	public void preencheTabelaListaPublicacaoTotal(ArrayList<Publicacao> pubs){
 

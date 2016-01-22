@@ -20,8 +20,8 @@ public class SaveFile extends FileFilter {
 	private final String description;
 	/**
 	 * Create the panel.
-	 * @param extension
-	 * @param description
+	 * @param extension extensao do ficheiro
+	 * @param description descricao do ficheiro
 	 */
 	public SaveFile(String extension, String description) {
 

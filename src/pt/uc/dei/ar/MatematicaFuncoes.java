@@ -27,11 +27,9 @@ public class MatematicaFuncoes {
 	private int media;
 
 	/**
-	 * Construtor que dando a lista de inteiros constroi-se 
+	 *  Construtor que dando a lista de inteiros constroi-se 
 	 * ja com a media/minimo/maximo
-	 * @param maximo maximo
-	 * @param minimo minimo
-	 * @param media media
+	 * @param lista lista
 	 */
 	public MatematicaFuncoes(ArrayList<Integer> lista) {
 
@@ -94,7 +92,7 @@ public class MatematicaFuncoes {
 
 	/**
 	 * Calcula a media da lista fornecida
-	 * @param list
+	 * @param list lista
 	 * @return media em formato double
 	 */
 

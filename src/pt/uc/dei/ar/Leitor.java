@@ -61,10 +61,7 @@ public class Leitor extends Utilizador implements Serializable {
 	/**
 	 * Construtor da classe Leitor.
 	 * @param username username do leitor
-	 * @param hashedPassword password do leitor
 	 * @param nome nome do leitor
-	 * @param listaDeEmprestimo lista de emprestimo do leitor
-	 * @param numLeitor numero do leitor
 	 * @param dataNascimento data de nascimento do leitor
 	 * @param cartaoCidadao cartao do cidadao do leitor
 	 * @param morada morada do leitor
@@ -198,7 +195,7 @@ public class Leitor extends Utilizador implements Serializable {
 	
 	/**
 	 * Altera o ultimo numero sequencial
-	 * @param ultimoNumLeitorSequencial
+	 * @param ultimoNumLeitorSequencial ultimo numero sequencial
 	 */
 	public static void setUltimoNumLeitorSequencial(int ultimoNumLeitorSequencial) {
 		Leitor.ultimoNumLeitorSequencial = ultimoNumLeitorSequencial;
@@ -206,7 +203,7 @@ public class Leitor extends Utilizador implements Serializable {
 
 	/**
 	 * Adiciona um emprestimo novo
-	 * @param Emprestimo
+	 * @param Emprestimo emprestimo
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
 		listaDeEmprestimos.add(emprestimo);
@@ -214,8 +211,7 @@ public class Leitor extends Utilizador implements Serializable {
 
 	/**
 	 * Consulta de emprestimos ativos do leitor
-	 * @param String Nome 
-	 * @return EmprestimosAtuais
+	 * @return Emprestimos Atuais
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
 		
@@ -231,7 +227,7 @@ public class Leitor extends Utilizador implements Serializable {
 	
 	/**
 	 * Remove emprestimo do Leitor
-	 * @param emprestimo
+	 * @param emprestimo emprestimo
 	 */
 	public void removeEmprestimo(Emprestimo emprestimo) {
 		listaDeEmprestimos.remove(emprestimo);

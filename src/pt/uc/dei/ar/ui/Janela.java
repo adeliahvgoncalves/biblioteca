@@ -97,7 +97,7 @@ public class Janela extends JFrame {
 
 	/**
 	 * Mostra o Jpanel de LeitorPanel
-	 * @param utilizador
+	 * @param utilizador Utilizador
 	 */
 	public void loginOK(Utilizador utilizador) {
 		Biblioteca biblioteca=Biblioteca.getInstance();

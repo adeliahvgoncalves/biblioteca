@@ -48,7 +48,8 @@ public class BibliotecaSerializer {
 	}
 	
 	/**
-	 * Verifica se a biblioteca foi instanciada
+	 *  Verifica se a biblioteca foi instanciada
+	 * @return A instancia da biblioteca
 	 */
 	public static BibliotecaSerializer getInstance(){
 
@@ -63,7 +64,7 @@ public class BibliotecaSerializer {
 	/**
 	 * Abre a biblioteca ou a partir do ficheiro de objetos ou 
 	 * atraves dos dados inserido inicialmente, caso ainda nao haja o ficheiro
-	 * @return A biblioteca.
+	 * @return A biblioteca
 	 */
 	public Biblioteca abreBiblioteca(){
 
@@ -119,7 +120,7 @@ public class BibliotecaSerializer {
 	/**
 	 * Metodo para abrir um ficheiro para leitura
 	 * @param nomeDoFicheiro o nome do ficheiro para leitura
-	 * @throws IOException
+	 * @throws IOException lancada nas condicoes em que ObjectInputStream e lancado
 	 */
 	private void abreLeitura(String nomeDoFicheiro) throws IOException {
 		iS = new ObjectInputStream(new FileInputStream(nomeDoFicheiro));
@@ -128,7 +129,7 @@ public class BibliotecaSerializer {
 	/**
 	 * Metodo para abrir um ficheiro para escrita
 	 * @param nomeDoFicheiro nome do ficheiro para escrita
-	 * @throws IOException
+	 * @throws IOException lancada nas condicoes em que ObjectOutputStream e lancado
 	 */
 	private void abreEscrita(String nomeDoFicheiro) throws IOException {
 		oS = new ObjectOutputStream(new FileOutputStream(nomeDoFicheiro));
@@ -137,8 +138,8 @@ public class BibliotecaSerializer {
 	/**
 	 * Metodo para ler um objeto do ficheiro
 	 * @return O objeto lido
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * @throws IOException caso nao se encontre o objeto
+	 * @throws ClassNotFoundException caso nao se encontre a classe
 	 */
 	private Object leObjeto() throws IOException, ClassNotFoundException{ 
 		return iS.readObject();
@@ -147,7 +148,7 @@ public class BibliotecaSerializer {
 	/**
 	 * Metodo para escrever um objeto no ficheiro 
 	 * @param o objeto a escrever
-	 * @throws IOException
+	 * @throws IOException caso nao se encontre o objeto para escrita
 	 */
 	private void escreveObjeto(Object o) throws IOException {
 		oS.writeObject(o); 
@@ -155,7 +156,7 @@ public class BibliotecaSerializer {
 
 	/**
 	 * Metodo para fechar um ficheiro aberto em modo leitura 
-	 * @throws IOException
+	 * @throws IOException caso nao se encontre o objeto
 	 */
 	private void fechaLeitura() throws IOException {
 		try {
@@ -167,7 +168,7 @@ public class BibliotecaSerializer {
 	
 	/**
 	 * Metodo para fechar um ficheiro aberto em modo escrita 
-	 * @throws IOException
+	 * @throws IOException caso nao se encontre o objeto
 	 */
 	private void fechaEscrita() throws IOException {
 		try {

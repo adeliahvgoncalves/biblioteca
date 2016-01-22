@@ -40,7 +40,6 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	 * @param areas areas da revista
 	 * @param periodicidade periodicidade da revista
 	 * @param volume volume da revista
-	 * @param numeroSequencial numero sequencial da revista
 	 */
 	public Revista(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String volume) {

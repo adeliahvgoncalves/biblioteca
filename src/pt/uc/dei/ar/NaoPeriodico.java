@@ -24,7 +24,7 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	 * @param titulo titulo
 	 * @param dataPublicacao data de publicacao
 	 * @param dataRececao data de rececao
-	 * @param listaDeAutores lista de autores
+	 * @param autores lista de autores
 	 */
 	public NaoPeriodico(String titulo, String dataPublicacao,  String dataRececao, ArrayList<String> autores,  ArrayList<String> areas) {
 		super(titulo, dataPublicacao, dataRececao, areas);
@@ -43,7 +43,7 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 
 	/**
 	 * Metodo que permite adicionar autores 
-     * @param String
+     * @param autor autor
      */
     public void adicionaAutor(String autor) {
     	this.listaDeAutores.add(autor);

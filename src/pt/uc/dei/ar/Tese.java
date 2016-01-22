@@ -29,7 +29,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	 * @param titulo titulo da tese
 	 * @param dataPublicacao data da publicacao da tese
 	 * @param dataRececao data de rececao da tese
-	 * @param autores autor da tese
+	 * @param autor autor da tese
 	 * @param areas areas da tese
 	 * @param nomeDoOrientador nome do orientador da tese
 	 * @param tipoDeTese tipo de tese

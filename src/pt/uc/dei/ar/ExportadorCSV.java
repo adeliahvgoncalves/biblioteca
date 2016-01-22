@@ -30,7 +30,7 @@ public class ExportadorCSV {
 
 	/**
 	 * Gera os dados do relatorio
-	 * @param now
+	 * @param now a data atual
 	 * @return Um objeto matriz Um objeto matriz
 	 */
 	public Object [][] geraDadosDoRelatório(Calendar now){
@@ -99,8 +99,8 @@ public class ExportadorCSV {
 
 	/**
 	 * Metodo auxiliar para determinar o mes correspondente a 12 meses atras
-	 * @param now
-	 * @return MesAtual em formato inteiro 
+	 * @param now a data atual
+	 * @return Mes Atual em formato inteiro 
 	 */
 	private int indiceDoMesDoAnoAnterior(Calendar now){
 
@@ -112,7 +112,7 @@ public class ExportadorCSV {
 	
 	/**
 	 * Gera o CSV
-	 * @param now
+	 * @param now a data atual
 	 * @return Builder em formato string
 	 */
 	public String geraCSV(Calendar now){

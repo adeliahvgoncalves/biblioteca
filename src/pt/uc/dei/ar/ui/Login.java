@@ -54,7 +54,7 @@ public class Login extends JPanel implements ActionListener, KeyEventDispatcher 
 
 	/**
 	 * Create the Panel
-	 * @param janela
+	 * @param j janela
 	 */
 	public Login(Janela j) {
 

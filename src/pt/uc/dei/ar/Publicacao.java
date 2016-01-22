@@ -58,7 +58,6 @@ public class Publicacao implements Serializable{
 	 * @param titulo titulo da publicacao
 	 * @param dataPublicacao data da publicacao
 	 * @param areas  areas da publicacao
-	 * @param codBarras codigo de barras da publicacao
 	 * @param dataRececao data de rececao da publicacao
 	 */
 	public Publicacao(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas) {
@@ -170,7 +169,7 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * Altera o ultimo codigo de barras
-	 * @param ultimocodBarras
+	 * @param ultimocodBarras o ultimo codigo de barras
 	 */
 	public static void setUltimocodBarras(int ultimocodBarras) {
 		Publicacao.ultimocodBarras = ultimocodBarras;
