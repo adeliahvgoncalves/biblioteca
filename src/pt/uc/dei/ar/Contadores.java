@@ -34,8 +34,6 @@ public class Contadores implements Serializable{
 	private int contadorEmprestimo;
 
 	public Contadores() {
-		super();
-		
 		this.contadorLeitor = 0;
 		this.contadorRevista = 0;
 		this.contadorPublicacao = 0;

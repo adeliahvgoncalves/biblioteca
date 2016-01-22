@@ -26,17 +26,17 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 
 	/**
 	 * Construtor da classe Tese
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param autores
-	 * @param areas
-	 * @param nomeDoOrientador
-	 * @param tipoDeTese
+	 * @param titulo titulo da tese
+	 * @param dataPublicacao data da publicacao da tese
+	 * @param dataRececao data de rececao da tese
+	 * @param autores autor da tese
+	 * @param areas areas da tese
+	 * @param nomeDoOrientador nome do orientador da tese
+	 * @param tipoDeTese tipo de tese
 	 */
-	public Tese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
+	public Tese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autor,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese) {
-		super(titulo, dataPublicacao, dataRececao, autores, areas);
+		super(titulo, dataPublicacao, dataRececao, autor, areas);
 		
 		this.nomeDoOrientador = nomeDoOrientador;
 		this.tipoDeTese = tipoDeTese;
@@ -44,14 +44,16 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 	}
 
 	/**
-	 * @return o nome do orientador em formato String
+	 * Obtem o nome do orientador
+	 * @return O nome do orientador em formato String
 	 */
 	public String getNomeDoOrientador() {
 		return nomeDoOrientador;
 	}
 
 	/**
-	 * @return o tipo de tese em tipo de tese
+	 * Obtem o tipo de tese
+	 * @return O tipo de tese em tipo de tese
 	 */
 	public TipoDeTese getTipoDeTese() {
 		return tipoDeTese;
@@ -59,7 +61,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 
 	/**
 	 * Implementa interface requisitavel
-     * @return o maximo de dias de requisiçao em formato inteiro
+     * @return O maximo de dias de requisiçao em formato inteiro
      */
 	@Override
 	public int maximoDiasRequisicao() {
@@ -68,7 +70,7 @@ public class Tese extends NaoPeriodico implements Requisitavel, Serializable {
 
 	/**
 	 * Preenche detalhes da publicacao no CSV
-	 * @return detalhes da publicacao
+	 * @return Detalhes da publicacao
 	 */
 	public String detalhes(){
 		return  getListaDeAreas() + ";" + getDataRececao() + "; " + getListaDeAutores() + "; " + getNomeDoOrientador() + ";" + getTipoDeTese();

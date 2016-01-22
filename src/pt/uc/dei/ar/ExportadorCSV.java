@@ -20,11 +20,10 @@ public class ExportadorCSV {
 
 	/**
 	 * Construtor do ExportadorCSV:
-	 * @param biblioteca
+	 * @param biblioteca da biblioteca
 	 */
 	public ExportadorCSV(Biblioteca biblioteca) {
-		super();
-
+	
 		this.biblioteca = biblioteca;
 
 	}
@@ -32,7 +31,7 @@ public class ExportadorCSV {
 	/**
 	 * Gera os dados do relatorio
 	 * @param now
-	 * @return um objeto matriz
+	 * @return Um objeto matriz Um objeto matriz
 	 */
 	public Object [][] geraDadosDoRelatório(Calendar now){
 
@@ -101,7 +100,7 @@ public class ExportadorCSV {
 	/**
 	 * Metodo auxiliar para determinar o mes correspondente a 12 meses atras
 	 * @param now
-	 * @return mesAtual em formato inteiro
+	 * @return MesAtual em formato inteiro 
 	 */
 	private int indiceDoMesDoAnoAnterior(Calendar now){
 
@@ -114,7 +113,7 @@ public class ExportadorCSV {
 	/**
 	 * Gera o CSV
 	 * @param now
-	 * @return builder em formato string
+	 * @return Builder em formato string
 	 */
 	public String geraCSV(Calendar now){
 

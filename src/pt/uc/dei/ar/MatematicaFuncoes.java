@@ -29,9 +29,9 @@ public class MatematicaFuncoes {
 	/**
 	 * Construtor que dando a lista de inteiros constroi-se 
 	 * ja com a media/minimo/maximo
-	 * @param maximo
-	 * @param minimo
-	 * @param media
+	 * @param maximo maximo
+	 * @param minimo minimo
+	 * @param media media
 	 */
 	public MatematicaFuncoes(ArrayList<Integer> lista) {
 
@@ -42,6 +42,7 @@ public class MatematicaFuncoes {
 	}
 
 	/**
+	 * Obtem o maximo
 	 * @return the maximo em formato inteiro
 	 */
 	public int getMaximo() {
@@ -49,6 +50,7 @@ public class MatematicaFuncoes {
 	}
 
 	/**
+	 * Altera o maximo
 	 * @param maximo
 	 * the maximo to set
 	 */
@@ -57,13 +59,15 @@ public class MatematicaFuncoes {
 	}
 
 	/**
-	 * @return the minimo em formato inteiro
+	 * Obtem o minimo
+	 * @return The minimo em formato inteiro
 	 */
 	public int getMinimo() {
 		return minimo;
 	}
 
 	/**
+	 * Altera o minimo
 	 * @param minimo
 	 * the minimo to set
 	 */
@@ -72,6 +76,7 @@ public class MatematicaFuncoes {
 	}
 
 	/**
+	 * Obtem a media
 	 * @return the media em formato double
 	 */
 	public int getMedia() {
@@ -79,6 +84,7 @@ public class MatematicaFuncoes {
 	}
 
 	/**
+	 * Altera a media
 	 * @param media
 	 * the media to set
 	 */

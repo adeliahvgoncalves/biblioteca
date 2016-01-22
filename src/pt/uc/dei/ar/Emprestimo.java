@@ -52,7 +52,6 @@ public class Emprestimo implements Serializable {
 	 * @param publicacao a publicacao a ser emprestada
 	 */
 	public Emprestimo( Leitor leitor, Date dataEmp, Requisitavel publicacao) {
-		super();
 		numEmpUltimo++;
 		this.numEmp = numEmpUltimo;
 		this.dataEmp = dataEmp;

@@ -20,12 +20,12 @@ public class Jornal extends Periodico implements Serializable{
 	
 	/**
 	 * Construtor da classe Jornal
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param areas
-	 * @param periodicidade
-	 * @param numEdicao
+	 * @param titulo titulo do jornal
+	 * @param dataPublicacao data de publicacao do jornal
+	 * @param dataRececao data de rececao do jornal
+	 * @param areas areas do jornal
+	 * @param periodicidade periodicidade do jornal
+	 * @param numEdicao numero de edicao do jornal
 	 */
 	public Jornal(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String numEdicao) {
@@ -36,8 +36,8 @@ public class Jornal extends Periodico implements Serializable{
 	}
 
 	/**
-	 *
-	 * @return o numero de edicao em formato inteiro
+	 *Obtem o numero de edicao
+	 * @return O numero de edicao em formato inteiro
 	 */
 	public String getNumEdicao() {
 		

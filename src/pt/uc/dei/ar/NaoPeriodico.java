@@ -21,10 +21,10 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	
 	/**
 	 * Construtor da classe NaoPeriodico
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param listaDeAutores
+	 * @param titulo titulo
+	 * @param dataPublicacao data de publicacao
+	 * @param dataRececao data de rececao
+	 * @param listaDeAutores lista de autores
 	 */
 	public NaoPeriodico(String titulo, String dataPublicacao,  String dataRececao, ArrayList<String> autores,  ArrayList<String> areas) {
 		super(titulo, dataPublicacao, dataRececao, areas);
@@ -34,7 +34,8 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	}
 
 	/**
-	 * @return a lista de autores em formato String
+	 * Obtem a lista de autores
+	 * @return A lista de autores em formato String
 	 */
 	public ArrayList<String> getListaDeAutores() {
 		return listaDeAutores;

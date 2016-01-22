@@ -60,16 +60,16 @@ public class Leitor extends Utilizador implements Serializable {
 
 	/**
 	 * Construtor da classe Leitor.
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param listaDeEmprestimo
-	 * @param numLeitor
-	 * @param dataNascimento
-	 * @param cartaoCidadao
-	 * @param morada
-	 * @param email
-	 * @param telefone
+	 * @param username username do leitor
+	 * @param hashedPassword password do leitor
+	 * @param nome nome do leitor
+	 * @param listaDeEmprestimo lista de emprestimo do leitor
+	 * @param numLeitor numero do leitor
+	 * @param dataNascimento data de nascimento do leitor
+	 * @param cartaoCidadao cartao do cidadao do leitor
+	 * @param morada morada do leitor
+	 * @param email email do leitor
+	 * @param telefone telefone do leitor
 	 */
 	public Leitor(String username, String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone) {
@@ -94,13 +94,15 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return o arrayList de emprestimos do leitor
+	 * Obtem a lista de emprestimos do leitor
+	 * @return O arrayList de emprestimos do leitor
 	 */
 	public ArrayList<Emprestimo> getListaDeEmprestimo() {
 		return listaDeEmprestimos;
 	}
 
 	/**
+	 * Altera a lista de emprestimo
 	 * @param listaDeEmprestimo the listaDeEmprestimo to set
 	 */
 	public void setListaDeEmprestimo(ArrayList<Emprestimo> listaDeEmprestimo) {
@@ -108,13 +110,15 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return o numero de leitor em formato inteiro
+	 * Obtem o numero de leitor
+	 * @return O numero de leitor em formato inteiro
 	 */
 	public int getNumLeitor() {
 		return numLeitor;
 	}
 
 	/**
+	 * Altera o numero de leitor
 	 * @param numLeitor the numLeitor to set
 	 */
 	public void setNumLeitor(int numLeitor) {
@@ -122,27 +126,31 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return a data de nascimento em formato data
+	 * Obtem a data de nascimento
+	 * @return A data de nascimento em formato data
 	 */
 	public Date getDataNascimento() {
 		return dataNascimento;	
 	}
 
 	/**
-	 * @return o cartao do cidadao em formato String
+	 * Obtem o cartao do cidadao
+	 * @return O cartao do cidadao em formato String
 	 */
 	public String getCartaoCidadao() {
 		return cartaoCidadao;
 	}
 	
 	/**
-	 * @return a morada em formato String
+	 * Obtem a morada
+	 * @return A morada em formato String
 	 */
 	public String getMorada() {
 		return morada;
 	}
 
 	/**
+	 * Altera a morada
 	 * @param morada the morada to set
 	 */
 	public void setMorada(String morada) {
@@ -157,6 +165,7 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
+	 * Altera o email
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
@@ -164,13 +173,15 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return o telefone em formato string
+	 * Obtem o telefone do leitor
+	 * @return O telefone em formato string
 	 */
 	public String getTelefone() {
 		return telefone;	
 	}
 
 	/**
+	 * Altera o telefone do leitor
 	 * @param telefone the telefone to set
 	 */
 	public void setTelefone(String telefone) {
@@ -178,15 +189,15 @@ public class Leitor extends Utilizador implements Serializable {
 	}
 
 	/**
-	 * 
-	 * @return ultimoNumLeitorSequencial em formato inteiro
+	 * Obtem o ultimo numero sequencial
+	 * @return UltimoNumLeitorSequencial em formato inteiro
 	 */
 	public static int getUltimoNumLeitorSequencial() {
 		return ultimoNumLeitorSequencial;
 	}
 	
 	/**
-	 * 
+	 * Altera o ultimo numero sequencial
 	 * @param ultimoNumLeitorSequencial
 	 */
 	public static void setUltimoNumLeitorSequencial(int ultimoNumLeitorSequencial) {
@@ -204,7 +215,7 @@ public class Leitor extends Utilizador implements Serializable {
 	/**
 	 * Consulta de emprestimos ativos do leitor
 	 * @param String Nome 
-	 * @return emprestimosAtuais
+	 * @return EmprestimosAtuais
 	 */
 	public ArrayList<Emprestimo> consultaEmprestimosLeitor() {
 		

@@ -53,7 +53,6 @@ public class Biblioteca implements Serializable{
 	 * @param listaDeEmprestimo ArrayList com os Emprestimos da Biblioteca
 	 */
 	public Biblioteca() {
-		super();
 		this.listaDeUtilizadores = new ArrayList<Utilizador>();
 		this.listaDePublicacoes =new ArrayList<Publicacao>();
 		this.listaDeEmprestimo = new ArrayList<Emprestimo>();

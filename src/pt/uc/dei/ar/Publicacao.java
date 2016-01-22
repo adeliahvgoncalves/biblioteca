@@ -54,12 +54,12 @@ public class Publicacao implements Serializable{
 	private boolean ocupado;
 
 	/**
-	 * Construtor da classe Publicação
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param areas
-	 * @param codBarras
-	 * @param dataRececao
+	 * Construtor da classe Publicacao
+	 * @param titulo titulo da publicacao
+	 * @param dataPublicacao data da publicacao
+	 * @param areas  areas da publicacao
+	 * @param codBarras codigo de barras da publicacao
+	 * @param dataRececao data de rececao da publicacao
 	 */
 	public Publicacao(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas) {
 		super();
@@ -89,50 +89,56 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
-	 * @return o titulo, em formato String
+	 * Retorna o titulo da publicacao
+	 * @return O titulo, em formato String
 	 */
 	public String getTitulo() {
 		return titulo;
 	}
 
 	/**
-	 * @return a data da publicacao, em formato de Data
+	 * Retorna a data da publicacao
+	 * @return A data da publicacao, em formato de Data
 	 */
 	public Date getDataPublicacao() {
 		return dataPublicacao;
 	}
 
 	/**
-	 * @return a lista de areas em formato String
+	 * Obtem a lista de areas
+	 * @return A lista de areas em formato String
 	 */
 	public ArrayList<String> getListaDeAreas() {
 		return listaDeAreas;
 	}
 
 	/**
-	 * @param listaDeAreas define a nova lista de areas 
+	 * Altera as areas
+	 * @param listaDeAreas define  lista de areas 
 	 */
 	public void setListaDeAreas(ArrayList<String> listaDeAreas) {
 		this.listaDeAreas = listaDeAreas;
 	}
 
 	/**
-	 * @return o codigo de barras em formato inteiro
+	 * Obtem o codigo de barras
+	 * @return O codigo de barras em formato inteiro
 	 */
 	public int getCodBarras() {
 		return codBarras;
 	}
 
 	/**
-	 * @return a data de rececao, em formato data
+	 * Obtem a data de rececao
+	 * @return A data de rececao, em formato data
 	 */
 	public Date getDataRececao() {
 		return dataRececao;
 	}
 
 	/**
-	 * @param area
 	 * Metodo que permite adicionar novas areas ao arrayList
+	 * @param area area
 	 */
 	public void adicionaArea(String area) {
 		this.listaDeAreas.add(area);
@@ -140,13 +146,14 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * Metodo que verifica se a publicacao esta ocupada(requisitada)
-	 * @return the ocupado
+	 * @return the ocupado Se está ocupado
 	 */
 	public boolean isOcupado() {
 		return ocupado;
 	}
 
 	/**
+	 * Altera o estado para ocupado
 	 * @param ocupado the ocupado to set
 	 */
 	public void setOcupado(boolean ocupado) {
@@ -154,6 +161,7 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
+	 * Obtem o ultimo codigo de barars
 	 * @return ultimocodBarras em formato inteiro
 	 */
 	public static int getUltimocodBarras() {
@@ -161,6 +169,7 @@ public class Publicacao implements Serializable{
 	}
 
 	/**
+	 * Altera o ultimo codigo de barras
 	 * @param ultimocodBarras
 	 */
 	public static void setUltimocodBarras(int ultimocodBarras) {
@@ -179,7 +188,7 @@ public class Publicacao implements Serializable{
 
 	/**
 	 * Verificacao da chave do Map
-	 * @return boolean
+	 * @return boolean Um boolean
 	 */
 	@Override
 	public boolean equals(Object obj) {

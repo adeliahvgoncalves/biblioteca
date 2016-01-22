@@ -21,11 +21,11 @@ public class Periodico extends Publicacao implements Serializable {
 
 	/**
 	 * Construtor da classe Periodico
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param areas
-	 * @param periodicidade
+	 * @param titulo titulo
+	 * @param dataPublicacao data de publicacao
+	 * @param dataRececao data de rececao
+	 * @param areas areas
+	 * @param periodicidade periodicidade
 	 */
 	public Periodico(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade) {
@@ -36,7 +36,8 @@ public class Periodico extends Publicacao implements Serializable {
 	}
 
 	/**
-	 * @return periodicidade devolve um tipo de periodicidade
+	 * Obtem a periodicidade
+	 * @return periodicidade Devolve um tipo de periodicidade
 	 */
 	public Periodicidade getPeriodicidade() {
 		return periodicidade;

@@ -34,13 +34,13 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 
 	/**
 	 * Construtor da classe Revista
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param areas
-	 * @param periodicidade
-	 * @param volume
-	 * @param numeroSequencial
+	 * @param titulo titulo da revista
+	 * @param dataPublicacao data da publicacao
+	 * @param dataRececao data de rececao
+	 * @param areas areas da revista
+	 * @param periodicidade periodicidade da revista
+	 * @param volume volume da revista
+	 * @param numeroSequencial numero sequencial da revista
 	 */
 	public Revista(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String volume) {
@@ -52,28 +52,32 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 	}
 
 	/**
-	 * @return o volume em formato inteiro
+	 * Obtem o volume da revista
+	 * @return O volume em formato inteiro
 	 */
 	public String getVolume() {
 		return volume;
 	}
 
 	/**
-	 * @return o numero sequencial em formato inteiro
+	 * Obtem o numero sequencial da revista
+	 * @return O numero sequencial em formato inteiro
 	 */
 	public int getNumeroSequencial() {
 		return numeroSequencial;
 	}
 
 	/** 
-	 * @return ultimonumeroSequencial em formato inteiro
+	 * Obtem o ultimo numero sequencial da revista
+	 * @return UltimonumeroSequencial em formato inteiro
 	 */
 	public static int getUltimonumeroSequencial() {
 		return ultimonumeroSequencial;
 	}
 
 	/**
-	 * @param ultimonumeroSequencial
+	 * Altera o ultimo numero sequencial
+	 * @param ultimonumeroSequencial Ultimo numero sequencial
 	 */
 	public static void setUltimonumeroSequencial(int ultimonumeroSequencial) {
 		Revista.ultimonumeroSequencial = ultimonumeroSequencial;
@@ -81,7 +85,7 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 
 	/**
 	 * Implementa interface requisitavel
-	 * @return o maximo de dias de requisicao em formato inteiro
+	 * @return O maximo de dias de requisicao em formato inteiro
 	 */
 	public int maximoDiasRequisicao() {
 		return 5;
@@ -89,7 +93,7 @@ public class Revista extends Periodico implements Requisitavel, Serializable {
 
 	/**
 	 * Preenche detalhes da publicacao no CSV
-	 * @return detalhes da publicacao
+	 * @return Os detalhes da publicacao
 	 */
 	public String detalhes(){
 		return getDataRececao() +  ";" + getListaDeAreas() +";"+getPeriodicidade() +  ";" +getVolume()+";" +getNumeroSequencial();

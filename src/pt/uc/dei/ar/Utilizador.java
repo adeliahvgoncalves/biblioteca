@@ -30,8 +30,8 @@ public class Utilizador implements Serializable {
 
 	/**
 	 * Construtor da classe utilizador
-	 * @param username
-	 * @param nome
+	 * @param username username do utilizador
+	 * @param nome nome do utilizador
 	 */
 	public Utilizador(String username, String nome) {
 		
@@ -42,21 +42,24 @@ public class Utilizador implements Serializable {
 	}
 
 	/**
-	 * @return o username em formato String
+	 * Obtem o username
+	 * @return O username em formato String
 	 */
 	public String getUsername() {
 		return username;
 	}
 
 	/**
-	 * @return a password em formato String
+	 * Obtem a password
+	 * @return A password em formato String
 	 */
 	public String getHashedPassword() {
 		return hashedPassword;
 	}
 
 	/**
-	 * @return o nome do utilizador em formato String
+	 * Obtem o nome do utilizador
+	 * @return O nome do utilizador em formato String
 	 */
 	public String getNome() {
 		return nome;
