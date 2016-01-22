@@ -212,7 +212,7 @@ public class Biblioteca implements Serializable{
 		leitor = new Leitor(username, nome, dataNascimento, cartaoCidadao, morada, email, telefone);
 		
 		this.adicionaUtilizador(leitor);
-		System.out.println("num leitor:"+leitor.getNumLeitor() + "Password"+leitor.getHashedPassword());
+		System.out.println("num leitor:"+leitor.getUsername() + "Password"+leitor.getHashedPassword());
 		return leitor.getNumLeitor();
 		
 	}
@@ -229,7 +229,7 @@ public class Biblioteca implements Serializable{
 		
 		Colaborador colaborador = new Colaborador(username,  nome, numColaborador);
 		this.adicionaUtilizador(colaborador);
-		System.out.println( "Password"+colaborador.getHashedPassword());
+		System.out.println( "Username:"+colaborador.getUsername()+"Password"+colaborador.getHashedPassword());
 		return colaborador;
 		
 	}
@@ -246,7 +246,7 @@ public class Biblioteca implements Serializable{
 		
 		BibliotecarioChefe bibliotecarioChefe = new BibliotecarioChefe(username, nome, numColaborador);
 		this.adicionaUtilizador(bibliotecarioChefe);
-		System.out.println( "Password"+bibliotecarioChefe.getHashedPassword());
+		System.out.println( "Username"+bibliotecarioChefe.getUsername()+"Password"+bibliotecarioChefe.getHashedPassword());
 		return bibliotecarioChefe;
 
 	}
