@@ -203,7 +203,7 @@ public class Leitor extends Utilizador implements Serializable {
 
 	/**
 	 * Adiciona um emprestimo novo
-	 * @param Emprestimo emprestimo
+	 * @param emprestimo emprestimo
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
 		listaDeEmprestimos.add(emprestimo);

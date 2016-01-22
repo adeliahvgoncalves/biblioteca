@@ -25,6 +25,7 @@ public class NaoPeriodico extends Publicacao implements Serializable {
 	 * @param dataPublicacao data de publicacao
 	 * @param dataRececao data de rececao
 	 * @param autores lista de autores
+	 *  @param areas lista de areas
 	 */
 	public NaoPeriodico(String titulo, String dataPublicacao,  String dataRececao, ArrayList<String> autores,  ArrayList<String> areas) {
 		super(titulo, dataPublicacao, dataRececao, areas);
