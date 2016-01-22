@@ -353,9 +353,9 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa utilizador com numero de leitor
-	 * @param int numero de leitor de leitor a pesquisar
-	 * @return um Utilizador utilizador com esse número de leitor
+	 * Pesquisa utilizador pelo numero de leitor
+	 * @param numLeitor de leitor a pesquisar
+	 * @return Um Utilizador utilizador com esse numero de leitor
 	 */
 	public Utilizador pesquisaUtilizadorPorNumLeitor(int numLeitor) {
 		
@@ -372,8 +372,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Pesquisa pubicacao por codigo de barras
-	 * @param int codigoBarras 
+	 * Pesquisa pubicacao por codigo de barras.
+	 * @param codigoBarras  
 	 * @return uma Publicacao publicacaoComCodigoBarras
 	 */
 	public Publicacao pesquisaPublicacaoPorCodBarras(int codigoBarras) {
