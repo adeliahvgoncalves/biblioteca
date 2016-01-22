@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Emprestimo representa o empréstimo de uma publicação requisitável e implementa o Serializable
+ * Emprestimo representa o emprestimo de uma publicação requisitavel e implementa o Serializable
  *  @author Adelia Goncalves (2000014546) e Maria Joao Dias da Silva (2001009566)
  */
 public class Emprestimo implements Serializable {
