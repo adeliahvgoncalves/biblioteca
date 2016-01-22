@@ -48,9 +48,9 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Construtor da classe biblioteca
-	 * @param listaDeUtilizadores
-	 * @param listaDePublicacoes
-	 * @param listaDeEmprestimo
+	 * @param listaDeUtilizadores ArrayList com os Utilizadores da Biblioteca
+	 * @param listaDePublicacoes ArrayList com as Publicacoes da Biblioteca
+	 * @param listaDeEmprestimo ArrayList com os Emprestimos da Biblioteca
 	 */
 	public Biblioteca() {
 		super();
@@ -61,7 +61,6 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Metodo publico estatico de acesso unico ao objeto
-	 * @param 
 	 */
 	public static Biblioteca getInstance(){
 
@@ -79,7 +78,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona uma publicacao nova
-	 * @param Publicacao
+	 * @param Publicacao publicacao que vai ser adicionada
 	 */
 	public void adicionaPublicacao(Publicacao publicacao) {
 		
@@ -89,7 +88,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona um utilizador novo
-	 * @param Utilizador
+	 * @param Utilizador utilizador que vai ser adicionado
 	 */
 	public void adicionaUtilizador(Utilizador utilizador) {
 		
@@ -99,7 +98,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Adiciona um emprestimo novo
-	 * @param Emprestimo
+	 * @param Emprestimo emprestimo que vai ser adicionado
 	 */
 	public void adicionaEmprestimo(Emprestimo emprestimo) {
 		
@@ -109,8 +108,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa utilizador por username
-	 * @param string  username
-	 * @return um utilizador  com esse username
+	 * @param string  username do utilizador a ser pesquisado
+	 * @return Caso encontre retorna um utilizador com esse username, caso contrario retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorUsername(String username) {
 		
@@ -126,8 +125,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Verifica se a publicacao e requisitavel
-	 * @param publicacao
-	 * @return true se implementa o requisitavel
+	 * @param publicacao publicacao a ser verificada
+	 * @return True se implementa o requisitavel, pode ser requisitada, false se nao for requisitavel
 	 */
 	public boolean autorizaRequisitavel(Publicacao publicacao){
 
@@ -139,8 +138,8 @@ public class Biblioteca implements Serializable{
 	}
 
 	/**
-	 * Gerar password random para o utilizador
-	 * @return password 
+	 * Gera password random para o utilizador
+	 * @return Password que vai ser criada
 	 */
 	public String gerarPassword(){
 		
@@ -156,9 +155,9 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Metodo que verifica se o username e a password do Utilizador estao correctos
-	 * @param username
-	 * @param password
-	 * @return se encontrou o utilizador registado e devolvido, se nao devolve null
+	 * @param username username do utilizador a verificar
+	 * @param password password do utilizador a verificar
+	 * @return Se encontrou o utilizador registado e devolvido esse utilizador, caso contrario devolve null
 	 */
 	public Utilizador login(String username, String password){
 
@@ -173,8 +172,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa um leitor pelo cartao do cidadao
-	 * @param string  cartao do cidadao
-	 * @return um Leitor  com esse cartao do cidadao
+	 * @param string cartao do cidadao do leitor
+	 * @return Se encontrar um Leitor com esse cartao do cidadao retorna esse leitor, caso contrario retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorCartaoCidadao(String cartaoCidadao) {
 		
@@ -194,16 +193,14 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria leitor na Biblioteca e adiciona ao arrayList do utilizador
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param numLeitor
-	 * @param dataNascimento
-	 * @param cartaoCidadao
-	 * @param morada
-	 * @param email
-	 * @param telefone
-	 * @return numero de leitor
+	 * @param username username do leitor a criar na Biblioteca
+	 * @param nome nome do leitor a criar na Biblioteca
+	 * @param dataNascimento a data de nascimento do leitor a criar na Biblioteca
+	 * @param cartaoCidadao o Cartao do Cidadao do leitor a criar na Biblioteca
+	 * @param morada morada do leitor a criar na Biblioteca
+	 * @param email e-mail do leitor a criar na Biblioteca
+	 * @param telefone telefone do leitor a criar na Biblioteca
+	 * @return Numero de leitor que foi criado na biblioteca
 	 */
 	public int criaLeitor(String username,  String nome,
 			String dataNascimento, String cartaoCidadao, String morada, String email, String telefone){
@@ -219,11 +216,10 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria colaborador e adiciona ao arrayList utilizador
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param numColaborador
-	 * @return true se criado corretamente
+	 * @param username username do colaborador a criar na biblioteca
+	 * @param nome nome do colaborador a criar na biblioteca
+	 * @param numColaborador numero de colaborador a criar na biblioteca
+	 * @return True se criado corretamente
 	 */
 	public Colaborador criaColaborador(String username,  String nome, int numColaborador){
 		
@@ -236,11 +232,10 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria bibliotecario chefe e adiciona ao arrayList utilizador
-	 * @param username
-	 * @param hashedPassword
-	 * @param nome
-	 * @param numColaborador
-	 * @return true se criado corretamente
+	 * @param username username do bilbiotecario chefe a criar na biblioteca
+	 * @param nome nome do bilbiotecario chefe a criar na biblioteca
+	 * @param numColaborador numero de colaborador do bilbiotecario chefe a criar na biblioteca
+	 * @return True se criado corretamente
 	 */
 	public BibliotecarioChefe criaBibliotecarioChefe(String username, String nome, int numColaborador){
 		
@@ -253,14 +248,13 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria revista e adiciona ao arrayList Publicacao
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param areas
-	 * @param periodicidade
-	 * @param volume
-	 * @param numeroSequencial
-	 * @return codigo de barras
+	 * @param titulo titulo da revista a criar 
+	 * @param dataPublicacao data de publicacao da revista a criar 
+	 * @param dataRececao data de rececao da revista a criar 
+	 * @param areas areas da revista a criar 
+	 * @param periodicidade periodicidade da revista a criar 
+	 * @param volume colume da revista a criar 
+	 * @return Codigo de barras da revista que foi criada, numero sequencial e unico
 	 */
 	public int criaRevista(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String volume){
@@ -273,13 +267,13 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria Jornal e adiciona ao arrayList Publicacao
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param areas
-	 * @param periodicidade
-	 * @param numEdicao
-	 * @return codigo de barras
+	 * @param titulo titulo do jornal a criar
+	 * @param dataPublicacao data do jornal a criar
+	 * @param dataRececao data de rececao do jornal a criar
+	 * @param areas areas do jornal a criar
+	 * @param periodicidade periodicidade do jornal a criar
+	 * @param numEdicao numero de edicao do jornal a criar
+	 * @return Codigo de barras da revista que foi criada, numero sequencial e unico
 	 */
 	public int criaJornal(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> areas,
 			Periodicidade periodicidade, String numEdicao){
@@ -292,19 +286,19 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria tese e adiciona ao arrayList Publicacao
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param autores
-	 * @param areas
-	 * @param nomeDoOrientador
-	 * @param tipoDeTese
-	 * @return codigo de barras
+	 * @param titulo titulo da tese a criar
+	 * @param dataPublicacao data de publicacao da tese a criar
+	 * @param dataRececao data de rececao da tese a criar
+	 * @param autor autor da tese a criar
+	 * @param areas areas da tese a criar
+	 * @param nomeDoOrientador nome do orientador da tese a criar
+	 * @param tipoDeTese tipo de tese a criar, mestrado ou doutoramento
+	 * @return Codigo de barras da tese que foi criada, numero sequencial e unico
 	 */
-	public int criaTese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
+	public int criaTese(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autor,
 			ArrayList<String> areas, String nomeDoOrientador, TipoDeTese tipoDeTese){
 		
-		Tese tese = new Tese(titulo, dataPublicacao, dataRececao, autores, areas, nomeDoOrientador, tipoDeTese);
+		Tese tese = new Tese(titulo, dataPublicacao, dataRececao, autor, areas, nomeDoOrientador, tipoDeTese);
 		this.adicionaPublicacao(tese);
 		return tese.getCodBarras();
 		
@@ -312,15 +306,15 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Cria livro e adiciona ao arrayList Publicacao
-	 * @param titulo
-	 * @param dataPublicacao
-	 * @param dataRececao
-	 * @param autores
-	 * @param areas
-	 * @param numEdicao
-	 * @param iSBN
-	 * @param editor
-	 * @return codigo de barras
+	 * @param titulo titulo do livro a criar
+	 * @param dataPublicacao data de publicacao do livro a criar
+	 * @param dataRececao data de rececao do livro a criar
+	 * @param autores autores do livro a criar
+	 * @param areas areas do livro a criar
+	 * @param numEdicao numero de edicao do livro a criar
+	 * @param iSBN isbn do livro a criar
+	 * @param editor editor do livro a criar
+	 * @return Codigo de barras do livro que foi criado, numero sequencial e unico
 	 */
 	public int criaLivro(String titulo, String dataPublicacao, String dataRececao, ArrayList<String> autores,
 			ArrayList<String> areas, String numEdicao, String iSBN, String editor){
@@ -333,8 +327,8 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa utilizador pelo numero de colaborador
-	 * @param int numero de colaborador
-	 * @return um Utilizador utilizador com esse numero de colaborador
+	 * @param int numero de colaborador a pesquisar
+	 * @return Um utilizador com esse numero de colaborador, caso nao encontre retorna null
 	 */
 	public Utilizador pesquisaUtilizadorPorNumColaborador(int numCol) {
 		Utilizador utilizadorColaborador = null;
@@ -360,7 +354,7 @@ public class Biblioteca implements Serializable{
 
 	/**
 	 * Pesquisa utilizador com numero de leitor
-	 * @param int numero de leitor
+	 * @param int numero de leitor de leitor a pesquisar
 	 * @return um Utilizador utilizador com esse número de leitor
 	 */
 	public Utilizador pesquisaUtilizadorPorNumLeitor(int numLeitor) {
