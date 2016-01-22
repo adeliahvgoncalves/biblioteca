@@ -250,11 +250,11 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 		panel.add(btnVoltar);
 
 		this.lblMensagem = new JLabel("");
-		lblMensagem.setBounds(30, 268, 407, 16);
+		lblMensagem.setBounds(20, 268, 417, 16);
 		panel.add(lblMensagem);
 
 		this.lblMensagemLeitor = new JLabel("");
-		lblMensagemLeitor.setBounds(30, 287, 407, 16);
+		lblMensagemLeitor.setBounds(20, 287, 417, 16);
 		panel.add(lblMensagemLeitor);
 	}
 	
@@ -349,7 +349,7 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 
 		else if (biblioteca.pesquisaUtilizadorPorNumColaborador(Integer.parseInt(txtNumFuncionario.getText())) != null) {
 
-			enviaMensagemParaValidar(" Erro! Já existe um funcionário com o mesmo número. Insira",
+			enviaMensagemParaValidar("Erro! Já existe um funcionário com o mesmo número. Insira",
 					"novamente e se persistir o erro dirija-se aos Recurso Humanos. ");
 		}
 		else{
@@ -360,18 +360,18 @@ public class RegistaUtilizadorPanel extends JPanel implements ActionListener{
 				
 				Colaborador colaborador = biblioteca.criaColaborador(txtUsername.getText(), txtNome.getText(), numFuncionario);
 
-				limpaPainelSimples();
-				enviaMensagemParaValidar(" O Colaborador foi registado correctamente",
+				enviaMensagemParaValidar("O Colaborador foi registado correctamente",
 						"O username é: " + txtUsername.getText() + ". A password é: " + colaborador.getHashedPassword());
+				limpaPainelSimples();
 
 			}
 			if (str.equals("Biblio Chefe")) {
 
 				BibliotecarioChefe chefe = biblioteca.criaBibliotecarioChefe(txtUsername.getText(), txtNome.getText(), numFuncionario);
 				
-				limpaPainelSimples();
-				enviaMensagemParaValidar(" O Bibliotecario foi registado correctamente",
+				enviaMensagemParaValidar("O Bibliotecario foi registado correctamente",
 						"O username é: " + txtUsername.getText() + ". A password é: " + chefe.getHashedPassword());
+				limpaPainelSimples();
 			} 
 		}
 	}
