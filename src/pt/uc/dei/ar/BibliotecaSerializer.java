@@ -32,9 +32,9 @@ public class BibliotecaSerializer {
 	 * Construtor da BibliotecaSerializer
 	 */
 	public BibliotecaSerializer() {
-		String userHome = System.getProperty("user.home");
-		this.filePath = userHome + "/Dropbox/AcertarRumo20152016/biblioteca.dat";
-		//this.filePath ="bib.dat";
+		//String userHome = System.getProperty("user.home");
+		//this.filePath = userHome + "/Dropbox/AcertarRumo20152016/biblioteca.dat";
+		this.filePath ="bib.dat";
 	}
 
 	/**
